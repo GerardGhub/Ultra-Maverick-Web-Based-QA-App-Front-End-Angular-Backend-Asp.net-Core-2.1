@@ -956,8 +956,8 @@
 <div class="col-sm-8">
 <mat-radio-group name="a_compliance"  id="rbEditCompliance" [(ngModel)]="editProject.a_compliance" required="required" #editCompliance="ngModel">
  
-  <mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+  <mat-radio-button value="Compliance" (click)="ComplianceSectionA1()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionA1()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -968,7 +968,7 @@
 
 </td>
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks" [(ngModel)]="editProject.a_remarks" #edita_remarks="ngModel" [ngClass]="{ 'is-invalid': edita_remarks.invalid && (edita_remarks.dirty || edita_remarks.touched || editForm.submitted), 'is-valid': edita_remarks.valid && (edita_remarks.dirty || edita_remarks.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks" [(ngModel)]="editProject.a_remarks" #edita_remarks="ngModel" [ngClass]="{ 'is-invalid': edita_remarks.invalid && (edita_remarks.dirty || edita_remarks.touched || editForm.submitted), 'is-valid': edita_remarks.valid && (edita_remarks.dirty || edita_remarks.touched || editForm.submitted) }"  required #remarksSectionA1>
 
 </textarea>
 <span class="text-danger" *ngIf="edita_remarks.invalid && (edita_remarks.dirty || edita_remarks.touched || editForm.submitted) && edita_remarks.errors?.required">Remarks required</span>
@@ -990,8 +990,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="b_compliance" [(ngModel)]="editProject.b_compliance" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionA2()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionA2()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1002,7 +1002,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks" [(ngModel)]="editProject.b_remarks" #editb_remarks="ngModel" [ngClass]="{ 'is-invalid': editb_remarks.invalid && (editb_remarks.dirty || editb_remarks.touched || editForm.submitted), 'is-valid': editb_remarks.valid && (editb_remarks.dirty || editb_remarks.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks" [(ngModel)]="editProject.b_remarks" #editb_remarks="ngModel" [ngClass]="{ 'is-invalid': editb_remarks.invalid && (editb_remarks.dirty || editb_remarks.touched || editForm.submitted), 'is-valid': editb_remarks.valid && (editb_remarks.dirty || editb_remarks.touched || editForm.submitted) }"  required #remarksSectionA2>
 
 </textarea>
 <span class="text-danger" *ngIf="editb_remarks.invalid && (editb_remarks.dirty || editb_remarks.touched || editForm.submitted) && editb_remarks.errors?.required">Remarks required</span>
@@ -1024,8 +1024,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="c_compliance" [(ngModel)]="editProject.c_compliance" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionA3()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionA3()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1036,7 +1036,7 @@
 </td>
                 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks" [(ngModel)]="editProject.c_remarks" #editc_remarks="ngModel" [ngClass]="{ 'is-invalid': editc_remarks.invalid && (editc_remarks.dirty || editc_remarks.touched || editForm.submitted), 'is-valid': editc_remarks.valid && (editc_remarks.dirty || editc_remarks.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks" [(ngModel)]="editProject.c_remarks" #editc_remarks="ngModel" [ngClass]="{ 'is-invalid': editc_remarks.invalid && (editc_remarks.dirty || editc_remarks.touched || editForm.submitted), 'is-valid': editc_remarks.valid && (editc_remarks.dirty || editc_remarks.touched || editForm.submitted) }"  required #remarksSectionA3>
 
 </textarea>
 <span class="text-danger" *ngIf="editc_remarks.invalid && (editc_remarks.dirty || editc_remarks.touched || editForm.submitted) && editc_remarks.errors?.required">Remarks required</span>
@@ -1057,8 +1057,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="d_compliance" [(ngModel)]="editProject.d_compliance" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionA4()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionA4()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1067,7 +1067,7 @@
 
 </td>
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks" [(ngModel)]="editProject.d_remarks" #editd_remarks="ngModel" [ngClass]="{ 'is-invalid': editd_remarks.invalid && (editd_remarks.dirty || editd_remarks.touched || editForm.submitted), 'is-valid': editd_remarks.valid && (editd_remarks.dirty || editd_remarks.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks" [(ngModel)]="editProject.d_remarks" #editd_remarks="ngModel" [ngClass]="{ 'is-invalid': editd_remarks.invalid && (editd_remarks.dirty || editd_remarks.touched || editForm.submitted), 'is-valid': editd_remarks.valid && (editd_remarks.dirty || editd_remarks.touched || editForm.submitted) }"  required #remarksSectionA4>
 
 </textarea>
 <span class="text-danger" *ngIf="editd_remarks.invalid && (editd_remarks.dirty || editd_remarks.touched || editForm.submitted) && editd_remarks.errors?.required">Remarks required</span>
@@ -1089,8 +1089,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="e_compliance" [(ngModel)]="editProject.e_compliance" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionA5()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionA5()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1098,7 +1098,7 @@
 </div>
 </td>
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="e_remarks" [(ngModel)]="editProject.e_remarks" #edite_remarks="ngModel" [ngClass]="{ 'is-invalid': edite_remarks.invalid && (edite_remarks.dirty || edite_remarks.touched || editForm.submitted), 'is-valid': edite_remarks.valid && (edite_remarks.dirty || edite_remarks.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="e_remarks" [(ngModel)]="editProject.e_remarks" #edite_remarks="ngModel" [ngClass]="{ 'is-invalid': edite_remarks.invalid && (edite_remarks.dirty || edite_remarks.touched || editForm.submitted), 'is-valid': edite_remarks.valid && (edite_remarks.dirty || edite_remarks.touched || editForm.submitted) }"  required #remarksSectionA5>
 
 </textarea>
 <span class="text-danger" *ngIf="edite_remarks.invalid && (edite_remarks.dirty || edite_remarks.touched || editForm.submitted) && edite_remarks.errors?.required">Remarks required</span>
@@ -1144,8 +1144,8 @@
     <div class="col-sm-8">
     
     <mat-radio-group id="rbEditCompliance" name="a_compliance_dos" [(ngModel)]="editProject.a_compliance_dos" required="required" #editCompliance="ngModel">
-    <mat-radio-button value="Compliance">Compliance</mat-radio-button>
-    <mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+    <mat-radio-button value="Compliance" (click)="ComplianceSectionB1()">Compliance</mat-radio-button>
+    <mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionB1()">Non-Compliance</mat-radio-button>
     </mat-radio-group> 
     
     
@@ -1158,7 +1158,7 @@
 
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_dos" [(ngModel)]="editProject.a_remarks_dos" #edita_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_dos.invalid && (edita_remarks_dos.dirty || edita_remarks_dos.touched || editForm.submitted), 'is-valid': edita_remarks_dos.valid && (edita_remarks_dos.dirty || edita_remarks_dos.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_dos" [(ngModel)]="editProject.a_remarks_dos" #edita_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_dos.invalid && (edita_remarks_dos.dirty || edita_remarks_dos.touched || editForm.submitted), 'is-valid': edita_remarks_dos.valid && (edita_remarks_dos.dirty || edita_remarks_dos.touched || editForm.submitted) }"  required #remarksSectionB1>
 
 </textarea>
 <span class="text-danger" *ngIf="edita_remarks_dos.invalid && (edita_remarks_dos.dirty || edita_remarks_dos.touched || editForm.submitted) && edita_remarks_dos.errors?.required">Remarks required</span>
@@ -1179,8 +1179,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="b_compliance_dos" [(ngModel)]="editProject.b_compliance_dos" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionB2()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionB2()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1191,7 +1191,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_dos" [(ngModel)]="editProject.b_remarks_dos" #editb_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_dos.invalid && (editb_remarks_dos.dirty || editb_remarks_dos.touched || editForm.submitted), 'is-valid': editb_remarks_dos.valid && (editb_remarks_dos.dirty || editb_remarks_dos.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_dos" [(ngModel)]="editProject.b_remarks_dos" #editb_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_dos.invalid && (editb_remarks_dos.dirty || editb_remarks_dos.touched || editForm.submitted), 'is-valid': editb_remarks_dos.valid && (editb_remarks_dos.dirty || editb_remarks_dos.touched || editForm.submitted) }"  required #remarksSectionB2>
 
 </textarea>
 <span class="text-danger" *ngIf="editb_remarks_dos.invalid && (editb_remarks_dos.dirty || editb_remarks_dos.touched || editForm.submitted) && editb_remarks_dos.errors?.required">Remarks required</span>
@@ -1215,8 +1215,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="c_compliance_dos" [(ngModel)]="editProject.c_compliance_dos" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionB3()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionB3()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1227,7 +1227,7 @@
 </td>
     
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks_dos" [(ngModel)]="editProject.c_remarks_dos" #editc_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editc_remarks_dos.invalid && (editc_remarks_dos.dirty || editc_remarks_dos.touched || editForm.submitted), 'is-valid': editc_remarks_dos.valid && (editc_remarks_dos.dirty || editc_remarks_dos.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks_dos" [(ngModel)]="editProject.c_remarks_dos" #editc_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editc_remarks_dos.invalid && (editc_remarks_dos.dirty || editc_remarks_dos.touched || editForm.submitted), 'is-valid': editc_remarks_dos.valid && (editc_remarks_dos.dirty || editc_remarks_dos.touched || editForm.submitted) }"  required #remarksSectionB3>
 
 </textarea>
 <span class="text-danger" *ngIf="editc_remarks_dos.invalid && (editc_remarks_dos.dirty || editc_remarks_dos.touched || editForm.submitted) && editc_remarks_dos.errors?.required">Remarks required</span>
@@ -1249,8 +1249,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="d_compliance_dos" [(ngModel)]="editProject.d_compliance_dos" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionB4()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionB4()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1260,7 +1260,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks_dos" [(ngModel)]="editProject.d_remarks_dos" #editd_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editd_remarks_dos.invalid && (editd_remarks_dos.dirty || editd_remarks_dos.touched || editForm.submitted), 'is-valid': editd_remarks_dos.valid && (editd_remarks_dos.dirty || editd_remarks_dos.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks_dos" [(ngModel)]="editProject.d_remarks_dos" #editd_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editd_remarks_dos.invalid && (editd_remarks_dos.dirty || editd_remarks_dos.touched || editForm.submitted), 'is-valid': editd_remarks_dos.valid && (editd_remarks_dos.dirty || editd_remarks_dos.touched || editForm.submitted) }"  required #remarksSectionB4>
 
 </textarea>
 <span class="text-danger" *ngIf="editd_remarks_dos.invalid && (editd_remarks_dos.dirty || editd_remarks_dos.touched || editForm.submitted) && editd_remarks_dos.errors?.required">Remarks required</span>
@@ -1282,8 +1282,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="e_compliance_dos" [(ngModel)]="editProject.e_compliance_dos" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionB5()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionB5()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1291,7 +1291,7 @@
 </div>
 </td>
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="e_remarks_dos" [(ngModel)]="editProject.e_remarks_dos" #edite_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': edite_remarks_dos.invalid && (edite_remarks_dos.dirty || edite_remarks_dos.touched || editForm.submitted), 'is-valid': edite_remarks_dos.valid && (edite_remarks_dos.dirty || edite_remarks_dos.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="e_remarks_dos" [(ngModel)]="editProject.e_remarks_dos" #edite_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': edite_remarks_dos.invalid && (edite_remarks_dos.dirty || edite_remarks_dos.touched || editForm.submitted), 'is-valid': edite_remarks_dos.valid && (edite_remarks_dos.dirty || edite_remarks_dos.touched || editForm.submitted) }"  required #remarksSectionB5>
 
 </textarea>
 <span class="text-danger" *ngIf="edite_remarks_dos.invalid && (edite_remarks_dos.dirty || edite_remarks_dos.touched || editForm.submitted) && edite_remarks_dos.errors?.required">Remarks required</span>
@@ -1311,8 +1311,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="f_compliance_dos" [(ngModel)]="editProject.f_compliance_dos" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionB6()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionB6()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1320,7 +1320,7 @@
 </div>
 </td>
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="f_remarks_dos" [(ngModel)]="editProject.f_remarks_dos" #editf_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editf_remarks_dos.invalid && (editf_remarks_dos.dirty || editf_remarks_dos.touched || editForm.submitted), 'is-valid': editf_remarks_dos.valid && (editf_remarks_dos.dirty || editf_remarks_dos.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="f_remarks_dos" [(ngModel)]="editProject.f_remarks_dos" #editf_remarks_dos="ngModel" [ngClass]="{ 'is-invalid': editf_remarks_dos.invalid && (editf_remarks_dos.dirty || editf_remarks_dos.touched || editForm.submitted), 'is-valid': editf_remarks_dos.valid && (editf_remarks_dos.dirty || editf_remarks_dos.touched || editForm.submitted) }"  required #remarksSectionB6>
 
 </textarea>
 <span class="text-danger" *ngIf="editf_remarks_dos.invalid && (editf_remarks_dos.dirty || editf_remarks_dos.touched || editForm.submitted) && editf_remarks_dos.errors?.required">Remarks required</span>
@@ -1363,8 +1363,8 @@
 
 <div class="col-sm-8">
 <mat-radio-group name="a_compliance_tres"  id="rbEditCompliance" [(ngModel)]="editProject.a_compliance_tres" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionC1()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionC1()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
 </div>
@@ -1373,7 +1373,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_tres" [(ngModel)]="editProject.a_remarks_tres" #edita_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_tres.invalid && (edita_remarks_tres.dirty || edita_remarks_tres.touched || editForm.submitted), 'is-valid': edita_remarks_tres.valid && (edita_remarks_tres.dirty || edita_remarks_tres.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_tres" [(ngModel)]="editProject.a_remarks_tres" #edita_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_tres.invalid && (edita_remarks_tres.dirty || edita_remarks_tres.touched || editForm.submitted), 'is-valid': edita_remarks_tres.valid && (edita_remarks_tres.dirty || edita_remarks_tres.touched || editForm.submitted) }"  required #remarksSectionC1>
 
 </textarea>
 <span class="text-danger" *ngIf="edita_remarks_tres.invalid && (edita_remarks_tres.dirty || edita_remarks_tres.touched || editForm.submitted) && edita_remarks_tres.errors?.required">Remarks required</span>
@@ -1396,8 +1396,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="b_compliance_tres" [(ngModel)]="editProject.b_compliance_tres" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionC2()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionC2()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1408,7 +1408,7 @@
 
 </td>
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_tres" [(ngModel)]="editProject.b_remarks_tres" #editb_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_tres.invalid && (editb_remarks_tres.dirty || editb_remarks_tres.touched || editForm.submitted), 'is-valid': editb_remarks_tres.valid && (editb_remarks_tres.dirty || editb_remarks_tres.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_tres" [(ngModel)]="editProject.b_remarks_tres" #editb_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_tres.invalid && (editb_remarks_tres.dirty || editb_remarks_tres.touched || editForm.submitted), 'is-valid': editb_remarks_tres.valid && (editb_remarks_tres.dirty || editb_remarks_tres.touched || editForm.submitted) }"  required #remarksSectionC2>
 
 </textarea>
 <span class="text-danger" *ngIf="editb_remarks_tres.invalid && (editb_remarks_tres.dirty || editb_remarks_tres.touched || editForm.submitted) && editb_remarks_tres.errors?.required">Remarks required</span>
@@ -1430,8 +1430,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="c_compliance_tres" [(ngModel)]="editProject.c_compliance_tres" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionC3()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionC3()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1442,7 +1442,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks_tres" [(ngModel)]="editProject.c_remarks_tres" #editc_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': editc_remarks_tres.invalid && (editc_remarks_tres.dirty || editc_remarks_tres.touched || editForm.submitted), 'is-valid': editc_remarks_tres.valid && (editc_remarks_tres.dirty || editc_remarks_tres.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks_tres" [(ngModel)]="editProject.c_remarks_tres" #editc_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': editc_remarks_tres.invalid && (editc_remarks_tres.dirty || editc_remarks_tres.touched || editForm.submitted), 'is-valid': editc_remarks_tres.valid && (editc_remarks_tres.dirty || editc_remarks_tres.touched || editForm.submitted) }"  required #remarksSectionC3>
 </textarea>
 <span class="text-danger" *ngIf="editc_remarks_tres.invalid && (editc_remarks_tres.dirty || editc_remarks_tres.touched || editForm.submitted) && editc_remarks_tres.errors?.required">Remarks required</span>
 </td>
@@ -1467,8 +1467,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="d_compliance_tres" [(ngModel)]="editProject.d_compliance_tres" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionC4()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionC4()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
 </div>
@@ -1476,7 +1476,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks_tres" [(ngModel)]="editProject.d_remarks_tres" #editd_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': editd_remarks_tres.invalid && (editd_remarks_tres.dirty || editd_remarks_tres.touched || editForm.submitted), 'is-valid': editd_remarks_tres.valid && (editd_remarks_tres.dirty || editd_remarks_tres.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks_tres" [(ngModel)]="editProject.d_remarks_tres" #editd_remarks_tres="ngModel" [ngClass]="{ 'is-invalid': editd_remarks_tres.invalid && (editd_remarks_tres.dirty || editd_remarks_tres.touched || editForm.submitted), 'is-valid': editd_remarks_tres.valid && (editd_remarks_tres.dirty || editd_remarks_tres.touched || editForm.submitted) }"  required #remarksSectionC4>
 
 </textarea>
 <span class="text-danger" *ngIf="editd_remarks_tres.invalid && (editd_remarks_tres.dirty || editd_remarks_tres.touched || editForm.submitted) && editd_remarks_tres.errors?.required">Remarks required</span>
@@ -1519,8 +1519,8 @@
 
 <div class="col-sm-8">
 <mat-radio-group name="a_compliance_kwatro"  id="rbEditCompliance" [(ngModel)]="editProject.a_compliance_kwatro" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionD1()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionD1()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1529,7 +1529,7 @@
 </td>
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_kwatro" [(ngModel)]="editProject.a_remarks_kwatro" #edita_remarks_kwatro="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_kwatro.invalid && (edita_remarks_kwatro.dirty || edita_remarks_kwatro.touched || editForm.submitted), 'is-valid': edita_remarks_kwatro.valid && (edita_remarks_kwatro.dirty || edita_remarks_kwatro.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_kwatro" [(ngModel)]="editProject.a_remarks_kwatro" #edita_remarks_kwatro="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_kwatro.invalid && (edita_remarks_kwatro.dirty || edita_remarks_kwatro.touched || editForm.submitted), 'is-valid': edita_remarks_kwatro.valid && (edita_remarks_kwatro.dirty || edita_remarks_kwatro.touched || editForm.submitted) }"  required #remarksSectionD1>
 </textarea>
 <span class="text-danger" *ngIf="edita_remarks_kwatro.invalid && (edita_remarks_kwatro.dirty || edita_remarks_kwatro.touched || editForm.submitted) && edita_remarks_kwatro.errors?.required">Remarks required</span>
 </td>
@@ -1550,8 +1550,8 @@
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="b_compliance_kwatro" [(ngModel)]="editProject.b_compliance_kwatro" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionD2()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionD2()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
 </div>
@@ -1560,7 +1560,7 @@
 
 
 <td>
-<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_kwatro" [(ngModel)]="editProject.b_remarks_kwatro" #editb_remarks_kwatro="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_kwatro.invalid && (editb_remarks_kwatro.dirty || editb_remarks_kwatro.touched || editForm.submitted), 'is-valid': editb_remarks_kwatro.valid && (editb_remarks_kwatro.dirty || editb_remarks_kwatro.touched || editForm.submitted) }"  required>
+<textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_kwatro" [(ngModel)]="editProject.b_remarks_kwatro" #editb_remarks_kwatro="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_kwatro.invalid && (editb_remarks_kwatro.dirty || editb_remarks_kwatro.touched || editForm.submitted), 'is-valid': editb_remarks_kwatro.valid && (editb_remarks_kwatro.dirty || editb_remarks_kwatro.touched || editForm.submitted) }"  required #remarksSectionD2>
 </textarea>
 <span class="text-danger" *ngIf="editb_remarks_kwatro.invalid && (editb_remarks_kwatro.dirty || editb_remarks_kwatro.touched || editForm.submitted) && editb_remarks_kwatro.errors?.required">Remarks required</span>
 </td>
@@ -1581,8 +1581,8 @@ editForm.submitted), 'is-valid': editc_msds_kwatro_desc.valid && (editc_msds_kwa
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="c_compliance_kwatro" [(ngModel)]="editProject.c_compliance_kwatro" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionD3()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionD3()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1594,7 +1594,7 @@ editForm.submitted), 'is-valid': editc_msds_kwatro_desc.valid && (editc_msds_kwa
 <td>
 <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks_kwatro" [(ngModel)]="editProject.c_remarks_kwatro" #editc_remarks_kwatro="ngModel" 
 [ngClass]="{ 'is-invalid': editc_remarks_kwatro.invalid && (editc_remarks_kwatro.dirty || editc_remarks_kwatro.touched || editForm.submitted), 
-'is-valid': editc_remarks_kwatro.valid && (editc_remarks_kwatro.dirty || editc_remarks_kwatro.touched || editForm.submitted) }"  required>
+'is-valid': editc_remarks_kwatro.valid && (editc_remarks_kwatro.dirty || editc_remarks_kwatro.touched || editForm.submitted) }"  required #remarksSectionD3>
 
 </textarea>
 <span class="text-danger" *ngIf="editc_remarks_kwatro.invalid && (editc_remarks_kwatro.dirty || editc_remarks_kwatro.touched || editForm.submitted) && editc_remarks_kwatro.errors?.required">Remarks required</span>
@@ -1620,8 +1620,8 @@ editd_food_grade_desc.touched || editForm.submitted) }" readonly>
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="d_compliance_kwatro" [(ngModel)]="editProject.d_compliance_kwatro" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionD4()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionD4()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1635,7 +1635,7 @@ editd_food_grade_desc.touched || editForm.submitted) }" readonly>
 <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks_kwatro" [(ngModel)]="editProject.d_remarks_kwatro" 
 #editd_remarks_kwatro="ngModel" [ngClass]="{ 'is-invalid': editd_remarks_kwatro.invalid && (editd_remarks_kwatro.dirty || 
 editd_remarks_kwatro.touched || editForm.submitted), 'is-valid': editd_remarks_kwatro.valid && (editd_remarks_kwatro.dirty || 
-editd_remarks_kwatro.touched || editForm.submitted) }"  required>
+editd_remarks_kwatro.touched || editForm.submitted) }"  required #remarksSectionD4>
 
 </textarea>
 <span class="text-danger" *ngIf="editd_remarks_kwatro.invalid && (editd_remarks_kwatro.dirty || editd_remarks_kwatro.touched || editForm.submitted) && editd_remarks_kwatro.errors?.required">Remarks required</span>
@@ -1685,8 +1685,8 @@ editForm.submitted) }" readonly>
 <div class="form-group row">
 <div class="col-sm-8">
 <mat-radio-group name="a_compliance_singko"  id="rbEditCompliance" [(ngModel)]="editProject.a_compliance_singko" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionE1()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE1()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1697,7 +1697,7 @@ editForm.submitted) }" readonly>
 <td>
 <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="a_remarks_singko" [(ngModel)]="editProject.a_remarks_singko" 
 #edita_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': edita_remarks_singko.invalid && (edita_remarks_singko.dirty || edita_remarks_singko.touched || editForm.submitted), 'is-valid': 
-edita_remarks_singko.valid && (edita_remarks_singko.dirty || edita_remarks_singko.touched || editForm.submitted) }"  required>
+edita_remarks_singko.valid && (edita_remarks_singko.dirty || edita_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE1>
 </textarea>
 <span class="text-danger" *ngIf="edita_remarks_singko.invalid && (edita_remarks_singko.dirty || edita_remarks_singko.touched || editForm.submitted) && edita_remarks_singko.errors?.required">Remarks required</span>
 </td>
@@ -1716,8 +1716,8 @@ edita_remarks_singko.valid && (edita_remarks_singko.dirty || edita_remarks_singk
 <div class="form-group row">
 <div class="col-sm-8">
 <mat-radio-group id="rbEditCompliance" name="b_compliance_singko" [(ngModel)]="editProject.b_compliance_singko" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionE2()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE2()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
 </div>
@@ -1727,7 +1727,7 @@ edita_remarks_singko.valid && (edita_remarks_singko.dirty || edita_remarks_singk
 <td>
 <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="b_remarks_singko" [(ngModel)]="editProject.b_remarks_singko" 
 #editb_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': editb_remarks_singko.invalid && (editb_remarks_singko.dirty || 
-editb_remarks_singko.touched || editForm.submitted), 'is-valid': editb_remarks_singko.valid && (editb_remarks_singko.dirty || editb_remarks_singko.touched || editForm.submitted) }"  required>
+editb_remarks_singko.touched || editForm.submitted), 'is-valid': editb_remarks_singko.valid && (editb_remarks_singko.dirty || editb_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE2>
 
 </textarea>
 <span class="text-danger" *ngIf="editb_remarks_singko.invalid && (editb_remarks_singko.dirty || editb_remarks_singko.touched || editForm.submitted) && editb_remarks_singko.errors?.required">Remarks required</span>
@@ -1751,8 +1751,8 @@ editForm.submitted), 'is-valid': editc_expirydate_desc_singko.valid && (editc_ex
 <div class="form-group row">
 <div class="col-sm-8">
 <mat-radio-group id="rbEditCompliance" name="c_compliance_singko" [(ngModel)]="editProject.c_compliance_singko" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionE3()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE3()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 <span class="text-danger" *ngIf="editCompliance.invalid && (editCompliance.dirty || editCompliance.touched || editForm.submitted) && editCompliance.errors?.required">Compliance required</span>
@@ -1763,7 +1763,7 @@ editForm.submitted), 'is-valid': editc_expirydate_desc_singko.valid && (editc_ex
 <td>
 <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="c_remarks_singko" [(ngModel)]="editProject.c_remarks_singko" #editc_remarks_singko="ngModel" 
 [ngClass]="{ 'is-invalid': editc_remarks_singko.invalid && (editc_remarks_singko.dirty || editc_remarks_singko.touched || editForm.submitted), 
-'is-valid': editc_remarks_singko.valid && (editc_remarks_singko.dirty || editc_remarks_singko.touched || editForm.submitted) }"  required>
+'is-valid': editc_remarks_singko.valid && (editc_remarks_singko.dirty || editc_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE3>
 
 </textarea>
 <span class="text-danger" *ngIf="editc_remarks_singko.invalid && (editc_remarks_singko.dirty || editc_remarks_singko.touched || editForm.submitted) && editc_remarks_singko.errors?.required">Remarks required</span>
@@ -1788,8 +1788,8 @@ editd_packaging_desc_singko.touched || editForm.submitted) }"  readonly>
 <div class="col-sm-8">
 
 <mat-radio-group id="rbEditCompliance" name="d_compliance_singko" [(ngModel)]="editProject.d_compliance_singko" required="required" #editCompliance="ngModel">
-<mat-radio-button value="Compliance">Compliance</mat-radio-button>
-<mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+<mat-radio-button value="Compliance" (click)="ComplianceSectionE4()">Compliance</mat-radio-button>
+<mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE4()">Non-Compliance</mat-radio-button>
 </mat-radio-group> 
 
 
@@ -1803,7 +1803,7 @@ editd_packaging_desc_singko.touched || editForm.submitted) }"  readonly>
 <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="d_remarks_singko" [(ngModel)]="editProject.d_remarks_singko" 
 #editd_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': editd_remarks_singko.invalid && (editd_remarks_singko.dirty || 
 editd_remarks_singko.touched || editForm.submitted), 'is-valid': editd_remarks_singko.valid && (editd_remarks_singko.dirty || 
-editd_remarks_singko.touched || editForm.submitted) }"  required>
+editd_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE4>
 
 </textarea>
 <span class="text-danger" *ngIf="editd_remarks_singko.invalid && (editd_remarks_singko.dirty || editd_remarks_singko.touched || editForm.submitted) && editd_remarks_singko.errors?.required">Remarks required</span>
@@ -1829,8 +1829,8 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
   <div class="col-sm-8">
   
   <mat-radio-group id="rbEditCompliance" name="e_compliance_singko" [(ngModel)]="editProject.e_compliance_singko" required="required" #editCompliance="ngModel">
-  <mat-radio-button value="Compliance">Compliance</mat-radio-button>
-  <mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+  <mat-radio-button value="Compliance" (click)="ComplianceSectionE5()">Compliance</mat-radio-button>
+  <mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE5()">Non-Compliance</mat-radio-button>
   </mat-radio-group> 
   
   
@@ -1844,7 +1844,7 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
   <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="e_remarks_singko" [(ngModel)]="editProject.e_remarks_singko" 
   #edite_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': edite_remarks_singko.invalid && (edite_remarks_singko.dirty || 
   edite_remarks_singko.touched || editForm.submitted), 'is-valid': edite_remarks_singko.valid && (edite_remarks_singko.dirty || 
-  edite_remarks_singko.touched || editForm.submitted) }"  required>
+  edite_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE5>
   
   </textarea>
   <span class="text-danger" *ngIf="edite_remarks_singko.invalid && (edite_remarks_singko.dirty || edite_remarks_singko.touched || editForm.submitted) && edite_remarks_singko.errors?.required">Remarks required</span>
@@ -1871,8 +1871,8 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
     <div class="col-sm-8">
     
     <mat-radio-group id="rbEditCompliance" name="f_compliance_singko" [(ngModel)]="editProject.f_compliance_singko" required="required" #editCompliance="ngModel">
-    <mat-radio-button value="Compliance">Compliance</mat-radio-button>
-    <mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+    <mat-radio-button value="Compliance" (click)="ComplianceSectionE6()">Compliance</mat-radio-button>
+    <mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE6()">Non-Compliance</mat-radio-button>
     </mat-radio-group> 
     
     
@@ -1886,7 +1886,7 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
     <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="f_remarks_singko" [(ngModel)]="editProject.f_remarks_singko" 
     #editf_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': editf_remarks_singko.invalid && (editf_remarks_singko.dirty || 
     editf_remarks_singko.touched || editForm.submitted), 'is-valid': editf_remarks_singko.valid && (editf_remarks_singko.dirty || 
-    editf_remarks_singko.touched || editForm.submitted) }"  required>
+    editf_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE6>
     
     </textarea>
     <span class="text-danger" *ngIf="editf_remarks_singko.invalid && (editf_remarks_singko.dirty || editf_remarks_singko.touched || editForm.submitted) && editf_remarks_singko.errors?.required">Remarks required</span>
@@ -1913,8 +1913,8 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
     <div class="col-sm-8">
     
     <mat-radio-group id="rbEditCompliance" name="g_compliance_singko" [(ngModel)]="editProject.g_compliance_singko" required="required" #editCompliance="ngModel">
-    <mat-radio-button value="Compliance">Compliance</mat-radio-button>
-    <mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+    <mat-radio-button value="Compliance" (click)="ComplianceSectionE7()">Compliance</mat-radio-button>
+    <mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE7()">Non-Compliance</mat-radio-button>
     </mat-radio-group> 
     
     
@@ -1928,7 +1928,7 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
     <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="g_remarks_singko" [(ngModel)]="editProject.g_remarks_singko" 
     #editg_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': editg_remarks_singko.invalid && (editg_remarks_singko.dirty || 
     editg_remarks_singko.touched || editForm.submitted), 'is-valid': editg_remarks_singko.valid && (editg_remarks_singko.dirty || 
-    editg_remarks_singko.touched || editForm.submitted) }"  required>
+    editg_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE7>
     
     </textarea>
     <span class="text-danger" *ngIf="editg_remarks_singko.invalid && (editg_remarks_singko.dirty || editg_remarks_singko.touched || editForm.submitted) && editg_remarks_singko.errors?.required">Remarks required</span>
@@ -1954,8 +1954,8 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
       <div class="col-sm-8">
       
       <mat-radio-group id="rbEditCompliance" name="h_compliance_singko" [(ngModel)]="editProject.h_compliance_singko" required="required" #editCompliance="ngModel">
-      <mat-radio-button value="Compliance">Compliance</mat-radio-button>
-      <mat-radio-button value="Non-Compliance">Non-Compliance</mat-radio-button>
+      <mat-radio-button value="Compliance" (click)="ComplianceSectionE8()">Compliance</mat-radio-button>
+      <mat-radio-button value="Non-Compliance" (click)="NoneComplianceSectionE8()">Non-Compliance</mat-radio-button>
       </mat-radio-group> 
       
       
@@ -1969,7 +1969,7 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
       <textarea cdkTextareaAutosize class="text-area-main bg-color-yellow-textarea" matInput name="h_remarks_singko" [(ngModel)]="editProject.h_remarks_singko" 
       #edith_remarks_singko="ngModel" [ngClass]="{ 'is-invalid': edith_remarks_singko.invalid && (edith_remarks_singko.dirty || 
       edith_remarks_singko.touched || editForm.submitted), 'is-valid': edith_remarks_singko.valid && (edith_remarks_singko.dirty || 
-      edith_remarks_singko.touched || editForm.submitted) }"  required>
+      edith_remarks_singko.touched || editForm.submitted) }"  required #remarksSectionE8>
       
       </textarea>
       <span class="text-danger" *ngIf="edith_remarks_singko.invalid && (edith_remarks_singko.dirty || edith_remarks_singko.touched || editForm.submitted) && edith_remarks_singko.errors?.required">Remarks required</span>
@@ -1984,7 +1984,7 @@ editd_remarks_singko.touched || editForm.submitted) }"  required>
 </div>
   
 <!-- END OF 4th -->        
-     <!-- {{editForm.value | json}} -->
+     {{editForm.value | json}}
 </div>
 
         <div class="modal-footer">
