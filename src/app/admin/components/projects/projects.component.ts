@@ -25,6 +25,7 @@ import { TblNearlyExpiryMgmtService } from 'src/app/services/tbl-nearly-expiry-m
 
 
 
+
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
@@ -350,6 +351,14 @@ this.AllowableNearlyExpiryDays = this.tblNearlyExpiryMgmtService.getAllExpiryDay
   //Active Partial Receiving Set Point
   @ViewChild("ActivePartialReceiving") ActivePartialReceiving : ElementRef;
   
+
+//Selection of Compliation ViewChild In And Out
+@ViewChild("remarksSectionA1") remarksSectionA1 : ElementRef;
+@ViewChild("remarksSectionA2") remarksSectionA2 : ElementRef;
+@ViewChild("remarksSectionA3") remarksSectionA3 : ElementRef;
+@ViewChild("remarksSectionA4") remarksSectionA4 : ElementRef;
+@ViewChild("remarksSectionA5") remarksSectionA5 : ElementRef;
+
   onNewClick(event)
   {
     this.newForm.resetForm();
@@ -906,7 +915,7 @@ else
 {
 
   this.AllowablePercentageExceed();
-  ActualDelivered.val('');
+  $('#actual_delivery_output').val("");
 }
 
 }
@@ -918,6 +927,7 @@ else
 {
 
   this.AllowablePercentageExceed();
+  $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
   return;
 
 }
@@ -1775,6 +1785,92 @@ var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
     )
   }
 
+  
+  ComplianceSectionA1()
+  {
+  this.editProject.a_remarks= " ";
+  this.remarksSectionA1.nativeElement.disabled = true;
+  this.remarksSectionA1.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+  
+  NoneComplianceSectionA1()
+  {
+  this.editProject.a_remarks= "";
+  this.remarksSectionA1.nativeElement.disabled = false;
+  this.remarksSectionA1.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionA2()
+  {
+  this.editProject.b_remarks= " ";
+  this.remarksSectionA2.nativeElement.disabled = true;
+  this.remarksSectionA2.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+  
+  NoneComplianceSectionA2()
+  {
+  this.editProject.b_remarks= "";
+  this.remarksSectionA2.nativeElement.disabled = false;
+  this.remarksSectionA2.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionA3()
+  {
+  this.editProject.c_remarks= " ";
+  this.remarksSectionA3.nativeElement.disabled = true;
+  this.remarksSectionA3.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+  
+  NoneComplianceSectionA3()
+  {
+  this.editProject.c_remarks= "";
+  this.remarksSectionA3.nativeElement.disabled = false;
+  this.remarksSectionA3.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionA4()
+  {
+  this.editProject.d_remarks= " ";
+  this.remarksSectionA4.nativeElement.disabled = true;
+  this.remarksSectionA4.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+  
+  NoneComplianceSectionA4()
+  {
+  this.editProject.d_remarks= "";
+  this.remarksSectionA4.nativeElement.disabled = false;
+  this.remarksSectionA4.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionA5()
+  {
+  this.editProject.e_remarks= " ";
+  this.remarksSectionA5.nativeElement.disabled = true;
+  this.remarksSectionA5.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+  
+  NoneComplianceSectionA5()
+  {
+  this.editProject.e_remarks= "";
+  this.remarksSectionA5.nativeElement.disabled = false;
+  this.remarksSectionA5.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+
+  //Section 2
+  ComplianceSectionB1()
+  {
+  this.editProject.a_remarks_dos= " ";
+  this.remarksSectionA5.nativeElement.disabled = true;
+  this.remarksSectionA5.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+  
+  NoneComplianceSectionB1()
+  {
+  this.editProject.e_remarks= "";
+  this.remarksSectionA5.nativeElement.disabled = false;
+  this.remarksSectionA5.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+//Singian Clan
   onDeleteClick(event, index: number)
   {
     this.deleteIndex = index;
@@ -2793,31 +2889,6 @@ this.ProjectsAllowableQty.subscribe.toString
 
   }
 
-  // onChangeRejectedDropdown1(event: any){
-  //   this.msgrejectremarksno1 = $("#drpEditRejectStatusOne").val();
-  //   if(this.msgrejectremarksno1 == 1)
-  //   {
-  //     alert(this.msgrejectremarksno1);
-  //   }
-  //   else
-  //   {
-  //     alert(this.msgrejectremarksno1);
-  //   }
-
-  // }
-
-  // onChangeRejectedDropdown2(event: any){
-  //   this.msgrejectremarksno1 = 1;
-  //   if(this.msgrejectremarksno1 == 1)
-  //   {
-  //     alert("a");
-  //   }
-  //   else
-  //   {
-  //     alert("else");
-  //   }
-
-  // }
 
 
   onChangeEventReject1(event: any){
@@ -3071,7 +3142,9 @@ else
 {
 
   this.AllowablePercentageExceed();
-  ActualDelivered.val('');
+  // this.ActualDeliveryChild.nativeElement.value('');
+  // alert("UNO");
+  $('#actual_delivery_output').val("");
 }
 
 }
@@ -3087,7 +3160,10 @@ else
 {
   // alert("FEMALE");
   this.AllowablePercentageExceed();
-  ActualDelivered.val('');
+  // alert("DOS");
+  // ActualDelivered.val('');
+  // this.ActualDeliveryChild.nativeElement.value('');
+  $('#actual_delivery_output').val("");
 }
 
 }//End Point add Ons
