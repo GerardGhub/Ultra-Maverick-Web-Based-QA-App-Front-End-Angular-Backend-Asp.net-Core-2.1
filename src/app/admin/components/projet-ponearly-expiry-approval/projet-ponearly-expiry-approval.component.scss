@@ -1,0 +1,16 @@
+.hideObject {
+  display: none;
+}
+.projectcard {
+  height: 450px;
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index: 1200 !important;
+}
+.zerobadge0 {
+  display: none;
+}
+.font-color-black {
+  color: black;
+}

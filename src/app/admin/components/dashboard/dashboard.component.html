@@ -1,0 +1,347 @@
+<mat-grid-list [cols]="dashboardGridCols" gutterSize="20px" rowHeight="100px" class="dashboard-grid-list">
+
+  <!-- tile 1 starts -->
+  <mat-grid-tile fxLayout="row" class="dashboard-tile dashboard-tile-50 colorful-tile" fxLayoutAlign="start stretch" matRipple matTooltip="Total PO all time">
+    <div fxFlex="1 1 25%" fxLayout="column" fxLayoutAlign="center center" class="h-100">
+      <mat-icon>mark_email_unread</mat-icon>
+    </div>
+
+    <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+      <div class="dashboard-tile-heading">RM PO Receiving</div>
+      <div class="dashboard-tile-sub-heading">{{ totalPoRowCount | number}}</div>
+    </div>
+  </mat-grid-tile>
+  <!-- tile 1 ends -->
+
+
+  <!-- tile 2 starts dashboard-tile-2 -->
+  <mat-grid-tile fxLayout="row" class="dashboard-tile dashboard-tile-50 colorful-tile" fxLayoutAlign="start stretch" matRipple matTooltip="Receiving available now">
+    <div fxFlex="1 1 25%" fxLayout="column" fxLayoutAlign="center center" class="h-100">
+      <mat-icon>shopping_cart</mat-icon>
+    </div>
+
+    <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+      <div class="dashboard-tile-heading">Warehouse Receiving</div>
+      <div class="dashboard-tile-sub-heading">{{totalPoPartialReceiving | number}}</div>
+    </div>
+  </mat-grid-tile>
+  <!-- tile 2 ends -->
+
+
+  <!-- tile 3 starts dashboard-tile-3 -->
+  <mat-grid-tile fxLayout="row" class="dashboard-tile dashboard-tile-50 colorful-tile" fxLayoutAlign="start stretch" matRipple matTooltip="Rejected raw materials based on quality">
+    <div fxFlex="1 1 25%" fxLayout="column" fxLayoutAlign="center center" class="h-100">
+      <mat-icon>thumb_down_off_alt</mat-icon>
+    </div>
+
+    <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+      <div class="dashboard-tile-heading">Raw Material Rejected</div>
+      <div class="dashboard-tile-sub-heading">{{totalPoPartialRejectatWH | number}}</div>
+    </div>
+  </mat-grid-tile>
+  <!-- tile 3 ends -->
+
+
+  <!-- tile 4 starts dashboard-tile-4 -->
+  <mat-grid-tile fxLayout="row" class="dashboard-tile dashboard-tile-50 colorful-tile" fxLayoutAlign="start stretch" matRipple matTooltip="Total cancelled Po all time">
+    <div fxFlex=" 1 1 25%" fxLayout="column" fxLayoutAlign="center center" class="h-100">
+      <mat-icon>cancel_schedule_send</mat-icon>
+    </div>
+
+    <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+      <div class="dashboard-tile-heading">Cancelled PO</div>
+      <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
+    </div>
+  </mat-grid-tile>
+  <!-- tile 4 ends -->
+
+  <!-- tile 5 starts -->
+  <mat-grid-tile [colspan]="cardColspan" rowspan="4" class="dashboard-tile dashboard-tile-5 scroll">
+    <div fxFlex="1 1 100%" fxLayout="column">
+
+      <!-- first box starts -->
+      <div fxFlex="1 1 100%" fxLayout="row" fxLayoutAlign="start stretch">
+        <div fxFlex="1 1 50%" class="p-10 font-weight-bold system-name text-large">Return Item : {{totalPoPartialRejectatWH}}</div>
+        <div fxFlex="1 1 50%" class="text-right p-10">
+          <mat-icon matRipple class="hand-icon">more_vert</mat-icon>
+        </div>
+      </div>
+      <!-- first box ends -->
+
+      <mat-progress-bar value="60" mode="indeterminate" *ngIf="bookingsLoadingStarted"></mat-progress-bar>
+
+      <!-- second box starts -->
+      <div fxFlex="1 1 100%" class="p-5">
+        <mat-accordion>
+
+          <mat-expansion-panel *ngFor="let WhReject of WhRejects">
+
+            <mat-expansion-panel-header matRipple>
+              <div class="w-100" fxLayout="row" fxLayoutAlign="space-between start" fxLayout.lt-md="column">
+                <mat-panel-title fxFlex="1 1 60%" fxFlex="1 1 100%" fxLayout="row" fxLayoutAlign="start center" class="text-large">
+                  <mat-icon>playlist_remove</mat-icon>
+                  <div class="text-black ml">{{WhReject.item_code}}</div>
+                </mat-panel-title>
+
+                <mat-panel-description fxFlex="1 1 40%" fxFlex="1 1 100%">
+                  <div class="text-right w-100">Return Date: {{WhReject.is_wh_received_date}}</div>
+                  <!-- <div class="text-right w-100">Check-In: {{booking.is_wh_received_date | date: "mediumDate"}}</div> -->
+                </mat-panel-description>
+              </div>
+            </mat-expansion-panel-header>
+
+
+            <table class="w-100">
+              <tr>
+                <td class="w-25">PO Number:</td>
+                <td class="font-weight-bold p">{{WhReject.po_number}}</td>
+              </tr>
+              <tr>
+                <td class="w-25">Item Description:</td>
+                <td class="font-weight-bold p">{{WhReject.item_description}}</td>
+              </tr>
+              <tr>
+                <td class="w-25">Qty. Order:</td>
+                <td class="font-weight-bold p">{{WhReject.qty_order}}</td>
+              </tr>
+              <tr>
+                <td class="w-25">Qty. Actual Delivery:</td>
+                <td class="font-weight-bold p">{{WhReject.actual_delivery}}</td>
+              </tr>
+              <tr>
+                <td class="w-25">Unit Of Measure:</td>
+                <td class="font-weight-bold p">
+                  <!-- <span [ngClass]="{ 'red-text': booking.status == 'Not Paid', 'green-text': booking.status == 'Paid'}">{{booking.status}}</span>
+                -->
+                <span>{{WhReject.qty_uom}}</span>
+                </td>
+              </tr>
+              <tr>
+                <td class="w-25">Qty. Reject:</td>
+                <td class="font-weight-bold p">{{WhReject.is_wh_reject}}</td>
+              </tr>
+              <tr>
+                <td class="w-25">Qty. Received:</td>
+                <td class="font-weight-bold p">{{WhReject.actual_delivery - WhReject.is_wh_reject }} </td>
+              </tr>
+              <tr>
+                <td class="w-25">Received By:</td>
+                <td class="font-weight-bold p">{{WhReject.is_wh_received_by}}</td>
+              </tr>
+            </table>
+
+            <mat-action-row fxLayoutAlign="space-between start">
+              <!-- <button mat-button color="warn">
+                <mat-icon>preview</mat-icon>&nbsp;Preview
+              </button> -->
+
+              <button [routerLink]=" [ '/admin', 'projectspartialpo' ]"
+               mat-button color="primary" class="mr">
+                <mat-icon>pageview</mat-icon>&nbsp;Browse
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+        </mat-accordion>
+      </div>
+      <!-- second box ends -->
+
+    </div>
+  </mat-grid-tile>
+  <!-- tile 5 ends -->
+
+  <mat-grid-tile class="dashboard-tile dashboard-tile-6" [colspan]="cardColspan" rowspan="4">
+    <div [chart]="columnChart" class="w-100"></div>
+  </mat-grid-tile>
+</mat-grid-list>
+<!--  -->
+  
+
+
+
+
+<!-- <div class="row">
+  <div class="col-lg-3 pb-3" style="background-color:white">
+    <div class="row">
+      <div class="col-11 text-white text-center mx-auto rounded pt-2 pb-2 mt-1 font-weight-bold"
+        style="background-color:#166fe5; font-family:  'Arial Narrow Bold', sans-serif">{{Designation | uppercase}}
+      </div>
+      <div class="col-12 text-center mt-2">
+        <img src="assets/user.png" width="120px">
+      </div>
+      <ng-container *ngIf="loginService.currentUserName != null">
+      <div class="col-12 text-center pt-2 pb-2 font-weight-bold" style="font-family: Tahoma">
+        {{loginService.currentUserName | lowercase}}
+      </div>
+      </ng-container>
+      <div class="col-12 text-center pt-2 pb-2" style="font-family: Arial">TEAM SUMMARY <h6>{{ToDay | date : "d/M/y"}}</h6></div>
+      <div class="col-12 mb-3">
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            NO. OF TEAM MEMBERS
+            <span class="badge badge-secondary badge-pill" style="font-size:13px">{{NoOfTeamMembers}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            TOTAL COST OF ALL PROJECTS
+            <span class="badge badge-secondary badge-pill" style="font-size:13px">$ {{TotalCostOfAllProjects}} k</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            PENDING TASKS
+            <span class="badge badge-secondary badge-pill" style="font-size:13px">{{PendingTasks}}</span>
+          </li>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            UPCOMING PROJECTS
+            <span class="badge badge-secondary badge-pill" style="font-size:13px">{{UpComingProjects | percent}}</span>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 text-center pt-2 pb-2" style="font-family: 'Arial Narrow'">CLIENTS</div>
+      <div class="col-12">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let client of Clients">{{client | slice: 0: 10}}</li>
+        </ul> -->
+
+
+        <!--{{TeamMembersSummary}}-->
+      <!-- </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="row">
+      <div class="col-12 pt-0 pb-2" style="background-color:white">
+        <div class="row mt-2">
+          <div class="col-6 text-left">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown">
+                Project A
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#" *ngFor="let project of Projects" onclick="return false"
+                  (click)="onProjectChange($event)">{{project}}</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 text-right">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                data-toggle="dropdown">
+                2019
+              </button>
+              <div class="dropdown-menu">
+                  <a class="dropdown-item" href="#" *ngFor="let year of Years">
+                    <span [ngSwitch]="year">
+                      <span *ngSwitchCase=" '2019' " style="color:green">{{year}}</span>
+                      <span *ngSwitchCase=" '2018' " style="color:blue">{{year}}</span>
+                      <span *ngSwitchCase=" '2017' " style="color:red">{{year}}</span>
+                      <span *ngSwitchDefault style="color:black">{{year}}</span>
+                    </span>
+                  </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-auto rounded font-weight-bold"
+        style="background-color: #718d97; font-family: 'Arial Narrow'">PROJECT BRIEFING</div>
+      <div class="col-12">
+        <table class="table table-borderless">
+          <tr>
+            <td>Project Cost</td>
+            <td>{{ProjectCost | currency: "INR" }}</td>
+          </tr>
+          <tr>
+            <td>Current Expenditure</td>
+            <td>{{CurrentExpenditure | currency: "INR"}}</td>
+          </tr>
+          <tr>
+            <td>Available Funds</td>
+            <td>{{AvailableFunds | currency: "INR"}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-11 mx-auto mt-1 text-white text-center pt-2 pb-2 mx-2 rounded font-weight-bold"
+        style="background-color:#718d97; font-family: 'Arial Narrow'">TEAM MEMBERS SUMMARY</div>
+      <div class="col-12">
+        <table class="table">
+          <tr>
+            <th>Region</th>
+            <th>Team Members Count</th>
+            <th>Temporarily Unavailable Members</th>
+          </tr>
+          <tr *ngFor="let teamMemberSumary of TeamMembersSummary">
+            <td>
+              <b>{{teamMemberSumary.Region}}</b>
+            </td>
+            <td>
+              {{teamMemberSumary.TeamMembersCount}}
+            </td>
+            <td>
+              {{teamMemberSumary.TemporarilyUnavailableMembers}}
+            </td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-3" style="background-color:white">
+    <div class="row">
+      <div class="col-11 mx-auto mt-1 text-white text-center pt-1 pb-2 mx-2 rounded font-weight-bold"
+        style="background-color:#718d97; font-family: 'Arial Narrow'">TEAM MEMBERS</div>
+      <div class="col-lg-12 pt-2">
+        <div class="accordion" id="accordion1">
+          <div class="card" *ngFor="let teamMembersGroup of TeamMembers; let i = index">
+
+
+            <div class="card-header bg-secondary" id="card1">
+              <h2 class="mb-0">
+                <button class="btn btn-link text-white" type="button" data-toggle="collapse"
+                  [attr.data-target]=" '#cardbody' + i ">{{teamMembersGroup.Region}}</button>
+              </h2>
+            </div>
+            <div [id]=" 'cardbody' + i " class="collapse" data-parent="#accordion1" [ngClass]="(i == 0)? 'show': '' ">
+              <div class="card-body">
+
+                <div *ngIf="i == 0; then firstTemplate; else secondTemplate">
+
+                </div>
+
+                <ng-template #firstTemplate>
+                  <div class="card" *ngFor="let member of teamMembersGroup.Members">
+                    <div class="card-header bg-primary text-white">#{{member.ID}} {{member.Name}}</div>
+                    <div class="card-body">{{member.Status}}</div>
+                  </div>
+                </ng-template>
+
+                <ng-template #secondTemplate>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let member of teamMembersGroup.Members">
+                        <td>{{member.ID}}</td>
+                        <td [style.color]=" (member.Status == 'Busy')? 'red': 'black' ">{{member.Name}}</td>
+                        <td>{{member.Status}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </ng-template>
+
+
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

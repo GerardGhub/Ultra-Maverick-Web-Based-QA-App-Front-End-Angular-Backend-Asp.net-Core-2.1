@@ -1,0 +1,149 @@
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.deps.json
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.json
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.dev.json
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.dll
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csprojAssemblyReference.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CoreCompileInputs.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cs
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.dll
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
+C:\Angular\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.input.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.output.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorCoreGenerate.cache
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cs
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+C:\Angular\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.deps.json
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.json
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.dev.json
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.dll
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csprojAssemblyReference.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CoreCompileInputs.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cs
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.input.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.output.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorCoreGenerate.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cs
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.dll
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.genruntimeconfig.cache
+C:\Users\gsingian\Downloads\Final\18.12. Update Task Status Page\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\appsettings.json
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.deps.json
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.json
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.dev.json
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csprojAssemblyReference.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CoreCompileInputs.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cs
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.input.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.output.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorCoreGenerate.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cs
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.genruntimeconfig.cache
+D:\ng\AngularTrackingRequest\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\appsettings.json
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.deps.json
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.json
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.dev.json
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csprojAssemblyReference.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CoreCompileInputs.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cs
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.input.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.output.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorCoreGenerate.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cs
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.genruntimeconfig.cache
+D:\ng\Ultra Maverick Project\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\appsettings.json
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.deps.json
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.json
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.dev.json
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csprojAssemblyReference.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CoreCompileInputs.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cs
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.input.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.output.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorCoreGenerate.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cs
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.genruntimeconfig.cache
+D:\ng\UltraMaverickProject\cm2\WEB\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\appsettings.json
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.deps.json
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.json
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.runtimeconfig.dev.json
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.GeneratedMSBuildEditorConfig.editorconfig
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CoreCompileInputs.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorAssemblyInfo.cs
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.input.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.TagHelpers.output.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorCoreGenerate.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.RazorTargetAssemblyInfo.cs
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.dll
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.genruntimeconfig.cache
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
+D:\MY Files\UM System\Web\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.AssemblyReference.cache

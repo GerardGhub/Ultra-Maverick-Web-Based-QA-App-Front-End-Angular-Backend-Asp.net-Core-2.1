@@ -1,0 +1,97 @@
+.projectcard {
+  height: 450px;
+}
+
+::ng-deep .cdk-overlay-container {
+  z-index: 1200 !important;
+}
+
+// ::ng-deep .mat-form-field-empty.mat-form-field-underline {
+//     color: yellow;
+// }
+
+::ng-deep .mat-form-field-empty.mat-form-field-label {
+  color: rgb(238, 238, 8);
+}
+
+.rejectIsnotMactchSpanTagclass {
+  display: noness;
+}
+.removal-remarks {
+  margin-right: 20px;
+}
+
+.input {
+  flex-wrap: wrap;
+}
+.text-area-main {
+  height: 80px;
+}
+.text-area-main2 {
+  height: 130px;
+}
+.text-area-main3 {
+  height: 100px;
+}
+.text-area-main4 {
+  height: 100px;
+}
+.text-area-main5 {
+  height: 100px;
+}
+
+b {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.hideObject {
+  display: none;
+}
+.haddata {
+  display: none;
+}
+.unsetdata {
+  display: unset;
+}
+.mat-drawer-shown {
+  visibility: hidden !important;
+}
+
+.zerobadge0 {
+  display: none;
+}
+
+.bg-color-yellow-textarea {
+  outline: none !important;
+  border: 1px solid yellow;
+  box-shadow: 0 0 10px #719ece;
+  border-radius: 10px;
+}
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color: rgb(22, 92, 125) !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: rgb(22, 92, 125) !important;
+  z-index: 3;
+}
+
+.mat-radio-button .mat-radio-outer-circle {
+  border-color: rgb(22, 92, 125) !important; // Override material
+  z-index: 3;
+}
+
+::ng-deep.mat-radio-outer-circle {
+  outline: none !important;
+  box-shadow: 0 0 10px #719ece;
+  border-color: yellow !important; /*outer ring color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: black !important; /*outer ring color change*/
+}
+
+.font-color-black{
+  color: black;
+}

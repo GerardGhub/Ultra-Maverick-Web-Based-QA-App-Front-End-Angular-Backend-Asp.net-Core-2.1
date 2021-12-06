@@ -1,0 +1,32 @@
+.myheader-bg {
+  background-color: #166fe5;
+}
+
+.system-name {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-badge-medium.mat-badge-above .mat-badge-content {
+  top: 30px;
+}
+
+.mat-badge-hidden .mat-badge-content:empty {
+  display: inline-block;
+}
+
+.mat-badge.hide-text .mat-badge-content {
+  color: transparent;
+}
+
+::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color: black !important; /*inner circle color change*/
+}
+
+::ng-deep.mat-radio-button.mat-accent.mat-radio-checked
+  .mat-radio-outer-circle {
+  border-color: black !important; /*outer ring color change*/
+}
+
+.zerobadge0 {
+  display: none;
+}

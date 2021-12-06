@@ -1,0 +1,382 @@
+<ngx-spinner>
+    <h3>Loading...</h3>
+</ngx-spinner>
+<mat-toolbar color="primary" fxLayout="row" fxLayoutAlign="space-between center" class="nav">
+
+    <!-- left box of toolbar starts -->
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+        <ng-container *ngIf="loginService.currentUserName != null">
+      <button mat-icon-button matTooltip="Sidebar" (click)="drawer.toggle()" (click)="ngOnInit()">
+        <mat-icon>menu</mat-icon>
+      </button>
+        </ng-container>
+      <a mat-icon-button matTooltip="Dashboard" [routerLink]="[ '/admin/dashboard' ]">
+        <mat-icon>home</mat-icon>
+      </a>
+      <span class="system-name">Ultra Maverick</span>
+    </div>
+      <!-- left box of toolbar ends -->
+
+        <!-- center box of toolbar starts -->
+  <div>
+    <ng-container *ngIf="loginService.currentUserName != null">
+    <button type="button" mat-stroked-button (click)="showStatistics = !showStatistics" fxHide.lt-md="true" matTooltip="Click to expand / collapse Statistics" matTooltipPosition="right" matTooltipClass="yellow-back" matTooltipShowDelay="200">
+      <mat-icon>analytics</mat-icon>
+      <span class="ml mr system-name">Statistics</span>
+      <mat-icon class="rotatable" [ngClass]="{ 'rotate-180': showStatistics}">keyboard_arrow_down</mat-icon>
+    </button>
+    </ng-container>
+  </div>
+  <!-- center box of toolbar ends x -->
+
+    <!-- right box of toolbar starts -->
+    <div>
+        <ng-container *ngIf="loginService.currentUserName != null">
+        <button class="system-name" type="button" mat-stroked-button class="mr" fxHide.lt-md="true" [matMenuTriggerFor]="user" matTooltip="User" matTooltipClass="yellow-back">
+          <mat-icon>account_circle</mat-icon>  {{loginService.currentUserName | uppercase}}
+        </button>
+    
+
+        <button type="button" mat-icon-button [matMenuTriggerFor]="notifications" class="ml mr" matTooltip="Notifications" matTooltipClass="yellow-back">
+          <mat-icon matBadge="2" matBadgeColor="accent">notifications</mat-icon>
+        </button>
+    
+        <button type="button" mat-icon-button [matMenuTriggerFor]="topmenu" matTooltip="Menu" matTooltipClass="yellow-back">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+    </ng-container>
+      </div>
+      <!-- right box of toolbar ends -->
+
+
+
+        <!-- menu starts -->
+        <mat-menu #topmenu="matMenu">
+        <!-- <a [routerLink]="[  '/admin', 'dashboard'  ]" mat-menu-item>Dashboard</a> -->
+        <a [routerLink]=" [ '/about' ] " mat-menu-item>About</a>
+        <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'">
+        <!-- <a [routerLink]=" [ '/admin', 'masters' ] " mat-menu-item>Master Lists</a> -->
+        <button mat-menu-item [matMenuTriggerFor]="user">User</button>
+        </ng-container>
+
+            <!-- <button mat-menu-item [matMenuTriggerFor]="bookings">Bookings</button> -->
+
+    
+        </mat-menu>
+
+        <mat-menu #bookings="matMenu">
+            <a [routerLink]="[ '/booking' ]" mat-menu-item>New Booking</a>
+            <a [routerLink]="[ '/bookings-list' ]" mat-menu-item>Bookings List</a>
+        </mat-menu>
+
+        <mat-menu #user="matMenu">
+            <button mat-menu-item>Profile</button>
+            <button mat-menu-item>Change Password</button>
+            <!-- <a class="nav-link"[routerLink]=" [ '/signup' ] ">Sign Up</a> -->
+            <!-- <button mat-menu-item >Logout</button> -->
+            <a class="nav-link" href="#" (click)="loginService.Logout()">Logout</a>
+        </mat-menu>
+
+        <mat-menu #notifications="matMenu">
+            <button mat-menu-item>
+            <mat-icon>email</mat-icon> Email from Converge
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item>
+            <mat-icon>receipt_long</mat-icon> Send Bills to Customers
+            </button>
+        </mat-menu>
+        <!-- menu ends -->
+        </mat-toolbar>
+
+        <mat-expansion-panel [expanded]="showStatistics">
+            <div class="mt" fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
+            <div class="font-weight-bold">PO Summary:</div>
+        
+            <div matTooltip="Total Bookings in this week" matRipple class="p-10 hand-icon">
+                <div>This Week:</div>
+                <div class="font-weight-bold">{{108 | number}} Received</div>
+            </div>
+        
+            <div matTooltip="Total Bookings in this month" matRipple class="p-10 hand-icon">
+                <div>This Month:</div>
+                <div class="font-weight-bold">{{1595 | number}} Received</div>
+            </div>
+        
+            <div matTooltip="Total Bookings in this year" matRipple class="p-10 hand-icon">
+                <div>This Year:</div>
+                <div class="font-weight-bold">{{5894 | number}} Received</div>
+            </div>
+        
+            </div>
+        </mat-expansion-panel>
+
+
+        <mat-drawer-container class="drawer-container" [hasBackdrop]="true">
+            <mat-drawer #drawer class="drawer" mode="push">
+              <div class="user-logo">
+                <mat-icon class="user-icon">person_outline</mat-icon>
+                <div class="v-align-middle">{{loginService.currentUserRoleSession | uppercase}}</div>
+              </div>
+              <mat-divider></mat-divider>
+              <!-- ADMIN -->
+              <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'">
+                <mat-nav-list class="sidebar-navlist">
+                  <a class="system-name" [routerLink]="[  '/admin', 'dashboard'  ]" mat-list-item routerLinkActive="link-active">
+                    <mat-icon>dashboard_customize</mat-icon>
+                    &nbsp;Dashboard
+                
+                </a>
+                  <a  class="system-name" [routerLink]=" [ '/admin', 'projects' ] " mat-list-item routerLinkActive="link-active">
+                    <mat-icon>local_shipping</mat-icon>&nbsp;PO Receiving
+                      <mat-icon class="zerobadge{{ totalPoRowCount | number}}" matBadge="{{ totalPoRowCount | number}}" matBadgeColor="warn"></mat-icon>
+                  </a>
+  
+                  <a class="system-name" [routerLink]=" [ '/admin', 'projectscancel'] " mat-list-item routerLinkActive="link-active">
+                    <mat-icon>app_blocking</mat-icon>&nbsp;PO Cancelled
+                      <mat-icon class="zerobadge{{ totalPoRowCountCancelled | number}}" matBadge="{{ totalPoRowCountCancelled | number}}" matBadgeColor="warn"></mat-icon>
+                  </a>
+                  <a  [routerLink]=" [ '/admin', 'projectspartialpo' ] " mat-list-item routerLinkActive="link-active">
+                    <mat-icon>inventory_2</mat-icon>&nbsp;WH Receiving
+                      <mat-icon class="zerobadge{{totalPoPartialReceiving | number}}" matBadge="{{totalPoPartialReceiving | number}}" matBadgeColor="warn"></mat-icon>
+                  </a>
+                  <!-- <a [routerLink]=" [ '/admin', 'projectsnearlyxpiryapproval' ] " class="system-name"  mat-list-item routerLinkActive="link-active">
+                    <mat-icon>event_busy</mat-icon>&nbsp;Nearly Expiry Approval
+                      <mat-icon class="zerobadge{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadge="{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadgeColor="warn"></mat-icon>
+                </a>
+                <a [routerLink]=" [ '/admin', 'whrejectionapproval' ] " class="system-name"  mat-list-item routerLinkActive="link-active">
+                  <mat-icon>event_busy</mat-icon>&nbsp;Rejection Approval
+                    <mat-icon class="zerobadge{{totalPoPartialRejectatWH | number}}" matBadge="{{totalPoPartialRejectatWH | number}}" matBadgeColor="warn"></mat-icon>
+              </a> -->
+       
+              <a class="system-name"  mat-list-item routerLinkActive="link-active" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu1">
+                <mat-icon>check_box</mat-icon>&nbsp;Approval
+                <mat-icon class="zerobadge{{totalPoPartialRejectatWH  + totalPoPartialReceivingNearlyExpiryApproval}}" matBadge="{{totalPoPartialRejectatWH + totalPoPartialReceivingNearlyExpiryApproval}}" matBadgeColor="warn"></mat-icon>
+            </a>
+            <mat-menu #menu1="matMenu">
+                <button mat-menu-item>
+                  <mat-icon matBadgeColor="warn">event_busy</mat-icon>
+                  <span [routerLink]=" [ '/admin', 'projectsnearlyxpiryapproval' ] ">Nearly Expiry</span>
+                  <mat-icon class="zerobadge{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadge="{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadgeColor="warn"></mat-icon>
+                </button>
+                <button mat-menu-item>
+                    <mat-icon matBadgeColor="warn">category</mat-icon>
+                    <span [routerLink]=" [ '/admin', 'whrejectionapproval'] ">WH Rejection</span>
+                    <mat-icon class="zerobadge{{totalPoPartialRejectatWH | number}}" matBadge="{{totalPoPartialRejectatWH | number}}" matBadgeColor="warn"></mat-icon>
+                  </button>
+
+         
+      
+              </mat-menu>
+
+
+         
+                  <a class="system-name"  mat-list-item routerLinkActive="link-active" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu">
+                    <mat-icon>settings_suggest</mat-icon>&nbsp;Set Up
+                    
+                </a>
+                <mat-menu #menu="matMenu">
+                    <button mat-menu-item>
+                      <mat-icon>people</mat-icon>
+                      <span [routerLink]=" [ '/admin', 'masters','user' ] ">Users</span>
+                    </button>
+                    <button mat-menu-item>
+                        <mat-icon>category</mat-icon>
+                        <span [routerLink]=" [ '/admin', 'masters','rmclassification' ] ">RM Receiving Set Up</span>
+                      </button>
+
+                      <button mat-menu-item>
+                        <mat-icon>query_stats</mat-icon>
+                        <span [routerLink]=" [ '/admin', 'masters','rmcancelandreturn' ] ">RM Cancel & Return</span>
+                      </button>
+          
+                  </mat-menu>
+                </mat-nav-list>
+                </ng-container>
+                <!-- QC STAFF -->
+              <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QC Staff'">
+              <mat-nav-list class="sidebar-navlist">
+                <a class="system-name" [routerLink]="[  '/admin', 'dashboard'  ]" mat-list-item routerLinkActive="link-active">
+                 <mat-icon>dashboard_customize</mat-icon>&nbsp;Dashboard
+                
+                </a>
+                <a class="system-name" [routerLink]=" [ '/admin', 'projects' ] " mat-list-item routerLinkActive="link-active">
+                    <mat-icon>local_shipping</mat-icon>&nbsp;PO Receiving
+                    <mat-icon class="zerobadge{{ totalPoRowCount | number}}" matBadge="{{ totalPoRowCount | number}}" matBadgeColor="primary"></mat-icon>
+                </a>
+
+                <a class="system-name" [routerLink]=" [ '/admin', 'projectscancel'] " mat-list-item routerLinkActive="link-active">
+                    <mat-icon>app_blocking</mat-icon>&nbsp;PO Cancelled
+                    <mat-icon class="zerobadge{{ totalPoRowCountCancelled | number}}" matBadge="{{ totalPoRowCountCancelled | number}}" matBadgeColor="primary"></mat-icon>
+                </a>
+                <a  class="system-name" [routerLink]=" [ '/admin', 'projectspartialpo' ] " mat-list-item routerLinkActive="link-active">
+                    <mat-icon>inventory_2</mat-icon>&nbsp;WH Receiving
+                    <mat-icon class="zerobadge{{totalPoPartialReceiving | number}}" matBadge="{{totalPoPartialReceiving | number}}" matBadgeColor="primary"></mat-icon>
+                </a>
+            
+             
+             
+              </mat-nav-list>
+              </ng-container>
+     <!-- QC SUPERVISOR -->
+     <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QCSupervisor'">
+        <mat-nav-list class="sidebar-navlist">
+          <a class="system-name" [routerLink]="[  '/admin', 'dashboard'  ]" mat-list-item routerLinkActive="link-active">
+            <mat-icon>dashboard_customize</mat-icon>&nbsp;Dashboard</a>
+          <a class="system-name" [routerLink]=" [ '/admin', 'projects' ] " mat-list-item routerLinkActive="link-active">
+            <mat-icon>local_shipping</mat-icon>&nbsp;PO RECEIVING
+              <mat-icon class="zerobadge{{ totalPoRowCount | number}}" matBadge="{{ totalPoRowCount | number}}" matBadgeColor="warn"></mat-icon>
+          </a>
+
+          <a class="system-name" [routerLink]=" [ '/admin', 'projectscancel'] " mat-list-item routerLinkActive="link-active">
+            <mat-icon>app_blocking</mat-icon>&nbsp;PO Cancelled
+              <mat-icon class="zerobadge{{ totalPoRowCountCancelled | number}}" matBadge="{{ totalPoRowCountCancelled | number}}" matBadgeColor="warn" ></mat-icon>
+          </a>
+          <a class="system-name" [routerLink]=" [ '/admin', 'projectspartialpo' ] " mat-list-item routerLinkActive="link-active">
+            <mat-icon>inventory_2</mat-icon>&nbsp;WH Receiving
+              <mat-icon class="zerobadge{{totalPoPartialReceiving | number}}" matBadge="{{totalPoPartialReceiving | number}}" matBadgeColor="warn"></mat-icon>
+          </a>
+          <!-- <a class="system-name" [routerLink]=" [ '/admin', 'projectsnearlyxpiryapproval' ] " mat-list-item routerLinkActive="link-active">
+            <mat-icon>event_busy</mat-icon>&nbsp;Nearly Expiry Approval
+              <mat-icon class="zerobadge{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadge="{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadgeColor="primary"></mat-icon>
+          </a> -->
+
+          <a class="system-name"  mat-list-item routerLinkActive="link-active" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu1">
+            <mat-icon>check_box</mat-icon>&nbsp;Approval
+            <mat-icon class="zerobadge{{totalPoPartialRejectatWH  + totalPoPartialReceivingNearlyExpiryApproval}}" matBadge="{{totalPoPartialRejectatWH + totalPoPartialReceivingNearlyExpiryApproval}}" matBadgeColor="warn"></mat-icon>
+        </a>
+        <mat-menu #menu1="matMenu">
+            <button mat-menu-item>
+              <mat-icon>event_busy</mat-icon>
+              <span [routerLink]=" [ '/admin', 'projectsnearlyxpiryapproval' ] ">Nearly Expiry</span>
+              <mat-icon class="zerobadge{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadge="{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadgeColor="warn"></mat-icon>
+            </button>
+            <button mat-menu-item>
+              <mat-icon>category</mat-icon>
+
+                <span [routerLink]=" [ '/admin', 'whrejectionapproval'] ">WH Rejection</span>
+                <mat-icon class="zerobadge{{totalPoPartialRejectatWH | number}}" matBadge="{{totalPoPartialRejectatWH | number}}" matBadgeColor="warn"></mat-icon>
+              </button>
+
+     
+  
+          </mat-menu>
+          
+
+
+          <a class="system-name" mat-list-item routerLinkActive="link-active" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu">
+            <mat-icon>settings_suggest</mat-icon>&nbsp;Set Up
+            
+        </a>
+        <mat-menu #menu="matMenu">
+         
+            <button mat-menu-item>
+                <mat-icon>category</mat-icon>
+                <span [routerLink]=" [ '/admin', 'masters','rmclassification' ] ">RM Classification</span>
+              </button>
+
+              <button mat-menu-item>
+                <mat-icon>query_stats</mat-icon>
+                <span [routerLink]=" [ '/admin', 'masters','rmcancelandreturn' ] ">RM Cancel & Return</span>
+              </button>
+              </mat-menu>
+          
+        </mat-nav-list>
+        </ng-container>
+<!-- END OF QC SUPERVISOR -->
+
+
+            </mat-drawer>
+
+
+            <div class="main">
+
+              
+
+
+<div class="container-fluid" [@routeAnimations]="getState(outlet)">
+
+
+  <router-outlet #outlet="outlet"></router-outlet>
+  </div>
+
+
+  
+            </div>
+        </mat-drawer-container>
+       
+<!-- 
+          <div class="container-fluid" [@routeAnimations]="getState(outlet)">
+            <router-outlet #outlet="outlet"></router-outlet>
+            </div> -->
+
+
+
+<!-- <nav class="navbar navbar-expand-sm myheader-bg navbar-dark">
+    <a class="navbar-brand" href="#">
+        <b>Ultra Maverick</b>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mynav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="mynav">
+        <ul class="navbar-nav mr-auto">
+
+            <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRole == 'Admin'">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/admin', 'dashboard' ] ">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/admin', 'projects' ] ">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/admin', 'masters' ] ">Masters</a>
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRole == 'Employee'">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/employee', 'tasks' ] ">Tasks</a>
+                </li>
+            </ng-container>
+
+            <ng-container *ngIf="loginService.currentUserName == null">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/login' ] ">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/signup' ] ">Sign Up</a>
+                </li>
+            </ng-container>
+
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]=" [ '/about' ] ">About</a>
+            </li>
+
+            <ng-container *ngIf="loginService.currentUserName != null">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]=" [ '/myprofile' ] ">{{loginService.currentUserName}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" (click)="loginService.Logout()">Logout</a>
+                </li>
+            </ng-container>
+        </ul> -->
+        <!-- <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRole == 'Admin'">
+        <form class="form-inline my-2 my-lg-0">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="search"><i class="fa fa-search"></i></span>
+                </div>
+                <input type="text" class="form-control" placeholder="Search">
+            </div>
+            <button class="btn btn-info my2- my-sm-0 ml-1 " type="button" (click)="onSearchClick()">Search</button>
+        </form>
+        </ng-container> -->
+    <!-- </div>
+</nav> -->
+
+<!-- <div class="container-fluid" [@routeAnimations]="getState(outlet)">
+    <router-outlet #outlet="outlet"></router-outlet>
+</div> -->

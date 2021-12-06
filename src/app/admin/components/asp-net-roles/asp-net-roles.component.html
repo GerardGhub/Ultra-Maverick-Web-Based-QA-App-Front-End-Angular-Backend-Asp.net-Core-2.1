@@ -1,0 +1,229 @@
+<h5>
+    <!-- Reject Status -->
+    <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" *ngIf="showLoading"></i>
+  </h5>
+  
+  <div class="row">
+    <div class="col-xl-12">
+      <div class="form-group row">
+  
+        <!-- <div class="col-md-12 col-lg-12 col-xl-2">
+          <button mat-stroked-button color="primary" data-toggle="modal" data-target="#newClientLocationModal" data-backdrop="false" data-keyboard="false" (click)="onNewClick($event)">New<mat-icon>add_circle_outline</mat-icon></button>
+        
+        </div>  -->
+  
+        <label for="drpSearchBy" class="col-form-label col-md-6 col-lg-2 offset-xl-1 col-xl-2 text-right">Search by:</label>
+  
+        <div class="col-md-6 col-lg-4 col-xl-3">
+          <select class="form-control" id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy">
+            <option value="name">Role</option>ng 
+          </select>
+        </div>
+  
+        <label for="textSearchText" class="col-form-label col-md-6 col-lg-2 col-xl-1 text-right">Search:</label>
+  
+        <div class="col-md-6 col-lg-4 col-xl-3">
+          <div class="input-group">
+            <input type="text" class="form-control" id="txtSearchText" name="SearchText" [(ngModel)]="searchText" (keyup)="onSearchTextChange($event)">
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+    <div class="col-xl-12">
+      <div class="row">
+        <div class="col-xl-8 col-lg-9 mx-auto">
+          <table class="table table-striped table-bordered nowrap table-responsive-xl" style="width:100%">
+            <tr class="text-light header-bg-color-um system-name">
+              <th>
+               Role
+                <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'name' " (click)="sortBy = 'name'; sortOrder = 'ASC' "></i>
+  
+                <i class="fa fa-sort-up hand-icon text-primary" *ngIf="sortBy == 'name' && sortOrder == 'ASC' " (click)="sortOrder = 'DESC' "></i>
+  
+                <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'name' && sortOrder == 'DESC' " (click)="sortOrder = 'ASC' "></i>
+              </th>
+       
+  
+              <!-- <th class="text-center" style="width:200px">Actions</th> -->
+            </tr>
+            
+            <tr *ngFor="let clientLocation of clientLocations | filter: searchBy : searchText | sort : sortBy : sortOrder | paging : currentPageIndex : pageSize; let i = index">
+              <td>{{clientLocation.name}}</td>
+<!--            
+              <td class="text-center">
+                <button mat-stroked-button color="primary" (click)="onEditClick($event, clientLocation)" data-toggle="modal" data-target="#editClientLocationModal" data-backdrop="false" data-keyboard="false">Edit</button>&nbsp;
+
+              </td> -->
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-12">
+      <ul class="pagination justify-content-center mt-1">
+        <li class="page-item" (click)="onPageIndexClicked(currentPageIndex - 1)">
+          <a mat-stroked-button color="primary" class="mr-1 font-color-black" href="#" onclick="return false">Prev</a>
+        </li>
+  
+        <ng-container *ngIf="pages.length <= 10">
+          <li class="page-item" *ngFor="let page of pages" [ngClass]="{ 'link-active-paging': page.pageIndex == currentPageIndex}" (click)="onPageIndexClicked(page.pageIndex)">
+            <a class="page-link" href="#" onclick="return false">{{page.pageIndex + 1}}</a>
+          </li>
+        </ng-container>
+  
+        <ng-container *ngIf="pages.length > 10">
+          <li class="page-item" [ngClass]="{ 'link-active-paging': currentPageIndex == 0}" (click)="onPageIndexClicked(0)">
+            <a class="page-link" href="#" onclick="return false">1</a>
+          </li>
+  
+          <li class="page-item" [ngClass]="{ 'link-active-paging': currentPageIndex == 1}" (click)="onPageIndexClicked(1)">
+            <a class="page-link" href="#" onclick="return false">2</a>
+          </li>
+  
+          <li *ngIf="currentPageIndex > 1 && currentPageIndex < pages.length - 2">&nbsp;...&nbsp;</li>
+  
+          <li class="page-item" [ngClass]=" 'link-active-paging' " (click)="onPageIndexClicked(currentPageIndex)" *ngIf="currentPageIndex > 1 && currentPageIndex < pages.length - 2">
+            <a class="page-link" href="#" onclick="return false">{{currentPageIndex + 1}}</a>
+          </li>
+  
+          <li>&nbsp;...&nbsp;</li>
+  
+          <li class="page-item" [ngClass]="{ 'link-active-paging': currentPageIndex == pages.length - 2}" (click)="onPageIndexClicked(pages.length - 2)">
+            <a class="page-link" href="#" onclick="return false">{{pages.length - 1}}</a>
+          </li>
+  
+          <li class="page-item" [ngClass]="{ 'link-active-paging': currentPageIndex == pages.length - 1}" (click)="onPageIndexClicked(pages.length - 1)">
+            <a class="page-link" href="#" onclick="return false">{{pages.length}}</a>
+          </li>
+        </ng-container>
+  
+        <li class="page-item" (click)="onPageIndexClicked(currentPageIndex + 1)">
+          <a mat-stroked-button color="primary" class="ml-1 font-color-black" href="#" onclick="return false">Next</a>
+        </li>
+      </ul>
+    </div>
+  
+  </div>
+  
+  <form novalidate="novalidate" [formGroup]="newForm">
+    <div class="modal" role="dialog" id="newClientLocationModal">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <div class="modal-title">Append Rejected Status</div>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+  
+            <div class="form-group row">
+              <label for="txtNewClientLocationName" class="col-sm-4 col-form-label">Rejected Status</label>
+              <div class="col-sm-8">
+                <input type="text" id="txtNewreject_status_name" class="form-control" placeholder="Reject Status" name="reject_status_name"  formControlName="reject_status_name" autocomplete="off" maxlength="30" #defaultTextBox_New [ngClass]="{ 'is-invalid': newForm.get('reject_status_name').invalid && (newForm.get('reject_status_name').dirty || newForm.get('reject_status_name').touched || newForm.valid), 'is-valid': newForm.get('reject_status_name').valid && (newForm.get('reject_status_name').dirty || newForm.get('reject_status_name').touched || newForm.valid) }" #RejectStatusDescription>
+  
+                <span class="text-danger" *ngIf="newForm.get('reject_status_name').invalid && (newForm.get('reject_status_name').dirty || newForm.get('reject_status_name').touched || newForm.valid) && newForm.get('reject_status_name').errors?.required">Status of Reject can't be blank</span>
+              </div>
+              </div>
+
+
+
+            <!-- Start -->
+            <div class="form-group row">
+              <label for="drpEditClientLocation" class="col-sm-4 col-form-label">Status </label>
+              <div class="col-sm-8">
+                <select id="txtNewis_active" class="form-control" name="is_active" formControlName="is_active" maxlength="30" #defaultTextBox_New [ngClass]="{ 'is-invalid': newForm.get('is_active').invalid && (newForm.get('is_active').dirty || newForm.get('is_active').touched || newForm.valid), 'is-valid': newForm.get('is_active').valid && (newForm.get('is_active').dirty || newForm.get('is_active').touched || newForm.valid) }">
+                  <option value="null">Please Select</option>
+                  <option *ngFor="let SystemCapabilityStatus of samples | async" [value]="SystemCapabilityStatus.current_system_status">
+                    {{SystemCapabilityStatus.current_system_status}}
+                  </option>
+                </select>
+  
+                <!-- <span class="text-danger" *ngIf="editClientLocationID.invalid && (editClientLocationID.dirty || editClientLocationID.touched || editForm.submitted) && editClientLocationID.errors?.required">Please client location</span> -->
+  
+                <!-- <span class="text-danger" *ngIf="editForm.invalid && (editForm.dirty || editForm.touched || editForm.submitted) && editForm.errors?.clientLocationStatus">Support projects are not allowed at Tokyo</span> -->
+              </div>
+            </div>
+
+            <!-- End -->
+          </div>
+
+
+      
+
+
+          <div class="modal-footer">
+            <!-- <button class="btn btn-warning" data-dismiss="modal" id="newClientLocationFormCancel" type="button">Cancel</button> -->
+            <button mat-stroked-button color="primary"(click)="onSaveClick()">Save</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  <!-- Edit Rejected Status Masterlist -->
+  <form novalidate="novalidate" [formGroup]="editForm">
+    <div class="modal" role="dialog" id="editClientLocationModal">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <div class="modal-title">Edit Role</div>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          
+          <div class="modal-body">
+  
+            <div class="form-group row">
+              <label for="txtEditClientLocationName" class="col-sm-4 col-form-label">Role</label>
+              <div class="col-sm-8">
+                <input type="text" id="txtEditname" class="form-control" placeholder="User Role" name="name" autocomplete="off" formControlName="name" maxlength="30" #defaultTextBox_Edit [ngClass]="{ 'is-invalid': editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched || editForm.valid), 'is-valid': editForm.get('name').valid && (editForm.get('name').dirty || editForm.get('name').touched || editForm.valid) }" #RejectStatusUpdate>
+  
+                <span class="text-danger" *ngIf="editForm.get('name').invalid && (editForm.get('name').dirty || editForm.get('name').touched || editForm.valid) && editForm.get('name').errors?.required">User Role can't be blank</span>
+              </div>
+            </div>
+
+
+  
+          </div>
+          <div class="modal-footer">
+            <!-- <button class="btn btn-warning" data-dismiss="modal" id="editClientLocationFormCancel" type="button">Cancel</button> -->
+            <button mat-stroked-button color="primary">Update</button>
+            <!-- (click)="onUpdateClick()" -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  
+  
+  <!-- Delete Client Location -->
+  <form>
+    <div class="modal" role="dialog" id="deleteModal">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+          <div class="modal-header bg-primary text-white">
+            <div class="modal-title">Delete Rejection Status</div>
+            <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+          </div>
+          <div class="modal-body">
+  
+  
+  
+            <div class="form-group row">
+        
+              <label for="txtDeleteClientLocationName" class="col-sm-4 col-form-label">Client Location Name</label>
+              <div class="col-sm-8">
+                <input type="text" id="txtDeleteClientLocationName" class="form-control-plain-text" style="width:300px" placeholder="Client Location Name" name="ClientLocationName" [(ngModel)]="deleteRejectStatus.name" disabled="disabled">
+              </div>
+            </div>
+  
+          </div>
+          <div class="modal-footer">
+            <!-- <button class="btn btn-warning" data-dismiss="modal" type="button">Cancel</button> -->
+            <button mat-stroked-button color="primary" data-dismiss="modal" (click)="onDeleteConfirmClick()">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

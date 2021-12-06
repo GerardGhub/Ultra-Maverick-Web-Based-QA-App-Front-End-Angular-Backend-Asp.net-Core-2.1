@@ -1,0 +1,98 @@
+<div class="card card-primary">
+
+    <div class="card-header bg-cards">
+      <div class="row">
+        <div class="col-11">
+      <div>Transaction # <b>{{project.projectID}}</b></div>
+      <!-- <h3>{{project.projectName}}</h3> -->
+      <div class="flex">
+        <div class="box-1">
+          <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+            <input type="text" matInput value="{{project.projectName}}"  disabled="disabled">
+            <mat-label>Item Description</mat-label>
+            <mat-icon matPrefix>info<span class="material-icons-outlined">
+            </span>
+            </mat-icon>
+        </mat-form-field>
+        </div>
+        <div class="box-2">
+          <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+            <input type="text" matInput value="{{project.item_code}}"  disabled="disabled">
+            <mat-label>Item Code</mat-label>
+            <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
+            </span>
+            </mat-icon>
+        </mat-form-field>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col-1">
+<ng-content></ng-content>
+    </div>
+  </div>
+    <div class="card-body bg-cards padding-my-table">
+      <table class="table table-borderless table-sm" [hidden]="hideDetails" #tbl>
+      
+            <tr>
+              <th>PO No.</th>
+              <td>{{project.po_number}}</td>
+              <th>PO Date</th>
+              <td>{{project.po_date}}</td>
+            </tr>
+     
+            <tr>
+              <th>PR No.</th>
+              <td>{{project.pr_number}}</td>
+              <th>PR Date</th>
+              <td>{{project.pr_date}}</td>
+            </tr>
+
+            <tr>
+              <th>Supplier</th>
+              <td colspan="2">{{project.supplier}}</td>
+            </tr>
+         
+              <tr>
+                <th>Qty. Ordered</th>
+                <td>
+                 <!-- <span>{{project.teamSize}}</span>
+                 <span class="text-info">{{project.teamSize | numberToWords}}</span> -->
+              
+                 {{project.qty_order}}
+                </td>
+                <th>UOM</th>
+                <td>{{project.qty_uom}}</td>
+              </tr>
+
+              <!-- <tr>
+          <th>Team Size</th>
+          <td>
+           <span>{{project.teamSize}}</span>
+           <span class="text-info">{{project.teamSize | numberToWords}}</span>
+          </td>
+        </tr> -->
+        <tr>
+          <th>Client Location</th>
+          <td>{{project.clientLocation?.clientLocationName}}</td>
+          <!-- <th>Status</th>
+          <td>{{project.status}}</td> -->
+          <th>Date Added</th>
+          <td>{{project.dateOfStart}}</td>
+        </tr>
+        <!-- <tr>
+          <th>Status</th>
+          <td>{{project.status}}</td>
+        </tr> -->
+      </table>
+    </div>
+  
+    <div class="card-footer bg-cards">
+      <button mat-stroked-button color="primary" (click)="onEditClick($event, i)" data-toggle="modal" data-target="#editModal">Edit <mat-icon>edit</mat-icon></button>&nbsp;
+      <button mat-stroked-button color="warn" (click)="onDeleteClick($event, i)" data-toggle="modal" data-target="#deleteModal">Cancel PO <mat-icon>remove_circle_outline</mat-icon></button>&nbsp;
+      <button mat-stroked-button color="warn" (click)="onDeleteClick($event, i)" data-toggle="modal" data-target="#deleteModal">Delete <mat-icon>delete</mat-icon> </button>&nbsp;
+      <a mat-stroked-button color="accent" [routerLink]=" ['/admin','projects','view',project.projectID]">Details <mat-icon>info</mat-icon></a>
+      <!-- /projects/view/1 -->
+    </div>
+  </div>
+  
