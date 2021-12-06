@@ -15,9 +15,9 @@ namespace MvcTaskManager.Identity
 
         public DbSet<ClientLocation> ClientLocations { get; set; }
 
-          public DbSet<Project> Projects { get; set; }
-          public DbSet<RMProjectsPartialPo> ProjectsPartialPo { get; set; }
-          public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<RMProjectsPartialPo> ProjectsPartialPo { get; set; }
+        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<TaskPriority> TaskPriorities { get; set; }
@@ -25,6 +25,7 @@ namespace MvcTaskManager.Identity
         public DbSet<Task> Tasks { get; set; }
         public DbSet<TaskStatusDetail> TaskStatusDetails { get; set; }
         public DbSet<TblRejectedStats> TblRejectedStatus { get; set; }
+    public DbSet<tblDryPartialReceivingRejectionModel> tblDryPartialReceivingRejection { get; set; }
     public DbSet<AllowablePercentageQAModel> tblAllowablePercentageQA { get; set; }
 
     public DbSet<RMPoSummaryCancelledStats> CancelledPOTransactionStatus { get; set; }

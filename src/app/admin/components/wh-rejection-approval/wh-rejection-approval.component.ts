@@ -20,6 +20,8 @@ import * as $ from "jquery";
 import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { ProjectComponent } from '../project/project.component';
 import { WhRejectionApprovalService } from 'src/app/services/wh-rejection-approval.service';
+import { TblDryPartialReceivingRejectionService } from 'src/app/services/tbl-dry-partial-receiving-rejection.service';
+import { TblDryPartialReceivingRejection } from 'src/app/models/tbl-dry-partial-receiving-rejection';
 
 @Component({
   selector: 'app-wh-rejection-approval',
@@ -99,13 +101,15 @@ export class WhRejectionApprovalComponent implements OnInit {
 AllowablePercentages: Observable<AllowablePercentage[]>;
 
 ProjectsAllowableQty: Observable<Project[]>;
+WhRejectRemarks: Observable<TblDryPartialReceivingRejection[]>;
+
   dateFilter(date)
   {
     return date && date.getDay() !== 0 && date.getDay() !== 6;
   }
   constructor(private projectsService: ProjectsService, private clientLocationsService: ClientLocationsService, private toastr: ToastrService , public loginService: LoginService, 
     private rejectedStatusService :  RejectedStatusService, private allowablePercentageService: AllowablePercentageService, private cancelledPOTransactionStatusService : CancelledPOTransactionStatusService,
-  private whRejectionApprovalService : WhRejectionApprovalService )
+  private whRejectionApprovalService : WhRejectionApprovalService, private tblDryPartialReceivingRejectionService: TblDryPartialReceivingRejectionService  )
   {
   }
   
@@ -2026,8 +2030,8 @@ onCancelClick(event, index: number)//2
         // this.PoNumberChild.nativeElement.value;
         //Cloud Stack Pro 
         // this.editProject.daysBeforeExpired = this.projects[index].daysBeforeExpired;
-        this.ProjectsAllowableQty = this.projectsService.SearchProjects("Po_number",this.PoNumberBinding);
-        this.editIndex = index;
+        this.WhRejectRemarks = this.tblDryPartialReceivingRejectionService.SearchRejectStatus("Po_number",this.PoNumberBinding);
+      
       this.editIndex = index;
      
     }, 100);
@@ -2417,31 +2421,12 @@ onCancelClick(event, index: number)//2
 
   }
 
-  // onChangeRejectedDropdown1(event: any){
-  //   this.msgrejectremarksno1 = $("#drpEditRejectStatusOne").val();
-  //   if(this.msgrejectremarksno1 == 1)
-  //   {
-  //     alert(this.msgrejectremarksno1);
-  //   }
-  //   else
-  //   {
-  //     alert(this.msgrejectremarksno1);
-  //   }
 
-  // }
-
-  // onChangeRejectedDropdown2(event: any){
-  //   this.msgrejectremarksno1 = 1;
-  //   if(this.msgrejectremarksno1 == 1)
-  //   {
-  //     alert("a");
-  //   }
-  //   else
-  //   {
-  //     alert("else");
-  //   }
-
-  // }
+  onViewRejectRM(event: any)
+  {
+    // this.ProjectsAllowableQty = this.projectsService.SearchProjects("Po_number","102");
+    alert("peksing");
+  }
 
 
   onChangeEventReject1(event: any){
