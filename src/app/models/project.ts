@@ -180,6 +180,7 @@ export class Project
     is_wh_reject_approval_date : Date;
     //Rejection
     is_wh_reject : string;
+    unit_price  : string;
 
 // expiration_date_string : Date;
     constructor()
@@ -359,6 +360,8 @@ export class Project
         this.is_wh_reject_approval_date = null;
         //Addtitional reject
         this.is_wh_reject = null;
+
+        this.unit_price = null;
 
     }
 }

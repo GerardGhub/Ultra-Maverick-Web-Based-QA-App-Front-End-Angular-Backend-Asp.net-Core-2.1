@@ -1332,6 +1332,7 @@ class Project {
         this.is_wh_reject_approval_date = null;
         //Addtitional reject
         this.is_wh_reject = null;
+        this.unit_price = null;
     }
 }
 

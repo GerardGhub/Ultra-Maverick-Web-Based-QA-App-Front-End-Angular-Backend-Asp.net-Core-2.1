@@ -661,7 +661,8 @@ export class ProjectsComponent implements OnInit {
       this.editProject.qty_order = this.projects[index].qty_order;
       this.editProject.qty_uom = this.projects[index].qty_uom;
       this.editProject.is_activated = this.Activator;
-
+      
+      this.editProject.unit_price = this.projects[index].unit_price;
       // this.editProject.mfg_date = this.projects[index].mfg_date;
       // this.editProject.expiration_date = this.projects[index].expiration_date;
       // this.editProject.expected_delivery = this.projects[index].expected_delivery;
@@ -870,14 +871,15 @@ export class ProjectsComponent implements OnInit {
       // alert("MAXs ");
       ///This is the minimun qty set pin for 10, 100, 999
       if (TotalAllowablePercentage >= ActualDelivered) {
-        // alert($('#Allowable_Percentage_id').val());
+ 
 
 
       }
       else {
 
         this.AllowablePercentageExceed();
-        $('#actual_delivery_output').val("");
+        // $('#actual_delivery_output').val("");  ///LLL
+
       }
 
     }
@@ -887,7 +889,7 @@ export class ProjectsComponent implements OnInit {
       if (this.allowableqty < this.actualqty) {
 
         this.AllowablePercentageExceed();
-        $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
+        // $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
         return;
 
       }
@@ -2430,6 +2432,8 @@ export class ProjectsComponent implements OnInit {
       this.editProject.cancelled_date = this.ToDay;
       this.editProject.canceled_by = this.activeUser;
       this.editProject.received_by_QA = this.projects[index].received_by_QA;
+      this.editProject.unit_price = this.projects[index].unit_price;
+      
 
       this.editProject.status_of_reject_one = this.projects[index].status_of_reject_one;
       this.editProject.status_of_reject_two = this.projects[index].status_of_reject_two;
@@ -2639,6 +2643,8 @@ export class ProjectsComponent implements OnInit {
       this.editProject.dateOfStart = null;
       this.editProject.teamSize = null;
       this.editProject.supplier = null;
+      this.editProject.teamSize = null;
+      this.editProject.unit_price = null;
       this.editProject.active = false;
       this.editProject.clientLocationID = null;
       this.editProject.status = null;
@@ -3214,9 +3220,8 @@ export class ProjectsComponent implements OnInit {
       else {
 
         this.AllowablePercentageExceed();
-        // this.ActualDeliveryChild.nativeElement.value('');
-        // alert("UNO");
-        $('#actual_delivery_output').val("");
+     
+        // $('#actual_delivery_output').val("");
       }
 
     }
@@ -3228,10 +3233,8 @@ export class ProjectsComponent implements OnInit {
       else {
         // alert("FEMALE");
         this.AllowablePercentageExceed();
-        // alert("DOS");
-        // ActualDelivered.val('');
-        // this.ActualDeliveryChild.nativeElement.value('');
-        $('#actual_delivery_output').val("");
+    
+        // $('#actual_delivery_output').val("");
       }
 
     }//End Point add Ons

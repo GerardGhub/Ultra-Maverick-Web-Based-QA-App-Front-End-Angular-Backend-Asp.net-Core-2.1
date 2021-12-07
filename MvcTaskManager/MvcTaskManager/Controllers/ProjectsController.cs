@@ -23,7 +23,7 @@ namespace MvcTaskManager.Controllers
 
     [HttpGet]
     [Route("api/projects")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public IActionResult Get()
     {
       //System.Threading.Thread.Sleep(1000);
@@ -64,6 +64,7 @@ namespace MvcTaskManager.Controllers
           Actual_delivery = project.Actual_delivery,
           Actual_remaining_receiving = project.Actual_remaining_receiving,
           Received_by_QA = project.Received_by_QA,
+          Unit_price = project.Unit_price,
           Status_of_reject_one = project.Status_of_reject_one,
           Status_of_reject_two = project.Status_of_reject_two,
           Status_of_reject_three = project.Status_of_reject_three,

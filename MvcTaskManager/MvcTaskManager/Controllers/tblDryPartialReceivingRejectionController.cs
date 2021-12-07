@@ -35,7 +35,7 @@ namespace MvcTaskManager.Controllers
 
     [HttpGet]
     [Route("api/tblDryPartialReceivingRejection/search/{searchby}/{searchtext}")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public IActionResult Search(string searchBy, string searchText)
     {
 
@@ -45,7 +45,7 @@ namespace MvcTaskManager.Controllers
 
       string PoNumberValue = searchText;
       if (searchBy == "Po_number")
-        //projects = db.Projects.Include("ClientLocation").Where(temp => temp.Po_number.Contains(searchText) && temp.is_activated.Contains(ProjectIsActivated) && temp.Actual_remaining_receiving != "0" && (Convert.ToInt32(temp.Actual_remaining_receiving) > 0)).ToList();
+
         projects = db.tblDryPartialReceivingRejection.Where(temp => temp.Is_active.Contains(is_activated) && temp.Is_pending.Contains(data_is_pending) && temp.Po_number.ToString().Contains(PoNumberValue)).ToList();
 
 

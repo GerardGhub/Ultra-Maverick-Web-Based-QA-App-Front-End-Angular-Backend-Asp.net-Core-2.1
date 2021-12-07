@@ -41,6 +41,8 @@ namespace MvcTaskManager.Models
     public string Actual_delivery { get; set; }
     public string Actual_remaining_receiving { get; set; }
     public string Received_by_QA { get; set; }
+
+    public string Unit_price { get; set; }
     public string Status_of_reject_one { get; set; }
     public string Status_of_reject_two { get; set; }
     public string Status_of_reject_three { get; set; }

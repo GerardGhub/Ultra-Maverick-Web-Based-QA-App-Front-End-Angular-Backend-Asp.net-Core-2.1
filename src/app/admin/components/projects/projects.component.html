@@ -330,7 +330,7 @@
         </div>
         <div class="modal-body">
 
-          <mat-card>RAW MATERIAL INFORMATION
+          <mat-card>RAW MATERIAL INFORMATIONS
 
   
            
@@ -482,6 +482,15 @@
 
         </mat-form-field>
           </div>
+          <div class="box-2">
+            <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+              <input type="text" matInput id="txtUnitPrice" placeholder="Unit Price" name="unit_price" [(ngModel)]="editProject.unit_price" minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$" #editunit_price="ngModel" [ngClass]="{ 'is-invalid': editunit_price.invalid && (editunit_price.dirty || editunit_price.touched || editForm.submitted), 'is-valid': editunit_price.valid && (editunit_price.dirty || editSupplier.touched || editForm.submitted) }" disabled="disabled" >
+              <mat-label>Unit Price</mat-label>
+
+
+        </mat-form-field>
+          </div>
+   
         </div>
 
         <mat-card>RECEIVING INFORMATION </mat-card>
@@ -1984,7 +1993,7 @@ editd_remarks_singko.touched || editForm.submitted) }"  required #remarksSection
 </div>
   
 <!-- END OF 4th -->        
-     {{editForm.value | json}}
+     <!-- {{editForm.value | json}} -->
 </div>
 
         <div class="modal-footer">
