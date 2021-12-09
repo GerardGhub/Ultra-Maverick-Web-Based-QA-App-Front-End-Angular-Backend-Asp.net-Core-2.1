@@ -49,6 +49,7 @@ export class WhRejectionApprovalComponent implements OnInit {
 
   activeUser: string ="";
   PoNumberBinding: string ="";
+  RejectionTableIndex: number = 0;
   NullableEmptyString: string ="";
 
   currentPageIndex: number = 0;
@@ -1467,7 +1468,7 @@ ComputeRemainingQty()
      this.whRejectionApprovalService.insertProject2(this.editProject).subscribe((response: Project) =>
      {
        var p: Project = new Project();
-       p.PrimaryID = response.PrimaryID;
+       p.primaryID = response.primaryID;
        p.projectID = response.projectID;
        p.projectName = response.projectName;
        p.dateOfStart = response.dateOfStart;
@@ -1865,7 +1866,7 @@ onCancelClick(event, index: number)//2
     .subscribe(
       (response: Project[]) =>
       {
-        // debugger;
+        // debugger; CLoudStaff
 
         this.projects = response;
  
@@ -1875,6 +1876,7 @@ onCancelClick(event, index: number)//2
     setTimeout(() =>
     {
       this.editProject.projectID = this.projects[index].projectID;
+      this.editProject.primaryID = this.projects[index].primaryID;
       this.editProject.projectName = this.projects[index].projectName;
       this.editProject.dateOfStart = this.projects[index].dateOfStart.split("/").reverse().join("-"); //yyyy-MM-dd
       this.editProject.teamSize = this.projects[index].teamSize;
@@ -2027,10 +2029,13 @@ onCancelClick(event, index: number)//2
      this.editProject.h_remarks_singko = this.projects[index].h_remarks_singko;
         //Calling The Projects for Qty Binding Servo IT Solutions 
         this.PoNumberBinding = this.projects[index].po_number;
+        this.RejectionTableIndex = this.projects[index].primaryID;
         // this.PoNumberChild.nativeElement.value;
-        //Cloud Stack Pro 
+        //Cloud Stack Pro   CloudStaffs
+        // alert(this.projects[index].primaryID); //13168
+        // alert(this.projects[index].h_compliance_singko);
         // this.editProject.daysBeforeExpired = this.projects[index].daysBeforeExpired;
-        this.WhRejectRemarks = this.tblDryPartialReceivingRejectionService.SearchRejectStatus("Po_number",this.PoNumberBinding);
+        this.WhRejectRemarks = this.tblDryPartialReceivingRejectionService.SearchRejectStatus("Po_number",this.PoNumberBinding, this.RejectionTableIndex );
       
       this.editIndex = index;
      

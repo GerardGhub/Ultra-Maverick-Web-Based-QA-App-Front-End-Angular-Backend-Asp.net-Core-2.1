@@ -232,6 +232,7 @@ namespace MvcTaskManager.Controllers
         projectsViewModel.Add(new ProjectViewModel()
         {
           ProjectID = project.ProjectID,
+          PrimaryID = project.PrimaryID,
           ProjectName = project.ProjectName,
           TeamSize = project.TeamSize,
           DateOfStart = project.DateOfStart.ToString("dd/MM/yyyy"),

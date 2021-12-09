@@ -34,9 +34,9 @@ namespace MvcTaskManager.Controllers
 
 
     [HttpGet]
-    [Route("api/tblDryPartialReceivingRejection/search/{searchby}/{searchtext}")]
+    [Route("api/tblDryPartialReceivingRejection/search/{searchby}/{searchtext}/{searchindex}")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public IActionResult Search(string searchBy, string searchText)
+    public IActionResult Search(string searchBy, string searchText, string searchIndex)
     {
 
       string data_is_pending = "1";
@@ -44,9 +44,10 @@ namespace MvcTaskManager.Controllers
       List<tblDryPartialReceivingRejectionModel> projects = null;
 
       string PoNumberValue = searchText;
+      string RejectIndexes = searchIndex;
       if (searchBy == "Po_number")
 
-        projects = db.tblDryPartialReceivingRejection.Where(temp => temp.Is_active.Contains(is_activated) && temp.Is_pending.Contains(data_is_pending) && temp.Po_number.ToString().Contains(PoNumberValue)).ToList();
+        projects = db.tblDryPartialReceivingRejection.Where(temp => temp.Is_active.Contains(is_activated) && temp.Is_pending.Contains(data_is_pending) && temp.Po_number.ToString().Contains(PoNumberValue) && temp.Index_id.ToString().Contains(RejectIndexes)).ToList();
 
 
       List<WarehouseRejectStatusViewModel> WarehouseRejectStatusContructor = new List<WarehouseRejectStatusViewModel>();

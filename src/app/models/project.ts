@@ -4,7 +4,7 @@ import { ClientLocation } from "./client-location";
 export class Project
 {
     projectID: number;
-    PrimaryID: number;
+    primaryID: number;
     projectName: string;
     dateOfStart: string;
     teamSize: number;
@@ -186,6 +186,7 @@ export class Project
     constructor()
     {
         this.projectID = null;
+        this.primaryID = null;
         this.projectName = null;
         this.dateOfStart = null;
         this.teamSize = null;

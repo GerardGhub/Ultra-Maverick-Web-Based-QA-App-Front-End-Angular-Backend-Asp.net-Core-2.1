@@ -12,6 +12,8 @@ namespace MvcTaskManager.Models
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int ProjectID { get; set; }
+    public int PrimaryID{ get; set; }
+
 
     public string ProjectName { get; set; }
 

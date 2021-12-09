@@ -1159,6 +1159,7 @@ class Project {
     // expiration_date_string : Date;
     constructor() {
         this.projectID = null;
+        this.primaryID = null;
         this.projectName = null;
         this.dateOfStart = null;
         this.teamSize = null;
@@ -4440,13 +4441,13 @@ class TblDryPartialReceivingRejectionService {
         return this.httpClient.get("/api/tblDryPartialReceivingRejection", { responseType: "json" })
             .pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])((data) => {
             for (let i = 0; i < data.length; i++) {
-                //data[i].teamSize = data[i].teamSize * 100;
+                //data[i].teamSize = data[i].teamSize * 100; //
             }
             return data;
         }));
     }
-    SearchRejectStatus(searchBy, searchText) {
-        return this.httpClient.get("/api/TblDryPartialReceivingRejection/search/" + searchBy + "/" + searchText, { responseType: "json" });
+    SearchRejectStatus(searchBy, searchText, searchIndex) {
+        return this.httpClient.get("/api/TblDryPartialReceivingRejection/search/" + searchBy + "/" + searchText + "/" + searchIndex, { responseType: "json" });
     }
 }
 TblDryPartialReceivingRejectionService.ɵfac = function TblDryPartialReceivingRejectionService_Factory(t) { return new (t || TblDryPartialReceivingRejectionService)(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"])); };
@@ -11502,7 +11503,7 @@ class ProjetPONearlyExpiryApprovalComponent {
         if (this.editForm.valid) {
             this.projetPONearlyExpiryApprovalService.insertProject2(this.editProject).subscribe((response) => {
                 var p = new src_app_models_project__WEBPACK_IMPORTED_MODULE_1__["Project"]();
-                p.PrimaryID = response.PrimaryID;
+                p.primaryID = response.primaryID;
                 p.projectID = response.projectID;
                 p.projectName = response.projectName;
                 p.dateOfStart = response.dateOfStart;
@@ -17551,12 +17552,12 @@ class ProjectsPartialPoComponent {
             });
         }
     }
-    //Insert as Partial
+    //Insert as Partials
     InsertANewPartialReceiving() {
         if (this.editForm.valid) {
             this.projectsPartialPoService.insertProject2(this.editProject).subscribe((response) => {
                 var p = new src_app_models_project__WEBPACK_IMPORTED_MODULE_2__["Project"]();
-                p.PrimaryID = response.PrimaryID;
+                p.primaryID = response.primaryID;
                 p.projectID = response.projectID;
                 p.projectName = response.projectName;
                 p.dateOfStart = response.dateOfStart;
@@ -23007,6 +23008,7 @@ class WhRejectionApprovalComponent {
         this.searchText = "";
         this.activeUser = "";
         this.PoNumberBinding = "";
+        this.RejectionTableIndex = 0;
         this.NullableEmptyString = "";
         this.currentPageIndex = 0;
         this.pages = [];
@@ -24177,7 +24179,7 @@ class WhRejectionApprovalComponent {
         if (this.editForm.valid) {
             this.whRejectionApprovalService.insertProject2(this.editProject).subscribe((response) => {
                 var p = new src_app_models_project__WEBPACK_IMPORTED_MODULE_1__["Project"]();
-                p.PrimaryID = response.PrimaryID;
+                p.primaryID = response.primaryID;
                 p.projectID = response.projectID;
                 p.projectName = response.projectName;
                 p.dateOfStart = response.dateOfStart;
@@ -24512,12 +24514,13 @@ class WhRejectionApprovalComponent {
         //first
         this.whRejectionApprovalService.getAllProjectsRejectforApproval()
             .subscribe((response) => {
-            // debugger;
+            // debugger; CLoudStaff
             this.projects = response;
         });
         //Last
         setTimeout(() => {
             this.editProject.projectID = this.projects[index].projectID;
+            this.editProject.primaryID = this.projects[index].primaryID;
             this.editProject.projectName = this.projects[index].projectName;
             this.editProject.dateOfStart = this.projects[index].dateOfStart.split("/").reverse().join("-"); //yyyy-MM-dd
             this.editProject.teamSize = this.projects[index].teamSize;
@@ -24666,10 +24669,13 @@ class WhRejectionApprovalComponent {
             this.editProject.h_remarks_singko = this.projects[index].h_remarks_singko;
             //Calling The Projects for Qty Binding Servo IT Solutions 
             this.PoNumberBinding = this.projects[index].po_number;
+            this.RejectionTableIndex = this.projects[index].primaryID;
             // this.PoNumberChild.nativeElement.value;
-            //Cloud Stack Pro 
+            //Cloud Stack Pro   CloudStaffs
+            // alert(this.projects[index].primaryID); //13168
+            // alert(this.projects[index].h_compliance_singko);
             // this.editProject.daysBeforeExpired = this.projects[index].daysBeforeExpired;
-            this.WhRejectRemarks = this.tblDryPartialReceivingRejectionService.SearchRejectStatus("Po_number", this.PoNumberBinding);
+            this.WhRejectRemarks = this.tblDryPartialReceivingRejectionService.SearchRejectStatus("Po_number", this.PoNumberBinding, this.RejectionTableIndex);
             this.editIndex = index;
         }, 100);
     }
@@ -25218,7 +25224,7 @@ WhRejectionApprovalComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_5__[
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](5, "div", 4);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](6, "mat-card");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementStart"](7, "p", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](8, "Warehouse Rejection Approval ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtext"](8, "Warehouse Rejection Approval STD ");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelement"](9, "mat-icon", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵpipe"](10, "number");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵelementEnd"]();

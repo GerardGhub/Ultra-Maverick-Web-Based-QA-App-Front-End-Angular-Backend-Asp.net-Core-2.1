@@ -26,7 +26,7 @@ export class TblDryPartialReceivingRejectionService {
          
            for (let i = 0; i < data.length; i++)
            {
-             //data[i].teamSize = data[i].teamSize * 100;
+             //data[i].teamSize = data[i].teamSize * 100; //
              
            }
          
@@ -36,9 +36,9 @@ export class TblDryPartialReceivingRejectionService {
    }
  
 
-   SearchRejectStatus(searchBy: string, searchText: string): Observable<TblDryPartialReceivingRejection[]>
+   SearchRejectStatus(searchBy: string, searchText: string, searchIndex: number): Observable<TblDryPartialReceivingRejection[]>
    {
-     return this.httpClient.get<TblDryPartialReceivingRejection[]>("/api/TblDryPartialReceivingRejection/search/" + searchBy + "/" + searchText, { responseType: "json" });
+     return this.httpClient.get<TblDryPartialReceivingRejection[]>("/api/TblDryPartialReceivingRejection/search/" + searchBy + "/" + searchText + "/" + searchIndex, { responseType: "json" });
    }
 
 }

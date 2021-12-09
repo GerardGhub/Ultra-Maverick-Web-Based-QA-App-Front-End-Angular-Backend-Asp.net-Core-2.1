@@ -1456,7 +1456,7 @@ ComputeRemainingQty()
      this.projetPONearlyExpiryApprovalService.insertProject2(this.editProject).subscribe((response: Project) =>
      {
        var p: Project = new Project();
-       p.PrimaryID = response.PrimaryID;
+       p.primaryID = response.primaryID;
        p.projectID = response.projectID;
        p.projectName = response.projectName;
        p.dateOfStart = response.dateOfStart;

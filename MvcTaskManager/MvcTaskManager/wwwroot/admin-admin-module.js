@@ -7094,7 +7094,7 @@ class ProjectsComponent {
             this.editProject.projectID = Math.floor((Math.random() * 1000000) + 1);
             this.projectsPartialPoService.insertProject2(this.editProject).subscribe((response) => {
                 var p = new src_app_models_project__WEBPACK_IMPORTED_MODULE_2__["Project"]();
-                p.PrimaryID = response.PrimaryID;
+                p.primaryID = response.primaryID;
                 p.projectID = response.projectID;
                 p.projectName = response.projectName;
                 p.dateOfStart = response.dateOfStart;
