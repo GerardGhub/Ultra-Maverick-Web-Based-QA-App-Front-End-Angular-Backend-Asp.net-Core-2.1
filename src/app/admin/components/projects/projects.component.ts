@@ -856,8 +856,8 @@ export class ProjectsComponent implements OnInit {
     this.allowableqty = this.TotalAllowablePercentage.nativeElement.value;
     this.actualqty = this.ActualDeliveryChild.nativeElement.value;
 
-    const TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
-    const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+    var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
+    var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
 
     var aplenght = $('#Allowable_Percentage_id').val().length;
     $('#characters').text(aplenght);
@@ -865,12 +865,11 @@ export class ProjectsComponent implements OnInit {
     var adlength = $('#actual_delivery_output').val().length;
     $('#characters').text(adlength);
 
-    //  alert(aplenght);
-    //   alert(adlength);
+ 
     if (aplenght > adlength) {
-      // alert("MAXs ");
+
       ///This is the minimun qty set pin for 10, 100, 999
-      if (TotalAllowablePercentage >= ActualDelivered) {
+      if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
  
 
 
@@ -878,7 +877,11 @@ export class ProjectsComponent implements OnInit {
       else {
 
         this.AllowablePercentageExceed();
-        // $('#actual_delivery_output').val("");  ///LLL
+        // alert("Pekwangs");
+        $('#actual_delivery_output').val("");  ///LLL
+        return;
+
+   
 
       }
 
@@ -889,7 +892,7 @@ export class ProjectsComponent implements OnInit {
       if (this.allowableqty < this.actualqty) {
 
         this.AllowablePercentageExceed();
-        // $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
+        $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
         return;
 
       }
@@ -1002,7 +1005,7 @@ export class ProjectsComponent implements OnInit {
         else {
           //Addition of  60 === 60 tickett
           if (Difference_In_Days == ExpiryDaysActivated) {
-            // alert("ssasa kaba Hahha");
+          
             Swal.fire({
               title: 'Are you sure you want to received the item expiry  ' + Difference_In_Days + ' Days?',
               text: ItemDesc,
@@ -2228,7 +2231,7 @@ export class ProjectsComponent implements OnInit {
     // }
 
     Swal.fire({
-      title: 'Are you sure that you want to cancel the PO Number ' + PoNumero + '?',
+      title: 'Are you sure you want to cancel the PO Number ' + PoNumero + '?',
       text: Item,
       icon: 'info',
       showCancelButton: true,
@@ -3192,10 +3195,10 @@ export class ProjectsComponent implements OnInit {
 
   ActualDeliveryComputation(event: any) {
     // Allowable Percentage Computation
-    const TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
-    const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-    const QtyOrder = this.QtyOrdered.nativeElement.value;
-    const ActualRemainingReceiving = this.ActualRemainingReceiving.nativeElement.value;
+    var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
+    var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+    var QtyOrder = this.QtyOrdered.nativeElement.value;
+    var ActualRemainingReceiving = this.ActualRemainingReceiving.nativeElement.value;
 
 
     this.ActualRemaining = QtyOrder - ActualDelivered;
@@ -3212,29 +3215,30 @@ export class ProjectsComponent implements OnInit {
 
     if (aplenght > adlength) {
       //Do Something programmble
-      if (TotalAllowablePercentage >= ActualDelivered) {
+      if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) 
+      {
         // alert($('#Allowable_Percentage_id').val());
 
 
       }
       else {
-
+     
         this.AllowablePercentageExceed();
      
-        // $('#actual_delivery_output').val("");
+        $('#actual_delivery_output').val("");
       }
 
     }
     else {
-      if (TotalAllowablePercentage >= ActualDelivered) {
+      if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
         // alert($('#Allowable_Percentage_id').val());
         // alert("hahaha");
       }
       else {
-        // alert("FEMALE");
+        // alert("Error 2");
         this.AllowablePercentageExceed();
     
-        // $('#actual_delivery_output').val("");
+        $('#actual_delivery_output').val("");
       }
 
     }//End Point add Ons

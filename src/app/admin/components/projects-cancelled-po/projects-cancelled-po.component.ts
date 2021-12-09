@@ -271,7 +271,7 @@ if (Difference_In_Days < 30 )
 {
 
 Swal.fire({
-title: 'Are you sure that you want to update the details item expiry at '+ Difference_In_Days +' Days?',
+title: 'Are you sure you want to update the details item expiry at '+ Difference_In_Days +' Days?',
 text: "You won't be able to revert this!",
 icon: 'warning',
 showCancelButton: true,
@@ -323,7 +323,7 @@ CancelledPoDetails()
 
 // }
     Swal.fire({
-      title: 'Are you sure that you want to revert the PO Number '+PoNumero+'?',
+      title: 'Are you sure you want to return the PO Number '+PoNumero+'?',
       text: Item,
       icon: 'info',
       showCancelButton: true,
@@ -421,7 +421,8 @@ UpdateDeactivatedTransactions()
       this.editProject.total_of_reject_mat = null;
      this.editProject.returned_date = null;
 
-     this.showDeactivatedSuccess();
+    //  this.showDeactivatedSuccess();
+    this.showReturnedSuccess();
      this.ngOnInit();
       $("#editFormCancel").trigger("click");
     },
@@ -974,6 +975,10 @@ decimalFilter(event: any) {
   showDeactivatedSuccess() {
     this.toastr.success('Successfully Deactivated!', 'Notifications');
   }
+  showReturnedSuccess() {
+    this.toastr.success('Successfully Returned!', 'Notifications');
+  }
+
   AllowablePercentageExceed() {
     this.toastr.warning('Allowable Percentage Exceed!', 'Notifications');
   }

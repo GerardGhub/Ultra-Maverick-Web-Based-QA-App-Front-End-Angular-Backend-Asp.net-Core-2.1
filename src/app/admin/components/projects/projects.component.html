@@ -753,16 +753,7 @@
               <div class="form-group row" id="rejectionrow1">
                 <!-- <label for="drpEditClientLocationsOne" class="col-sm-4 col-form-label">Reject Status 1</label> -->
                 <div class="col-sm-8">
-                  <!-- <select id="drpEditRejectStatusOne" class="form-control" name="status_of_reject_one" [(ngModel)]="editProject.status_of_reject_one" required="required" #editstatus_of_reject_one="ngModel" [ngClass]="{ 'is-invalid': editstatus_of_reject_one.invalid && (editstatus_of_reject_one.dirty || editstatus_of_reject_one.touched || editForm.submitted), 'is-valid': editstatus_of_reject_one.valid && (editstatus_of_reject_one.dirty || editstatus_of_reject_one.touched || editForm.submitted) }">
-                    <option value="null">Please Select</option>
-                    <option *ngFor="let status of RejectStatuses | async" [value]="status.reject_status_name">
-                      {{status.reject_status_name}}
-                    </option>
-                  </select>
-    
-                  <span class="text-danger" *ngIf="editstatus_of_reject_one.invalid && (editstatus_of_reject_one.dirty || editstatus_of_reject_one.touched || editForm.submitted) && editstatus_of_reject_one.errors?.required">Please rejected Status</span>
-    
-          -->
+
                
 
 
@@ -836,13 +827,6 @@
   <input type="text" matInput name="total_of_reject_mat" [(ngModel)]="editProject.total_of_reject_mat"  #totalofReject readonly="readonly">
   <mat-label>Total No. of Reject</mat-label>
   <mat-hint align="end">Grand Total</mat-hint>
-  <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-  </span></mat-icon> -->
-  <!-- <span class="text-danger" *ngIf="editProjectName.invalid && (editProjectName.dirty || editProjectName.touched || editForm.submitted) && editProjectName.errors?.required">Project Name can't be blank</span>
-
-  <span class="text-danger" *ngIf="editProjectName.invalid && (editProjectName.dirty || editProjectName.touched || editForm.submitted) && editProjectName.errors?.pattern">Project Name can contain alphabets, digits, dot, hyphen or space only</span>
-
-  <span class="text-danger" *ngIf="editProjectName.invalid && (editProjectName.dirty || editProjectName.touched || editForm.submitted) && editProjectName.errors?.minlength">Project name should be at least 3 characters long</span> -->
 
 </mat-form-field>
 
@@ -897,15 +881,7 @@
               <mat-form-field floatLabel="auto" appearance="standard" color="primary">
                 <input type="text" name="count_of_reject_three" matInput #rejectNo3 (keyup)="onChangeEventReject3($event)" [(ngModel)]="editProject.count_of_reject_three" maxlength="9" #editcount_of_reject_three="ngModel" [ngClass]="{ 'is-invalid': editcount_of_reject_three.invalid && (editcount_of_reject_three.dirty || editcount_of_reject_three.touched || editForm.submitted), 'is-valid': editcount_of_reject_three.valid && (editcount_of_reject_three.dirty || editcount_of_reject_three.touched || editForm.submitted) }" id="rejectRow3"  (keypress)="validateNumber($event)">
                 <mat-label>No.of Reject</mat-label>
-                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-                </span></mat-icon> -->
-                <!-- <span class="text-danger" *ngIf="editProjectName.invalid && (editProjectName.dirty || editProjectName.touched || editForm.submitted) && editProjectName.errors?.required">Project Name can't be blank</span>
-              
-                <span class="text-danger" *ngIf="editProjectName.invalid && (editProjectName.dirty || editProjectName.touched || editForm.submitted) && editProjectName.errors?.pattern">Project Name can contain alphabets, digits, dot, hyphen or space only</span>
-              
-                <span class="text-danger" *ngIf="editProjectName.invalid && (editProjectName.dirty || editProjectName.touched || editForm.submitted) && editProjectName.errors?.minlength">Project name should be at least 3 characters long</span>
-             -->
+
               </mat-form-field>
               </div>
               </div>

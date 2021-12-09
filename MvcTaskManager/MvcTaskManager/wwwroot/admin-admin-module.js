@@ -4695,7 +4695,7 @@ class DashboardComponent {
         this.DashboardPoSummaryCancelled();
         this.DashboardPoSummaryPartialReceiving();
         this.DashboardPoSummaryPartialReceivingRejectonWH();
-        this.IntervalPageforRefresh();
+        // this.IntervalPageforRefresh();
     }
     IntervalPageforRefresh() {
         // this.updateSubscription = interval(1000).subscribe(
@@ -6526,22 +6526,21 @@ class ProjectsComponent {
         //Computation Start Simang
         this.allowableqty = this.TotalAllowablePercentage.nativeElement.value;
         this.actualqty = this.ActualDeliveryChild.nativeElement.value;
-        const TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
-        const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+        var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
+        var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
         var aplenght = jquery__WEBPACK_IMPORTED_MODULE_0__('#Allowable_Percentage_id').val().length;
         jquery__WEBPACK_IMPORTED_MODULE_0__('#characters').text(aplenght);
         var adlength = jquery__WEBPACK_IMPORTED_MODULE_0__('#actual_delivery_output').val().length;
         jquery__WEBPACK_IMPORTED_MODULE_0__('#characters').text(adlength);
-        //  alert(aplenght);
-        //   alert(adlength);
         if (aplenght > adlength) {
-            // alert("MAXs ");
             ///This is the minimun qty set pin for 10, 100, 999
-            if (TotalAllowablePercentage >= ActualDelivered) {
+            if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
             }
             else {
                 this.AllowablePercentageExceed();
-                // $('#actual_delivery_output').val("");  ///LLL
+                // alert("Pekwangs");
+                jquery__WEBPACK_IMPORTED_MODULE_0__('#actual_delivery_output').val(""); ///LLL
+                return;
             }
         }
         else {
@@ -6549,7 +6548,7 @@ class ProjectsComponent {
             //This is for large scale validation for thousand's qty 
             if (this.allowableqty < this.actualqty) {
                 this.AllowablePercentageExceed();
-                // $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
+                jquery__WEBPACK_IMPORTED_MODULE_0__('#actual_delivery_output').val(""); //Additional Data on 12/6/2021
                 return;
             }
         }
@@ -6629,7 +6628,6 @@ class ProjectsComponent {
                 else {
                     //Addition of  60 === 60 tickett
                     if (Difference_In_Days == ExpiryDaysActivated) {
-                        // alert("ssasa kaba Hahha");
                         sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
                             title: 'Are you sure you want to received the item expiry  ' + Difference_In_Days + ' Days?',
                             text: ItemDesc,
@@ -7724,7 +7722,7 @@ class ProjectsComponent {
         //   return;
         // }
         sweetalert2__WEBPACK_IMPORTED_MODULE_3___default.a.fire({
-            title: 'Are you sure that you want to cancel the PO Number ' + PoNumero + '?',
+            title: 'Are you sure you want to cancel the PO Number ' + PoNumero + '?',
             text: Item,
             icon: 'info',
             showCancelButton: true,
@@ -8525,10 +8523,10 @@ class ProjectsComponent {
     }
     ActualDeliveryComputation(event) {
         // Allowable Percentage Computation
-        const TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
-        const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-        const QtyOrder = this.QtyOrdered.nativeElement.value;
-        const ActualRemainingReceiving = this.ActualRemainingReceiving.nativeElement.value;
+        var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
+        var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+        var QtyOrder = this.QtyOrdered.nativeElement.value;
+        var ActualRemainingReceiving = this.ActualRemainingReceiving.nativeElement.value;
         this.ActualRemaining = QtyOrder - ActualDelivered;
         //Add Ons
         //Allowable Percentage
@@ -8539,23 +8537,23 @@ class ProjectsComponent {
         jquery__WEBPACK_IMPORTED_MODULE_0__('#characters').text(adlength);
         if (aplenght > adlength) {
             //Do Something programmble
-            if (TotalAllowablePercentage >= ActualDelivered) {
+            if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
                 // alert($('#Allowable_Percentage_id').val());
             }
             else {
                 this.AllowablePercentageExceed();
-                // $('#actual_delivery_output').val("");
+                jquery__WEBPACK_IMPORTED_MODULE_0__('#actual_delivery_output').val("");
             }
         }
         else {
-            if (TotalAllowablePercentage >= ActualDelivered) {
+            if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
                 // alert($('#Allowable_Percentage_id').val());
                 // alert("hahaha");
             }
             else {
-                // alert("FEMALE");
+                // alert("Error 2");
                 this.AllowablePercentageExceed();
-                // $('#actual_delivery_output').val("");
+                jquery__WEBPACK_IMPORTED_MODULE_0__('#actual_delivery_output').val("");
             }
         } //End Point add Ons
     }

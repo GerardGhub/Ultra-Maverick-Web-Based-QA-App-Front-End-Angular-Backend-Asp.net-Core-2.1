@@ -174,7 +174,7 @@ export class DashboardComponent implements OnInit
     this.DashboardPoSummaryCancelled();
     this.DashboardPoSummaryPartialReceiving();
     this.DashboardPoSummaryPartialReceivingRejectonWH();
-    this.IntervalPageforRefresh();
+    // this.IntervalPageforRefresh();
   }
 
   IntervalPageforRefresh()
