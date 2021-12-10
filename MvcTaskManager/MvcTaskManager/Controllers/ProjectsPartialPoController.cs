@@ -226,13 +226,13 @@ namespace MvcTaskManager.Controllers
       List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.is_activated.Contains(ProjectIsActivated) && temp.Is_expired.Contains(GoodRM)
       && temp.Is_wh_received.Contains(Approve) && (Convert.ToInt32(temp.Is_wh_reject) > 0) != temp.Is_wh_reject_approval.Contains(Approve) && temp.Is_wh_reject != "0").ToList();
 
-      List<ProjectViewModel> projectsViewModel = new List<ProjectViewModel>();
+      List<ProjectsPartialPoViewModel> projectsViewModel = new List<ProjectsPartialPoViewModel>();
       foreach (var project in projects)
       {
-        projectsViewModel.Add(new ProjectViewModel()
+        projectsViewModel.Add(new ProjectsPartialPoViewModel()
         {
           ProjectID = project.ProjectID,
-          PrimaryID = project.PrimaryID,
+          //PrimaryID = project.PrimaryID,
           ProjectName = project.ProjectName,
           TeamSize = project.TeamSize,
           DateOfStart = project.DateOfStart.ToString("dd/MM/yyyy"),

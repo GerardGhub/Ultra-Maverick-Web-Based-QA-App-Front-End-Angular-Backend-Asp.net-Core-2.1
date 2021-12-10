@@ -14,6 +14,8 @@ namespace MvcTaskManager.Models
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int ProjectID { get; set; }
 
+    //public int PrimaryID { get; set; } //Additonal
+
     public string ProjectName { get; set; }
 
     [DisplayFormat(DataFormatString = "d/M/yyyy")]

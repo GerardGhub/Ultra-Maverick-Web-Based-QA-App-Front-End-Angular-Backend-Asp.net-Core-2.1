@@ -9,7 +9,7 @@ namespace MvcTaskManager.ViewModels
     public class ProjectViewModel
     {
         public int ProjectID { get; set; }
-         public int PrimaryID { get; set; }
+         //public int PrimaryID { get; set; }
         public string ProjectName { get; set; }
         public string DateOfStart { get; set; }
         public int? TeamSize { get; set; }

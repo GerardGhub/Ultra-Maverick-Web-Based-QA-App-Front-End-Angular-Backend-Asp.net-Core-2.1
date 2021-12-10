@@ -23,7 +23,7 @@ namespace MvcTaskManager.Controllers
 
     [HttpGet]
     [Route("api/projects")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public IActionResult Get()
     {
       //System.Threading.Thread.Sleep(1000);

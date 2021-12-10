@@ -17,7 +17,8 @@ namespace MvcTaskManager.Identity
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<RMProjectsPartialPo> ProjectsPartialPo { get; set; }
-        public DbSet<ApplicationRole> ApplicationRoles { get; set; }
+
+    public DbSet<ApplicationRole> ApplicationRoles { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<TaskPriority> TaskPriorities { get; set; }

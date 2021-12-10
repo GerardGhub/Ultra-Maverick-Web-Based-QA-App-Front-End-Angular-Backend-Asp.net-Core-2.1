@@ -1528,7 +1528,7 @@ export class ProjectsComponent implements OnInit {
       this.projectsPartialPoService.insertProject2(this.editProject).subscribe((response: Project) => {
         var p: Project = new Project();
         p.primaryID = response.primaryID;
-        p.projectID = response.projectID;
+        // p.projectID = response.projectID;
         p.projectName = response.projectName;
         p.dateOfStart = response.dateOfStart;
         p.teamSize = response.teamSize;
@@ -1688,7 +1688,6 @@ export class ProjectsComponent implements OnInit {
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
         //  this.projects[this.editIndex] = p;
         this.projects.push(p);
-
 
 
 

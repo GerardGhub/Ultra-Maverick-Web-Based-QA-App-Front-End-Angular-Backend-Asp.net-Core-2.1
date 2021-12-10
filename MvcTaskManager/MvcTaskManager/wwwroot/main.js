@@ -24673,7 +24673,9 @@ class WhRejectionApprovalComponent {
             this.editProject.h_remarks_singko = this.projects[index].h_remarks_singko;
             //Calling The Projects for Qty Binding Servo IT Solutions 
             this.PoNumberBinding = this.projects[index].po_number;
-            this.RejectionTableIndex = this.projects[index].primaryID;
+            // this.RejectionTableIndex = this.projects[index].primaryID;
+            this.RejectionTableIndex = this.projects[index].projectID;
+            // alert(this.RejectionTableIndex);
             // this.PoNumberChild.nativeElement.value;
             //Cloud Stack Pro   CloudStaffs
             // alert(this.projects[index].primaryID); //13168

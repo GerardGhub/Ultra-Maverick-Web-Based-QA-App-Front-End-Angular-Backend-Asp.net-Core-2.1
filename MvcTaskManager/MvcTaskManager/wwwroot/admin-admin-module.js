@@ -7093,7 +7093,7 @@ class ProjectsComponent {
             this.projectsPartialPoService.insertProject2(this.editProject).subscribe((response) => {
                 var p = new src_app_models_project__WEBPACK_IMPORTED_MODULE_2__["Project"]();
                 p.primaryID = response.primaryID;
-                p.projectID = response.projectID;
+                // p.projectID = response.projectID;
                 p.projectName = response.projectName;
                 p.dateOfStart = response.dateOfStart;
                 p.teamSize = response.teamSize;

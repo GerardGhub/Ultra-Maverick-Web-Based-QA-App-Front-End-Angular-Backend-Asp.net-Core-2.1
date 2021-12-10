@@ -7,13 +7,14 @@ using System.Threading.Tasks;
 
 namespace MvcTaskManager.Models
 {
-  public class RMProjectsPartialPo
+  public class RMProjectsPartialPoPostMethod
   {
+    //Start Of Data Structure
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.None)]
     public int ProjectID { get; set; }
-    //public int PrimaryID { get; set; }
 
+    public int PrimaryID { get; set; }
 
     public string ProjectName { get; set; }
 
@@ -201,15 +202,12 @@ namespace MvcTaskManager.Models
     public string Is_wh_reject_approval_date { get; set; }
     //Rejection Approval Receiving Statusof the Entity
     public string Is_wh_reject_approval_is_received { get; set; }
-    public string Is_wh_reject_approval_is_received_date { get; set;}
+    public string Is_wh_reject_approval_is_received_date { get; set; }
     public string Is_wh_reject_approval_is_received_by { get; set; }
 
     [ForeignKey("ClientLocationID")]
     public virtual ClientLocation ClientLocation { get; set; }
-  
 
-
-
-   
+    //Data Structure
   }
 }

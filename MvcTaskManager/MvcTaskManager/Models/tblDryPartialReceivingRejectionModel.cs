@@ -19,5 +19,6 @@ namespace MvcTaskManager.Models
     public string Added_by { get; set; }
     public string Is_pending { get; set; }
     public string Is_active { get; set; }
+    public int Projection_identity { get; set; }
   }
 }

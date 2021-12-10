@@ -47,7 +47,7 @@ namespace MvcTaskManager.Controllers
       string RejectIndexes = searchIndex;
       if (searchBy == "Po_number")
 
-        projects = db.tblDryPartialReceivingRejection.Where(temp => temp.Is_active.Contains(is_activated) && temp.Is_pending.Contains(data_is_pending) && temp.Po_number.ToString().Contains(PoNumberValue) && temp.Index_id.ToString().Contains(RejectIndexes)).ToList();
+        projects = db.tblDryPartialReceivingRejection.Where(temp => temp.Is_active.Contains(is_activated) && temp.Is_pending.Contains(data_is_pending) && temp.Po_number.ToString().Contains(PoNumberValue) && temp.Projection_identity.ToString().Contains(RejectIndexes)).ToList();
 
 
       List<WarehouseRejectStatusViewModel> WarehouseRejectStatusContructor = new List<WarehouseRejectStatusViewModel>();
