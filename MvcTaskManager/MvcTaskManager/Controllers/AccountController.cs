@@ -94,21 +94,7 @@ namespace MvcTaskManager.Controllers
         }
 
 
-    //[Route("api/umwebusers")]
-    //public Task<IActionResult> GetAllUsers()
-    //{
-    //  List<ApplicationUser> users = this.db.Users.ToList();
-    //  List<ApplicationUser> employeeUsers = new List<ApplicationUser>();
-
-    //  foreach (var item in users)
-    //  {
-    //    //if ((await this.applicationUserManager.IsInRoleAsync(item, "Employee")))
-    //    //{
-    //    //  employeeUsers.Add(item);
-    //    //}
-    //  }
-
-    //}
+    
 
     [HttpGet]
     [Route("api/umwebusers")]
@@ -121,14 +107,7 @@ namespace MvcTaskManager.Controllers
 
 
 
-    //[HttpGet]
-    //[Route("api/umwebusers")]
-    ////[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    //public IActionResult Get()
-    //{
-    //  List<WebUsers> tblUsers = db.AspNetUsers.ToList();
-    //  return Ok(tblUsers);
-    //}
+
 
 
 

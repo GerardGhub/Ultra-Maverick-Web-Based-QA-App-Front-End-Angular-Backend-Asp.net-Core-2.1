@@ -1,5 +1,5 @@
 {
-  "FilePath": "d:\\ng\\UltraMaverickProject\\cm2\\WEB\\TaskManagerQA\\MvcTaskManager\\MvcTaskManager\\MvcTaskManager.csproj",
+  "FilePath": "d:\\MY Files\\UM System\\Web\\TaskManagerQA\\MvcTaskManager\\MvcTaskManager\\MvcTaskManager.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-2.1",
     "LanguageVersion": "2.1",
@@ -1818,7 +1818,7 @@
   "RootNamespace": "MvcTaskManager",
   "Documents": [
     {
-      "FilePath": "d:\\ng\\UltraMaverickProject\\cm2\\WEB\\TaskManagerQA\\MvcTaskManager\\MvcTaskManager\\Views\\Home\\Index.cshtml",
+      "FilePath": "d:\\MY Files\\UM System\\Web\\TaskManagerQA\\MvcTaskManager\\MvcTaskManager\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     }
