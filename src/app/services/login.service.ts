@@ -18,7 +18,8 @@ export class LoginService
   }
 
   currentUserName: string  = null;
-  currentUserRole: string = null;
+  currentUserRole: string = null;   // Defective ind Backend Need to fix
+  //For Solution Earlier
   currentUserRoleSession: string = null;
 
   public Login(loginViewModel: LoginViewModel): Observable<any>

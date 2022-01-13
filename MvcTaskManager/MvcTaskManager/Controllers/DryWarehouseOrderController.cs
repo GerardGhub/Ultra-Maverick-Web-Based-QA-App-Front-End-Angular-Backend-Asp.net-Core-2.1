@@ -23,14 +23,12 @@ namespace MvcTaskManager.Controllers
     [HttpGet]
     [Route("api/dry_wh_orders_checklist_distinct")]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public List<DryWhOrder> Get()
+    public List<DryWhOrder> GetDistinctPreparedOrders()
     {
       string Activated = "1";
       string DeActivated = "0";
-      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date })
-  .Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
-  && temp.is_for_validation.Contains(DeActivated) && temp.is_approved.Contains(Activated))
-  .ToList();
+      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new {p.is_approved_prepa_date}).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
+      && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null || temp.force_prepared_status != null).ToList();
       return StoreOrderCheckList;
 
 
@@ -39,7 +37,20 @@ namespace MvcTaskManager.Controllers
      // return StoreOrderCheckList;
     }
 
+    [HttpGet]
+    [Route("api/store_orders")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public List<DryWhOrder> GetStoreOrders()
+    {
+      string Activated = "1";
+      string DeActivated = "0";
+      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
+        && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared == null || temp.force_prepared_status != null).ToList();
+      return StoreOrderCheckList;
 
+
+    
+    }
 
 
   }

@@ -7,6 +7,8 @@ import { columnChartOptions } from 'src/app/charts/column-chart';
 import { Booking } from 'src/app/models/booking';
 import { Project } from 'src/app/models/project';
 import { interval, Observable, Subscription } from 'rxjs';
+import { WhCheckerDashboardService } from 'src/app/services/wh-checker-dashboard.service';
+import { DryWhStoreOrders } from 'src/app/models/dry-wh-store-orders';
 
 
 
@@ -15,8 +17,7 @@ import { interval, Observable, Subscription } from 'rxjs';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements OnInit
-{
+export class DashboardComponent implements OnInit {
   Designation: string;
   Username: string;
   NoOfTeamMembers: number;
@@ -34,51 +35,52 @@ export class DashboardComponent implements OnInit
   TeamMembersSummary = [];
   TeamMembers = [];
 
-   //properties
-   dashboardGridCols: number = 4;
-   cardColspan: number = 2;
-   bookings: Booking[] = [];
-   WhRejects: Project[] = [];
-   columnChart: Chart = new Chart(columnChartOptions);
-   bookingsLoadingStarted: boolean = false;
-   projects: Project[] = [];
-   totalPoRowCount: number = null;
-   totalPoRowCountCancelled: number = null;
-   totalPoPartialReceiving: number = null;
-   totalPoPartialRejectatWH: number = null;
-   private updateSubscription: Subscription;
-   totalPartialPoReceivingRejectRowCount: number = null;
+  //properties
+  dashboardGridCols: number = 4;
+  cardColspan: number = 2;
+  bookings: Booking[] = [];
+  WhRejects: Project[] = [];
+  WhStoreOrders: DryWhStoreOrders[] = [];
+  columnChart: Chart = new Chart(columnChartOptions);
+  bookingsLoadingStarted: boolean = false;
+  projects: Project[] = [];
+  totalPoRowCount: number = null;
+  totalPoRowCountCancelled: number = null;
+  totalPoPartialReceiving: number = null;
+  totalPoPartialRejectatWH: number = null;
+  private updateSubscription: Subscription;
+  totalPartialPoReceivingRejectRowCount: number = null;
 
-  constructor(private dashboardService: DashboardService, public loginService : LoginService, private mediaObserver: MediaObserver)
-  {
+  totalStoreOrderRowCount: number = null;
+  totalStoreOrderPreparedDistinctRowCount: number = null;
+
+  constructor(private dashboardService: DashboardService, 
+    public loginService: LoginService, 
+    private mediaObserver: MediaObserver,
+    private whCheckerDashboardService: WhCheckerDashboardService) {
 
   }
 
-  ngOnInit()
-  {
+  ngOnInit() {
 
-        //responsive dashbaord
-        this.mediaObserver.asObservable().subscribe((media: MediaChange[]) =>
-        {
-          if (media.some(mediaChange => mediaChange.mqAlias == "lt-sm"))
-          {
-            this.dashboardGridCols = 1;
-            this.cardColspan = 1;
-          }
-          else if (media.some(mediaChange => mediaChange.mqAlias == "lt-md"))
-          {
-            this.dashboardGridCols = 2;
-            this.cardColspan = 2;
-          }
-          else
-          {
-            this.dashboardGridCols = 4;
-            this.cardColspan = 2;
-          }
-        });
-        //
+    //responsive dashbaord
+    this.mediaObserver.asObservable().subscribe((media: MediaChange[]) => {
+      if (media.some(mediaChange => mediaChange.mqAlias == "lt-sm")) {
+        this.dashboardGridCols = 1;
+        this.cardColspan = 1;
+      }
+      else if (media.some(mediaChange => mediaChange.mqAlias == "lt-md")) {
+        this.dashboardGridCols = 2;
+        this.cardColspan = 2;
+      }
+      else {
+        this.dashboardGridCols = 4;
+        this.cardColspan = 2;
+      }
+    });
+    //
 
-        
+
     //bookings
     // this.bookingsLoadingStarted = true;
     // this.dashboardService.getBookings().subscribe(
@@ -94,7 +96,7 @@ export class DashboardComponent implements OnInit
     //     this.bookingsLoadingStarted = false;
     //   }
     // );
-          
+
 
 
 
@@ -111,13 +113,7 @@ export class DashboardComponent implements OnInit
     this.loginService.detectIfAlreadyLoggedIn();
     this.Designation = "Team Leader";
     // this.Username = "Gerard Singian";
-    this.NoOfTeamMembers = 67;
-    this.TotalCostOfAllProjects = 240;
-    this.PendingTasks = 15;
-    this.UpComingProjects = 0.2;
-    this.ProjectCost = 2113507;
-    this.CurrentExpenditure = 96788;
-    this.AvailableFunds = 52536;
+
     this.ToDay = new Date();
 
     this.Clients = [
@@ -174,11 +170,13 @@ export class DashboardComponent implements OnInit
     this.DashboardPoSummaryCancelled();
     this.DashboardPoSummaryPartialReceiving();
     this.DashboardPoSummaryPartialReceivingRejectonWH();
+
+    this.DashboardStoreOrder();
+    this.DashboardDistinctPreparedStoreOrder();
     // this.IntervalPageforRefresh();
   }
 
-  IntervalPageforRefresh()
-  {
+  IntervalPageforRefresh() {
     // this.updateSubscription = interval(1000).subscribe(
     //   (val) => { this.DashboardPoSummary()
     // }
@@ -186,100 +184,123 @@ export class DashboardComponent implements OnInit
     // );
     //in 10 seconds do something
     interval(10000).subscribe(x => {
-    this.DashboardPoSummary();
-});
+      this.DashboardPoSummary();
+    });
 
   }
 
-  DashboardPoSummary()
-  {
+  DashboardPoSummary() {
     this.dashboardService.getAllProjects()
-    .subscribe(
-      (response: Project[]) =>
-      {
-        // debugger;
+      .subscribe(
+        (response: Project[]) => {
+          // debugger;
 
-        this.projects = response;
-       
-       
-        this.totalPoRowCount = response.length;
-      }
-    );
+          this.projects = response;
+
+
+          this.totalPoRowCount = response.length;
+        }
+      );
   }
-  
-  DashboardPoSummaryCancelled()
-  {
+
+  DashboardPoSummaryCancelled() {
     this.dashboardService.getAllProjectsCancelledTransaction()
-    .subscribe(
-      (response: Project[]) =>
-      {
-        // debugger;
+      .subscribe(
+        (response: Project[]) => {
+          // debugger;
 
-        this.projects = response;
-       
-       
-        this.totalPoRowCountCancelled = response.length;
-      }
-    );
+          this.projects = response;
+
+
+          this.totalPoRowCountCancelled = response.length;
+        }
+      );
   }
-   
-  DashboardPoSummaryPartialReceiving()
-  {
+
+  DashboardPoSummaryPartialReceiving() {
     this.dashboardService.getAllProjectsPartialPoService()
-    .subscribe(
-      (response: Project[]) =>
-      {
-        // debugger;
+      .subscribe(
+        (response: Project[]) => {
+          // debugger;
 
-        this.projects = response;
-       
-       
-        this.totalPoPartialReceiving = response.length;
-      }
-    );
+          this.projects = response;
+
+
+          this.totalPoPartialReceiving = response.length;
+        }
+      );
   }
 
 
-     
-  DashboardPoSummaryPartialReceivingRejectonWH()
-  {
+
+  DashboardPoSummaryPartialReceivingRejectonWH() {
     this.dashboardService.getAllProjectsPartialReceivingReject()
-    .subscribe(
-      (response: Project[]) =>
-      {
-        // debugger;
+      .subscribe(
+        (response: Project[]) => {
+          // debugger;
 
-        this.WhRejects = response;
-      
-       
-        this.totalPoPartialRejectatWH = response.length;
-      }
-    );
+          this.WhRejects = response;
+
+
+          this.totalPoPartialRejectatWH = response.length;
+        }
+      );
   }
 
 
-  onProjectChange($event)
-  {
-    if($event.target.innerHTML == "Project A")
-    {
+  
+  DashboardStoreOrder() {
+    this.whCheckerDashboardService.getStoreOrders()
+      .subscribe(
+        (response: DryWhStoreOrders[]) => {
+          // debugger;
+
+          this.WhStoreOrders = response;
+
+
+          this.totalStoreOrderRowCount = response.length;
+        }
+      );
+  }
+
+
+
+
+  DashboardDistinctPreparedStoreOrder() {
+    this.whCheckerDashboardService.getDistinctPreparedStoreOrders()
+      .subscribe(
+        (response: DryWhStoreOrders[]) => {
+          // debugger;
+
+          this.WhStoreOrders = response;
+
+
+          this.totalStoreOrderPreparedDistinctRowCount = response.length;
+        }
+      );
+  }
+
+
+
+  
+
+  onProjectChange($event) {
+    if ($event.target.innerHTML == "Project A") {
       this.ProjectCost = 2113507;
       this.CurrentExpenditure = 96788;
       this.AvailableFunds = 52436;
     }
-    else if($event.target.innerHTML == "Project B")
-    {
+    else if ($event.target.innerHTML == "Project B") {
       this.ProjectCost = 88923;
       this.CurrentExpenditure = 22450;
       this.AvailableFunds = 2640;
     }
-    else if($event.target.innerHTML == "Project C")
-    {
+    else if ($event.target.innerHTML == "Project C") {
       this.ProjectCost = 662183;
       this.CurrentExpenditure = 7721;
       this.AvailableFunds = 9811;
     }
-    else if($event.target.innerHTML == "Project D")
-    {
+    else if ($event.target.innerHTML == "Project D") {
       this.ProjectCost = 928431;
       this.CurrentExpenditure = 562;
       this.AvailableFunds = 883;

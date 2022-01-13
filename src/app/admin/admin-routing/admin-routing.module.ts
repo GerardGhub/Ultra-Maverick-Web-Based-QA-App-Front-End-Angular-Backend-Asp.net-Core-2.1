@@ -10,6 +10,7 @@ import { ProjectsPartialPoComponent } from '../components/projects-partial-po/pr
 import { ProjetPONearlyExpiryApprovalComponent } from '../components/projet-ponearly-expiry-approval/projet-ponearly-expiry-approval.component';
 import { TblNearlyExpiryMgmtComponent } from '../components/tbl-nearly-expiry-mgmt/tbl-nearly-expiry-mgmt.component';
 import { WhRejectionApprovalComponent } from '../components/wh-rejection-approval/wh-rejection-approval.component';
+// import { WhCheckerDashboardComponent } from '../components/wh-checker-dashboard/wh-checker-dashboard.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,9 @@ const routes: Routes = [
     { path: "masters/rmcancelandreturn", component: MastersComponent, data: { linkIndex: 11 } },
     { path: "whrejectionapproval", component: WhRejectionApprovalComponent, data: { linkIndex: 12 } },
   ]},
+
+  
+
 
 ];
 @NgModule({

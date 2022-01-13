@@ -70,14 +70,19 @@ $('#eyeball').show();
     this.loginService.Login(this.loginViewModel).subscribe(
       (response) =>
       {
-        if (this.loginService.currentUserRole == "Admin")
+        if (this.loginService.currentUserRoleSession == "Admin")
+        {
+          this.router.navigate(["/admin", "dashboard"]);
+          // this.WelcomeMessage();
+        }
+        else if (this.loginService.currentUserRoleSession == "WarehouseChecker")
         {
           this.router.navigate(["/admin", "dashboard"]);
           // this.WelcomeMessage();
         }
         else
         {
-          this.router.navigate(["/admin", "dashboard"]);
+          // this.router.navigate(["/admin", "dashboard"]);
           // this.WelcomeMessage();  this.router.navigate(["/employee", "tasks"]);
         }
       },

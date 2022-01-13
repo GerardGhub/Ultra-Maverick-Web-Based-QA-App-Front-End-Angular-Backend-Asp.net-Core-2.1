@@ -1505,7 +1505,8 @@ class LoginService {
         this.httpBackend = httpBackend;
         this.jwtHelperService = jwtHelperService;
         this.currentUserName = null;
-        this.currentUserRole = null;
+        this.currentUserRole = null; // Defective ind Backend Need to fix
+        //For Solution Earlier
         this.currentUserRoleSession = null;
     }
     Login(loginViewModel) {
@@ -4566,12 +4567,16 @@ class LoginComponent {
     }
     onLoginClick(event) {
         this.loginService.Login(this.loginViewModel).subscribe((response) => {
-            if (this.loginService.currentUserRole == "Admin") {
+            if (this.loginService.currentUserRoleSession == "Admin") {
+                this.router.navigate(["/admin", "dashboard"]);
+                // this.WelcomeMessage();
+            }
+            else if (this.loginService.currentUserRoleSession == "WarehouseChecker") {
                 this.router.navigate(["/admin", "dashboard"]);
                 // this.WelcomeMessage();
             }
             else {
-                this.router.navigate(["/admin", "dashboard"]);
+                // this.router.navigate(["/admin", "dashboard"]);
                 // this.WelcomeMessage();  this.router.navigate(["/employee", "tasks"]);
             }
         }, (error) => {
@@ -4730,7 +4735,7 @@ LoginComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵdefineCom
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("type", ctx.hide ? "password" : "text")("ngModel", ctx.loginViewModel.Password)("errorStateMatcher", ctx.customErrorStateMatcher);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtextInterpolate"](ctx.hide ? "visibility_off" : "visibility");
+        _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵtextInterpolate1"]("", ctx.hide ? "visibility_off" : "visibility", " ");
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵproperty"]("ngIf", ctx.getFormControl("password").hasError("required"));
         _angular_core__WEBPACK_IMPORTED_MODULE_5__["ɵɵadvance"](1);
@@ -5355,6 +5360,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { WhCheckerDashboardComponent } from './wh-checker-dashboard/wh-checker-dashboard.component';
+// import { WhCheckerDashboardComponent } from './warehouse-checker/wh-checker-dashboard/wh-checker-dashboard.component';
 // import { CancelledPOTransactionStatusComponent } from './admin/components/cancelled-potransaction-status/cancelled-potransaction-status.component';
 // import { RejectedStatusComponent } from './admin/components/rejected-status/rejected-status.component';
 class AppModule {
