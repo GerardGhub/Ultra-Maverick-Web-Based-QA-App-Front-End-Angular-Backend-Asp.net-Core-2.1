@@ -23,6 +23,8 @@ export class StoreOrderComponent implements OnInit {
      storeOrders: DryWhStoreOrders[] = [];
      showLoading: boolean = true;
    
+     totalStoreOrderRowCount: number = null;
+
      //Objects for Delete
      deleteRejectStatus: RejectedStatus = new RejectedStatus();
      editIndex: number = null;
@@ -64,6 +66,7 @@ export class StoreOrderComponent implements OnInit {
             this.storeOrders = response;
             this.showLoading = false;
             this.calculateNoOfPages();
+            this.totalStoreOrderRowCount = response.length;
           }
   
       

@@ -119,6 +119,18 @@
                 <div class="v-align-middle">{{loginService.currentUserRoleSession | uppercase}}</div>
               </div>
               <mat-divider></mat-divider>
+     
+              <!-- Warehouse Checker -->
+              <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
+                <mat-nav-list class="sidebar-navlist">
+                  <a class="system-name" [routerLink]="[  '/admin', 'dashboard'  ]" mat-list-item routerLinkActive="link-active">
+                    <mat-icon>dashboard_customize</mat-icon>
+                    &nbsp;Dashboard
+                
+                </a>
+                </mat-nav-list>
+                </ng-container>
+
               <!-- ADMIN -->
               <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'">
                 <mat-nav-list class="sidebar-navlist">
@@ -140,14 +152,7 @@
                     <mat-icon>inventory_2</mat-icon>&nbsp;WH Receiving
                       <mat-icon class="zerobadge{{totalPoPartialReceiving | number}}" matBadge="{{totalPoPartialReceiving | number}}" matBadgeColor="warn"></mat-icon>
                   </a>
-                  <!-- <a [routerLink]=" [ '/admin', 'projectsnearlyxpiryapproval' ] " class="system-name"  mat-list-item routerLinkActive="link-active">
-                    <mat-icon>event_busy</mat-icon>&nbsp;Nearly Expiry Approval
-                      <mat-icon class="zerobadge{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadge="{{totalPoPartialReceivingNearlyExpiryApproval | number}}" matBadgeColor="warn"></mat-icon>
-                </a>
-                <a [routerLink]=" [ '/admin', 'whrejectionapproval' ] " class="system-name"  mat-list-item routerLinkActive="link-active">
-                  <mat-icon>event_busy</mat-icon>&nbsp;Rejection Approval
-                    <mat-icon class="zerobadge{{totalPoPartialRejectatWH | number}}" matBadge="{{totalPoPartialRejectatWH | number}}" matBadgeColor="warn"></mat-icon>
-              </a> -->
+              
        
               <a class="system-name"  mat-list-item routerLinkActive="link-active" #menuTrigger="matMenuTrigger"  [matMenuTriggerFor]="menu1">
                 <mat-icon>check_box</mat-icon>&nbsp;Approval

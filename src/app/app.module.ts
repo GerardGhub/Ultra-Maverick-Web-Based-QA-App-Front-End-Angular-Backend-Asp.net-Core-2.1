@@ -34,6 +34,7 @@ import { TblNearlyExpiryMgmtComponent } from './admin/components/tbl-nearly-expi
 import { ProjetPONearlyExpiryApprovalComponent } from './admin/components/projet-ponearly-expiry-approval/projet-ponearly-expiry-approval.component';
 import { AspNetRolesComponent } from './admin/components/asp-net-roles/asp-net-roles.component';
 import { WhRejectionApprovalComponent } from './admin/components/wh-rejection-approval/wh-rejection-approval.component';
+import { PreparedStoreOrderComponent } from './admin/components/prepared-store-order/prepared-store-order.component';
 // import { StoreOrderComponent } from './store-order/store-order.component';
 // import { WhCheckerDashboardComponent } from './wh-checker-dashboard/wh-checker-dashboard.component';
 // import { WhCheckerDashboardComponent } from './warehouse-checker/wh-checker-dashboard/wh-checker-dashboard.component';
@@ -58,6 +59,7 @@ import { WhRejectionApprovalComponent } from './admin/components/wh-rejection-ap
     ProjetPONearlyExpiryApprovalComponent,
     AspNetRolesComponent,
     WhRejectionApprovalComponent,
+    PreparedStoreOrderComponent,
     // StoreOrderComponent,
     // WhCheckerDashboardComponent,
     // WhCheckerDashboardComponent,

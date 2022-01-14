@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MvcTaskManager.Identity;
 using MvcTaskManager.Models;
+using MvcTaskManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,6 +53,50 @@ namespace MvcTaskManager.Controllers
 
     
     }
+
+    [HttpGet]
+    [Route("api/store_orders/search/{searchby}/{searchtext}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult Search(string searchBy, string searchText)
+    {
+
+      string ProjectIsActivated = "1";
+      List<DryWhOrder> DryWhOrders = null;
+      if (searchBy == "is_approved_prepa_date")
+        DryWhOrders = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date.ToString().Contains(searchText)).ToList();
+      else if (searchBy == "All_Data")
+        DryWhOrders = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date.Contains(searchText) && temp.is_active.Contains(ProjectIsActivated)).ToList();
+   
+      List<DryWhOrderViewModel> dryWhStoreOrderViewModel = new List<DryWhOrderViewModel>();
+      foreach (var DryWhOrder in DryWhOrders)
+      {
+        dryWhStoreOrderViewModel.Add(new DryWhOrderViewModel()
+        {
+          //ProjectID = project.ProjectID, Actual_remaining_receiving = project.Actual_remaining_receiving, Po_number = project.Po_number, ProjectName = project.ProjectName, TeamSize = project.TeamSize, DateOfStart = project.DateOfStart.ToString("dd/MM/yyyy"), Active = project.Active, ClientLocation = project.ClientLocation, ClientLocationID = project.ClientLocationID, Status = project.Status
+
+
+          Primary_id = DryWhOrder.primary_id,
+          Is_approved_prepa_date = DryWhOrder.is_approved_prepa_date,
+        
+
+
+     
+       
+
+
+        });
+      }
+
+      return Ok(dryWhStoreOrderViewModel);
+    }
+
+
+
+
+
+
+
+
 
 
   }

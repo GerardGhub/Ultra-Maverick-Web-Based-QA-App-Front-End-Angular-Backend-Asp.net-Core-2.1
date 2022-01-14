@@ -23,5 +23,10 @@ export class WhCheckerDashboardService {
      return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_checklist_distinct", { responseType: "json" });
    }
 
+   SearchPreparedItems(searchBy: string, searchText: string): Observable<DryWhStoreOrders[]>
+   {
+     return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText, { responseType: "json" });
+   }
+
 
 }

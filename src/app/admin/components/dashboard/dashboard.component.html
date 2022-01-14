@@ -87,12 +87,12 @@
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-        <div class="dashboard-tile-heading">Prepared Orders</div>
+        <div [routerLink]=" [ '/admin', 'wh-prepared-store-order' ] " class="dashboard-tile-heading">Prepared Orders</div>
         <div class="dashboard-tile-sub-heading">{{totalStoreOrderPreparedDistinctRowCount | number}}</div>
       </div>
     </ng-container>
 
-
+    
   </mat-grid-tile>
   <!-- tile 2 ends -->
 

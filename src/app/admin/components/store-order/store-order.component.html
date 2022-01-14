@@ -2,10 +2,10 @@
     <!-- Reject Status -->
     <i class="fa fa-circle-o-notch fa-spin" style="font-size:24px" *ngIf="showLoading"></i>
 </h5>
-<div class="justify-content-center mb-4">
+<div class="col-xl-8 col-lg-9 mx-auto mb-4">
     <mat-card>
         <p class="system-name">STORE ORDER
-            <mat-icon matBadge="{{0 | number}}" matBadgeColor="primary"></mat-icon>
+            <mat-icon matBadge="{{totalStoreOrderRowCount | number}}" matBadgeColor="primary"></mat-icon>
         </p>
 
     </mat-card>
@@ -14,9 +14,8 @@
 <div class="row">
 
     <div class="col-xl-12">
-
+  
         <div class="form-group row">
-
 
 
             <label for="drpSearchBy" class="col-form-label col-md-6 col-lg-2 offset-xl-1 col-xl-2 text-right">Search
@@ -24,7 +23,11 @@
 
             <div class="col-md-6 col-lg-4 col-xl-3">
                 <select class="form-control" id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy">
-                    <option value="reject_status_name">Status Name</option>ng
+                    <option value="is_approved_prepa_date">Preparation Date</option>ng
+                    <option value="category">Category</option>ng
+                    <option value="store_name">Store</option>ng
+                    <option value="route">Route</option>ng
+                    <option value="area">Area</option>ng
                 </select>
             </div>
 
@@ -36,6 +39,7 @@
                         [(ngModel)]="searchText" (keyup)="onSearchTextChange($event)">
                 </div>
             </div>
+     
         </div>
     </div>
 
@@ -43,7 +47,8 @@
     <div class="col-xl-12">
         <div class="row">
             <div class="col-xl-8 col-lg-9 mx-auto">
-                <table class="table table-striped table-bordered nowrap table-responsive-xl" style="width:100%">
+                <mat-card>
+                <table class="table table-striped table-bordered nowrap table-responsive-xl">
                     <tr class="text-light header-bg-color-um system-name">
                         <th>
                             Preparation Date
@@ -57,6 +62,10 @@
                             <i class="fa fa-sort-down hand-icon text-primary"
                                 *ngIf="sortBy == 'reject_status_name' && sortOrder == 'DESC' "
                                 (click)="sortOrder = 'ASC' "></i>
+                        </th>
+                        <th>
+                            Category
+
                         </th>
                         <th>
                             Store
@@ -77,12 +86,14 @@
                     <tr
                         *ngFor="let storeOrder of storeOrders | filter: searchBy : searchText | sort : sortBy : sortOrder | paging : currentPageIndex : pageSize; let i = index">
                         <td>{{storeOrder.is_approved_prepa_date}}</td>
+                        <td>{{storeOrder.category}}</td>
                         <td>{{storeOrder.store_name}}</td>
                         <td>{{storeOrder.route}}</td>
                         <td>{{storeOrder.area}}</td>
-                    
+
                     </tr>
                 </table>
+            </mat-card>
             </div>
         </div>
     </div>
@@ -90,7 +101,8 @@
     <div class="col-12">
         <ul class="pagination justify-content-center mt-1">
             <li class="page-item" (click)="onPageIndexClicked(currentPageIndex - 1)">
-                <a mat-stroked-button color="primary" class="mr-1" href="#" onclick="return false">Prev</a>
+                <a mat-stroked-button color="primary" class="mr-1 font-color-black" href="#"
+                    onclick="return false">Prev</a>
             </li>
 
             <ng-container *ngIf="pages.length <= 10">
@@ -131,9 +143,11 @@
             </ng-container>
 
             <li class="page-item" (click)="onPageIndexClicked(currentPageIndex + 1)">
-                <a mat-stroked-button color="primary" class="ml-1" href="#" onclick="return false">Next</a>
+                <a mat-stroked-button color="primary" class="ml-1 font-color-black" href="#"
+                    onclick="return false">Nexts</a>
             </li>
         </ul>
+   
     </div>
 
 </div>

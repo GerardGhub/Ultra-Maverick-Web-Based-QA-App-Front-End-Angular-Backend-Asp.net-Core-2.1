@@ -183,8 +183,8 @@ export class ProjectsComponent implements OnInit {
 
 
 
-  jqueryClearanceTextBox()
-   {
+  jqueryClearanceTextBox() 
+  {
     $("rejectRow1").val("");
     $("rejectRow2").val("");
     $("rejectRow3").val("");
@@ -661,7 +661,7 @@ export class ProjectsComponent implements OnInit {
       this.editProject.qty_order = this.projects[index].qty_order;
       this.editProject.qty_uom = this.projects[index].qty_uom;
       this.editProject.is_activated = this.Activator;
-      
+
       this.editProject.unit_price = this.projects[index].unit_price;
       // this.editProject.mfg_date = this.projects[index].mfg_date;
       // this.editProject.expiration_date = this.projects[index].expiration_date;
@@ -865,12 +865,12 @@ export class ProjectsComponent implements OnInit {
     var adlength = $('#actual_delivery_output').val().length;
     $('#characters').text(adlength);
 
- 
+
     if (aplenght > adlength) {
 
       ///This is the minimun qty set pin for 10, 100, 999
       if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
- 
+
 
 
       }
@@ -881,7 +881,7 @@ export class ProjectsComponent implements OnInit {
         $('#actual_delivery_output').val("");  ///LLL
         return;
 
-   
+
 
       }
 
@@ -1005,7 +1005,7 @@ export class ProjectsComponent implements OnInit {
         else {
           //Addition of  60 === 60 tickett
           if (Difference_In_Days == ExpiryDaysActivated) {
-          
+
             Swal.fire({
               title: 'Are you sure you want to received the item expiry  ' + Difference_In_Days + ' Days?',
               text: ItemDesc,
@@ -1853,189 +1853,189 @@ export class ProjectsComponent implements OnInit {
     this.remarksSectionC1.nativeElement.disabled = false;
     this.remarksSectionC1.nativeElement.style.backgroundColor = '#FFFFFF';
   }
-    //Break Line
-    ComplianceSectionC2() {
-      this.editProject.b_remarks_tres = " ";
-      this.remarksSectionC2.nativeElement.disabled = true;
-      this.remarksSectionC2.nativeElement.style.backgroundColor = '#E0E0E0';
-    }
-  
-    NoneComplianceSectionC2() {
-      this.editProject.b_remarks_tres = "";
-      this.remarksSectionC2.nativeElement.disabled = false;
-      this.remarksSectionC2.nativeElement.style.backgroundColor = '#FFFFFF';
-    }
+  //Break Line
+  ComplianceSectionC2() {
+    this.editProject.b_remarks_tres = " ";
+    this.remarksSectionC2.nativeElement.disabled = true;
+    this.remarksSectionC2.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
 
-      //Break Line
-      ComplianceSectionC3() {
-      this.editProject.c_remarks_tres = " ";
-      this.remarksSectionC3.nativeElement.disabled = true;
-      this.remarksSectionC3.nativeElement.style.backgroundColor = '#E0E0E0';
-      }
+  NoneComplianceSectionC2() {
+    this.editProject.b_remarks_tres = "";
+    this.remarksSectionC2.nativeElement.disabled = false;
+    this.remarksSectionC2.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
 
-      NoneComplianceSectionC3() {
-      this.editProject.c_remarks_tres = "";
-      this.remarksSectionC3.nativeElement.disabled = false;
-      this.remarksSectionC3.nativeElement.style.backgroundColor = '#FFFFFF';
-      }
-      //Break Line
-      ComplianceSectionC4() {
-      this.editProject.d_remarks_tres = " ";
-      this.remarksSectionC4.nativeElement.disabled = true;
-      this.remarksSectionC4.nativeElement.style.backgroundColor = '#E0E0E0';
-      }
+  //Break Line
+  ComplianceSectionC3() {
+    this.editProject.c_remarks_tres = " ";
+    this.remarksSectionC3.nativeElement.disabled = true;
+    this.remarksSectionC3.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
 
-      NoneComplianceSectionC4() {
-      this.editProject.d_remarks_tres = "";
-      this.remarksSectionC4.nativeElement.disabled = false;
-      this.remarksSectionC4.nativeElement.style.backgroundColor = '#FFFFFF';
-      }
-      //Break Line for Part 4
-        //Break Line
-      ComplianceSectionD1() {
-      this.editProject.a_remarks_kwatro = " ";
-      this.remarksSectionD1.nativeElement.disabled = true;
-      this.remarksSectionD1.nativeElement.style.backgroundColor = '#E0E0E0';
-      }
+  NoneComplianceSectionC3() {
+    this.editProject.c_remarks_tres = "";
+    this.remarksSectionC3.nativeElement.disabled = false;
+    this.remarksSectionC3.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionC4() {
+    this.editProject.d_remarks_tres = " ";
+    this.remarksSectionC4.nativeElement.disabled = true;
+    this.remarksSectionC4.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
 
-      NoneComplianceSectionD1() {
-      this.editProject.a_remarks_kwatro = "";
-      this.remarksSectionD1.nativeElement.disabled = false;
-      this.remarksSectionD1.nativeElement.style.backgroundColor = '#FFFFFF';
-      }
-      //Break Line
-      ComplianceSectionD2() {
-      this.editProject.b_remarks_kwatro = " ";
-      this.remarksSectionD2.nativeElement.disabled = true;
-      this.remarksSectionD2.nativeElement.style.backgroundColor = '#E0E0E0';
-      }
+  NoneComplianceSectionC4() {
+    this.editProject.d_remarks_tres = "";
+    this.remarksSectionC4.nativeElement.disabled = false;
+    this.remarksSectionC4.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line for Part 4
+  //Break Line
+  ComplianceSectionD1() {
+    this.editProject.a_remarks_kwatro = " ";
+    this.remarksSectionD1.nativeElement.disabled = true;
+    this.remarksSectionD1.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
 
-      NoneComplianceSectionD2() {
-      this.editProject.b_remarks_kwatro = "";
-      this.remarksSectionD2.nativeElement.disabled = false;
-      this.remarksSectionD2.nativeElement.style.backgroundColor = '#FFFFFF';
-      }
-      //Break Line
-      ComplianceSectionD3() {
-        this.editProject.c_remarks_kwatro = " ";
-        this.remarksSectionD3.nativeElement.disabled = true;
-        this.remarksSectionD3.nativeElement.style.backgroundColor = '#E0E0E0';
-        }
-  
-        NoneComplianceSectionD3() {
-        this.editProject.c_remarks_kwatro = "";
-        this.remarksSectionD3.nativeElement.disabled = false;
-        this.remarksSectionD3.nativeElement.style.backgroundColor = '#FFFFFF';
-        }
-          //Break Line
-      ComplianceSectionD4() {
-        this.editProject.d_remarks_kwatro = " ";
-        this.remarksSectionD4.nativeElement.disabled = true;
-        this.remarksSectionD4.nativeElement.style.backgroundColor = '#E0E0E0';
-        }
-  
-        NoneComplianceSectionD4() {
-        this.editProject.d_remarks_kwatro = "";
-        this.remarksSectionD4.nativeElement.disabled = false;
-        this.remarksSectionD4.nativeElement.style.backgroundColor = '#FFFFFF';
-        }
-        //Final BreakLine
-        ComplianceSectionE1() {
-          this.editProject.a_remarks_singko = " ";
-          this.remarksSectionE1.nativeElement.disabled = true;
-          this.remarksSectionE1.nativeElement.style.backgroundColor = '#E0E0E0';
-          }
-    
-          NoneComplianceSectionE1() {
-          this.editProject.a_remarks_singko = "";
-          this.remarksSectionE1.nativeElement.disabled = false;
-          this.remarksSectionE1.nativeElement.style.backgroundColor = '#FFFFFF';
-          }
-          //Break 2
-          ComplianceSectionE2() {
-            this.editProject.b_remarks_singko = " ";
-            this.remarksSectionE2.nativeElement.disabled = true;
-            this.remarksSectionE2.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE2() {
-            this.editProject.b_remarks_singko = "";
-            this.remarksSectionE2.nativeElement.disabled = false;
-            this.remarksSectionE2.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
-             //Break 3
-          ComplianceSectionE3() {
-            this.editProject.c_remarks_singko = " ";
-            this.remarksSectionE3.nativeElement.disabled = true;
-            this.remarksSectionE3.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE3() {
-            this.editProject.c_remarks_singko = "";
-            this.remarksSectionE3.nativeElement.disabled = false;
-            this.remarksSectionE3.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
-            //Break 4
-          ComplianceSectionE4() {
-            this.editProject.d_remarks_singko = " ";
-            this.remarksSectionE4.nativeElement.disabled = true;
-            this.remarksSectionE4.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE4() {
-            this.editProject.d_remarks_singko = "";
-            this.remarksSectionE4.nativeElement.disabled = false;
-            this.remarksSectionE4.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
-           //Break 5
-          ComplianceSectionE5() {
-            this.editProject.e_remarks_singko = " ";
-            this.remarksSectionE5.nativeElement.disabled = true;
-            this.remarksSectionE5.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE5() {
-            this.editProject.e_remarks_singko = "";
-            this.remarksSectionE5.nativeElement.disabled = false;
-            this.remarksSectionE5.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
+  NoneComplianceSectionD1() {
+    this.editProject.a_remarks_kwatro = "";
+    this.remarksSectionD1.nativeElement.disabled = false;
+    this.remarksSectionD1.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionD2() {
+    this.editProject.b_remarks_kwatro = " ";
+    this.remarksSectionD2.nativeElement.disabled = true;
+    this.remarksSectionD2.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
 
-           //Break 6
-          ComplianceSectionE6() {
-            this.editProject.f_remarks_singko = " ";
-            this.remarksSectionE6.nativeElement.disabled = true;
-            this.remarksSectionE6.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE6() {
-            this.editProject.f_remarks_singko = "";
-            this.remarksSectionE6.nativeElement.disabled = false;
-            this.remarksSectionE6.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
-                //Break 7
-          ComplianceSectionE7() {
-            this.editProject.g_remarks_singko = " ";
-            this.remarksSectionE7.nativeElement.disabled = true;
-            this.remarksSectionE7.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE7() {
-            this.editProject.g_remarks_singko = "";
-            this.remarksSectionE7.nativeElement.disabled = false;
-            this.remarksSectionE7.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
-                            //Break 7
-          ComplianceSectionE8() {
-            this.editProject.h_remarks_singko = " ";
-            this.remarksSectionE8.nativeElement.disabled = true;
-            this.remarksSectionE8.nativeElement.style.backgroundColor = '#E0E0E0';
-            }
-      
-            NoneComplianceSectionE8() {
-            this.editProject.h_remarks_singko = "";
-            this.remarksSectionE8.nativeElement.disabled = false;
-            this.remarksSectionE8.nativeElement.style.backgroundColor = '#FFFFFF';
-            }
+  NoneComplianceSectionD2() {
+    this.editProject.b_remarks_kwatro = "";
+    this.remarksSectionD2.nativeElement.disabled = false;
+    this.remarksSectionD2.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionD3() {
+    this.editProject.c_remarks_kwatro = " ";
+    this.remarksSectionD3.nativeElement.disabled = true;
+    this.remarksSectionD3.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionD3() {
+    this.editProject.c_remarks_kwatro = "";
+    this.remarksSectionD3.nativeElement.disabled = false;
+    this.remarksSectionD3.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break Line
+  ComplianceSectionD4() {
+    this.editProject.d_remarks_kwatro = " ";
+    this.remarksSectionD4.nativeElement.disabled = true;
+    this.remarksSectionD4.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionD4() {
+    this.editProject.d_remarks_kwatro = "";
+    this.remarksSectionD4.nativeElement.disabled = false;
+    this.remarksSectionD4.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Final BreakLine
+  ComplianceSectionE1() {
+    this.editProject.a_remarks_singko = " ";
+    this.remarksSectionE1.nativeElement.disabled = true;
+    this.remarksSectionE1.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE1() {
+    this.editProject.a_remarks_singko = "";
+    this.remarksSectionE1.nativeElement.disabled = false;
+    this.remarksSectionE1.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break 2
+  ComplianceSectionE2() {
+    this.editProject.b_remarks_singko = " ";
+    this.remarksSectionE2.nativeElement.disabled = true;
+    this.remarksSectionE2.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE2() {
+    this.editProject.b_remarks_singko = "";
+    this.remarksSectionE2.nativeElement.disabled = false;
+    this.remarksSectionE2.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break 3
+  ComplianceSectionE3() {
+    this.editProject.c_remarks_singko = " ";
+    this.remarksSectionE3.nativeElement.disabled = true;
+    this.remarksSectionE3.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE3() {
+    this.editProject.c_remarks_singko = "";
+    this.remarksSectionE3.nativeElement.disabled = false;
+    this.remarksSectionE3.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break 4
+  ComplianceSectionE4() {
+    this.editProject.d_remarks_singko = " ";
+    this.remarksSectionE4.nativeElement.disabled = true;
+    this.remarksSectionE4.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE4() {
+    this.editProject.d_remarks_singko = "";
+    this.remarksSectionE4.nativeElement.disabled = false;
+    this.remarksSectionE4.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break 5
+  ComplianceSectionE5() {
+    this.editProject.e_remarks_singko = " ";
+    this.remarksSectionE5.nativeElement.disabled = true;
+    this.remarksSectionE5.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE5() {
+    this.editProject.e_remarks_singko = "";
+    this.remarksSectionE5.nativeElement.disabled = false;
+    this.remarksSectionE5.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+
+  //Break 6
+  ComplianceSectionE6() {
+    this.editProject.f_remarks_singko = " ";
+    this.remarksSectionE6.nativeElement.disabled = true;
+    this.remarksSectionE6.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE6() {
+    this.editProject.f_remarks_singko = "";
+    this.remarksSectionE6.nativeElement.disabled = false;
+    this.remarksSectionE6.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break 7
+  ComplianceSectionE7() {
+    this.editProject.g_remarks_singko = " ";
+    this.remarksSectionE7.nativeElement.disabled = true;
+    this.remarksSectionE7.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE7() {
+    this.editProject.g_remarks_singko = "";
+    this.remarksSectionE7.nativeElement.disabled = false;
+    this.remarksSectionE7.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
+  //Break 7
+  ComplianceSectionE8() {
+    this.editProject.h_remarks_singko = " ";
+    this.remarksSectionE8.nativeElement.disabled = true;
+    this.remarksSectionE8.nativeElement.style.backgroundColor = '#E0E0E0';
+  }
+
+  NoneComplianceSectionE8() {
+    this.editProject.h_remarks_singko = "";
+    this.remarksSectionE8.nativeElement.disabled = false;
+    this.remarksSectionE8.nativeElement.style.backgroundColor = '#FFFFFF';
+  }
 
   //Singian Clan
   onDeleteClick(event, index: number) {
@@ -2190,16 +2190,7 @@ export class ProjectsComponent implements OnInit {
     var Item = this.ItemDescription.nativeElement.value;
     var PoNumero = this.PONumber.nativeElement.value;
 
-    // if($("#SelectedReason").length === 0)
-    // {
-    // alert("Showy a");
-    // return;
-    // }
-    // else
-    // {
-    // alert("MEaning");
-    // return;
-    // }
+   
 
     if ($("#ActivePartialReceiving").is(":visible")) {
       // alert("1");
@@ -2212,22 +2203,7 @@ export class ProjectsComponent implements OnInit {
     }
 
 
-    // var PartialReceiving = this.ActivePartialReceiving.nativeElement.value;
-
-    // if (PartialReceiving !== null) 
-    // {
-
-    // }
-    // else
-    // {
-    //   PartialReceiving = this.Deactivator;
-    // }
-
-    // if (this.ActivePartialReceiving.nativeElement.value == this.Deactivator) 
-    // {
-    //   alert("Baba");
-    //   return;
-    // }
+    
 
     Swal.fire({
       title: 'Are you sure you want to cancel the PO Number ' + PoNumero + '?',
@@ -2435,7 +2411,7 @@ export class ProjectsComponent implements OnInit {
       this.editProject.canceled_by = this.activeUser;
       this.editProject.received_by_QA = this.projects[index].received_by_QA;
       this.editProject.unit_price = this.projects[index].unit_price;
-      
+
 
       this.editProject.status_of_reject_one = this.projects[index].status_of_reject_one;
       this.editProject.status_of_reject_two = this.projects[index].status_of_reject_two;
@@ -2856,26 +2832,7 @@ export class ProjectsComponent implements OnInit {
       this.currentPageIndex = pageIndex;
     }
   }
-  //Start of Looping in Rejected Items
-
-  // onAddSkill()
-  // {
-  //   var formGroup = new FormGroup({
-  //     skillName: new FormControl(null, [Validators.required]),
-  //     skillLevel: new FormControl(null, [Validators.required])
-  //   });
-
-  //   (<FormArray>this.signUpForm.get("skills")).push(formGroup);
-  // }
-
-  // onRemoveClick(index: number)
-  // {
-  //   (<FormArray>this.signUpForm.get("skills")).removeAt(index);
-  // }
-
-  // getControls() {
-  //   return (this.signUpForm.get('skills') as FormArray).controls;
-  // }
+  
 
   onAddAdditionalRejectRow(event: any) {
 
@@ -3192,6 +3149,8 @@ export class ProjectsComponent implements OnInit {
 
   }
 
+
+
   ActualDeliveryComputation(event: any) {
     // Allowable Percentage Computation
     var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
@@ -3214,16 +3173,15 @@ export class ProjectsComponent implements OnInit {
 
     if (aplenght > adlength) {
       //Do Something programmble
-      if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) 
-      {
+      if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
         // alert($('#Allowable_Percentage_id').val());
 
 
       }
       else {
-     
+
         this.AllowablePercentageExceed();
-     
+
         $('#actual_delivery_output').val("");
       }
 
@@ -3236,7 +3194,7 @@ export class ProjectsComponent implements OnInit {
       else {
         // alert("Error 2");
         this.AllowablePercentageExceed();
-    
+
         $('#actual_delivery_output').val("");
       }
 
