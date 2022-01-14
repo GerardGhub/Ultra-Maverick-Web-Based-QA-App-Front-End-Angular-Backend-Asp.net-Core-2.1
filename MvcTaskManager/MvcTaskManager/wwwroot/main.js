@@ -5360,6 +5360,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+// import { StoreOrderComponent } from './store-order/store-order.component';
 // import { WhCheckerDashboardComponent } from './wh-checker-dashboard/wh-checker-dashboard.component';
 // import { WhCheckerDashboardComponent } from './warehouse-checker/wh-checker-dashboard/wh-checker-dashboard.component';
 // import { CancelledPOTransactionStatusComponent } from './admin/components/cancelled-potransaction-status/cancelled-potransaction-status.component';

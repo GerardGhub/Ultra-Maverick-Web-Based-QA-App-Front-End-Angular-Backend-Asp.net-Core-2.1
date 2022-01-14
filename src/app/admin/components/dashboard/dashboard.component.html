@@ -32,13 +32,15 @@
       </div>
     </ng-container>
 
-    <!-- Warehouse Checker -->
+    <!-- Warehouse Checker --->
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
-      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-        <div class="dashboard-tile-heading">Store Order</div>
-        <div class="dashboard-tile-sub-heading">{{ totalStoreOrderRowCount | number}}</div>
-      </div>
+      
+        <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+          <div [routerLink]=" [ '/admin', 'whstoreorder' ] " class="dashboard-tile-heading">Store Orders</div>
+          <div class="dashboard-tile-sub-heading">{{ totalStoreOrderRowCount | number}}</div>
+        </div>
+      
     </ng-container>
 
 
@@ -110,8 +112,8 @@
       </div>
     </ng-container>
 
-     <!-- QCSupervisor -->
-     <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QCSupervisor'">
+    <!-- QCSupervisor -->
+    <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QCSupervisor'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
         <div class="dashboard-tile-heading">Raw Material Rejected</div>
         <div class="dashboard-tile-sub-heading">{{totalPoPartialRejectatWH | number}}</div>
@@ -119,17 +121,18 @@
     </ng-container>
 
 
-     <!-- QC Staff -->
-     <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QC Staff'">
+    <!-- QC Staff -->
+    <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QC Staff'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
         <div class="dashboard-tile-heading">Raw Material Rejected</div>
         <div class="dashboard-tile-sub-heading">{{totalPoPartialRejectatWH | number}}</div>
       </div>
     </ng-container>
 
-    
+
     <!-- Warehouse Checker -->
-    <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
+    <ng-container
+      *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
         <div class="dashboard-tile-heading">Dispatching Record</div>
         <div class="dashboard-tile-sub-heading">{{totalPoPartialRejectatWH | number}}</div>
@@ -147,17 +150,40 @@
       <mat-icon>cancel_schedule_send</mat-icon>
     </div>
 
-        <!-- Admin -->
-        <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'">
-    <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-      <div class="dashboard-tile-heading">Cancelled PO</div>
-      <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
-    </div>
+    <!-- Admin -->
+    <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'">
+      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div class="dashboard-tile-heading">Cancelled PO</div>
+        <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
+      </div>
     </ng-container>
 
 
+    <!-- QC Staff -->
+    <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QC Staff'">
+      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div class="dashboard-tile-heading">Cancelled PO</div>
+        <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
+      </div>
+    </ng-container>
 
-    
+    <!-- QCSupervisor -->
+    <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'QCSupervisor'">
+      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div class="dashboard-tile-heading">Cancelled PO</div>
+        <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
+      </div>
+    </ng-container>
+
+    <!-- WarehouseChecker -->
+    <ng-container
+      *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
+      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div class="dashboard-tile-heading">Cancelled Transaction</div>
+        <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
+      </div>
+    </ng-container>
+
   </mat-grid-tile>
   <!-- tile 4 ends -->
 

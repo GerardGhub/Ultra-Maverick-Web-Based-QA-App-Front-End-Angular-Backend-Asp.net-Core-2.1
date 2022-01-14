@@ -14,13 +14,13 @@ import { ClientLocationsComponent } from './components/client-locations/client-l
 import { TaskStatusComponent } from './components/task-status/task-status.component';
 import { MastersComponent } from './components/masters/masters.component';
 import { TaskPrioritiesComponent } from './components/task-priorities/task-priorities.component';
-import { ComponentLoaderDirective } from '../directives/component-loader.directive';
 import { MaterialModule } from '../material/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ChartModule } from 'angular-highcharts';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RejectedStatusComponent } from './components/rejected-status/rejected-status.component';
 import { CancelledPOTransactionStatusComponent } from './components/cancelled-potransaction-status/cancelled-potransaction-status.component';
+import { StoreOrderComponent } from './components/store-order/store-order.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,8 @@ import { CancelledPOTransactionStatusComponent } from './components/cancelled-po
     TaskStatusComponent,
     MastersComponent,
     RejectedStatusComponent,
-    CancelledPOTransactionStatusComponent
+    CancelledPOTransactionStatusComponent,
+    StoreOrderComponent
 
   
 
@@ -49,6 +50,10 @@ import { CancelledPOTransactionStatusComponent } from './components/cancelled-po
     ClientLocationsComponent,
     TaskPrioritiesComponent,
     TaskStatusComponent,
-  RejectedStatusComponent, CancelledPOTransactionStatusComponent]
+  RejectedStatusComponent,
+   CancelledPOTransactionStatusComponent,
+  StoreOrderComponent]
 })
 export class AdminModule { }
+
+

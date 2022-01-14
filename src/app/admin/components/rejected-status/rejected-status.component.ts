@@ -5,8 +5,6 @@ import { FilterPipe } from 'src/app/pipes/filter.pipe';
 import { RejectedStatusService } from 'src/app/services/rejected-status.service';
 import * as $ from "jquery";
 import { Observable } from 'rxjs';
-import { ClientLocation } from 'src/app/models/client-location';
-import { ClientLocationsService } from 'src/app/services/client-locations.service';
 import { SystemCapabilityStatusService } from 'src/app/services/system-capability-status.service';
 import { SystemCapabilityStatus } from 'src/app/models/system-capability-status';
 import Swal from 'sweetalert2';
