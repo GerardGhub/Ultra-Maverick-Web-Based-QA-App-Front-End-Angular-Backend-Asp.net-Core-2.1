@@ -22,6 +22,7 @@ namespace MvcTaskManager.Models
     public string is_approved { get; set; }
     public string is_prepared { get; set; }
     public string force_prepared_status { get; set; }
+    public string fox { get; set; }
 
   }
 }

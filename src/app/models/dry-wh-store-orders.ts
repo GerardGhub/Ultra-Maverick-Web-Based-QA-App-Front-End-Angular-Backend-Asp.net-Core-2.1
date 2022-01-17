@@ -13,6 +13,7 @@ export class DryWhStoreOrders {
     is_approved:string;
     is_prepared:string;
     force_prepared_status: string;
+    fox: number;
 
     constructor()
     {
@@ -27,6 +28,7 @@ export class DryWhStoreOrders {
         this.is_approved = null;
         this.is_prepared = null;
         this.force_prepared_status = null;
+        this.fox = null;
     }
 
 }

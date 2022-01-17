@@ -24,6 +24,8 @@ import Swal from 'sweetalert2';
 import { DryWhStoreOrders } from 'src/app/models/dry-wh-store-orders';
 import { WhCheckerDashboardService } from 'src/app/services/wh-checker-dashboard.service';
 import { Alert } from 'selenium-webdriver';
+import { TblDryPartialReceivingRejection } from 'src/app/models/tbl-dry-partial-receiving-rejection';
+import { TblDryPartialReceivingRejectionService } from 'src/app/services/tbl-dry-partial-receiving-rejection.service';
 
 @Component({
   selector: 'app-prepared-store-order',
@@ -38,8 +40,8 @@ export class PreparedStoreOrderComponent implements OnInit {
   allowableqty: number = null;
   actualqty: number = null;
   expirable_material: string = null;
-
-
+  ApprovedPreparationDate: string ="";
+  FoxStoreCode: number =0;
 
   newProject: Project = new Project();
   editProject: DryWhStoreOrders = new DryWhStoreOrders();
@@ -110,11 +112,12 @@ export class PreparedStoreOrderComponent implements OnInit {
   AllowablePercentages: Observable<AllowablePercentage[]>;
   //New 10/19/2021 for Canceel Partial
   ProjectsAllowableQty: Observable<Project[]>;
+  WhRejectRemarks: Observable<DryWhStoreOrders[]>;
 
   constructor(private projectsService: ProjectsService, private clientLocationsService: ClientLocationsService, private toastr: ToastrService, public loginService: LoginService,
     private rejectedStatusService: RejectedStatusService, private allowablePercentageService: AllowablePercentageService, private cancelledPOTransactionStatusService: CancelledPOTransactionStatusService,
     private projectsPartialPoService: ProjectsPartialPoService, private tblNearlyExpiryMgmtService: TblNearlyExpiryMgmtService,
-    private formBuilder: FormBuilder, private whCheckerDashboardService: WhCheckerDashboardService) {
+    private formBuilder: FormBuilder, private whCheckerDashboardService: WhCheckerDashboardService, private tblDryPartialReceivingRejectionService: TblDryPartialReceivingRejectionService) {
 
   }
 
@@ -416,6 +419,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
     alert("Pest");
     //Last
+    
     setTimeout(() => {
 
 
@@ -431,7 +435,8 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.category = this.projects[index].category;
       this.editProject.store_name = this.projects[index].store_name;
       this.editProject.route = this.projects[index].route;
-      this.editProject.store_name = this.projects[index].store_name;
+      this.editProject.area = this.projects[index].area;
+      this.editProject.fox = this.projects[index].fox;
 
       // this.editProject.mfg_date = this.projects[index].mfg_date;
       // this.editProject.expiration_date = this.projects[index].expiration_date;
@@ -470,6 +475,8 @@ export class PreparedStoreOrderComponent implements OnInit {
       // this.editProject.total_of_reject_mat = this.Deactivator;
       //Section 1
 
+      this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
+      this.FoxStoreCode = this.projects[index].fox;
       $("txtexpected_delivery").val("");
 
       //Validation of EXPIRATION MATERIALS  
@@ -487,6 +494,7 @@ alert(this.projects[index].store_name);
       this.editIndex = index;
 
     }, 100);
+    this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("Po_number","2022-01-14", 8878 );
   }
 
 

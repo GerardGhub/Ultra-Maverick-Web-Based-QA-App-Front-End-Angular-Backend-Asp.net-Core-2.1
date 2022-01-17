@@ -28,5 +28,11 @@ export class WhCheckerDashboardService {
      return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText, { responseType: "json" });
    }
 
+   
+   SearchRejectStatus(searchBy: string, searchText: string, searchIndex: number): Observable<DryWhStoreOrders[]>
+   {
+     return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText + "/" + searchIndex, { responseType: "json" });
+   }
+
 
 }

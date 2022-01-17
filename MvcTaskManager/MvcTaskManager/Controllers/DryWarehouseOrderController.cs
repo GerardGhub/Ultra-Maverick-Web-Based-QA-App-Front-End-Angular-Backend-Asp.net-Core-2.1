@@ -54,29 +54,29 @@ namespace MvcTaskManager.Controllers
     
     }
 
-    [HttpGet]
-    [Route("api/store_orders/search/{searchby}/{searchtext}")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public IActionResult Search(string searchBy, string searchText)
-    {
+    //[HttpGet]
+    //[Route("api/store_orders/search/{searchby}/{searchtext}")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //public IActionResult Search(string searchBy, string searchText)
+    //{
 
-      string ProjectIsActivated = "1";
-      List<DryWhOrder> DryWhOrders = null;
-      if (searchBy == "is_approved_prepa_date")
-        DryWhOrders = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date.ToString().Contains(searchText)).ToList();
-      else if (searchBy == "All_Data")
-        DryWhOrders = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date.Contains(searchText) && temp.is_active.Contains(ProjectIsActivated)).ToList();
+    //  string ProjectIsActivated = "1";
+    //  List<DryWhOrder> DryWhOrders = null;
+    //  if (searchBy == "is_approved_prepa_date")
+    //    DryWhOrders = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date.ToString().Contains(searchText)).ToList();
+    //  else if (searchBy == "All_Data")
+    //    DryWhOrders = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date.Contains(searchText) && temp.is_active.Contains(ProjectIsActivated)).ToList();
    
-      List<DryWhOrderViewModel> dryWhStoreOrderViewModel = new List<DryWhOrderViewModel>();
-      foreach (var DryWhOrder in DryWhOrders)
-      {
-        dryWhStoreOrderViewModel.Add(new DryWhOrderViewModel()
-        {
-          //ProjectID = project.ProjectID, Actual_remaining_receiving = project.Actual_remaining_receiving, Po_number = project.Po_number, ProjectName = project.ProjectName, TeamSize = project.TeamSize, DateOfStart = project.DateOfStart.ToString("dd/MM/yyyy"), Active = project.Active, ClientLocation = project.ClientLocation, ClientLocationID = project.ClientLocationID, Status = project.Status
+    //  List<DryWhOrderViewModel> dryWhStoreOrderViewModel = new List<DryWhOrderViewModel>();
+    //  foreach (var DryWhOrder in DryWhOrders)
+    //  {
+    //    dryWhStoreOrderViewModel.Add(new DryWhOrderViewModel()
+    //    {
+    //      //ProjectID = project.ProjectID, Actual_remaining_receiving = project.Actual_remaining_receiving, Po_number = project.Po_number, ProjectName = project.ProjectName, TeamSize = project.TeamSize, DateOfStart = project.DateOfStart.ToString("dd/MM/yyyy"), Active = project.Active, ClientLocation = project.ClientLocation, ClientLocationID = project.ClientLocationID, Status = project.Status
 
 
-          Primary_id = DryWhOrder.primary_id,
-          Is_approved_prepa_date = DryWhOrder.is_approved_prepa_date,
+    //      Primary_id = DryWhOrder.primary_id,
+    //      Is_approved_prepa_date = DryWhOrder.is_approved_prepa_date,
         
 
 
@@ -84,16 +84,57 @@ namespace MvcTaskManager.Controllers
        
 
 
+    //    });
+    //  }
+
+    //  return Ok(dryWhStoreOrderViewModel);
+    //}
+
+
+
+
+    [HttpGet]
+    [Route("api/store_orders/search/{searchby}/{searchtext}/{searchindex}")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult Search(string searchBy, string searchText, string searchIndex)
+    {
+
+      //string data_is_pending = "1";
+      string is_activated = "1";
+      List<DryWhOrder> projects = null;
+
+      string ApprovedPreparationDate = searchText;
+      string FoxStoreCode = searchIndex;
+      if (searchBy == "store_name")
+
+        projects = db.dry_wh_orders.Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode)).ToList();
+
+      //temp.is_approved.Contains(is_activated) &&
+      List <DryWhOrderViewModel> WarehouseStoreOrderContructor = new List<DryWhOrderViewModel>();
+      foreach (var project in projects)
+      {
+        WarehouseStoreOrderContructor.Add(new DryWhOrderViewModel()
+        {
+
+          Primary_id = project.primary_id,
+          Is_approved_prepa_date = project.is_approved_prepa_date,
+          Store_name = project.store_name,
+          Route = project.route,
+          Area = project.area,
+          Category = project.category,
+          Is_active = project.is_active,
+          Is_for_validation = project.is_for_validation,
+          Is_approved = project.is_approved,
+          Is_prepared = project.is_prepared,
+          Force_prepared_status = project.force_prepared_status,
+          Fox = project.fox
+
+
         });
       }
 
-      return Ok(dryWhStoreOrderViewModel);
+      return Ok(WarehouseStoreOrderContructor);
     }
-
-
-
-
-
 
 
 

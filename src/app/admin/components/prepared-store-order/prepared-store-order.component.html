@@ -41,13 +41,13 @@
                                 <mat-form-field floatLabel="auto" appearance="standard" color="primary">
                                     <mat-select id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy"
                                         (selectionChange)="HideSearchBtn($event)">
-                                
+
                                         <mat-option value="is_approved_prepa_date">Preparation Date</mat-option>
                                         <mat-option value="category">Category</mat-option>
                                         <mat-option value="store_name">Store</mat-option>
                                         <mat-option value="route">Route</mat-option>
                                         <mat-option value="area">Area</mat-option>
-                             
+
                                     </mat-select>
                                     <mat-label>Search by</mat-label>
                                     <mat-hint align="end">Choose a Filter</mat-hint>
@@ -94,6 +94,10 @@
                   <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i>
                  -->
                                 </th>
+
+                                <th>Fox
+
+                                </th>
                                 <th>Store
 
                                 </th>
@@ -116,6 +120,7 @@
                                 <td>{{project.is_approved_prepa_date}}</td>
                                 <!-- <td>{{project.po_date  | date:'dd-MMM-yyyy'}}</td> -->
                                 <td>{{project.category}}</td>
+                                <td>{{project.fox}}</td>
                                 <td>{{project.store_name}}</td>
                                 <td>{{project.route}}</td>
                                 <!-- td>{{project.qty_order | number:'1.0':'en-US'}}</td> -->
@@ -390,7 +395,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <mat-card>RAW MATERIAL INFORMATIONS
+                    <mat-card>STORE INFORMATIONS
 
 
 
@@ -406,58 +411,56 @@
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
 
 
-                                <input type="text" matInput id="txtEditis_approved_prepa_date" placeholder="Checklist ID"
-                                    name="is_approved_prepa_date" disabled="disabled" [(ngModel)]="editProject.is_approved_prepa_date"
-                                    required="required" pattern="^[0-9]*$" appProjectIDUniqueValidator
-                                    #editProjectID="ngModel"
-                                    [ngClass]="{ 'is-invalid': editProjectID.invalid && (editProjectID.dirty || editProjectID.touched || newForm.submitted), 'is-valid': editProjectID.valid && (editProjectID.dirty || editProjectID.touched || newForm.submitted) }">
-                                <mat-label>Preparation Dateds</mat-label>
+                                <input type="text" matInput id="txtEditis_approved_prepa_date"
+                                    placeholder="Checklist ID" name="is_approved_prepa_date" disabled="disabled"
+                                    [(ngModel)]="editProject.is_approved_prepa_date" required="required"
+                                    pattern="^[0-9]*$" appProjectIDUniqueValidator #editPrepaDate="ngModel"
+                                    [ngClass]="{ 'is-invalid': editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted), 'is-valid': editPrepaDate.valid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted) }">
+                                <mat-label>Preparation Date</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <mat-icon matPrefix>format_list_numbered</mat-icon>
+                                <!-- <mat-icon matPrefix>format_list_numbered</mat-icon> -->
 
                                 <span class="text-danger"
-                                    *ngIf="editProjectID.invalid && (editProjectID.dirty || editProjectID.touched || editForm.submitted) && editProjectID.errors?.required">Project
-                                    ID can't be blank</span>
+                                    *ngIf="editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || editForm.submitted) && editPrepaDate.errors?.required">Preparation
+                                    Date can't be blank</span>
 
                                 <span class="text-danger"
-                                    *ngIf="editProjectID.invalid && (editProjectID.dirty || editProjectID.touched || editForm.submitted) && editProjectID.errors?.pattern">Project
-                                    ID should contain numbers only</span>
+                                    *ngIf="editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || editForm.submitted) && editPrepaDate.errors?.pattern">Preparation
+                                    Date should contain numbers only</span>
 
-                                <span class="text-danger"
-                                    *ngIf="editProjectID.invalid && (editProjectID.dirty || editProjectID.touched || editForm.submitted) && editProjectID.errors?.uniqueProjectID">Duplicate
-                                    Project ID</span>
+
 
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditcategory" placeholder="Category"
-                                    name="category" [(ngModel)]="editProject.category" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #edititem_code="ngModel"
-                                    [ngClass]="{ 'is-invalid': edititem_code.invalid && (edititem_code.dirty || edititem_code.touched || editForm.submitted), 'is-valid': edititem_code.valid && (edititem_code.dirty || edititem_code.touched || editForm.submitted) }"
+                                <input type="text" matInput id="txtEditcategory" placeholder="Category" name="category"
+                                    [(ngModel)]="editProject.category" minlength="3" maxlength="30"
+                                    pattern="^[A-Za-z0-9 /-]*$" #editcategory="ngModel"
+                                    [ngClass]="{ 'is-invalid': editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted), 'is-valid': editcategory.valid && (editcategory.dirty || editcategory.touched || editForm.submitted) }"
                                     disabled="disabled">
                                 <mat-label>Category</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
                                 <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
-              </span></mat-icon> -->
+</span></mat-icon> -->
                                 <span class="text-danger"
-                                    *ngIf="edititem_code.invalid && (edititem_code.dirty || edititem_code.touched || editForm.submitted) && edititem_code.errors?.required">Item
-                                    Code can't be blank</span>
+                                    *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.required">Category
+                                    can't be blank</span>
 
                                 <span class="text-danger"
-                                    *ngIf="edititem_code.invalid && (edititem_code.dirty || edititem_code.touched || editForm.submitted) && edititem_code.errors?.pattern">Item
-                                    Code can contain alphabets, digits, dot, hyphen or space only</span>
+                                    *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.pattern">Category
+                                    can contain alphabets, digits, dot, hyphen or space only</span>
 
                                 <span class="text-danger"
-                                    *ngIf="edititem_code.invalid && (edititem_code.dirty || edititem_code.touched || editForm.submitted) && edititem_code.errors?.minlength">Item
-                                    Code should be at least 3 characters long</span>
+                                    *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.minlength">Category
+                                    should be at least 3 characters long</span>
 
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEdititem_class" placeholder="Item Class"
-                                    disabled="disabled" name="item_class" [(ngModel)]="editProject.is_approved_prepa_date"
-                                    minlength="3" maxlength="30" #edititem_class="ngModel">
-                                <mat-label>Item Class</mat-label>
+                                <input type="text" matInput id="txtEditroute" placeholder="Route" disabled="disabled"
+                                    name="item_class" [(ngModel)]="editProject.route" minlength="3" maxlength="30"
+                                    #editroute="ngModel">
+                                <mat-label>Route</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
                                 <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
           </span></mat-icon> -->
@@ -465,17 +468,7 @@
 
                             </mat-form-field>
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditmajor_category" placeholder="Major Category"
-                                    disabled="disabled" name="major_category" [(ngModel)]="editProject.is_approved_prepa_date"
-                                    minlength="3" maxlength="30" #editmajor_category="ngModel">
-                                <mat-label>Major Category</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
-      </span></mat-icon> -->
 
-
-                            </mat-form-field>
 
 
 
@@ -495,9 +488,9 @@
                                     disabled="disabled" placeholder="Receiving Date">
                                 <mat-label>Receiving Date</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <mat-icon matPrefix>calendar_today<span class="material-icons-outlined">
+                                <!-- <mat-icon matPrefix>calendar_today<span class="material-icons-outlined">
                                     </span>
-                                </mat-icon>
+                                </mat-icon> -->
 
 
 
@@ -506,36 +499,37 @@
 
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtitem_description" placeholder="Description"
-                                    name="item_descriptuion" [(ngModel)]="editProject.is_approved_prepa_date"
-                                    required="required" minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$"
-                                    #edititem_description="ngModel"
-                                    [ngClass]="{ 'is-invalid': edititem_description.invalid && (edititem_description.dirty || edititem_description.touched || editForm.submitted), 'is-valid': edititem_description.valid && (edititem_description.dirty || edititem_description.touched || editForm.submitted) }"
+                                <input type="text" matInput id="txtitem_description" placeholder="Store Name"
+                                    name="store_name" [(ngModel)]="editProject.store_name" required="required"
+                                    minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$" #editstore_name="ngModel"
+                                    [ngClass]="{ 'is-invalid': editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted), 'is-valid': editstore_name.valid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) }"
                                     disabled="disabled" #ItemDescription>
-                                <mat-label>Item Description</mat-label>
+                                <mat-label>Store Name</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
                                 <!-- <mat-icon matPrefix>info<span class="material-icons-outlined">
-                  </span></mat-icon> -->
+</span></mat-icon> -->
                                 <span class="text-danger"
-                                    *ngIf="edititem_description.invalid && (edititem_description.dirty || edititem_description.touched || editForm.submitted) && edititem_description.errors?.required">Item
-                                    Description can't be blank</span>
+                                    *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.required">Store
+                                    name
+                                    can't be blank</span>
 
                                 <span class="text-danger"
-                                    *ngIf="edititem_description.invalid && (edititem_description.dirty || edititem_description.touched || editForm.submitted) && edititem_description.errors?.pattern">Item
-                                    Description can contain alphabets, digits, dot, hyphen or space only</span>
+                                    *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.pattern">Store
+                                    name
+                                    can contain alphabets, digits, dot, hyphen or space only</span>
 
                                 <span class="text-danger"
-                                    *ngIf="edititem_description.invalid && (edititem_description.dirty || edititem_description.touched || editForm.submitted) && edititem_description.errors?.minlength">Item
-                                    Description should be at least 3 characters long</span>
+                                    *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.minlength">Store
+                                    name should be at least 3 characters long</span>
                                 <!-- </div>
-              </div> -->
+</div> -->
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEdititem_type" placeholder="Item Type"
-                                    disabled="disabled" name="item_type" [(ngModel)]="editProject.is_approved_prepa_date"
-                                    minlength="3" maxlength="30" #edititem_type="ngModel">
-                                <mat-label>Item Type</mat-label>
+                                <input type="text" matInput id="txtEditarea" placeholder="Area" disabled="disabled"
+                                    name="area" [(ngModel)]="editProject.area" minlength="3" maxlength="30"
+                                    #editarea="ngModel">
+                                <mat-label>Area</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
                                 <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
               </span></mat-icon> -->
@@ -543,17 +537,6 @@
 
                             </mat-form-field>
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditsub_category" placeholder="Sub Category"
-                                    disabled="disabled" name="sub_category" [(ngModel)]="editProject.is_approved_prepa_date"
-                                    minlength="3" maxlength="30" #editsub_category="ngModel">
-                                <mat-label>Sub Category</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
-            </span></mat-icon>
-         -->
-
-                            </mat-form-field>
 
 
                         </div>
@@ -567,136 +550,61 @@
 
                     <div class="flex">
                         <div class="box-1">
-                            <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditSupplier" placeholder="supplier" name="supplier"
-                                    [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editSupplier="ngModel"
-                                    [ngClass]="{ 'is-invalid': editSupplier.invalid && (editSupplier.dirty || editSupplier.touched || editForm.submitted), 'is-valid': editSupplier.valid && (editSupplier.dirty || editSupplier.touched || editForm.submitted) }"
-                                    disabled="disabled">
-                                <mat-label>Supplier</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>local_shipping<span class="material-icons-outlined">
-                </span></mat-icon>s -->
 
-                            </mat-form-field>
                         </div>
                         <div class="box-2">
-                            <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtUnitPrice" placeholder="Unit Price" name="unit_price"
-                                    [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editunit_price="ngModel"
-                                    [ngClass]="{ 'is-invalid': editunit_price.invalid && (editunit_price.dirty || editunit_price.touched || editForm.submitted), 'is-valid': editunit_price.valid && (editunit_price.dirty || editSupplier.touched || editForm.submitted) }"
-                                    disabled="disabled">
-                                <mat-label>Unit Price</mat-label>
 
-
-                            </mat-form-field>
                         </div>
 
                     </div>
 
                     <mat-card>RECEIVING INFORMATION </mat-card>
 
+                    
+
                     <div class="flex">
                         <div class="box-1">
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditpo_number" placeholder="PO Number"
-                                    name="po_number" [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    #editpo_number="ngModel" disabled="disabled">
-                                <mat-label>Po Number</mat-label>
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-                </span></mat-icon> -->
 
-                            </mat-form-field>
+                            <u><h3>List of Warehouse Rejections</h3></u>
 
+      
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditpr_number" placeholder="PR Number"
-                                    name="pr_number" [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editpr_number="ngModel" disabled="disabled">
-                                <mat-label>PR Number</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-            </span></mat-icon> -->
-
-                            </mat-form-field>
-
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtqty_order" placeholder="Quantity Ordered"
-                                    name="qty_order" [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editqty_order="ngModel"
-                                    [ngClass]="{ 'is-invalid': editqty_order.invalid && (editqty_order.dirty || editqty_order.touched || editForm.submitted), 'is-valid': editqty_order.valid && (editqty_order.dirty || editqty_order.touched || editForm.submitted) }"
-                                    disabled="disabled" #QtyOrdered>
-                                <mat-label>Quantity Ordered</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-        </span></mat-icon> -->
-
-                            </mat-form-field>
+         
+                            <p *ngFor="let status of   WhRejectRemarks | async" [value]="status.store_name">
+                              <emp class="system-name">{{status.store_name}}</emp>
+                              <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                              
+                                <input type="text" matInput value="{{status.fox}}"  disabled="disabled">
+                             
+                                <mat-label>Item Quantity</mat-label>
+                              <!-- <mat-hint align="end">Receiving Transaction</mat-hint> -->
+                              <mat-icon matPrefix>shopping_cart<span class="material-icons-outlined">
+                              </span>
+                              </mat-icon>
+                              </mat-form-field>
+                            
+                            </p>
 
 
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <mat-label>MFTG. Date</mat-label>
-                                <input type="text" matInput id="txtEditmfg_date" readonly
-                                    [matDatepicker]="dobDatepicker_mfg" [max]="maxDate" name="mfg_date"
-                                    [(ngModel)]="editProject.is_approved_prepa_date" #editmfg_date="ngModel"
-                                    [ngClass]="{ 'is-invalid': editmfg_date.invalid && (editmfg_date.dirty || editmfg_date.touched || editForm.submitted), 'is-valid': editmfg_date.valid && (editmfg_date.dirty || editmfg_date.touched || editForm.submitted) }"
-                                    readonly="readonly">
-
-                                <mat-hint align="end">Product Mftg Date</mat-hint>
-
-                                <mat-datepicker-toggle matSuffix [for]="dobDatepicker_mfg">
-                                    <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-                                </mat-datepicker-toggle>
-
-                                <mat-datepicker #dobDatepicker_mfg startView="month"></mat-datepicker>
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-    </span></mat-icon> -->
-
-                            </mat-form-field>
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtexpected_delivery" placeholder="Expected Delivery"
-                                    name="expected_delivery" required="required"
-                                    [(ngModel)]="editProject.is_approved_prepa_date" maxlength="9"
-                                    #editexpected_delivery="ngModel"
-                                    [ngClass]="{ 'is-invalid': editexpected_delivery.invalid && (editexpected_delivery.dirty || editexpected_delivery.touched || editForm.submitted), 'is-valid': editexpected_delivery.valid && (editexpected_delivery || editexpected_delivery.touched || editForm.submitted) }"
-                                    (keypress)="decimalFilter($event)" #ExpectedDeliveryActual
-                                    (keyup)="AllowablePercentageComputation($event)" c>
-                                <mat-label>Expected Delivery</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-    </span></mat-icon> -->
-                                <!-- <span class="text-danger" *ngIf="editexpected_delivery.invalid && (editexpected_delivery.dirty || editexpected_delivery.touched || editForm.submitted) && editexpected_delivery.errors?.required">Expected Delivery can't be blank</span> -->
 
-                                <span class="text-danger"
-                                    *ngIf="editexpected_delivery.invalid && (editexpected_delivery.dirty || editexpected_delivery.touched || editForm.submitted) && editexpected_delivery.errors?.pattern">Expected
-                                    Delivery can contain alphabets, digits, dot, hyphen or space only</span>
-
-                                <span class="text-danger"
-                                    *ngIf="editexpected_delivery.invalid && (editexpected_delivery.dirty || editexpected_delivery.touched || editForm.submitted) && editexpected_delivery.errors?.minlength">Expected
-                                    Delivery should be at least 3 characters long</span>
-
-                            </mat-form-field>
+             
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtactual_remaining_receiving"
-                                    name="actual_remaining_receiving"
-                                    [(ngModel)]="editProject.is_approved_prepa_date"
-                                    #editactual_remaining_receiving="ngModel"
-                                    [ngClass]="{ 'is-invalid': editactual_remaining_receiving.invalid && (editactual_remaining_receiving.dirty || editactual_remaining_receiving.touched || editForm.submitted), 'is-valid': editactual_remaining_receiving.valid && (editactual_remaining_receiving.dirty || editactual_remaining_receiving.touched || editForm.submitted) }"
-                                    disabled="disabled" #ActualRemainingReceiving>
-                                <mat-label>Remaining Needed</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-    </span></mat-icon> -->
 
-                            </mat-form-field>
+
+
+
+
+
+         
+
+
+          
                             <i class="hideObject">
                                 <b> Note :Active Allowable Percentage BUJE Singian</b>
                                 <p *ngFor="let status of AllowablePercentages | async"
@@ -752,15 +660,17 @@
 
                                     <div class="form-check form-check-inline hideObject">
                                         <input type="radio" id="rbEditStatusInForce" value="In Force"
-                                            class="form-check-input" name="Status" [(ngModel)]="editProject.is_approved_prepa_date"
-                                            required="required" #editStatusInForce="ngModel">
+                                            class="form-check-input" name="Status"
+                                            [(ngModel)]="editProject.is_approved_prepa_date" required="required"
+                                            #editStatusInForce="ngModel">
                                         <label for="rbEditStatusInForce" class="form-check-label">In Force</label>
                                     </div>
 
                                     <div class="form-check form-check-inline hideObject">
                                         <input type="radio" id="rbEditStatusSupport" value="Support"
-                                            class="form-check-input" name="Status" [(ngModel)]="editProject.is_approved_prepa_date"
-                                            required="required" #editStatusSupport="ngModel">
+                                            class="form-check-input" name="Status"
+                                            [(ngModel)]="editProject.is_approved_prepa_date" required="required"
+                                            #editStatusSupport="ngModel">
                                         <label for="rbEditStatusSupport" class="form-check-label">Support</label>
                                     </div>
 
@@ -772,90 +682,15 @@
                         </div>
 
 
-                        <div class="box-2">
+                        <!-- <div class="box-2">
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtpo_date" placeholder="PO Date" name="po_date"
-                                    required="required" [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editpo_date="ngModel" disabled="disabled">
-                                <mat-label>Po Date</mat-label>
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-  </span></mat-icon> -->
-
-                            </mat-form-field>
+  
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditipr_date" placeholder="PR Date" name="pr_date"
-                                    required="required" [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editpr_date="ngModel" disabled="disabled">
-                                <mat-label>PR Date</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-  </span></mat-icon> -->
-
-                            </mat-form-field>
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditqty_uom" placeholder="Unit Of Measure"
-                                    name="qty_uom" [(ngModel)]="editProject.is_approved_prepa_date" minlength="3" maxlength="30"
-                                    pattern="^[A-Za-z0-9 /-]*$" #editqty_uom="ngModel"
-                                    [ngClass]="{ 'is-invalid': editqty_uom.invalid && (editqty_uom.dirty || editqty_uom.touched || editForm.submitted), 'is-valid': editqty_uom.valid && (editqty_uom.dirty || editqty_uom.touched || editForm.submitted) }"
-                                    disabled="disabled">
-                                <mat-label>Unit Of Measure</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
-        </span></mat-icon> -->
-                                <span class="text-danger"
-                                    *ngIf="editqty_uom.invalid && (editqty_uom.dirty || editqty_uom.touched || editForm.submitted) && editqty_uom.errors?.required">UOM
-                                    can't be blank</span>
 
-                                <span class="text-danger"
-                                    *ngIf="editqty_uom.invalid && (editqty_uom.dirty || editqty_uom.touched || editForm.submitted) && editqty_uom.errors?.pattern">UOM
-                                    can contain alphabets, digits, dot, hyphen or space only</span>
-
-                                <span class="text-danger"
-                                    *ngIf="editqty_uom.invalid && (editqty_uom.dirty || editqty_uom.touched || editForm.submitted) && editqty_uom.errors?.minlength">UOM
-                                    should be at least 3 characters long</span>
-
-                            </mat-form-field>
-
-
-                            <!-- (mouseleave)="selectExpiryDate($event) -->
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <mat-label>Expiry Date</mat-label>
-                                <input type="text" matInput id="txtEditexpiration_date" readonly
-                                    [matDatepicker]="dobDatepicker" [min]="minDate" name="expiration_date"
-                                    [(ngModel)]="editProject.is_approved_prepa_date" #editexpiration_date="ngModel"
-                                    [ngClass]="{ 'is-invalid': editexpiration_date.invalid && (editexpiration_date.dirty || editexpiration_date.touched || editForm.submitted), 'is-valid': editexpiration_date.valid && (editexpiration_date.dirty || editexpiration_date.touched || editForm.submitted) }"
-                                    (dateChange)="selectExpiryDate($event)" #ExpiryDateChild>
-
-                                <mat-hint align="end" *ngFor="let nearlyexpiry of AllowableNearlyExpiryDays | async"
-                                    [value]="nearlyexpiry.p_nearly_expiry_desc">{{nearlyexpiry.p_nearly_expiry_desc}}
-                                    days before to expired</mat-hint>
-
-                                <mat-datepicker-toggle matSuffix [for]="dobDatepicker">
-                                    <mat-icon matDatepickerToggleIcon id="select_expiry">keyboard_arrow_down</mat-icon>
-                                </mat-datepicker-toggle>
-
-                                <mat-datepicker #dobDatepicker startView="month"></mat-datepicker>
-
-
-                            </mat-form-field>
-
-
- 
-
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditreceived_by_QA" #received_by
-                                    value=" {{ loginService.currentUserName }}" disabled="disabled">
-                                <mat-label>Assigned Person </mat-label>
-
-                                <mat-icon matPrefix>person<span class="material-icons-outlined">
-                                    </span></mat-icon>
-
-                            </mat-form-field>
+        
 
 
 
@@ -866,8 +701,12 @@
 
 
 
-                            
-                        </div>
+
+
+
+
+
+                        </div> -->
                     </div>
 
                     <mat-card>REJECTION INFORMATION
@@ -890,7 +729,7 @@
 
 
 
-                        
+
 
 
 
@@ -903,15 +742,15 @@
                         <div class="box-2">
 
 
-                           
-
-                         
 
 
-                         
 
 
-                        
+
+
+
+
+
 
 
                         </div>
@@ -996,7 +835,8 @@
                     <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>
                             keyboard_return</mat-icon></button>
                     <button mat-stroked-button color="warn" data-dismiss="modal" (click)="onDeleteConfirmClick()">Delete
-                        <mat-icon>delete</mat-icon></button>
+                        <mat-icon>delete</mat-icon>
+                    </button>
                 </div>
             </div>
         </div>
@@ -1030,7 +870,8 @@
 
                     <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtDeleteProjectName" placeholder="Description"
-                            name="item_description" [(ngModel)]="editProject.is_approved_prepa_date" disabled="disabled">
+                            name="item_description" [(ngModel)]="editProject.is_approved_prepa_date"
+                            disabled="disabled">
                         <mat-label>Item Description</mat-label>
                         <!-- <mat-hint align="end">The subject of the transaction</mat-hint> -->
                         <mat-icon matPrefix>info<span class="material-icons-outlined">
