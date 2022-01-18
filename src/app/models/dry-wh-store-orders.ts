@@ -14,6 +14,11 @@ export class DryWhStoreOrders {
     is_prepared:string;
     force_prepared_status: string;
     fox: number;
+    item_code: string;
+    description: string;
+    uom: string;
+    total_state_repack: string;
+    qty: string;
 
     constructor()
     {
@@ -29,6 +34,11 @@ export class DryWhStoreOrders {
         this.is_prepared = null;
         this.force_prepared_status = null;
         this.fox = null;
+        this.item_code = null;
+        this.description = null;
+        this.uom =null;
+        this.total_state_repack = null;
+        this.qty = null;
     }
 
 }

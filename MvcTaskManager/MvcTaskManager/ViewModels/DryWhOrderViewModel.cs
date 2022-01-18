@@ -19,5 +19,10 @@ namespace MvcTaskManager.ViewModels
     public string Is_prepared { get; set; }
     public string Force_prepared_status { get; set; }
     public string Fox { get; set; }
+    public string Item_code { get; set; }
+    public string Description { get; set; }
+    public string Uom { get; set; }
+    public string Total_state_repack { get; set; }
+    public string Qty { get; set; }
   }
 }

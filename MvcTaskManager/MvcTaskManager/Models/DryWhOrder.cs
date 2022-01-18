@@ -23,6 +23,16 @@ namespace MvcTaskManager.Models
     public string is_prepared { get; set; }
     public string force_prepared_status { get; set; }
     public string fox { get; set; }
+    public string item_code { get; set; }
+
+    public string description { get; set; }
+    public string uom { get; set; }
+
+    public string total_state_repack { get; set; }
+    public string qty { get; set; }
+
+    //[ForeignKey("primary_id")]
+    //public virtual Store_Preparation_LogsModel Primary_id { get; set; }
 
   }
 }

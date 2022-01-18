@@ -23,8 +23,6 @@ import { ProjectComponent } from '../project/project.component';
 import Swal from 'sweetalert2';
 import { DryWhStoreOrders } from 'src/app/models/dry-wh-store-orders';
 import { WhCheckerDashboardService } from 'src/app/services/wh-checker-dashboard.service';
-import { Alert } from 'selenium-webdriver';
-import { TblDryPartialReceivingRejection } from 'src/app/models/tbl-dry-partial-receiving-rejection';
 import { TblDryPartialReceivingRejectionService } from 'src/app/services/tbl-dry-partial-receiving-rejection.service';
 
 @Component({
@@ -491,10 +489,11 @@ export class PreparedStoreOrderComponent implements OnInit {
         $("#txtEditexpiration_date").show();
       }
 alert(this.projects[index].store_name);
+this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name",this.ApprovedPreparationDate, this.FoxStoreCode );
       this.editIndex = index;
 
     }, 100);
-    this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("Po_number","2022-01-14", 8878 );
+
   }
 
 
