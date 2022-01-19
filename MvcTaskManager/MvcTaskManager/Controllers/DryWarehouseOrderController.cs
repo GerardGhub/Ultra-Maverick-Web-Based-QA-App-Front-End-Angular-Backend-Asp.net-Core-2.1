@@ -72,7 +72,7 @@ namespace MvcTaskManager.Controllers
       string FoxStoreCode = searchIndex;
       if (searchBy == "store_name")
 
-        projects = db.dry_wh_orders.Include("Store_Preparation_LogsModel").Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode)).ToList();
+        projects = db.dry_wh_orders.Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode)).ToList();
 
       //temp.is_approved.Contains(is_activated) &&
       List <DryWhOrderViewModel> WarehouseStoreOrderContructor = new List<DryWhOrderViewModel>();
@@ -97,7 +97,10 @@ namespace MvcTaskManager.Controllers
           Description = project.description,
           Uom = project.uom,
           Total_state_repack = project.total_state_repack,
-          Qty = project.qty
+          Qty = project.qty,
+          Prepared_allocated_qty = project.prepared_allocated_qty
+        
+
 
 
         });

@@ -23,5 +23,7 @@ namespace MvcTaskManager.Models
     public string is_active { get; set; }
     public string order_source_key { get; set; }
 
+    //public ICollection<DryWhOrder> DryOrderActivities { get; set; }
+
   }
 }

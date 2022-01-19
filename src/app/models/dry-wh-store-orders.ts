@@ -19,6 +19,7 @@ export class DryWhStoreOrders {
     uom: string;
     total_state_repack: string;
     qty: string;
+    prepared_allocated_qty: string;
 
     constructor()
     {
@@ -39,6 +40,7 @@ export class DryWhStoreOrders {
         this.uom =null;
         this.total_state_repack = null;
         this.qty = null;
+        this.prepared_allocated_qty = null;
     }
 
 }

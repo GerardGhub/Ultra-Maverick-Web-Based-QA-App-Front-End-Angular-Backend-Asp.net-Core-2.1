@@ -412,21 +412,12 @@
 
 
                                 <input type="text" matInput id="txtEditis_approved_prepa_date"
-                                    placeholder="Checklist ID" name="is_approved_prepa_date" disabled="disabled"
+                                    placeholder="Checklist ID" name="is_approved_prepa_date"  readonly="readonly"
                                     [(ngModel)]="editProject.is_approved_prepa_date" required="required"
-                                    pattern="^[0-9]*$" appProjectIDUniqueValidator #editPrepaDate="ngModel"
+                                    #editPrepaDate="ngModel"
                                     [ngClass]="{ 'is-invalid': editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted), 'is-valid': editPrepaDate.valid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted) }">
                                 <mat-label>Preparation Date</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>format_list_numbered</mat-icon> -->
 
-                                <span class="text-danger"
-                                    *ngIf="editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || editForm.submitted) && editPrepaDate.errors?.required">Preparation
-                                    Date can't be blank</span>
-
-                                <span class="text-danger"
-                                    *ngIf="editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || editForm.submitted) && editPrepaDate.errors?.pattern">Preparation
-                                    Date should contain numbers only</span>
 
 
 
@@ -437,11 +428,11 @@
                                     [(ngModel)]="editProject.category" minlength="3" maxlength="30"
                                     pattern="^[A-Za-z0-9 /-]*$" #editcategory="ngModel"
                                     [ngClass]="{ 'is-invalid': editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted), 'is-valid': editcategory.valid && (editcategory.dirty || editcategory.touched || editForm.submitted) }"
-                                    disabled="disabled">
+                                    readonly="readonly">
                                 <mat-label>Category</mat-label>
                                 <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
                                 <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
-</span></mat-icon> -->
+                                </span></mat-icon> -->
                                 <span class="text-danger"
                                     *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.required">Category
                                     can't be blank</span>
@@ -457,13 +448,10 @@
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditroute" placeholder="Route" disabled="disabled"
-                                    name="item_class" [(ngModel)]="editProject.route" minlength="3" maxlength="30"
+                                <input type="text" matInput id="txtEditroute" placeholder="Route" readonly="readonly"
+                                    name="route" [(ngModel)]="editProject.route" minlength="3" maxlength="30"
                                     #editroute="ngModel">
                                 <mat-label>Route</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
-          </span></mat-icon> -->
 
 
                             </mat-form-field>
@@ -485,15 +473,9 @@
 
 
                                 <input type="text" matInput id="txtEditReceivingDate" value="{{ToDay | date : 'M/d/y'}}"
-                                    disabled="disabled" placeholder="Receiving Date">
+                                readonly="readonly" placeholder="Receiving Date">
                                 <mat-label>Receiving Date</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>calendar_today<span class="material-icons-outlined">
-                                    </span>
-                                </mat-icon> -->
-
-
-
+   
                             </mat-form-field>
 
 
@@ -503,11 +485,9 @@
                                     name="store_name" [(ngModel)]="editProject.store_name" required="required"
                                     minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$" #editstore_name="ngModel"
                                     [ngClass]="{ 'is-invalid': editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted), 'is-valid': editstore_name.valid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) }"
-                                    disabled="disabled" #ItemDescription>
+                                    readonly="readonly" #ItemDescription>
                                 <mat-label>Store Name</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>info<span class="material-icons-outlined">
-</span></mat-icon> -->
+
                                 <span class="text-danger"
                                     *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.required">Store
                                     name
@@ -526,7 +506,7 @@
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditarea" placeholder="Area" disabled="disabled"
+                                <input type="text" matInput id="txtEditarea" placeholder="Area"  readonly="readonly"
                                     name="area" [(ngModel)]="editProject.area" minlength="3" maxlength="30"
                                     #editarea="ngModel">
                                 <mat-label>Area</mat-label>
@@ -621,7 +601,7 @@
 
                                             <td>{{project.qty | number}}</td>
 
-                                            <td>{{project.area}}</td>
+                                            <td>{{project.prepared_allocated_qty | number}}</td>
 
 
                                             <td class="text-center">
@@ -706,7 +686,7 @@
                     <!-- START OF 5th -->
 
                     <!-- END OF 4th -->
-                    <!-- {{editForm.value | json}} -->
+                    {{editForm.value | json}}
 
 
 
@@ -715,7 +695,7 @@
 
                 <div class="modal-footer">
 
-                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approve</button>
+                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approved</button>
                     <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
 
                 </div>

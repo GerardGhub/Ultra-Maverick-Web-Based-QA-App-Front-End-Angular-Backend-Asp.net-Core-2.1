@@ -1,3 +1,4 @@
+using MvcTaskManager.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,5 +25,12 @@ namespace MvcTaskManager.ViewModels
     public string Uom { get; set; }
     public string Total_state_repack { get; set; }
     public string Qty { get; set; }
+
+    public string Prepared_allocated_qty { get; set; }
+
+
+
+
   }
 }
+

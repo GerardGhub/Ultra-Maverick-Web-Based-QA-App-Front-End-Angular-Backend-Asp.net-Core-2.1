@@ -437,7 +437,7 @@ namespace MvcTaskManager.Controllers
       foreach (var project in projects)
       {
         projectsViewModel.Add(new ProjectViewModel() {
-          //ProjectID = project.ProjectID, Actual_remaining_receiving = project.Actual_remaining_receiving, Po_number = project.Po_number, ProjectName = project.ProjectName, TeamSize = project.TeamSize, DateOfStart = project.DateOfStart.ToString("dd/MM/yyyy"), Active = project.Active, ClientLocation = project.ClientLocation, ClientLocationID = project.ClientLocationID, Status = project.Status
+
 
 
              ProjectID = project.ProjectID,

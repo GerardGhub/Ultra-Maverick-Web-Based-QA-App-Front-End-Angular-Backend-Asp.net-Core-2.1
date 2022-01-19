@@ -31,8 +31,8 @@ namespace MvcTaskManager.Models
     public string total_state_repack { get; set; }
     public string qty { get; set; }
 
-    //[ForeignKey("primary_id")]
-    //public virtual Store_Preparation_LogsModel Primary_id { get; set; }
+    public string prepared_allocated_qty { get; set; }
+
 
   }
 }

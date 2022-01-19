@@ -1120,52 +1120,52 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
 
   onUpdateClick() {
     //Computation Start Simang
-    this.allowableqty = this.TotalAllowablePercentage.nativeElement.value;
-    this.actualqty = this.ActualDeliveryChild.nativeElement.value;
+    // this.allowableqty = this.TotalAllowablePercentage.nativeElement.value;
+    // this.actualqty = this.ActualDeliveryChild.nativeElement.value;
 
-    var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
-    var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+    // var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
+    // var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
 
-    var aplenght = $('#Allowable_Percentage_id').val().length;
-    $('#characters').text(aplenght);
+    // var aplenght = $('#Allowable_Percentage_id').val().length;
+    // $('#characters').text(aplenght);
 
-    var adlength = $('#actual_delivery_output').val().length;
-    $('#characters').text(adlength);
-
-
-    if (aplenght > adlength) {
-
-      ///This is the minimun qty set pin for 10, 100, 999
-      if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
+    // var adlength = $('#actual_delivery_output').val().length;
+    // $('#characters').text(adlength);
 
 
+    // if (aplenght > adlength) {
 
-      }
-      else {
-
-        this.AllowablePercentageExceed();
-        // alert("Pekwangs");
-        $('#actual_delivery_output').val("");  ///LLL
-        return;
+    //   ///This is the minimun qty set pin for 10, 100, 999
+    //   if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
 
 
 
-      }
+    //   }
+    //   else {
 
-    }
-    else {
-      // alert("MINs ");
-      //This is for large scale validation for thousand's qty 
-      if (this.allowableqty < this.actualqty) {
+    //     this.AllowablePercentageExceed();
+    //     // alert("Pekwangs");
+    //     $('#actual_delivery_output').val("");  ///LLL
+    //     return;
 
-        this.AllowablePercentageExceed();
-        $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
-        return;
 
-      }
 
-    }
-    // return;
+    //   }
+
+    // }
+    // else {
+    //   // alert("MINs ");
+    //   //This is for large scale validation for thousand's qty 
+    //   if (this.allowableqty < this.actualqty) {
+
+    //     this.AllowablePercentageExceed();
+    //     $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
+    //     return;
+
+    //   }
+
+    // }
+
 
 
 
@@ -1178,46 +1178,48 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
     // calculation of no. of days between two date 
 
     // To set two dates to two variables
-    var date1 = new Date($('#txtEditReceivingDate').val());
-    var date2 = new Date($('#txtEditexpiration_date').val());
+    // var date1 = new Date($('#txtEditReceivingDate').val());
+    // var date2 = new Date($('#txtEditexpiration_date').val());
 
-    // To calculate the time difference of two dates
-    var Difference_In_Time = date2.getTime() - date1.getTime();
+    // // To calculate the time difference of two dates
+    // var Difference_In_Time = date2.getTime() - date1.getTime();
 
-    // To calculate the no. of days between two dates
-    var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+    // // To calculate the no. of days between two dates
+    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
-    //To display the final no. of days (result)
-    // document.write("Total number of days between dates  <br>"
-    //                + date1 + "<br> and <br>" 
-    //                + date2 + " is: <br> " 
-    //                + Difference_In_Days);
-    var ExpiryDaysActivated = this.ActiveNearlyExpirySetpoint.nativeElement.value;
-
-
+    // //To display the final no. of days (result)
+    // // document.write("Total number of days between dates  <br>"
+    // //                + date1 + "<br> and <br>" 
+    // //                + date2 + " is: <br> " 
+    // //                + Difference_In_Days);
+    // var ExpiryDaysActivated = this.ActiveNearlyExpirySetpoint.nativeElement.value;
 
 
-    //Laarnie
-    if (this.totalofReject.nativeElement.value == this.confirmReject.nativeElement.value) {
 
-    }
-    else {
-      this.totalRejectConfirmationField();
-      this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "No. of reject is not match";
-      this.confirmReject.nativeElement.focus();
-      return;
-    }
-    var ItemDesc = this.ItemDescription.nativeElement.value;
-    // totalRejectConfirmationField();
+
+    // //Laarnie
+    // if (this.totalofReject.nativeElement.value == this.confirmReject.nativeElement.value) {
+
+    // }
+    // else {
+    //   this.totalRejectConfirmationField();
+    //   this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "No. of reject is not match";
+    //   this.confirmReject.nativeElement.focus();
+    //   return;
+    // }
+    var StoreName = this.ItemDescription.nativeElement.value;
+    // // totalRejectConfirmationField();
+
+
     if (this.editForm.valid) {
 
       //Start of Questioning in Non Expirable Raw Mater Validation with Else
-      if (this.expirable_material == "0") {
+
         //Start
         Swal.fire({
 
-          title: 'Are you sure you want to received the item ?',
-          text: ItemDesc,
+          title: 'Are you sure you want to approve ?',
+          text: StoreName,
           icon: 'info',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -1231,6 +1233,7 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
             }
             else {
               this.FieldOutRequiredField();
+           
             }
 
 
@@ -1239,92 +1242,7 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
 
 
         //End 
-      }
-      else {
 
-
-
-        if (Difference_In_Days < ExpiryDaysActivated) {
-          Swal.fire({
-
-            title: 'Are you sure you want to received the item expiry ' + Difference_In_Days + ' Days?',
-            text: ItemDesc,
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-
-              if (this.editForm.valid) {
-                this.UpdateClickDetails();
-              }
-              else {
-                this.FieldOutRequiredField();
-              }
-
-
-            }
-          })
-
-        }
-        else {
-          //Addition of  60 === 60 tickett
-          if (Difference_In_Days == ExpiryDaysActivated) {
-
-            Swal.fire({
-              title: 'Are you sure you want to received the item expiry  ' + Difference_In_Days + ' Days?',
-              text: ItemDesc,
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                if (this.editForm.valid) {
-                  this.UpdateClickDetails();
-                }
-                else {
-                  this.FieldOutRequiredField();
-                }
-
-              }
-            })
-          }
-          else {
-            //Start
-            Swal.fire({
-
-              title: 'Are you sure you want to received the item ?',
-              text: ItemDesc,
-              icon: 'info',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Yes!'
-            }).then((result) => {
-              if (result.isConfirmed) {
-
-                if (this.editForm.valid) {
-                  this.UpdateClickDetails();
-                }
-                else {
-                  this.FieldOutRequiredField();
-                }
-
-
-              }
-            })
-
-
-            //End 
-          }
-          //End Supporting top
-        }
-        //Expiry Validaation
-      }
     }
 
     else {
