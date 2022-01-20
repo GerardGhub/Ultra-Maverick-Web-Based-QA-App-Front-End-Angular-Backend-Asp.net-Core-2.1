@@ -32,6 +32,11 @@ namespace MvcTaskManager.ViewModels
     public string Is_wh_approved_by { get; set; }
     public string Is_wh_approved_date { get; set; }
 
+    public string Is_wh_checker_cancel { get; set; }
+    public string Is_wh_checker_cancel_by { get; set; }
+    public string Is_wh_checker_cancel_date { get; set; }
+    public string Is_wh_checker_cancel_reason { get; set; }
+
 
   }
 }

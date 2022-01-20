@@ -574,15 +574,15 @@
                                         <tr>
                                             <!-- <th>III</th> -->
                                             <th>ID</th>
-                                            <th>Item&nbsp;Code
+                                            <!-- <th>Code
+
+                                            </th> -->
+
+                                            <th>Description
 
                                             </th>
 
-                                            <th>Descriptionsss
-
-                                            </th>
-
-                                            <th>UOM
+                                            <th>Uom
 
 
                                             </th>
@@ -603,7 +603,7 @@
                                             *ngFor="let project of WhRejectRemarks | async let a = index">
                                             <!-- <td>{{a}}</td> -->
                                             <td>{{project.primary_id}}</td>
-                                            <td>{{project.item_code}}</td>
+                                            <!-- <td>{{project.item_code}}</td> -->
 
                                             <td>{{project.description}}</td>
                                             <td>{{project.uom}}</td>
@@ -799,7 +799,7 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width:auto">
                 <div class="modal-header bg-all">
-                    <div class="modal-title white-color">Prepared Item(s) Receivings</div>
+                    <div class="modal-title white-color">Prepared Item(s) Receiving</div>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -844,6 +844,14 @@
                             name="prepared_allocated_qty" [(ngModel)]="editProject.prepared_allocated_qty"
                             readonly="readonly" #ServeQuantity>
                         <mat-label>Quantity</mat-label>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                        <input type="text" matInput id="txtCancelis_wh_checker_cancel" placeholder="Cancel Status"
+                            name="is_wh_checker_cancel" [(ngModel)]="editProject.is_wh_checker_cancel"
+                            readonly="readonly" #ServeQuantity>
+                        <mat-label>Cancel Status Bolean</mat-label>
 
                     </mat-form-field>
 

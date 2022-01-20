@@ -528,10 +528,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       // index = this.projects[index].primary_id
       this.editProject.primary_id = primary_id;
 
-      // this.editProject.projectID = Math.floor((Math.random() * 1000000) + 1);
-      // this.editProject.projectName = this.projects[index].projectName;
-      // this.editProject.dateOfStart = this.projects[index].dateOfStart.split("/").reverse().join("-"); //yyyy-MM-dd
-      // this.editProject.teamSize = 40;
+
       this.editProject.is_approved_prepa_date = preparation_date;
 
 
@@ -546,15 +543,8 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_approved_date = this.ToDay;
       this.editProject.is_wh_approved_by = this.activeUser;
       this.editProject.is_wh_approved = "1";
+      this.editProject.is_wh_checker_cancel = "1";
 
-
-      // this.editProject.received_by_QA = this.activeUser;
-      // // this.editProject.total_of_reject_mat = this.totalofReject.nativeElement.
-      // this.editProject.qcReceivingDate = this.ToDay;
-
-
-      // this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
-      // this.FoxStoreCode = this.projects[index].fox;
 
 
 
