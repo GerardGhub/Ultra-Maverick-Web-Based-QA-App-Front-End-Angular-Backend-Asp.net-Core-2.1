@@ -415,7 +415,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     // //first
     // this.RandomNumber = Math.floor((Math.random() * 1000000) + 1);
 
-    alert(this.ToDay);
+    // alert(this.ToDay);
     //Last
 
     setTimeout(() => {
@@ -439,37 +439,13 @@ export class PreparedStoreOrderComponent implements OnInit {
 
       //Warehouse Checker Fucking Process
       this.editProject.is_wh_approved_date = this.ToDay;
-
-      // this.editProject.mfg_date = this.projects[index].mfg_date;
-      // this.editProject.expiration_date = this.projects[index].expiration_date;
-      // this.editProject.expected_delivery = this.projects[index].expected_delivery;
-      // this.editProject.actual_delivery = this.projects[index].actual_delivery;
+      this.editProject.is_wh_approved_by = this.activeUser;
+      this.editProject.is_wh_approved = "1";
 
 
       // this.editProject.received_by_QA = this.activeUser;
       // // this.editProject.total_of_reject_mat = this.totalofReject.nativeElement.
       // this.editProject.qcReceivingDate = this.ToDay;
-
-
-
-
-
-
-
-
-
-
-
-
-
-      // this.editProject.received_by_QA = this.projects[index].received_by_QA;
-
-      // this.editProject.status_of_reject_one = this.projects[index].status_of_reject_one;
-      // this.editProject.status_of_reject_two = this.projects[index].status_of_reject_two;
-      // this.editProject.status_of_reject_three = this.projects[index].status_of_reject_three;
-      // this.editProject.status_of_reject_one = this.StringNone;
-      // this.editProject.status_of_reject_two = this.StringNone;
-      // this.editProject.status_of_reject_three = this.StringNone;
 
 
       this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
@@ -1246,7 +1222,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   UpdateClickDetails() {
 
-    alert("Plano na naman");
+    // alert("Plano na naman");
 
     if (this.editForm.valid) {
 
@@ -1298,6 +1274,7 @@ export class PreparedStoreOrderComponent implements OnInit {
         //  this.InsertANewPartialReceiving();
         // this.showUpdatingSuccess();
         this.showApprovedSuccess();
+        this.closeAddExpenseModal.nativeElement.click();
         this.ngOnInit();
         $("#editFormCancel").trigger("click");
       },
@@ -1567,6 +1544,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     }
   }
 
+  @ViewChild('closeAddExpenseModal') closeAddExpenseModal: ElementRef;
   @ViewChild("prjID") prjID: ElementRef;
   @ViewChild("IsActivated") IsActivated: ElementRef;
   @ViewChild("received_by") received_by: ElementRef;

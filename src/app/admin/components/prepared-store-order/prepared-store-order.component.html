@@ -391,11 +391,11 @@
             <div class="modal-content" style="width: auto;">
                 <div class="modal-header bg-all">
                     <div class="modal-title white-color">RECEIVING CHECKLIST</div>
-                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" #closeAddExpenseModal><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
 
-                    <mat-card>STORE INFORMATIONS
+                    <mat-card>STORE INFORMATION
 
 
 
@@ -406,13 +406,12 @@
                         <div class="box-1">
 
 
-                            <!-- <label for="txtEditProjectID" class="col-sm-4 col-form-label">Checklist ID</label> -->
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
 
 
                                 <input type="text" matInput id="txtEditis_approved_prepa_date"
-                                    placeholder="Checklist ID" name="is_approved_prepa_date"  readonly="readonly"
+                                    placeholder="Checklist ID" name="is_approved_prepa_date" readonly="readonly"
                                     [(ngModel)]="editProject.is_approved_prepa_date" required="required"
                                     #editPrepaDate="ngModel"
                                     [ngClass]="{ 'is-invalid': editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted), 'is-valid': editPrepaDate.valid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted) }">
@@ -456,30 +455,30 @@
 
                             </mat-form-field>
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObject">
                                 <input type="text" matInput id="txtEditis_wh_approved" placeholder="Is Approved"
-                                    name="is_wh_approved" [(ngModel)]="editProject.is_wh_approved" minlength="1ng build" maxlength="30"
-                                    #editis_wh_approved="ngModel">
+                                    name="is_wh_approved" [(ngModel)]="editProject.is_wh_approved" minlength="1ng build"
+                                    maxlength="30" #editis_wh_approved="ngModel">
                                 <mat-label>Approval</mat-label>
 
 
                             </mat-form-field>
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObject">
                                 <input type="text" matInput id="txtEditis_wh_approved_by" placeholder="Approve By"
-                                    name="is_wh_approved_by" [(ngModel)]="editProject.is_wh_approved_by" minlength="3" maxlength="30"
-                                    #editis_wh_approved="ngModel">
+                                    name="is_wh_approved_by" [(ngModel)]="editProject.is_wh_approved_by" minlength="3"
+                                    maxlength="30" #editis_wh_approved="ngModel">
                                 <mat-label>Approve By</mat-label>
 
 
                             </mat-form-field>
 
 
-                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObject">
                                 <input type="text" matInput id="txtEditis_wh_approved_date" placeholder="Approve Date"
-                                    name="is_wh_approved_date" [(ngModel)]="editProject.is_wh_approved_date" minlength="3" maxlength="30"
-                                    #editis_wh_approved="ngModel">
+                                    name="is_wh_approved_date" [(ngModel)]="editProject.is_wh_approved_date"
+                                    minlength="3" maxlength="30" #editis_wh_approved="ngModel">
                                 <mat-label>Approve Date</mat-label>
 
 
@@ -500,9 +499,9 @@
 
 
                                 <input type="text" matInput id="txtEditReceivingDate" value="{{ToDay | date : 'M/d/y'}}"
-                                readonly="readonly" placeholder="Receiving Date">
+                                    readonly="readonly" placeholder="Receiving Date">
                                 <mat-label>Receiving Date</mat-label>
-   
+
                             </mat-form-field>
 
 
@@ -533,7 +532,7 @@
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
-                                <input type="text" matInput id="txtEditarea" placeholder="Area"  readonly="readonly"
+                                <input type="text" matInput id="txtEditarea" placeholder="Area" readonly="readonly"
                                     name="area" [(ngModel)]="editProject.area" minlength="3" maxlength="30"
                                     #editarea="ngModel">
                                 <mat-label>Area</mat-label>
@@ -722,7 +721,7 @@
 
                 <div class="modal-footer">
 
-                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approves</button>
+                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approve</button>
                     <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
 
                 </div>
