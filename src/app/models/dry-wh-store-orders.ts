@@ -23,6 +23,10 @@ export class DryWhStoreOrders {
     is_wh_approved: string;
     is_wh_approved_by: string;
     is_wh_approved_date: Date;
+    is_wh_checker_cancel_reason: string;
+    is_wh_checker_cancel_by: string;
+    is_wh_checker_cancel_date: string;
+    is_wh_checker_cancel: string;
 
     constructor()
     {
@@ -47,6 +51,11 @@ export class DryWhStoreOrders {
         this.is_wh_approved = null;
         this.is_wh_approved_by = null;
         this.is_wh_approved_date = null;
+        this.is_wh_checker_cancel_reason = null;
+        this.is_wh_checker_cancel_reason = null;
+        this.is_wh_checker_cancel = null;
+        this.is_wh_checker_cancel_by = null;
+        this.is_wh_checker_cancel_date = null;
     }
 
 }

@@ -47,6 +47,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   deleteProject: Project = new Project();
   deleteIndex: number = null;
   searchBy: string = "po_number";
+  searchByItems: string = "store_name";
   searchText: string = "";
   ToDay: Date;
   ToDayforMaxDate: Date;
@@ -58,6 +59,11 @@ export class PreparedStoreOrderComponent implements OnInit {
   pages: any[] = [];
   pageSize: number = 7;
 
+
+  pageSizeItemList: number = 2;
+  pagesItemList: any[] = [];
+  currentPageIndexItem: number = 0;
+
   totalPoRowCount: number = null;
   totalPartial: number = null;
 
@@ -65,6 +71,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   @ViewChild("newForm") newForm: NgForm;
   @ViewChild("editForm") editForm: NgForm;
+  @ViewChild("cancelForm") cancelForm: NgForm;
 
   PoNumberBinding: string = "";
   //sample
@@ -195,6 +202,30 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.pages.push({ pageIndex: i });
     }
     this.currentPageIndex = 0;
+  }
+
+  calculateNoOfPagesItems() {
+
+    this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+
+
+
+    //Get no. of Pages
+    let filterPipe = new FilterPipe();
+    var resultProjects = "4";
+    var noOfPagesItem = Math.ceil(resultProjects.length / this.pageSizeItemList);
+
+    // var noOfPages = Math.ceil(filterPipe.transform(this.projects, this.searchBy, this.searchText).length / this.pageSize);
+    this.pagesItemList = [];
+
+
+
+
+    //Generate Pages
+    for (let a = 0; a < noOfPagesItem; a++) {
+      this.pagesItemList.push({ pageIndexItem: a });
+    }
+    this.currentPageIndexItem = 0;
   }
 
   ConfirmNoofReject(event: any) {
@@ -436,6 +467,13 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.area = this.projects[index].area;
       this.editProject.fox = this.projects[index].fox;
 
+      //Binding of Item Information
+      this.editProject.item_code = this.projects[index].item_code;
+      this.editProject.description = this.projects[index].description;
+
+      //Binding Quantity
+      this.editProject.prepared_allocated_qty = this.projects[index].prepared_allocated_qty;
+
 
       //Warehouse Checker Fucking Process
       this.editProject.is_wh_approved_date = this.ToDay;
@@ -455,6 +493,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
       this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+      // this.calculateNoOfPagesItems();
       this.editIndex = index;
 
     }, 100);
@@ -474,6 +513,57 @@ export class PreparedStoreOrderComponent implements OnInit {
     // }
 
 
+  }
+
+  onCancelClick(event, index: number,
+    primary_id: number,
+    preparation_date: string, item_code: string, description: string, allocated_quantity: number) {
+
+    // alert("ALAKBAK GERARD" + primary_id);
+
+    setTimeout(() => {
+
+      this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+
+      // index = this.projects[index].primary_id
+      this.editProject.primary_id = primary_id;
+
+      // this.editProject.projectID = Math.floor((Math.random() * 1000000) + 1);
+      // this.editProject.projectName = this.projects[index].projectName;
+      // this.editProject.dateOfStart = this.projects[index].dateOfStart.split("/").reverse().join("-"); //yyyy-MM-dd
+      // this.editProject.teamSize = 40;
+      this.editProject.is_approved_prepa_date = preparation_date;
+
+
+      //Binding of Item Information
+      this.editProject.item_code = item_code;
+      this.editProject.description = description;
+      //Binding Quantity
+      this.editProject.prepared_allocated_qty = allocated_quantity.toString();
+
+
+      //Warehouse Checker Fucking Process
+      this.editProject.is_wh_approved_date = this.ToDay;
+      this.editProject.is_wh_approved_by = this.activeUser;
+      this.editProject.is_wh_approved = "1";
+
+
+      // this.editProject.received_by_QA = this.activeUser;
+      // // this.editProject.total_of_reject_mat = this.totalofReject.nativeElement.
+      // this.editProject.qcReceivingDate = this.ToDay;
+
+
+      // this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
+      // this.FoxStoreCode = this.projects[index].fox;
+
+
+
+
+      // this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+      this.editIndex = index;
+
+
+    }, 100);
   }
 
   resetValueS() {
@@ -604,6 +694,10 @@ export class PreparedStoreOrderComponent implements OnInit {
     this.calculateNoOfPages();
 
   }
+
+
+
+
 
   selectExpiryDate(event: any) {
     // JavaScript program to illustrate 
@@ -956,27 +1050,38 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
   CancelledPoDetails() {
-    var Item = this.ItemDescription.nativeElement.value;
-    var PoNumero = this.PONumber.nativeElement.value;
 
 
-
-    if ($("#ActivePartialReceiving").is(":visible")) {
-      // alert("1");
-      // return;
-      this.PartialReceivingCheckingonCancellation();
-      return;
+    if (this.cancelForm.valid) {
+      // this.UpdateClickDetails();
+      alert("Jaypee");
     }
     else {
-
+      this.FieldOutRequiredField();
+      return;
     }
+
+    var Item = this.ItemDescription.nativeElement.value;
+    var AllocatedQuantity = this.ServeQuantity.nativeElement.value;
+
+
+
+    // if ($("#ActivePartialReceiving").is(":visible")) {
+    //   // alert("1");
+    //   // return;
+    //   this.PartialReceivingCheckingonCancellation();
+    //   return;
+    // }
+    // else {
+
+    // }
 
 
 
 
     Swal.fire({
-      title: 'Are you sure you want to cancel the PO Number ' + PoNumero + '?',
-      text: Item,
+      title: 'Are you sure you want to cancel the serving of ' + Item + '?',
+      text: AllocatedQuantity,
       icon: 'info',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -1577,6 +1682,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   @ViewChild("ItemDescription") ItemDescription: ElementRef;
   //PO Number
   @ViewChild("PONumber") PONumber: ElementRef;
+  @ViewChild("ServeQuantity") ServeQuantity: ElementRef;
   //Active Partial Receiving Set Point
   @ViewChild("ActivePartialReceiving") ActivePartialReceiving: ElementRef;
 
