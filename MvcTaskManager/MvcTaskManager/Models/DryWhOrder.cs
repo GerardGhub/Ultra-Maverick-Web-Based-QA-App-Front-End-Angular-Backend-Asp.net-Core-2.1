@@ -32,6 +32,9 @@ namespace MvcTaskManager.Models
     public string qty { get; set; }
 
     public string prepared_allocated_qty { get; set; }
+    public string is_wh_approved { get; set; }
+    public string is_wh_approved_by { get; set; }
+    public string is_wh_approved_date { get; set; }
 
 
   }

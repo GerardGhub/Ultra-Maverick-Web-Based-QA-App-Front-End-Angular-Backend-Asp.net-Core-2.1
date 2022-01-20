@@ -35,4 +35,10 @@ export class WhCheckerDashboardService {
    }
 
 
+     updateProject(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders>
+  {
+    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders", existingProject, { responseType: "json" });
+    
+  }
+
 }

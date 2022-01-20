@@ -60,7 +60,7 @@ namespace MvcTaskManager.Controllers
 
     [HttpGet]
     [Route("api/store_orders/search/{searchby}/{searchtext}/{searchindex}")]
-    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public IActionResult Search(string searchBy, string searchText, string searchIndex)
     {
 
@@ -109,6 +109,42 @@ namespace MvcTaskManager.Controllers
       return Ok(WarehouseStoreOrderContructor);
     }
 
+
+
+
+    [HttpPut]
+    [Route("api/store_orders")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult Put([FromBody] DryWhOrder project)
+    {
+      DryWhOrder existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.store_name == project.store_name && temp.route == project.route && temp.area == project.area && temp.category == project.category ).FirstOrDefault();
+      if (existingProject != null)
+      {
+        existingProject.is_wh_approved = project.is_wh_approved;
+        existingProject.is_wh_approved_by = project.is_wh_approved_by;
+        existingProject.is_wh_approved_date = project.is_wh_approved_date;
+       
+      
+
+        db.SaveChanges();
+
+        DryWhOrder existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.store_name == project.store_name && temp.route == project.route && temp.area == project.area && temp.category == project.category).FirstOrDefault();
+        DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+        {
+          Is_wh_approved= existingProject2.is_wh_approved,
+          Is_wh_approved_by = existingProject2.is_wh_approved_by,
+          Is_wh_approved_date = existingProject2.is_wh_approved_date
+         
+
+
+        };
+        return Ok(projectViewModel);
+      }
+      else
+      {
+        return null;
+      }
+    }
 
 
 

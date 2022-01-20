@@ -28,7 +28,9 @@ namespace MvcTaskManager.ViewModels
 
     public string Prepared_allocated_qty { get; set; }
 
-
+    public string Is_wh_approved { get; set; }
+    public string Is_wh_approved_by { get; set; }
+    public string Is_wh_approved_date { get; set; }
 
 
   }

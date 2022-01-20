@@ -456,7 +456,34 @@
 
                             </mat-form-field>
 
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtEditis_wh_approved" placeholder="Is Approved"
+                                    name="is_wh_approved" [(ngModel)]="editProject.is_wh_approved" minlength="1ng build" maxlength="30"
+                                    #editis_wh_approved="ngModel">
+                                <mat-label>Approval</mat-label>
 
+
+                            </mat-form-field>
+
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtEditis_wh_approved_by" placeholder="Approve By"
+                                    name="is_wh_approved_by" [(ngModel)]="editProject.is_wh_approved_by" minlength="3" maxlength="30"
+                                    #editis_wh_approved="ngModel">
+                                <mat-label>Approve By</mat-label>
+
+
+                            </mat-form-field>
+
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtEditis_wh_approved_date" placeholder="Approve Date"
+                                    name="is_wh_approved_date" [(ngModel)]="editProject.is_wh_approved_date" minlength="3" maxlength="30"
+                                    #editis_wh_approved="ngModel">
+                                <mat-label>Approve Date</mat-label>
+
+
+                            </mat-form-field>
 
 
 
@@ -695,7 +722,7 @@
 
                 <div class="modal-footer">
 
-                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approved</button>
+                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approves</button>
                     <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
 
                 </div>

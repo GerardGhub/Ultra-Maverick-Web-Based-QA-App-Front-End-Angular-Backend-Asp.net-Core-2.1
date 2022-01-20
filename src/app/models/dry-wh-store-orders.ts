@@ -20,6 +20,9 @@ export class DryWhStoreOrders {
     total_state_repack: string;
     qty: string;
     prepared_allocated_qty: string;
+    is_wh_approved: string;
+    is_wh_approved_by: string;
+    is_wh_approved_date: Date;
 
     constructor()
     {
@@ -41,6 +44,9 @@ export class DryWhStoreOrders {
         this.total_state_repack = null;
         this.qty = null;
         this.prepared_allocated_qty = null;
+        this.is_wh_approved = null;
+        this.is_wh_approved_by = null;
+        this.is_wh_approved_date = null;
     }
 
 }

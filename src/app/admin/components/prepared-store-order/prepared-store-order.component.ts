@@ -38,8 +38,8 @@ export class PreparedStoreOrderComponent implements OnInit {
   allowableqty: number = null;
   actualqty: number = null;
   expirable_material: string = null;
-  ApprovedPreparationDate: string ="";
-  FoxStoreCode: number =0;
+  ApprovedPreparationDate: string = "";
+  FoxStoreCode: number = 0;
 
   newProject: Project = new Project();
   editProject: DryWhStoreOrders = new DryWhStoreOrders();
@@ -282,7 +282,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   onEditClick(event, index: number) {
     //Additional Binding of Searching
     // if ($('#txtSearchText').is(":visible")) {
-      //Show Visibilit
+    //Show Visibilit
     //   this.whCheckerDashboardService.SearchPreparedItems("is_approved_prepa_date", this.searchText)
     //     .subscribe(
     //       (response: DryWhStoreOrders[]) => {
@@ -415,9 +415,9 @@ export class PreparedStoreOrderComponent implements OnInit {
     // //first
     // this.RandomNumber = Math.floor((Math.random() * 1000000) + 1);
 
-    alert("Pest");
+    alert(this.ToDay);
     //Last
-    
+
     setTimeout(() => {
 
 
@@ -435,6 +435,10 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.route = this.projects[index].route;
       this.editProject.area = this.projects[index].area;
       this.editProject.fox = this.projects[index].fox;
+
+
+      //Warehouse Checker Fucking Process
+      this.editProject.is_wh_approved_date = this.ToDay;
 
       // this.editProject.mfg_date = this.projects[index].mfg_date;
       // this.editProject.expiration_date = this.projects[index].expiration_date;
@@ -467,29 +471,14 @@ export class PreparedStoreOrderComponent implements OnInit {
       // this.editProject.status_of_reject_two = this.StringNone;
       // this.editProject.status_of_reject_three = this.StringNone;
 
-      // this.editProject.count_of_reject_one = this.Deactivator;
-      // this.editProject.count_of_reject_two = this.Deactivator;
-      // this.editProject.count_of_reject_three = this.Deactivator;
-      // this.editProject.total_of_reject_mat = this.Deactivator;
-      //Section 1
 
       this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
       this.FoxStoreCode = this.projects[index].fox;
-      $("txtexpected_delivery").val("");
 
-      //Validation of EXPIRATION MATERIALS  
-      if (this.expirable_material == "0") {
-        this.ExpiryDateChild.nativeElement.value = moment().format('MM/D/YYYY');
-        $("#select_expiry").hide();
-        $("#txtEditexpiration_date").hide();
 
-      }
-      else {
-        $("#select_expiry").show();
-        $("#txtEditexpiration_date").show();
-      }
-alert(this.projects[index].store_name);
-this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name",this.ApprovedPreparationDate, this.FoxStoreCode );
+
+
+      this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
       this.editIndex = index;
 
     }, 100);
@@ -517,7 +506,7 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
     this.rejectNo3.nativeElement.value = "0";
     this.confirmReject.nativeElement.value = "0";
     this.totalofReject.nativeElement.value = "0";
- 
+
   }
 
 
@@ -695,7 +684,7 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
         showConfirmButton: false,
         timer: 3500
       })
-  
+
     }
     else {
       this.ExpiryDateChild.nativeElement.value = ' ';
@@ -705,8 +694,8 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
 
   }
 
-   //Singian Clan
-   onDeleteClick(event, index: number) {
+  //Singian Clan
+  onDeleteClick(event, index: number) {
     // this.deleteIndex = index;
     // this.deleteProject.projectID = this.projects[index].projectID;
     // this.deleteProject.projectName = this.projects[index].projectName;
@@ -994,7 +983,7 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
     var Item = this.ItemDescription.nativeElement.value;
     var PoNumero = this.PONumber.nativeElement.value;
 
-   
+
 
     if ($("#ActivePartialReceiving").is(":visible")) {
       // alert("1");
@@ -1007,7 +996,7 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
     }
 
 
-    
+
 
     Swal.fire({
       title: 'Are you sure you want to cancel the PO Number ' + PoNumero + '?',
@@ -1215,33 +1204,33 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
 
       //Start of Questioning in Non Expirable Raw Mater Validation with Else
 
-        //Start
-        Swal.fire({
+      //Start
+      Swal.fire({
 
-          title: 'Are you sure you want to approve ?',
-          text: StoreName,
-          icon: 'info',
-          showCancelButton: true,
-          confirmButtonColor: '#3085d6',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Yes!'
-        }).then((result) => {
-          if (result.isConfirmed) {
+        title: 'Are you sure you want to approve ?',
+        text: StoreName,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes!'
+      }).then((result) => {
+        if (result.isConfirmed) {
 
-            if (this.editForm.valid) {
-              this.UpdateClickDetails();
-            }
-            else {
-              this.FieldOutRequiredField();
-           
-            }
-
+          if (this.editForm.valid) {
+            this.UpdateClickDetails();
+          }
+          else {
+            this.FieldOutRequiredField();
 
           }
-        })
 
 
-        //End 
+        }
+      })
+
+
+      //End 
 
     }
 
@@ -1257,342 +1246,70 @@ this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_
 
   UpdateClickDetails() {
 
+    alert("Plano na naman");
 
-    // if (this.editForm.valid) {
-    //   //Additional Parse Data Master
-    //   // this.ActualRemaining = 450;
-    //   this.ComputeRemainingQty();
-    //   this.editProject.actual_remaining_receiving = this.ActualRemaining;
-    //   //Variable
-    //   var totalRejection = this.confirmReject.nativeElement.value;
-    //   var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-    //   if (totalRejection == 0) {
+    if (this.editForm.valid) {
 
-    //   }
-    //   else {
-    //     totalRejection = ActualDelivered - totalRejection;
-    //     this.editProject.actual_delivery = totalRejection;
-    //   }
-    //   //End of Variable
-    //   this.projectsService.updateProject(this.editProject).subscribe((response: Project) => {
-    //     var p: Project = new Project();
-    //     p.projectID = response.projectID;
-    //     p.projectName = response.projectName;
-    //     p.dateOfStart = response.dateOfStart;
-    //     p.teamSize = response.teamSize;
-    //     p.clientLocation = response.clientLocation;
-    //     p.active = response.active;
-    //     p.clientLocationID = response.clientLocationID;
-    //     p.status = response.status;
-    //     p.supplier = response.supplier;
-    //     p.item_code = response.item_code;
-    //     p.item_description = response.item_description;
-    //     p.po_number = response.po_number;
-    //     p.po_date = response.po_date;
-    //     p.pr_number = response.pr_number;
-    //     p.pr_date = response.pr_date;
-    //     p.qty_order = response.qty_order;
-    //     p.qty_uom = response.qty_uom;
-    //     p.mfg_date = response.mfg_date;
-    //     p.expiration_date = response.expiration_date;
-    //     p.expected_delivery = response.expected_delivery;
-    //     p.actual_delivery = response.actual_delivery;
-    //     p.expected_delivery = response.expected_delivery;
-    //     // this.ActualRemaining = response.actual_remaining_receiving;
-    //     // p.received_by_QA = response.received_by_QA;
-    //     // // this.activeUser = response.received_by_QA;
-    //     p.status_of_reject_one = response.status_of_reject_one;
-    //     p.status_of_reject_two = response.status_of_reject_two;
-    //     p.status_of_reject_three = response.status_of_reject_three;
-    //     p.count_of_reject_one = response.count_of_reject_one;
-    //     p.count_of_reject_two = response.count_of_reject_two;
-    //     p.count_of_reject_three = response.count_of_reject_three;
-    //     p.total_of_reject_mat = response.total_of_reject_mat;
-    //     //Section 1
-    //     //A
-    //     p.a_delivery_van_desc = response.a_delivery_van_desc;
-    //     p.a_compliance = response.a_compliance;
-    //     p.a_remarks = response.a_remarks;
-    //     //B
-    //     p.b_cooling_system_desc = response.b_cooling_system_desc;
-    //     p.b_compliance = response.b_compliance;
-    //     p.b_remarks = response.b_remarks;
-    //     //C
-    //     p.c_inner_walls_desc = response.c_inner_walls_desc;
-    //     p.c_compliance = response.c_compliance;
-    //     p.c_remarks = response.c_remarks;
-    //     //D
-    //     p.d_plastic_curtains_desc = response.d_plastic_curtains_desc;
-    //     p.d_compliance = response.d_compliance;
-    //     p.d_remarks = response.d_remarks;
-    //     //E
-    //     p.e_thereno_pest_desc = response.e_thereno_pest_desc;
-    //     p.e_compliance = response.e_compliance;
-    //     p.e_remarks = response.e_remarks;
-    //     //Section 2
-    //     //A
-    //     p.a_clean_company_dos = response.a_clean_company_dos;
-    //     p.a_compliance_dos = response.a_compliance_dos;
-    //     p.a_remarks_dos = response.a_remarks_dos;
-    //     //B
-    //     p.b_delivery_staff_symptoms_dos = response.b_delivery_staff_symptoms_dos;
-    //     p.b_compliance_dos = response.b_compliance_dos;
-    //     p.b_remarks_dos = response.b_remarks_dos;
-    //     //C
-    //     p.c_inner_walls_clean_dos = response.c_inner_walls_clean_dos;
-    //     p.c_compliance_dos = response.c_compliance_dos;
-    //     p.c_remarks_dos = response.c_remarks_dos;
-    //     //D
-    //     p.d_plastic_curtains_dos = response.d_plastic_curtains_dos;
-    //     p.d_compliance_dos = response.d_compliance_dos;
-    //     p.d_remarks_dos = response.d_remarks_dos;
-    //     //E
-    //     p.e_no_accessories_dos = response.e_no_accessories_dos;
-    //     p.e_compliance_dos = response.e_compliance_dos;
-    //     p.e_remarks_dos = response.e_remarks_dos;
-    //     //F
-    //     p.f_compliance_dos = response.f_compliance_dos;
-    //     p.f_no_pests_sightings_dos = response.f_no_pests_sightings_dos;
-    //     p.f_remarks_dos = response.f_remarks_dos;
-    //     //Section 3 
-    //     //A
-    //     p.a_pallet_crates_tres = response.a_pallet_crates_tres;
-    //     p.a_compliance_tres = response.a_compliance_tres;
-    //     p.a_remarks_tres = response.a_remarks_tres;
-    //     //B
-    //     p.b_product_contamination_tres = response.b_product_contamination_tres;
-    //     p.b_compliance_tres = response.b_compliance_tres;
-    //     p.b_remarks_tres = response.b_remarks_tres;
-    //     //C
-    //     p.c_uncessary_items_tres = response.c_uncessary_items_tres;
-    //     p.c_compliance_tres = response.c_compliance_tres;
-    //     p.c_remarks_tres = response.c_remarks_tres;
-    //     //D
-    //     p.d_products_cover_tres = response.d_products_cover_tres;
-    //     p.d_compliance_tres = response.d_compliance_tres;
-    //     p.d_remarks_tres = response.d_remarks_tres;
-    //     //Section 4
-    //     //A
-    //     p.a_certificate_coa_kwatro_desc = response.a_certificate_coa_kwatro_desc;
-    //     p.a_compliance_kwatro = response.a_compliance_kwatro;
-    //     p.a_remarks_kwatro = response.a_remarks_kwatro;
+      // //Additional Parse Data Master
+      // // this.ActualRemaining = 450;
+      // this.ComputeRemainingQty();
+      // this.editProject.actual_remaining_receiving = this.ActualRemaining;
+      // //Variable
+      // var totalRejection = this.confirmReject.nativeElement.value;
+      // var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+      // if (totalRejection == 0) {
 
-    //     //B
-    //     p.b_po_kwatro_desc = response.b_po_kwatro_desc;
-    //     p.b_compliance_kwatro = response.b_compliance_kwatro;
-    //     p.b_remarks_kwatro = response.b_remarks_kwatro;
-
-    //     //C
-    //     p.c_msds_kwatro_desc = response.c_msds_kwatro_desc;
-    //     p.c_compliance_kwatro = response.c_compliance_kwatro;
-    //     p.c_remarks_kwatro = response.c_remarks_kwatro;
-
-    //     //D
-    //     p.d_food_grade_desc = response.d_food_grade_desc;
-    //     p.d_compliance_kwatro = response.d_compliance_kwatro;
-    //     p.d_remarks_kwatro = response.d_remarks_kwatro;
-    //     //Section 5
-
-    //     //A
-    //     p.a_qty_received_singko_singko = response.a_qty_received_singko_singko;
-    //     p.a_compliance_singko = response.a_compliance_singko;
-    //     p.a_remarks_singko = response.a_remarks_singko;
-
-    //     //B
-    //     p.b_mfg_date_desc_singko = response.b_mfg_date_desc_singko;
-    //     p.b_compliance_singko = response.b_compliance_singko;
-    //     p.b_remarks_singko = response.b_remarks_singko;
-
-    //     //C
-    //     p.c_expirydate_desc_singko = response.c_expirydate_desc_singko;
-    //     p.c_compliance_singko = response.c_compliance_singko;
-    //     p.c_remarks_singko = response.c_remarks_singko;
-
-    //     //D
-    //     p.d_packaging_desc_singko = response.d_packaging_desc_singko;
-    //     p.d_compliance_singko = response.d_compliance_singko;
-    //     p.d_remarks_singko = response.d_remarks_singko;
-    //     //E
-    //     p.e_no_contaminants_desc_singko = response.e_no_contaminants_desc_singko;
-    //     p.e_compliance_singko = response.e_compliance_singko;
-    //     p.e_remarks_singko = response.e_remarks_singko;
-    //     //F
-    //     p.f_qtyrejected_desc_singko = response.f_qtyrejected_desc_singko;
-    //     p.f_compliance_singko = response.f_compliance_singko;
-    //     p.f_remarks_singko = response.f_remarks_singko;
-    //     //G
-    //     p.g_rejected_reason_desc_singko = response.g_rejected_reason_desc_singko;
-    //     p.g_compliance_singko = response.g_compliance_singko;
-    //     p.g_remarks_singko = response.g_remarks_singko;
-    //     //H
-    //     p.h_lab_sample_desc_singko = response.h_lab_sample_desc_singko;
-    //     p.h_compliance_singko = response.h_compliance_singko;
-    //     p.h_remarks_singko = response.h_remarks_singko;
+      // }
+      // else {
+      //   totalRejection = ActualDelivered - totalRejection;
+      //   this.editProject.actual_delivery = totalRejection;
+      // }
 
 
-    //     // this.received_by.nativeElement.value = this.loginService.currentUserName;
-    //     this.projects[this.editIndex] = p;
-    //     // this.InsertANewPartialReceiving();
-    //     // this.InsertPartialDatainMasterTable();
-    //     // 01/14/2022
-    //     this.editProject.projectID = null;
-    //     this.editProject.projectName = null;
-    //     this.editProject.dateOfStart = null;
-    //     this.editProject.teamSize = null;
-    //     this.editProject.supplier = null;
-    //     this.editProject.active = false;
-    //     this.editProject.clientLocationID = null;
-    //     this.editProject.status = null;
-    //     this.editProject.item_code = null;
-    //     this.editProject.item_description = null;
-    //     this.editProject.po_number = null;
-    //     this.editProject.po_date = null;
-    //     this.editProject.pr_number = null;
-    //     this.editProject.pr_date = null;
-    //     this.editProject.qty_order = null;
-    //     this.editProject.qty_uom = null;
-    //     this.editProject.mfg_date = null;
-    //     this.editProject.expiration_date = null;
-    //     this.editProject.expected_delivery = null;
-    //     this.editProject.actual_delivery = null;
-    //     this.editProject.actual_remaining_receiving = null;
-    //     this.editProject.received_by_QA = null;
-    //     this.editProject.status_of_reject_one = null;
-    //     this.editProject.status_of_reject_two = null;
-    //     this.editProject.status_of_reject_three = null;
-    //     this.editProject.count_of_reject_one = null;
-    //     this.editProject.count_of_reject_two = null;
-    //     this.editProject.count_of_reject_three = null;
-    //     this.editProject.total_of_reject_mat = null;
-    //     //Section A
-    //     //A
-    //     this.editProject.a_delivery_van_desc = null;
-    //     this.editProject.a_compliance = null;
-    //     this.editProject.a_remarks = null;
-    //     //B
-    //     this.editProject.b_cooling_system_desc = null;
-    //     this.editProject.b_compliance = null;
-    //     this.editProject.b_remarks = null;
-    //     //C
-    //     this.editProject.c_inner_walls_desc = null;
-    //     this.editProject.c_compliance = null;
-    //     this.editProject.c_remarks = null;
-    //     //D
-    //     this.editProject.d_plastic_curtains_desc = null;
-    //     this.editProject.d_compliance = null;
-    //     this.editProject.d_remarks = null;
-    //     //E
-    //     this.editProject.e_thereno_pest_desc = null;
-    //     this.editProject.e_compliance = null;
-    //     this.editProject.e_remarks = null;
-    //     //Section 2
-    //     //A
-    //     this.editProject.a_clean_company_dos = null;
-    //     this.editProject.a_compliance_dos = null;
-    //     this.editProject.a_remarks_dos = null;
-    //     //B
-    //     this.editProject.b_delivery_staff_symptoms_dos = null;
-    //     this.editProject.b_compliance_dos = null;
-    //     this.editProject.b_remarks_dos = null;
-    //     //C
-    //     this.editProject.c_inner_walls_clean_dos = null;
-    //     this.editProject.c_compliance_dos = null;
-    //     this.editProject.c_remarks_dos = null;
-    //     //D
-    //     this.editProject.d_plastic_curtains_dos = null;
-    //     this.editProject.d_compliance_dos = null;
-    //     this.editProject.d_remarks_dos = null;
-    //     //E
-    //     this.editProject.e_no_accessories_dos = null;
-    //     this.editProject.e_compliance_dos = null;
-    //     this.editProject.e_remarks_dos = null;
-    //     //F
-    //     this.editProject.f_compliance_dos = null;
-    //     this.editProject.f_no_pests_sightings_dos = null;
-    //     this.editProject.f_remarks_dos = null;
-    //     //Section 3
-    //     //A
-    //     this.editProject.a_pallet_crates_tres = null;
-    //     this.editProject.a_compliance_tres = null;
-    //     this.editProject.a_remarks_tres = null;
-    //     //B
-    //     this.editProject.b_product_contamination_tres = null;
-    //     this.editProject.b_compliance_tres = null;
-    //     this.editProject.b_remarks_tres = null;
-    //     //C
-    //     this.editProject.c_uncessary_items_tres = null;
-    //     this.editProject.c_compliance_tres = null;
-    //     this.editProject.c_remarks_tres = null;
-    //     //D
-    //     this.editProject.d_products_cover_tres = null;
-    //     this.editProject.d_compliance_tres = null;
-    //     this.editProject.d_remarks_tres = null;
-    //     //Section 4
-    //     //A
-    //     this.editProject.a_certificate_coa_kwatro_desc = null;
-    //     this.editProject.a_compliance_kwatro = null;
-    //     this.editProject.a_remarks_kwatro = null;
-    //     //B
-    //     this.editProject.b_po_kwatro_desc = null;
-    //     this.editProject.b_compliance_kwatro = null;
-    //     this.editProject.b_remarks_kwatro = null;
-    //     //C
-    //     this.editProject.c_msds_kwatro_desc = null;
-    //     this.editProject.c_compliance_kwatro = null;
-    //     this.editProject.c_remarks_kwatro = null;
-    //     //D
-    //     this.editProject.d_food_grade_desc = null;
-    //     this.editProject.d_compliance_kwatro = null;
-    //     this.editProject.d_remarks_kwatro = null;
-    //     //Section 5
-    //     //A
-    //     this.editProject.a_qty_received_singko_singko = null;
-    //     this.editProject.a_compliance_singko = null;
-    //     this.editProject.a_remarks_singko = null;
-    //     //B
-    //     this.editProject.b_mfg_date_desc_singko = null;
-    //     this.editProject.b_compliance_singko = null;
-    //     this.editProject.b_remarks_singko = null;
-    //     //C
-    //     this.editProject.c_expirydate_desc_singko = null;
-    //     this.editProject.c_compliance_singko = null;
-    //     this.editProject.c_remarks_singko = null;
-    //     //D
-    //     this.editProject.d_packaging_desc_singko = null;
-    //     this.editProject.d_compliance_singko = null;
-    //     this.editProject.d_remarks_singko = null;
-    //     //E
-    //     this.editProject.e_no_contaminants_desc_singko = null;
-    //     this.editProject.e_compliance_singko = null;
-    //     this.editProject.e_remarks_singko = null;
-    //     //F
-    //     this.editProject.f_qtyrejected_desc_singko = null;
-    //     this.editProject.f_compliance_singko = null;
-    //     this.editProject.f_remarks_singko = null;
-    //     //G
-    //     this.editProject.g_rejected_reason_desc_singko = null;
-    //     this.editProject.g_compliance_singko = null;
-    //     this.editProject.g_remarks_singko = null;
-    //     //H
-    //     this.editProject.h_lab_sample_desc_singko = null;
-    //     this.editProject.h_compliance_singko = null;
-    //     this.editProject.h_remarks_singko = null;
+      //End of Variable
+      this.whCheckerDashboardService.updateProject(this.editProject).subscribe((response: DryWhStoreOrders) => {
+        var p: DryWhStoreOrders = new DryWhStoreOrders();
+        p.is_approved_prepa_date = response.is_approved_prepa_date;
+        p.category = response.category;
+        p.route = response.route;
+        p.area = response.area;
+        p.store_name = response.store_name;
+        p.is_wh_approved = response.is_wh_approved;
+        p.is_wh_approved_by = response.is_wh_approved_by;
+        // p.is_wh_approved_date = response.is_wh_approved_date;
 
-    //     //  this.InsertANewPartialReceiving();
-    //     // this.showUpdatingSuccess();
-    //     this.showReceivedSuccess();
-    //     this.ngOnInit();
-    //     $("#editFormCancel").trigger("click");
-    //   },
-    //     (error) => {
-    //       console.log(error);
-    //     });
-    // }
+
+
+
+        // this.received_by.nativeElement.value = this.loginService.currentUserName;
+        this.projects[this.editIndex] = p;
+        // this.InsertANewPartialReceiving();
+        // this.InsertPartialDatainMasterTable();
+        // 01/14/2022  GerardSingian
+        this.editProject.is_approved_prepa_date = null;
+        this.editProject.category = null;
+        this.editProject.route = null;
+        this.editProject.area = null;
+        this.editProject.store_name = null;
+        this.editProject.is_wh_approved = null;
+        this.editProject.is_wh_approved_by = null;
+        this.editProject.is_wh_approved_date = null;
+
+        //  this.InsertANewPartialReceiving();
+        // this.showUpdatingSuccess();
+        this.showApprovedSuccess();
+        this.ngOnInit();
+        $("#editFormCancel").trigger("click");
+      },
+        (error) => {
+          console.log(error);
+        });
+    }
   }
 
 
-  showReceivedSuccess() {
-    this.toastr.success('Successfully Receive!', 'Notifications');
+  showApprovedSuccess() {
+    this.toastr.success('Successfully Approve!', 'Notifications');
   }
 
   onSaveClick() {
