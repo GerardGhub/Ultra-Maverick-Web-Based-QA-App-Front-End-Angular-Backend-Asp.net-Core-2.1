@@ -30,7 +30,7 @@ namespace MvcTaskManager.Controllers
       string Activated = "1";
       string DeActivated = "0";
       List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new {p.is_approved_prepa_date}).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
-      && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null || temp.force_prepared_status != null ).ToList();
+      && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.is_wh_checker_cancel == null || temp.force_prepared_status != null).ToList();
       return StoreOrderCheckList;
 
 
@@ -54,6 +54,23 @@ namespace MvcTaskManager.Controllers
     
     }
 
+    [HttpGet]
+    [Route("api/dry_wh_orders_checklist_distinct_cancelled")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public List<DryWhOrder> GetDistinctPreparedCancelledOrders()
+    {
+      string Activated = "1";
+      string DeActivated = "0";
+      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
+        && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.is_wh_checker_cancel != null || temp.force_prepared_status != null).ToList();
+      return StoreOrderCheckList;
+
+
+ 
+    }
+
+
+
 
 
 
@@ -72,7 +89,7 @@ namespace MvcTaskManager.Controllers
       string FoxStoreCode = searchIndex;
       if (searchBy == "store_name")
 
-        projects = db.dry_wh_orders.Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode)).ToList();
+        projects = db.dry_wh_orders.Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode) && temp.is_wh_checker_cancel == null).ToList();
 
       //temp.is_approved.Contains(is_activated) &&
       List <DryWhOrderViewModel> WarehouseStoreOrderContructor = new List<DryWhOrderViewModel>();
@@ -183,6 +200,38 @@ namespace MvcTaskManager.Controllers
       }
     }
 
+
+    [HttpPut]
+    [Route("api/store_orders/cancelitems/readline")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult PutCancelPreparedItemReadLine([FromBody] DryWhOrder project)
+    {
+
+      List<DryWhOrder> existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.category == project.category).ToList();
+      if (existingProject != null)
+      {
+        project.dispossal_status = project.dispossal_status;
+
+
+
+        db.SaveChanges();
+
+        List<DryWhOrder> existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.category == project.category).ToList();
+        DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+        {
+          Dispossal_status = project.dispossal_status
+ 
+
+
+
+        };
+        return Ok(projectViewModel);
+      }
+      else
+      {
+        return null;
+      }
+    }
 
 
 

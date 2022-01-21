@@ -60,6 +60,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   pageSize: number = 7;
 
 
+
   pageSizeItemList: number = 2;
   pagesItemList: any[] = [];
   currentPageIndexItem: number = 0;
@@ -68,6 +69,8 @@ export class PreparedStoreOrderComponent implements OnInit {
   totalPartial: number = null;
 
   totalPartialReceivingCancel: number = null;
+
+  totalItemsPrepared: string = "";
 
   @ViewChild("newForm") newForm: NgForm;
   @ViewChild("editForm") editForm: NgForm;
@@ -481,14 +484,13 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_approved = "1";
 
 
-      // this.editProject.received_by_QA = this.activeUser;
-      // // this.editProject.total_of_reject_mat = this.totalofReject.nativeElement.
-      // this.editProject.qcReceivingDate = this.ToDay;
+   
 
 
       this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
       this.FoxStoreCode = this.projects[index].fox;
 
+      this.totalItemsPrepared = this.projects[index].total_state_repack;
 
 
 
@@ -501,29 +503,20 @@ export class PreparedStoreOrderComponent implements OnInit {
   }
 
 
-  validateRejectedStatus(event: any) {
-
-    // const Reject1 = this.RejectedStatus1.nativeElement.value;
-    // const Reject2 = this.RejectedStatus2.nativeElement.value;
-    // const Reject3 = this.RejectedStatus3.nativeElement.value;
-    // if(Reject1 == Reject2)
-    // {
-
-    //   this.MultipleSelectionOfRejectionStatus();
-    // }
-
-
-  }
 
   onCancelClick(event, index: number,
     primary_id: number,
-    preparation_date: string, item_code: string, description: string, allocated_quantity: number) {
+    preparation_date: string,
+     item_code: string,
+      description: string, 
+      allocated_quantity: number, 
+      category: string) {
 
     // alert("ALAKBAK GERARD" + primary_id);
 
     setTimeout(() => {
 
-      this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+    
 
       // index = this.projects[index].primary_id
       this.editProject.primary_id = primary_id;
@@ -543,8 +536,10 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_checker_cancel_date = this.ToDay;
       this.editProject.is_wh_checker_cancel_by = this.activeUser;
       this.editProject.is_wh_checker_cancel = "1";
+      this.editProject.dispossal_status = "1";
+      this.editProject.category = category;
       this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason;
-  
+
 
 
 
@@ -555,6 +550,10 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
     }, 100);
+    if(this.ItemCountArrayPreparedItem.nativeElement.value() == this.totalItemsPrepared)
+    {
+      
+    }
   }
 
   resetValueS() {
@@ -1044,17 +1043,38 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
     if (this.cancelForm.valid) {
-      // this.UpdateClickDetails();
-      alert("Jaypee");
-    this.UpdateCancelItemClickDetails();
+
+
+      var Item = this.ItemDescription.nativeElement.value;
+      var AllocatedQuantity = this.ServeQuantity.nativeElement.value;
+
+      Swal.fire({
+        title: 'Are you sure you want to cancel the serving of ' + Item + '?',
+        text: AllocatedQuantity,
+        icon: 'info',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+      }).then((result) => {
+        if (result.isConfirmed) {
+  
+  
+          // this.UpdateCancelItemClickDetailsOverAll();
+          this.UpdateCancelItemClickDetails();
+  
+  
+  
+        }
+      })
+
     }
     else {
       this.FieldOutRequiredField();
       return;
     }
 
-    var Item = this.ItemDescription.nativeElement.value;
-    var AllocatedQuantity = this.ServeQuantity.nativeElement.value;
+
 
 
 
@@ -1071,24 +1091,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
 
-    Swal.fire({
-      title: 'Are you sure you want to cancel the serving of ' + Item + '?',
-      text: AllocatedQuantity,
-      icon: 'info',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes'
-    }).then((result) => {
-      if (result.isConfirmed) {
-
-
-        this.UpdateDeactivatedTransactions();
-
-
-
-      }
-    })
+  
 
 
   }
@@ -1388,7 +1391,6 @@ export class PreparedStoreOrderComponent implements OnInit {
     if (this.editForm.valid) {
 
 
-
       //End of Variable
       this.whCheckerDashboardService.updateStoreOrderPerItem(this.editProject).subscribe((response: DryWhStoreOrders) => {
         var p: DryWhStoreOrders = new DryWhStoreOrders();
@@ -1398,7 +1400,7 @@ export class PreparedStoreOrderComponent implements OnInit {
         p.is_wh_checker_cancel_by = response.is_wh_checker_cancel_by;
         p.is_wh_checker_cancel_date = response.is_wh_checker_cancel_date;
         p.is_wh_checker_cancel_reason = response.is_wh_checker_cancel_reason;
-  
+
 
 
 
@@ -1412,9 +1414,9 @@ export class PreparedStoreOrderComponent implements OnInit {
         this.editProject.is_wh_checker_cancel_by = null;
         this.editProject.is_wh_checker_cancel_date = null;
         this.editProject.is_wh_checker_cancel_reason = null;
-     
 
-        this.showApprovedSuccess();
+
+        this.showCancelledSuccess();
         this.closeAddExpenseModal.nativeElement.click();
         this.ngOnInit();
         $("#editFormCancel").trigger("click");
@@ -1423,6 +1425,44 @@ export class PreparedStoreOrderComponent implements OnInit {
           console.log(error);
         });
     }
+  }
+
+  UpdateCancelItemClickDetailsOverAll() {
+
+    if (this.editForm.valid) {
+
+
+
+      //End of Variable
+      this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editProject).subscribe((response: DryWhStoreOrders) => {
+        var p: DryWhStoreOrders = new DryWhStoreOrders();
+        p.is_approved_prepa_date = response.is_approved_prepa_date;
+        p.category = response.category;
+        // p.dispossal_status = response.dispossal_status;
+
+
+
+
+
+
+        // this.received_by.nativeElement.value = this.loginService.currentUserName;
+        this.projects[this.editIndex] = p;
+        // 01/14/2022  GerardSingian
+        this.editProject.is_approved_prepa_date = null;
+        this.editProject.category = null;
+        this.editProject.dispossal_status = null;
+   
+
+
+      },
+        (error) => {
+          console.log(error);
+        });
+    }
+  }
+
+  showCancelledSuccess() {
+    this.toastr.success('Successfully Cancelled!', 'Notifications');
   }
 
 
@@ -1722,6 +1762,8 @@ export class PreparedStoreOrderComponent implements OnInit {
   @ViewChild("ServeQuantity") ServeQuantity: ElementRef;
   //Active Partial Receiving Set Point
   @ViewChild("ActivePartialReceiving") ActivePartialReceiving: ElementRef;
+
+  @ViewChild("ItemCountArrayPreparedItem") ItemCountArrayPreparedItem: ElementRef;
 
 
   //Selection of Compliation ViewChild In And Out

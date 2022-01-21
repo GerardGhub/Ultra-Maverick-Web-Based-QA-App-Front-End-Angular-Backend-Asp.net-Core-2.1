@@ -42,6 +42,7 @@ namespace MvcTaskManager.Models
     public string is_wh_checker_cancel_date { get; set; }
     public string is_wh_checker_cancel_reason { get; set; }
 
+    public string dispossal_status { get; set; }
 
   }
 }

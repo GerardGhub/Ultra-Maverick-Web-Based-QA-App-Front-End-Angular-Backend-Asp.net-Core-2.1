@@ -5144,7 +5144,7 @@ function DashboardComponent_ng_container_32_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementContainerStart"](0);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](1, "div", 19);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](2, "div", 20);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "Cancelled Transaction");
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](3, "Cancelled Transactions");
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementEnd"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelementStart"](4, "div", 21);
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtext"](5);
@@ -5155,7 +5155,7 @@ function DashboardComponent_ng_container_32_Template(rf, ctx) { if (rf & 1) {
 } if (rf & 2) {
     const ctx_r15 = _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵnextContext"]();
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵadvance"](5);
-    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](6, 1, ctx_r15.totalPoRowCountCancelled));
+    _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵtextInterpolate"](_angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵpipeBind1"](6, 1, ctx_r15.totalCancelledStoreOrderPreparedDistinctRowCount));
 } }
 function DashboardComponent_mat_progress_bar_41_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_3__["ɵɵelement"](0, "mat-progress-bar", 23);
@@ -5307,6 +5307,7 @@ class DashboardComponent {
         this.totalPartialPoReceivingRejectRowCount = null;
         this.totalStoreOrderRowCount = null;
         this.totalStoreOrderPreparedDistinctRowCount = null;
+        this.totalCancelledStoreOrderPreparedDistinctRowCount = null;
     }
     ngOnInit() {
         //responsive dashbaord
@@ -5354,46 +5355,47 @@ class DashboardComponent {
             this.Years.push(i);
         }
         this.TeamMembersSummary = this.dashboardService.getTeamMembersSummary();
-        this.TeamMembers = [
-            {
-                Region: "East", Members: [
-                    { ID: 1, Name: "Ford", Status: "Available" },
-                    { ID: 2, Name: "Miller", Status: "Available" },
-                    { ID: 3, Name: "Jones", Status: "Busy" },
-                    { ID: 4, Name: "James", Status: "Busy" }
-                ]
-            },
-            {
-                Region: "West", Members: [
-                    { ID: 5, Name: "Anna", Status: "Available" },
-                    { ID: 6, Name: "Arun", Status: "Available" },
-                    { ID: 7, Name: "Varun", Status: "Busy" },
-                    { ID: 8, Name: "Jasmine", Status: "Busy" }
-                ]
-            },
-            {
-                Region: "South", Members: [
-                    { ID: 9, Name: "Krishna", Status: "Available" },
-                    { ID: 10, Name: "Mohan", Status: "Available" },
-                    { ID: 11, Name: "Raju", Status: "Busy" },
-                    { ID: 12, Name: "Farooq", Status: "Busy" }
-                ]
-            },
-            {
-                Region: "North", Members: [
-                    { ID: 13, Name: "Jacob", Status: "Available" },
-                    { ID: 14, Name: "Smith", Status: "Available" },
-                    { ID: 15, Name: "Jones", Status: "Busy" },
-                    { ID: 16, Name: "James", Status: "Busy" }
-                ]
-            }
-        ];
+        // this.TeamMembers = [
+        //   {
+        //     Region: "East", Members: [
+        //       { ID: 1, Name: "Ford", Status: "Available" },
+        //       { ID: 2, Name: "Miller", Status: "Available" },
+        //       { ID: 3, Name: "Jones", Status: "Busy" },
+        //       { ID: 4, Name: "James", Status: "Busy" }
+        //     ]
+        //   },
+        //   {
+        //     Region: "West", Members: [
+        //       { ID: 5, Name: "Anna", Status: "Available" },
+        //       { ID: 6, Name: "Arun", Status: "Available" },
+        //       { ID: 7, Name: "Varun", Status: "Busy" },
+        //       { ID: 8, Name: "Jasmine", Status: "Busy" }
+        //     ]
+        //   },
+        //   {
+        //     Region: "South", Members: [
+        //       { ID: 9, Name: "Krishna", Status: "Available" },
+        //       { ID: 10, Name: "Mohan", Status: "Available" },
+        //       { ID: 11, Name: "Raju", Status: "Busy" },
+        //       { ID: 12, Name: "Farooq", Status: "Busy" }
+        //     ]
+        //   },
+        //   {
+        //     Region: "North", Members: [
+        //       { ID: 13, Name: "Jacob", Status: "Available" },
+        //       { ID: 14, Name: "Smith", Status: "Available" },
+        //       { ID: 15, Name: "Jones", Status: "Busy" },
+        //       { ID: 16, Name: "James", Status: "Busy" }
+        //     ]
+        //   }
+        // ];
         this.DashboardPoSummary();
         this.DashboardPoSummaryCancelled();
         this.DashboardPoSummaryPartialReceiving();
         this.DashboardPoSummaryPartialReceivingRejectonWH();
         this.DashboardStoreOrder();
         this.DashboardDistinctPreparedStoreOrder();
+        this.DashboardDistinctCancelledPreparedStoreOrder();
         // this.IntervalPageforRefresh();
     }
     IntervalPageforRefresh() {
@@ -5452,6 +5454,14 @@ class DashboardComponent {
             // debugger;
             this.WhStoreOrders = response;
             this.totalStoreOrderPreparedDistinctRowCount = response.length;
+        });
+    }
+    DashboardDistinctCancelledPreparedStoreOrder() {
+        this.whCheckerDashboardService.getDistinctPreparedCancelledStoreOrders()
+            .subscribe((response) => {
+            // debugger;
+            this.WhStoreOrders = response;
+            this.totalCancelledStoreOrderPreparedDistinctRowCount = response.length;
         });
     }
     onProjectChange($event) {

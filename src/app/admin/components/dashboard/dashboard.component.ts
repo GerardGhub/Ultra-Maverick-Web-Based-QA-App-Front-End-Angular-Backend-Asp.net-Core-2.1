@@ -53,6 +53,7 @@ export class DashboardComponent implements OnInit {
 
   totalStoreOrderRowCount: number = null;
   totalStoreOrderPreparedDistinctRowCount: number = null;
+  totalCancelledStoreOrderPreparedDistinctRowCount: number = null;
 
   constructor(private dashboardService: DashboardService, 
     public loginService: LoginService, 
@@ -131,40 +132,40 @@ export class DashboardComponent implements OnInit {
     this.TeamMembersSummary = this.dashboardService.getTeamMembersSummary();
 
 
-    this.TeamMembers = [
-      {
-        Region: "East", Members: [
-          { ID: 1, Name: "Ford", Status: "Available" },
-          { ID: 2, Name: "Miller", Status: "Available" },
-          { ID: 3, Name: "Jones", Status: "Busy" },
-          { ID: 4, Name: "James", Status: "Busy" }
-        ]
-      },
-      {
-        Region: "West", Members: [
-          { ID: 5, Name: "Anna", Status: "Available" },
-          { ID: 6, Name: "Arun", Status: "Available" },
-          { ID: 7, Name: "Varun", Status: "Busy" },
-          { ID: 8, Name: "Jasmine", Status: "Busy" }
-        ]
-      },
-      {
-        Region: "South", Members: [
-          { ID: 9, Name: "Krishna", Status: "Available" },
-          { ID: 10, Name: "Mohan", Status: "Available" },
-          { ID: 11, Name: "Raju", Status: "Busy" },
-          { ID: 12, Name: "Farooq", Status: "Busy" }
-        ]
-      },
-      {
-        Region: "North", Members: [
-          { ID: 13, Name: "Jacob", Status: "Available" },
-          { ID: 14, Name: "Smith", Status: "Available" },
-          { ID: 15, Name: "Jones", Status: "Busy" },
-          { ID: 16, Name: "James", Status: "Busy" }
-        ]
-      }
-    ];
+    // this.TeamMembers = [
+    //   {
+    //     Region: "East", Members: [
+    //       { ID: 1, Name: "Ford", Status: "Available" },
+    //       { ID: 2, Name: "Miller", Status: "Available" },
+    //       { ID: 3, Name: "Jones", Status: "Busy" },
+    //       { ID: 4, Name: "James", Status: "Busy" }
+    //     ]
+    //   },
+    //   {
+    //     Region: "West", Members: [
+    //       { ID: 5, Name: "Anna", Status: "Available" },
+    //       { ID: 6, Name: "Arun", Status: "Available" },
+    //       { ID: 7, Name: "Varun", Status: "Busy" },
+    //       { ID: 8, Name: "Jasmine", Status: "Busy" }
+    //     ]
+    //   },
+    //   {
+    //     Region: "South", Members: [
+    //       { ID: 9, Name: "Krishna", Status: "Available" },
+    //       { ID: 10, Name: "Mohan", Status: "Available" },
+    //       { ID: 11, Name: "Raju", Status: "Busy" },
+    //       { ID: 12, Name: "Farooq", Status: "Busy" }
+    //     ]
+    //   },
+    //   {
+    //     Region: "North", Members: [
+    //       { ID: 13, Name: "Jacob", Status: "Available" },
+    //       { ID: 14, Name: "Smith", Status: "Available" },
+    //       { ID: 15, Name: "Jones", Status: "Busy" },
+    //       { ID: 16, Name: "James", Status: "Busy" }
+    //     ]
+    //   }
+    // ];
 
     this.DashboardPoSummary();
     this.DashboardPoSummaryCancelled();
@@ -173,6 +174,7 @@ export class DashboardComponent implements OnInit {
 
     this.DashboardStoreOrder();
     this.DashboardDistinctPreparedStoreOrder();
+    this.DashboardDistinctCancelledPreparedStoreOrder();
     // this.IntervalPageforRefresh();
   }
 
@@ -280,6 +282,19 @@ export class DashboardComponent implements OnInit {
       );
   }
 
+  DashboardDistinctCancelledPreparedStoreOrder() {
+    this.whCheckerDashboardService.getDistinctPreparedCancelledStoreOrders()
+      .subscribe(
+        (response: DryWhStoreOrders[]) => {
+          // debugger;
+
+          this.WhStoreOrders = response;
+
+
+          this.totalCancelledStoreOrderPreparedDistinctRowCount = response.length;
+        }
+      );
+  }
 
 
   

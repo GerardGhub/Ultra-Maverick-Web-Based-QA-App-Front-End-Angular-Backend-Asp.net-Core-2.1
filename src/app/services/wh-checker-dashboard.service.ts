@@ -40,4 +40,13 @@ export class WhCheckerDashboardService {
 
   }
 
+  updateStoreOrderPerItemReadLine(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
+    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelitems/readline", existingProject, { responseType: "json" });
+
+  }
+
+  getDistinctPreparedCancelledStoreOrders(): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_checklist_distinct_cancelled", { responseType: "json" });
+  }
+
 }

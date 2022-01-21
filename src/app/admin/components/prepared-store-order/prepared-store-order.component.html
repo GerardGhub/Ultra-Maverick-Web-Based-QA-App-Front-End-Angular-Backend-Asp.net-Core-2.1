@@ -504,7 +504,7 @@
                                     name="store_name" [(ngModel)]="editProject.store_name" required="required"
                                     minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$" #editstore_name="ngModel"
                                     [ngClass]="{ 'is-invalid': editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted), 'is-valid': editstore_name.valid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) }"
-                                    readonly="readonly" >
+                                    readonly="readonly">
                                 <mat-label>Store Name</mat-label>
 
                                 <span class="text-danger"
@@ -557,8 +557,9 @@
 
                     </div>
 
-                    <mat-card>RECEIVING INFORMATION</mat-card>
-
+                    <mat-card>RECEIVING INFORMATION </mat-card>
+                    <!-- Total Items  Prepared -->
+                    <p>{{totalItemsPrepared}}</p>
 
 
 
@@ -591,6 +592,7 @@
                                             <th>Serve
 
                                             </th>
+                                            <th>Item Count</th>
 
 
                                             <th class="text-center">*</th>
@@ -599,8 +601,7 @@
                                     </thead>
                                     <!-- *ngFor="let project of WhRejectRemarks | async | filter:  searchByItems : searchText | paging : currentPageIndex :   pageSizeItemList; let a = index"> -->
                                     <tbody>
-                                        <tr
-                                            *ngFor="let project of WhRejectRemarks | async let a = index">
+                                        <tr *ngFor="let project of WhRejectRemarks | async let a = index; count as c ">
                                             <!-- <td>{{a}}</td> -->
                                             <td>{{project.primary_id}}</td>
                                             <!-- <td>{{project.item_code}}</td> -->
@@ -610,37 +611,34 @@
 
                                             <td>{{project.qty | number}}</td>
 
-                                            <td>{{project.prepared_allocated_qty | number}}</td>
-
+                                            <td>{{project.prepared_allocated_qty | number}}
+                                            </td>
+                                            <td #ItemCountArrayPreparedItem>{{c}}</td>
 
                                             <td class="text-center">
 
-                                                <!-- <button mat-icon-button color="black" (click)="onEditClick($event, i)"
-                                                    data-toggle="modal" data-target="#editModal" data-backdrop="false"
-                                                    title="Edit" data-keyboard="false">
-                                                    <mat-icon>pageview</mat-icon>
-                                                </button>&nbsp; -->
 
-                                                <!--             
-  <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession =='QCSupervisor'"></ng-container> -->
-                                                <!-- <ng-container
-                                                    *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'"> -->
 
-                                                <button mat-icon-button color="warn"
-                                                    (click)="onCancelClick($event, index, 
+
+                                                <button mat-icon-button color="warn" (click)="onCancelClick($event, index, 
                                                     project.primary_id,
                                                      project.is_approved_prepa_date ,
-                                                      project.item_code, project.description, project.prepared_allocated_qty)" data-toggle="modal"
+                                                      project.item_code, project.description, 
+                                                      project.prepared_allocated_qty, 
+                                                      project.category)" data-toggle="modal"
                                                     data-target="#CancelledTransactionModal" data-backdrop="false"
                                                     data-keyboard="false">
                                                     <mat-icon>toggle_off</mat-icon>
                                                 </button>&nbsp;
-                                                <!-- </ng-container> -->
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
 
+                                            </td>
+
+                                        </tr>
+
+
+                                    </tbody>
+
+                                </table>
 
                                 <!-- Paging Box Starts -->
                                 <!-- <div class="col-12">
@@ -732,7 +730,7 @@
 
                 <div class="modal-footer">
 
-                    <button mat-stroked-button color="primary" class="mr-2" (click)="onUpdateClick()">Approve</button>
+                    <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2" (click)="onUpdateClick()">Approve</button>
                     <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
 
                 </div>
@@ -833,7 +831,8 @@
 
                     <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelDescription" placeholder="Description"
-                            name="description" [(ngModel)]="editProject.description" readonly="readonly" #ItemDescription>
+                            name="description" [(ngModel)]="editProject.description" readonly="readonly"
+                            #ItemDescription>
                         <mat-label>Item Description</mat-label>
 
                     </mat-form-field>
@@ -847,27 +846,41 @@
 
                     </mat-form-field>
 
-                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelis_wh_checker_cancel" placeholder="Cancel Status"
                             name="is_wh_checker_cancel" [(ngModel)]="editProject.is_wh_checker_cancel"
-                            readonly="readonly" #ServeQuantity>
+                            readonly="readonly">
                         <mat-label>Cancel Status Bolean</mat-label>
 
                     </mat-form-field>
 
-                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelis_wh_checker_cancel_by" placeholder="Cancel By"
                             name="is_wh_checker_cancel_by" [(ngModel)]="editProject.is_wh_checker_cancel_by"
-                            readonly="readonly" #ServeQuantity>
+                            readonly="readonly">
                         <mat-label>Cancel By</mat-label>
 
                     </mat-form-field>
 
-                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelis_wh_checker_cancel_date" placeholder="Cancel Date"
                             name="is_wh_checker_cancel_date" [(ngModel)]="editProject.is_wh_checker_cancel_date"
-                            readonly="readonly" #ServeQuantity>
+                            readonly="readonly">
                         <mat-label>Cancel Date</mat-label>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                        <input type="text" matInput id="txtCanceldispossal_status" placeholder="Dispossal Status"
+                            name="dispossal_status" [(ngModel)]="editProject.dispossal_status" readonly="readonly">
+                        <mat-label>Dispossal Status</mat-label>
+
+                    </mat-form-field>
+
+                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                        <input type="text" matInput id="txtCancelCategory" placeholder="Category" name="category"
+                            [(ngModel)]="editProject.category" readonly="readonly">
+                        <mat-label>Category</mat-label>
 
                     </mat-form-field>
 

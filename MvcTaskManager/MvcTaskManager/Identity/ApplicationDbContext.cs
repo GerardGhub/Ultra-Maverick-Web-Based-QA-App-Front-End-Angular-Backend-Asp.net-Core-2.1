@@ -38,6 +38,8 @@ namespace MvcTaskManager.Identity
 
     public DbSet<DryWhOrder> dry_wh_orders{ get; set; }
 
+
+
     //public DbSet<UserRolesModel> AspNetRoles { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

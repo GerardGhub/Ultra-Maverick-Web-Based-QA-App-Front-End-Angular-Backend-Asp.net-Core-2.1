@@ -179,8 +179,8 @@
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-        <div class="dashboard-tile-heading">Cancelled Transaction</div>
-        <div class="dashboard-tile-sub-heading">{{ totalPoRowCountCancelled | number}}</div>
+        <div class="dashboard-tile-heading">Cancelled Transactions</div>
+        <div class="dashboard-tile-sub-heading">{{ totalCancelledStoreOrderPreparedDistinctRowCount | number}}</div>
       </div>
     </ng-container>
 
