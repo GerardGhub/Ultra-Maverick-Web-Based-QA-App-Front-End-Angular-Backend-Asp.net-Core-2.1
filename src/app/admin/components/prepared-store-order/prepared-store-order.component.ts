@@ -540,10 +540,11 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
       //Warehouse Checker Fucking Process
-      this.editProject.is_wh_approved_date = this.ToDay;
-      this.editProject.is_wh_approved_by = this.activeUser;
-      this.editProject.is_wh_approved = "1";
+      this.editProject.is_wh_checker_cancel_date = this.ToDay;
+      this.editProject.is_wh_checker_cancel_by = this.activeUser;
       this.editProject.is_wh_checker_cancel = "1";
+      this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason;
+  
 
 
 
@@ -1045,6 +1046,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     if (this.cancelForm.valid) {
       // this.UpdateClickDetails();
       alert("Jaypee");
+    this.UpdateCancelItemClickDetails();
     }
     else {
       this.FieldOutRequiredField();
@@ -1378,6 +1380,51 @@ export class PreparedStoreOrderComponent implements OnInit {
         });
     }
   }
+
+  UpdateCancelItemClickDetails() {
+
+    // alert("Plano na naman");
+
+    if (this.editForm.valid) {
+
+
+
+      //End of Variable
+      this.whCheckerDashboardService.updateStoreOrderPerItem(this.editProject).subscribe((response: DryWhStoreOrders) => {
+        var p: DryWhStoreOrders = new DryWhStoreOrders();
+        p.is_approved_prepa_date = response.is_approved_prepa_date;
+        p.primary_id = response.primary_id;
+        p.is_wh_checker_cancel = response.is_wh_checker_cancel;
+        p.is_wh_checker_cancel_by = response.is_wh_checker_cancel_by;
+        p.is_wh_checker_cancel_date = response.is_wh_checker_cancel_date;
+        p.is_wh_checker_cancel_reason = response.is_wh_checker_cancel_reason;
+  
+
+
+
+
+        // this.received_by.nativeElement.value = this.loginService.currentUserName;
+        this.projects[this.editIndex] = p;
+        // 01/14/2022  GerardSingian
+        this.editProject.is_approved_prepa_date = null;
+        this.editProject.primary_id = null;
+        this.editProject.is_wh_checker_cancel = null;
+        this.editProject.is_wh_checker_cancel_by = null;
+        this.editProject.is_wh_checker_cancel_date = null;
+        this.editProject.is_wh_checker_cancel_reason = null;
+     
+
+        this.showApprovedSuccess();
+        this.closeAddExpenseModal.nativeElement.click();
+        this.ngOnInit();
+        $("#editFormCancel").trigger("click");
+      },
+        (error) => {
+          console.log(error);
+        });
+    }
+  }
+
 
 
   showApprovedSuccess() {

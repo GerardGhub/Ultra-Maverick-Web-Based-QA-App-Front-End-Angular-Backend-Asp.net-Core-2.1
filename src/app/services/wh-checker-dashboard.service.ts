@@ -8,37 +8,36 @@ import { DryWhStoreOrders } from '../models/dry-wh-store-orders';
 })
 export class WhCheckerDashboardService {
   public MySubject: BehaviorSubject<boolean>;
-  constructor(private httpClient: HttpClient)
-  {
+  constructor(private httpClient: HttpClient) {
     this.MySubject = new BehaviorSubject<boolean>(false);
   }
 
-  getStoreOrders(): Observable<DryWhStoreOrders[]>
-   {
-     return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders", { responseType: "json" });
-   }
+  getStoreOrders(): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders", { responseType: "json" });
+  }
 
-   getDistinctPreparedStoreOrders(): Observable<DryWhStoreOrders[]>
-   {
-     return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_checklist_distinct", { responseType: "json" });
-   }
+  getDistinctPreparedStoreOrders(): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_checklist_distinct", { responseType: "json" });
+  }
 
-   SearchPreparedItems(searchBy: string, searchText: string): Observable<DryWhStoreOrders[]>
-   {
-     return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText, { responseType: "json" });
-   }
-
-   
-   SearchRejectStatus(searchBy: string, searchText: string, searchIndex: number): Observable<DryWhStoreOrders[]>
-   {
-     return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText + "/" + searchIndex, { responseType: "json" });
-   }
+  SearchPreparedItems(searchBy: string, searchText: string): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText, { responseType: "json" });
+  }
 
 
-     updateProject(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders>
-  {
+  SearchRejectStatus(searchBy: string, searchText: string, searchIndex: number): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders/search/" + searchBy + "/" + searchText + "/" + searchIndex, { responseType: "json" });
+  }
+
+
+  updateProject(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
     return this.httpClient.put<DryWhStoreOrders>("/api/store_orders", existingProject, { responseType: "json" });
-    
+
+  }
+
+  updateStoreOrderPerItem(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
+    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelitems", existingProject, { responseType: "json" });
+
   }
 
 }

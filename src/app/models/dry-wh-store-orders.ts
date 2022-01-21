@@ -25,7 +25,7 @@ export class DryWhStoreOrders {
     is_wh_approved_date: Date;
     is_wh_checker_cancel_reason: string;
     is_wh_checker_cancel_by: string;
-    is_wh_checker_cancel_date: string;
+    is_wh_checker_cancel_date: Date;
     is_wh_checker_cancel: string;
 
     constructor()

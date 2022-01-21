@@ -148,6 +148,43 @@ namespace MvcTaskManager.Controllers
 
 
 
+    [HttpPut]
+    [Route("api/store_orders/cancelitems")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult PutCancelPreparedItem([FromBody] DryWhOrder project)
+    {
+      DryWhOrder existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.primary_id == project.primary_id).FirstOrDefault();
+      if (existingProject != null)
+      {
+        existingProject.is_wh_checker_cancel = project.is_wh_checker_cancel;
+        existingProject.is_wh_checker_cancel_by = project.is_wh_checker_cancel_by;
+        existingProject.is_wh_checker_cancel_date = project.is_wh_checker_cancel_date;
+        existingProject.is_wh_checker_cancel_reason = project.is_wh_checker_cancel_reason;
+
+
+        db.SaveChanges();
+
+        DryWhOrder existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.primary_id == project.primary_id).FirstOrDefault();
+        DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+        {
+          Is_wh_checker_cancel = existingProject2.is_wh_checker_cancel,
+          Is_wh_checker_cancel_by = existingProject2.is_wh_checker_cancel_by,
+          Is_wh_checker_cancel_date = existingProject2.is_wh_checker_cancel_date,
+          Is_wh_checker_cancel_reason = existingProject2.is_wh_checker_cancel_reason
+
+
+
+        };
+        return Ok(projectViewModel);
+      }
+      else
+      {
+        return null;
+      }
+    }
+
+
+
 
   }
 }

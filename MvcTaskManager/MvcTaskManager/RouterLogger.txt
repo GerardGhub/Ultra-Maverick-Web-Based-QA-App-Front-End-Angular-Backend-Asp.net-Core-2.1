@@ -15190,3 +15190,15 @@
 1/20/2022, 5:02:29 PM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
 1/20/2022, 5:03:02 PM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
 1/20/2022, 5:04:34 PM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+1/21/2022, 8:06:18 AM: anonymous navigates to /
+1/21/2022, 8:09:57 AM: anonymous navigates to /login
+1/21/2022, 8:10:23 AM: anonymous navigates to /login
+1/21/2022, 8:10:56 AM: jilo@gmail.com navigates to /admin/dashboard
+1/21/2022, 8:11:08 AM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+1/21/2022, 8:16:54 AM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+1/21/2022, 8:17:14 AM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+1/21/2022, 8:17:20 AM: anonymous navigates to /login
+1/21/2022, 8:17:28 AM: jilo@gmail.com navigates to /admin/dashboard
+1/21/2022, 8:17:31 AM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+1/21/2022, 8:27:41 AM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+1/21/2022, 8:28:25 AM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
