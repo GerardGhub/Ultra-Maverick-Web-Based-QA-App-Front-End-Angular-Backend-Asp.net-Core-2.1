@@ -135,7 +135,7 @@
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
         <div class="dashboard-tile-heading">Dispatching Record</div>
-        <div class="dashboard-tile-sub-heading">{{totalPoPartialRejectatWH | number}}</div>
+        <div class="dashboard-tile-sub-heading">{{0 | number}}</div>
       </div>
     </ng-container>
 
@@ -180,7 +180,7 @@
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
       <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
         <div class="dashboard-tile-heading">Cancelled Transactions</div>
-        <div class="dashboard-tile-sub-heading">{{ totalCancelledStoreOrderPreparedDistinctRowCount | number}}</div>
+        <div class="dashboard-tile-sub-heading">{{ totalCancelledTransactions | number}}</div>
       </div>
     </ng-container>
 

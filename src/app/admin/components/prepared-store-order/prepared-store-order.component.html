@@ -80,7 +80,7 @@
                         <thead>
                             <tr class="text-light header-bg-color-um system-name">
 
-                                <th>Preparation&nbsp;Date
+                                <th>Preparation Date
 
                                 </th>
                                 <!-- <th>PO&nbsp;Date
@@ -135,17 +135,17 @@
                                         <mat-icon>edit</mat-icon>
                                     </button>&nbsp;
 
-                                    <!--             
+                                    <!--             s
                   <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession =='QCSupervisor'"></ng-container> -->
-                                    <ng-container
-                                        *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'">
+                                    <!-- <ng-container
+                                        *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession == 'WarehouseChecker'">
 
-                                        <button mat-icon-button color="warn" (click)="onCancelClick($event, i)"
-                                            data-toggle="modal" data-target="#CancelledTransactionModal"
+                                        <button mat-icon-button color="warn" (click)="onEditClick($event, i)"
+                                            data-toggle="modal" data-target="#DeactivateModal"
                                             data-backdrop="false" data-keyboard="false">
                                             <mat-icon>toggle_off</mat-icon>
                                         </button>&nbsp;
-                                    </ng-container>
+                                    </ng-container> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -559,14 +559,14 @@
 
                     <mat-card>RECEIVING INFORMATION </mat-card>
                     <!-- Total Items  Prepared -->
-                    <p class="w-100 hideObjects">{{totalItemsPrepared}}</p>
+                    <p class="w-100 hideObject">{{totalItemsPrepared}}</p>
 
 
 
                     <div class="flex">
                         <div class="box-1">
 
-                            <!-- Start of Validation Sample using animal -->
+                            <!-- Start of Validation Sample using animal Grid View 2 -->
 
                             <mat-card style="width: 455px;">
 
@@ -592,8 +592,10 @@
                                             <th>Serve
 
                                             </th>
-                                            <th class="hideObjects">Item Count</th>
+                               
+                                            <th class="hideObject">Total Items
 
+                                            </th>
 
                                             <th class="text-center">*</th>
 
@@ -601,7 +603,7 @@
                                     </thead>
                                     <!-- *ngFor="let project of WhRejectRemarks | async | filter:  searchByItems : searchText | paging : currentPageIndex :   pageSizeItemList; let a = index"> -->
                                     <tbody>
-                                        <tr *ngFor="let project of WhRejectRemarks | async let a = index; count as c " id="table-row-item">
+                                        <tr *ngFor="let project of WhRejectRemarks | async let a = index; count as c ">
                                             <!-- <td>{{a}}</td> -->
                                             <td>{{project.primary_id}}</td>
                                             <!-- <td>{{project.item_code}}</td> -->
@@ -613,7 +615,10 @@
 
                                             <td>{{project.prepared_allocated_qty | number}}
                                             </td>
-                                            <td #ItemCountArrayPreparedItem id="table-data-row-item">{{c}}</td>
+
+                                            <td class="hideObject">{{c | number}}
+                                            </td>
+                               
 
                                             <td class="text-center">
 
@@ -632,9 +637,9 @@
                                                 </button>&nbsp;
 
                                             </td>
-
+                                           
                                         </tr>
-
+                                       
 
                                     </tbody>
 
@@ -706,7 +711,7 @@
                                 </div> -->
                                 <!-- Paging Box Ends -->
 
-                                <label>Fetched TD content: </label><span id="fetched"></span>
+                               
                             </mat-card>
 
 
@@ -727,7 +732,9 @@
 
 
                 </div>
-
+<div>
+   
+</div>
                 <div class="modal-footer">
 
                     <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2" (click)="onUpdateClick()">Approve</button>
@@ -742,6 +749,302 @@
 
 </form>
 
+
+<!-- Deactivate Project -->
+<form #editForm="ngForm" novalidate="novalidate" appClientLocationStatusValidator>
+    <div class="modal" role="dialog" id="DeactivateModal" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog">
+            <div class="modal-content" style="width: auto;">
+                <div class="modal-header bg-all">
+                    <div class="modal-title white-color">RECEIVING CHECKLIST</div>
+                    <button type="button" class="close" data-dismiss="modal"
+                        #closeAddExpenseModal><span>&times;</span></button>
+                </div>
+                <div class="modal-body">
+
+                    <mat-card>STORE INFORMATION
+
+
+                    </mat-card>
+                    <div class="flex">
+                        <div class="box-1">
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+
+
+                                <input type="text" matInput id="txtEditis_approved_prepa_date"
+                                    placeholder="Checklist ID" name="is_approved_prepa_date" readonly="readonly"
+                                    [(ngModel)]="editProject.is_approved_prepa_date" required="required"
+                                    #editPrepaDate="ngModel"
+                                    [ngClass]="{ 'is-invalid': editPrepaDate.invalid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted), 'is-valid': editPrepaDate.valid && (editPrepaDate.dirty || editPrepaDate.touched || newForm.submitted) }">
+                                <mat-label>Preparation Date</mat-label>
+
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtEditcategory" placeholder="Category" name="category"
+                                    [(ngModel)]="editProject.category" minlength="3" maxlength="30"
+                                    pattern="^[A-Za-z0-9 /-]*$" #editcategory="ngModel"
+                                    [ngClass]="{ 'is-invalid': editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted), 'is-valid': editcategory.valid && (editcategory.dirty || editcategory.touched || editForm.submitted) }"
+                                    readonly="readonly">
+                                <mat-label>Category</mat-label>
+                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
+                                <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
+                                </span></mat-icon> -->
+                                <span class="text-danger"
+                                    *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.required">Category
+                                    can't be blank</span>
+
+                                <span class="text-danger"
+                                    *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.pattern">Category
+                                    can contain alphabets, digits, dot, hyphen or space only</span>
+
+                                <span class="text-danger"
+                                    *ngIf="editcategory.invalid && (editcategory.dirty || editcategory.touched || editForm.submitted) && editcategory.errors?.minlength">Category
+                                    should be at least 3 characters long</span>
+
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtEditroute" placeholder="Route" readonly="readonly"
+                                    name="route" [(ngModel)]="editProject.route" minlength="3" maxlength="30"
+                                    #editroute="ngModel">
+                                <mat-label>Route</mat-label>
+
+
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObject">
+                                <input type="text" matInput id="txtEditis_wh_approved" placeholder="Is Approved"
+                                    name="is_wh_approved" [(ngModel)]="editProject.is_wh_approved" minlength="1ng build"
+                                    maxlength="30" #editis_wh_approved="ngModel">
+                                <mat-label>Approval</mat-label>
+
+
+                            </mat-form-field>
+
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObject">
+                                <input type="text" matInput id="txtEditis_wh_approved_by" placeholder="Approve By"
+                                    name="is_wh_approved_by" [(ngModel)]="editProject.is_wh_approved_by" minlength="3"
+                                    maxlength="30" #editis_wh_approved="ngModel">
+                                <mat-label>Approve By</mat-label>
+
+
+                            </mat-form-field>
+
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObject">
+                                <input type="text" matInput id="txtEditis_wh_approved_date" placeholder="Approve Date"
+                                    name="is_wh_approved_date" [(ngModel)]="editProject.is_wh_approved_date"
+                                    minlength="3" maxlength="30" #editis_wh_approved="ngModel">
+                                <mat-label>Approve Date</mat-label>
+
+
+                            </mat-form-field>
+
+
+
+                        </div>
+
+                        <!-- end of box 1-->
+
+                        <div class="box-2">
+
+
+
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+
+
+                                <input type="text" matInput id="txtEditReceivingDate" value="{{ToDay | date : 'M/d/y'}}"
+                                    readonly="readonly" placeholder="Receiving Date">
+                                <mat-label>Receiving Date</mat-label>
+
+                            </mat-form-field>
+
+
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtitem_description" placeholder="Store Name"
+                                    name="store_name" [(ngModel)]="editProject.store_name" required="required"
+                                    minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$" #editstore_name="ngModel"
+                                    [ngClass]="{ 'is-invalid': editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted), 'is-valid': editstore_name.valid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) }"
+                                    readonly="readonly">
+                                <mat-label>Store Name</mat-label>
+
+                                <span class="text-danger"
+                                    *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.required">Store
+                                    name
+                                    can't be blank</span>
+
+                                <span class="text-danger"
+                                    *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.pattern">Store
+                                    name
+                                    can contain alphabets, digits, dot, hyphen or space only</span>
+
+                                <span class="text-danger"
+                                    *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.minlength">Store
+                                    name should be at least 3 characters long</span>
+                                <!-- </div>
+</div> -->
+                            </mat-form-field>
+
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                <input type="text" matInput id="txtEditarea" placeholder="Area" readonly="readonly"
+                                    name="area" [(ngModel)]="editProject.area" minlength="3" maxlength="30"
+                                    #editarea="ngModel">
+                                <mat-label>Area</mat-label>
+                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
+                                <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
+              </span></mat-icon> -->
+
+
+                            </mat-form-field>
+
+
+
+                        </div>
+
+
+
+                    </div>
+
+                    <!-- </div>  body modal-->
+
+
+                    <div class="flex">
+                        <div class="box-1">
+
+                        </div>
+                        <div class="box-2">
+
+                        </div>
+
+                    </div>
+
+                    <mat-card class="hideObject">RECEIVING INFORMATION </mat-card>
+                    <!-- Total Items  Prepared -->
+                  
+
+
+
+                    <div class="flex hideObject">
+                        <div class="box-1">
+
+                            <!-- Start of Validation Sample using animal -->
+
+                            <mat-card style="width: 455px;">
+
+                                <table class="table table-striped table-bordered nowrap table-responsive" id="GridView3">
+                                    <thead>
+                                        <tr>
+                                            <!-- <th>III</th> -->
+                                            <th>ID</th>
+                                            <!-- <th>Code
+
+                                            </th> -->
+
+                                            <th>Description
+
+                                            </th>
+
+                                            <th>Uom
+
+
+                                            </th>
+                                            <th>Order
+                                            </th>
+                                            <th>Serve
+
+                                            </th>
+                               
+
+
+                                            <th class="text-center">*</th>
+
+                                        </tr>
+                                    </thead>
+                                    <!-- *ngFor="let project of WhRejectRemarks | async | filter:  searchByItems : searchText | paging : currentPageIndex :   pageSizeItemList; let a = index"> -->
+                                    <tbody>
+                                        <tr *ngFor="let project of WhRejectRemarks | async let a = index; count as c ">
+                                            <!-- <td>{{a}}</td> -->
+                                            <td>{{project.primary_id}}</td>
+                                            <!-- <td>{{project.item_code}}</td> -->
+
+                                            <td>{{project.description}}</td>
+                                            <td>{{project.uom}}</td>
+
+                                            <td>{{project.qty | number}}</td>
+
+                                            <td>{{project.prepared_allocated_qty | number}}
+                                            </td>
+                               
+
+                                            <td class="text-center">
+
+
+
+
+                                                <button mat-icon-button color="warn" (click)="onCancelClick($event, index, 
+                                                    project.primary_id,
+                                                     project.is_approved_prepa_date ,
+                                                      project.item_code, project.description, 
+                                                      project.prepared_allocated_qty, 
+                                                      project.category)" data-toggle="modal"
+                                                    data-target="#CancelledTransactionModal" data-backdrop="false"
+                                                    data-keyboard="false">
+                                                    <mat-icon>toggle_off</mat-icon>
+                                                </button>&nbsp;
+
+                                            </td>
+                                           
+                                        </tr>
+                                    
+
+                                    </tbody>
+
+                                </table>
+
+                              
+
+                               
+                            </mat-card>
+
+
+
+                            <!-- End of the Statement -->
+                        </div>
+
+                        <!-- <div class="box-2">
+
+
+                        </div> -->
+                    </div>
+
+
+                    <!-- {{editForm.value | json}} -->
+
+
+
+
+                </div>
+<div>
+   
+</div>
+                <div class="modal-footer">
+
+                    <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2" (click)="onUpdateClick()">Dis-Approve</button>
+                    <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</form>
 
 <!-- Delete Project -->
 <form>
@@ -870,7 +1173,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCanceldispossal_status" placeholder="Dispossal Status"
                             name="dispossal_status" [(ngModel)]="editProject.dispossal_status" readonly="readonly">
                         <mat-label>Dispossal Status</mat-label>
@@ -917,7 +1220,7 @@
                     </p>
 
                 </div>
-                {{cancelForm.value | json }}
+                <!-- {{cancelForm.value | json }} -->
 
                 <div class="modal-footer">
                     <!-- <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>free_cancellation</mat-icon></button> -->

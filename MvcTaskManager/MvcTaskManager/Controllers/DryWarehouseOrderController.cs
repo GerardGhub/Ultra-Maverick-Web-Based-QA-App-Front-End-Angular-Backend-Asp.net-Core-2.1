@@ -30,7 +30,7 @@ namespace MvcTaskManager.Controllers
       string Activated = "1";
       string DeActivated = "0";
       List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new {p.is_approved_prepa_date}).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
-      && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.is_wh_checker_cancel == null || temp.force_prepared_status != null).ToList();
+      && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null || temp.force_prepared_status != null).ToList();
       return StoreOrderCheckList;
 
 
@@ -67,6 +67,21 @@ namespace MvcTaskManager.Controllers
 
 
  
+    }
+
+
+    [HttpGet]
+    [Route("api/getStoreOrderMaterialCancelled")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public List<DryWhOrder> GetStoreOrderMaterialPerItems()
+    {
+      string Activated = "1";
+      string DeActivated = "0";
+      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.Where(temp => temp.is_active.Contains(Activated) && temp.is_wh_checker_cancel.Contains(Activated)).ToList();
+      return StoreOrderCheckList;
+
+
+
     }
 
 

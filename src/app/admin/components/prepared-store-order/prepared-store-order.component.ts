@@ -500,6 +500,21 @@ export class PreparedStoreOrderComponent implements OnInit {
 
     }, 100);
 
+    // var gridTable = (<HTMLTableElement >document.getElementById("GridView2"));
+    // // document.getElementById("GridView2");
+    // var result="";
+    // if(gridTable) { 
+    //   for(var i=0; i < gridTable.rows.length; i++) {
+    //     if(gridTable.rows[i].cells[5]){
+    //       // console.log(gridTable.rows[i].cells[5].innerText);
+    //       this.ItemCountArrayPreparedItem.nativeElement.value = gridTable.rows[i].cells[5].innerText;
+    //       // result = result + "   "+ gridTable.rows[i].cells[5].innerText;
+    //       alert(this.ItemCountArrayPreparedItem);
+    //     }
+    //   }
+    // }
+    
+
   }
 
 
@@ -1187,16 +1202,19 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   }
 
+
+
   onUpdateClick() {
-    
+
     var gridTable = (<HTMLTableElement >document.getElementById("GridView2"));
     // document.getElementById("GridView2");
     var result="";
     if(gridTable) { 
       for(var i=0; i < gridTable.rows.length; i++) {
         if(gridTable.rows[i].cells[5]){
-          console.log(gridTable.rows[i].cells[5].innerText);
+          // console.log(gridTable.rows[i].cells[5].innerText);
           result = gridTable.rows[i].cells[5].innerText;
+         
           // result = result + "   "+ gridTable.rows[i].cells[5].innerText;
         }
       }
@@ -1204,9 +1222,10 @@ export class PreparedStoreOrderComponent implements OnInit {
     
 
 
+// alert(this.totalItemsPrepared);
 
 
-    if(result == this.totalItemsPrepared)
+    if(parseFloat(result).toString() ==  parseFloat(this.totalItemsPrepared).toString())
     {
 
      
