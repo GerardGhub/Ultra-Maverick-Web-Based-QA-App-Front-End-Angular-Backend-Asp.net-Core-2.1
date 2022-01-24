@@ -550,10 +550,14 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
     }, 100);
-    if(this.ItemCountArrayPreparedItem.nativeElement.value() == this.totalItemsPrepared)
-    {
-      
-    }
+    // if(this.ItemCountArrayPreparedItem.nativeElement.value() == this.totalItemsPrepared)
+    // {
+    //   alert("Matched");
+    // }
+    // else
+    // {
+    //   alert("Not Matched");
+    // }
   }
 
   resetValueS() {
@@ -1184,6 +1188,36 @@ export class PreparedStoreOrderComponent implements OnInit {
   }
 
   onUpdateClick() {
+    
+    var gridTable = (<HTMLTableElement >document.getElementById("GridView2"));
+    // document.getElementById("GridView2");
+    var result="";
+    if(gridTable) { 
+      for(var i=0; i < gridTable.rows.length; i++) {
+        if(gridTable.rows[i].cells[5]){
+          console.log(gridTable.rows[i].cells[5].innerText);
+          result = gridTable.rows[i].cells[5].innerText;
+          // result = result + "   "+ gridTable.rows[i].cells[5].innerText;
+        }
+      }
+    }
+    
+
+
+
+
+    if(result == this.totalItemsPrepared)
+    {
+
+     
+    }
+    else
+    {
+ 
+      this.CannonApprovedDataCancelled();
+      return;
+     
+    }
     //Computation Start Simang
     // this.allowableqty = this.TotalAllowablePercentage.nativeElement.value;
     // this.actualqty = this.ActualDeliveryChild.nativeElement.value;
@@ -1589,6 +1623,12 @@ export class PreparedStoreOrderComponent implements OnInit {
   FieldOutRequiredField() {
     this.toastr.warning('Field out the required fields!', 'Notifications');
   }
+
+  CannonApprovedDataCancelled() {
+    this.toastr.warning('Cannot approved, you have a rejected items!', 'Notifications');
+  }
+
+
   onPageIndexClicked(pageIndex: number) {
     // this.currentPageIndex = pageIndex;
     //Set currentPageIndex
