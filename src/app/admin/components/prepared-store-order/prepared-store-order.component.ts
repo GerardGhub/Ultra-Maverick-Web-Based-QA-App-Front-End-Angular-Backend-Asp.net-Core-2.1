@@ -240,9 +240,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     }
     else {
       if (this.totalofReject.nativeElement.value == this.confirmReject.nativeElement.value) {
-        // this.rejectNo3.nativeElement.value="0";
-        // console.warn("Empty Quantity in the textInput! ")
-        // this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "Pexa Marian";
+       
         this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "";
       }
       else {
@@ -920,6 +918,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   }
 
+  
   showDeletedSuccess() {
     this.toastr.success('Successfully Deleted!', 'Notifications');
   }
@@ -1233,100 +1232,20 @@ export class PreparedStoreOrderComponent implements OnInit {
     else
     {
  
-      this.CannonApprovedDataCancelled();
+      this.CannotApprovedDataCancelled();
       return;
      
     }
-    //Computation Start Simang
-    // this.allowableqty = this.TotalAllowablePercentage.nativeElement.value;
-    // this.actualqty = this.ActualDeliveryChild.nativeElement.value;
-
-    // var TotalAllowablePercentage = this.TotalAllowablePercentage.nativeElement.value;
-    // var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-
-    // var aplenght = $('#Allowable_Percentage_id').val().length;
-    // $('#characters').text(aplenght);
-
-    // var adlength = $('#actual_delivery_output').val().length;
-    // $('#characters').text(adlength);
-
-
-    // if (aplenght > adlength) {
-
-    //   ///This is the minimun qty set pin for 10, 100, 999
-    //   if (Number(TotalAllowablePercentage) >= Number(ActualDelivered)) {
-
-
-
-    //   }
-    //   else {
-
-    //     this.AllowablePercentageExceed();
-    //     // alert("Pekwangs");
-    //     $('#actual_delivery_output').val("");  ///LLL
-    //     return;
-
-
-
-    //   }
-
-    // }
-    // else {
-    //   // alert("MINs ");
-    //   //This is for large scale validation for thousand's qty 
-    //   if (this.allowableqty < this.actualqty) {
-
-    //     this.AllowablePercentageExceed();
-    //     $('#actual_delivery_output').val("");  //Additional Data on 12/6/2021
-    //     return;
-
-    //   }
-
-    // }
 
 
 
 
 
 
-    //End of Computation Summary
 
-
-    // JavaScript program to illustrate 
-    // calculation of no. of days between two date 
-
-    // To set two dates to two variables
-    // var date1 = new Date($('#txtEditReceivingDate').val());
-    // var date2 = new Date($('#txtEditexpiration_date').val());
-
-    // // To calculate the time difference of two dates
-    // var Difference_In_Time = date2.getTime() - date1.getTime();
-
-    // // To calculate the no. of days between two dates
-    // var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
-
-    // //To display the final no. of days (result)
-    // // document.write("Total number of days between dates  <br>"
-    // //                + date1 + "<br> and <br>" 
-    // //                + date2 + " is: <br> " 
-    // //                + Difference_In_Days);
-    // var ExpiryDaysActivated = this.ActiveNearlyExpirySetpoint.nativeElement.value;
-
-
-
-
-    // //Laarnie
-    // if (this.totalofReject.nativeElement.value == this.confirmReject.nativeElement.value) {
-
-    // }
-    // else {
-    //   this.totalRejectConfirmationField();
-    //   this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "No. of reject is not match";
-    //   this.confirmReject.nativeElement.focus();
-    //   return;
-    // }
+   
     var StoreName = this.ItemDescription.nativeElement.value;
-    // // totalRejectConfirmationField();
+ 
 
 
     if (this.editForm.valid) {
@@ -1375,25 +1294,11 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   UpdateClickDetails() {
 
-    // alert("Plano na naman");
+    
 
     if (this.editForm.valid) {
 
-      // //Additional Parse Data Master
-      // // this.ActualRemaining = 450;
-      // this.ComputeRemainingQty();
-      // this.editProject.actual_remaining_receiving = this.ActualRemaining;
-      // //Variable
-      // var totalRejection = this.confirmReject.nativeElement.value;
-      // var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-      // if (totalRejection == 0) {
-
-      // }
-      // else {
-      //   totalRejection = ActualDelivered - totalRejection;
-      //   this.editProject.actual_delivery = totalRejection;
-      // }
-
+     
 
       //End of Variable
       this.whCheckerDashboardService.updateProject(this.editProject).subscribe((response: DryWhStoreOrders) => {
@@ -1412,9 +1317,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
         this.projects[this.editIndex] = p;
-        // this.InsertANewPartialReceiving();
-        // this.InsertPartialDatainMasterTable();
-        // 01/14/2022  GerardSingian
+
         this.editProject.is_approved_prepa_date = null;
         this.editProject.category = null;
         this.editProject.route = null;
@@ -1525,88 +1428,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   }
 
   onSaveClick() {
-    // if (this.newForm.valid) {
-    //   this.newProject.clientLocation.clientLocationID = 0;
-    //   this.newProject.is_activated = "1";
-    //   this.projectsService.insertProject(this.newProject).subscribe((response) => {
-
-    //     //Add Project to Grid
-    //     var p: Project = new Project();
-    //     p.projectID = response.projectID;
-    //     p.projectName = response.projectName;
-    //     p.dateOfStart = response.dateOfStart;
-    //     p.teamSize = response.teamSize;
-    //     p.clientLocation = response.clientLocation;
-    //     p.active = response.active;
-    //     p.clientLocationID = response.clientLocationID;
-    //     p.status = response.status;
-    //     p.is_activated = response.is_activated;
-    //     p.supplier = response.supplier;
-    //     p.item_code = response.item_code;
-    //     p.po_number = response.po_number;
-    //     p.po_date = response.po_date;
-    //     p.pr_number = response.pr_number;
-    //     p.pr_date = response.pr_date;
-    //     p.qty_order = response.qty_order;
-    //     p.qty_uom = response.qty_uom;
-    //     p.mfg_date = response.mfg_date;
-    //     p.expiration_date = response.expiration_date;
-    //     p.expected_delivery = response.expected_delivery;
-    //     p.actual_delivery = response.actual_delivery;
-    //     p.actual_remaining_receiving = response.actual_remaining_receiving;
-    //     p.received_by_QA = response.received_by_QA;
-    //     p.status_of_reject_one = response.status_of_reject_one;
-    //     p.status_of_reject_two = response.status_of_reject_two;
-    //     p.status_of_reject_three = response.status_of_reject_three;
-    //     p.count_of_reject_one = response.count_of_reject_one;
-    //     p.count_of_reject_two = response.count_of_reject_two;
-    //     p.count_of_reject_three = response.count_of_reject_three;
-    //     p.total_of_reject_mat = response.total_of_reject_mat;
-    //     p.a_compliance = response.a_compliance;
-    //     p.a_remarks = response.a_remarks;
-    //     this.projects.push(p);
-
-    //     //Clear New Project Dialog - TextBoxes
-
-    //     this.newProject.projectName = null;
-    //     this.newProject.dateOfStart = null;
-    //     this.newProject.teamSize = null;
-    //     this.newProject.active = false;
-    //     this.newProject.clientLocationID = null;
-    //     this.newProject.status = null;
-    //     this.newProject.is_activated = null;
-    //     this.newProject.supplier = null;
-    //     this.newProject.item_code = null;
-    //     this.newProject.po_number = null;
-    //     this.newProject.po_date = null;
-    //     this.newProject.pr_number = null;
-    //     this.newProject.pr_date = null;
-    //     this.newProject.qty_uom = null;
-    //     this.newProject.qty_order = null;
-    //     this.newProject.mfg_date = null;
-    //     this.newProject.expiration_date = null;
-    //     this.newProject.expected_delivery = null;
-    //     this.newProject.actual_delivery = null;
-    //     this.newProject.actual_remaining_receiving = null;
-    //     this.newProject.received_by_QA = null;
-    //     this.newProject.status_of_reject_one = null;
-    //     this.newProject.status_of_reject_two = null;
-    //     this.newProject.status_of_reject_three = null;
-    //     this.newProject.count_of_reject_one = null;
-    //     this.newProject.count_of_reject_two = null;
-    //     this.newProject.count_of_reject_three = null;
-    //     this.newProject.total_of_reject_mat = null;
-    //     this.newProject.a_compliance = null;
-    //     this.newProject.a_remarks = null;
-
-
-    //     $("#newFormCancel").trigger("click");
-    //     // this.ngOnInit();
-    //     this.calculateNoOfPages();
-    //   }, (error) => {
-    //     console.log(error);
-    //   });
-    // }
+    ///No Content Here !
   }
 
   ComputeRemainingQty() {
@@ -1619,15 +1441,13 @@ export class PreparedStoreOrderComponent implements OnInit {
 
     if (QtyOrder == ActualRemainingReceiving) {
 
-      // this.ActualRemaining = QtyOrder - ActualDelivered;
-      // this.ActualRemaining = ActualRemainingReceiving - totalRejection;
+     
 
       this.ActualRemaining = ActualDelivered - totalRejection;
       this.ActualRemaining = ActualRemainingReceiving - this.ActualRemaining;
     }
     else {
-      // this.ActualRemaining = ActualRemainingReceiving - ActualDelivered;
-      // this.ActualRemaining = ActualRemainingReceiving - totalRejection;
+     
 
       this.ActualRemaining = ActualDelivered - totalRejection;
       this.ActualRemaining = ActualRemainingReceiving - this.ActualRemaining;
@@ -1643,7 +1463,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     this.toastr.warning('Field out the required fields!', 'Notifications');
   }
 
-  CannonApprovedDataCancelled() {
+  CannotApprovedDataCancelled() {
     this.toastr.warning('Cannot approved, you have a rejected items!', 'Notifications');
   }
 
