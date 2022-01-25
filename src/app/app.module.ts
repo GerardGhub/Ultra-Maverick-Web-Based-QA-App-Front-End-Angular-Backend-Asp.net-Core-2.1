@@ -35,6 +35,7 @@ import { ProjetPONearlyExpiryApprovalComponent } from './admin/components/projet
 import { AspNetRolesComponent } from './admin/components/asp-net-roles/asp-net-roles.component';
 import { WhRejectionApprovalComponent } from './admin/components/wh-rejection-approval/wh-rejection-approval.component';
 import { PreparedStoreOrderComponent } from './admin/components/prepared-store-order/prepared-store-order.component';
+import { StoreOrderActiveCancelledTransactionComponent } from './admin/components/store-order-active-cancelled-transaction/store-order-active-cancelled-transaction.component';
 // import { StoreOrderComponent } from './store-order/store-order.component';
 // import { WhCheckerDashboardComponent } from './wh-checker-dashboard/wh-checker-dashboard.component';
 // import { WhCheckerDashboardComponent } from './warehouse-checker/wh-checker-dashboard/wh-checker-dashboard.component';
@@ -60,6 +61,7 @@ import { PreparedStoreOrderComponent } from './admin/components/prepared-store-o
     AspNetRolesComponent,
     WhRejectionApprovalComponent,
     PreparedStoreOrderComponent,
+    StoreOrderActiveCancelledTransactionComponent,
     // StoreOrderComponent,
     // WhCheckerDashboardComponent,
     // WhCheckerDashboardComponent,

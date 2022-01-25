@@ -5016,6 +5016,33 @@ TaskStatusesService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdef
 
 /***/ }),
 
+/***/ "GuzH":
+/*!*********************************************************************************************************************************!*\
+  !*** ./src/app/admin/components/store-order-active-cancelled-transaction/store-order-active-cancelled-transaction.component.ts ***!
+  \*********************************************************************************************************************************/
+/*! exports provided: StoreOrderActiveCancelledTransactionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "StoreOrderActiveCancelledTransactionComponent", function() { return StoreOrderActiveCancelledTransactionComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
+class StoreOrderActiveCancelledTransactionComponent {
+    constructor() { }
+    ngOnInit() {
+    }
+}
+StoreOrderActiveCancelledTransactionComponent.ɵfac = function StoreOrderActiveCancelledTransactionComponent_Factory(t) { return new (t || StoreOrderActiveCancelledTransactionComponent)(); };
+StoreOrderActiveCancelledTransactionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: StoreOrderActiveCancelledTransactionComponent, selectors: [["app-store-order-active-cancelled-transaction"]], decls: 2, vars: 0, template: function StoreOrderActiveCancelledTransactionComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "store-order-active-cancelled-transaction works!");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzdG9yZS1vcmRlci1hY3RpdmUtY2FuY2VsbGVkLXRyYW5zYWN0aW9uLmNvbXBvbmVudC5zY3NzIn0= */"] });
+
+
+/***/ }),
+
 /***/ "H3+q":
 /*!***********************************************!*\
   !*** ./src/app/models/dry-wh-store-orders.ts ***!
@@ -8699,7 +8726,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_components_asp_net_roles_asp_net_roles_component__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! ./admin/components/asp-net-roles/asp-net-roles.component */ "yFWS");
 /* harmony import */ var _admin_components_wh_rejection_approval_wh_rejection_approval_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./admin/components/wh-rejection-approval/wh-rejection-approval.component */ "v8sE");
 /* harmony import */ var _admin_components_prepared_store_order_prepared_store_order_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./admin/components/prepared-store-order/prepared-store-order.component */ "A1pb");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @angular/core */ "fXoL");
+/* harmony import */ var _admin_components_store_order_active_cancelled_transaction_store_order_active_cancelled_transaction_component__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ./admin/components/store-order-active-cancelled-transaction/store-order-active-cancelled-transaction.component */ "GuzH");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/core */ "fXoL");
+
 
 
 
@@ -8744,8 +8773,8 @@ __webpack_require__.r(__webpack_exports__);
 class AppModule {
 }
 AppModule.ɵfac = function AppModule_Factory(t) { return new (t || AppModule)(); };
-AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_33__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]] });
-AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_33__["ɵɵdefineInjector"]({ providers: [
+AppModule.ɵmod = _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵdefineNgModule"]({ type: AppModule, bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]] });
+AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵdefineInjector"]({ providers: [
         {
             provide: _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HTTP_INTERCEPTORS"],
             useClass: _interceptors_jwt_interceptor_service__WEBPACK_IMPORTED_MODULE_10__["JwtInterceptorService"],
@@ -8787,7 +8816,7 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_33__["ɵɵdefineInjecto
                 }
             })
         ]] });
-(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_33__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
+(function () { (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_34__["ɵɵsetNgModuleScope"](AppModule, { declarations: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"],
         _admin_components_about_about_component__WEBPACK_IMPORTED_MODULE_13__["AboutComponent"],
         _components_login_login_component__WEBPACK_IMPORTED_MODULE_14__["LoginComponent"],
         _components_sign_up_sign_up_component__WEBPACK_IMPORTED_MODULE_5__["SignUpComponent"],
@@ -8803,7 +8832,8 @@ AppModule.ɵinj = _angular_core__WEBPACK_IMPORTED_MODULE_33__["ɵɵdefineInjecto
         _admin_components_projet_ponearly_expiry_approval_projet_ponearly_expiry_approval_component__WEBPACK_IMPORTED_MODULE_29__["ProjetPONearlyExpiryApprovalComponent"],
         _admin_components_asp_net_roles_asp_net_roles_component__WEBPACK_IMPORTED_MODULE_30__["AspNetRolesComponent"],
         _admin_components_wh_rejection_approval_wh_rejection_approval_component__WEBPACK_IMPORTED_MODULE_31__["WhRejectionApprovalComponent"],
-        _admin_components_prepared_store_order_prepared_store_order_component__WEBPACK_IMPORTED_MODULE_32__["PreparedStoreOrderComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
+        _admin_components_prepared_store_order_prepared_store_order_component__WEBPACK_IMPORTED_MODULE_32__["PreparedStoreOrderComponent"],
+        _admin_components_store_order_active_cancelled_transaction_store_order_active_cancelled_transaction_component__WEBPACK_IMPORTED_MODULE_33__["StoreOrderActiveCancelledTransactionComponent"]], imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
         _angular_platform_browser_animations__WEBPACK_IMPORTED_MODULE_9__["BrowserAnimationsModule"],
         _models_shared_shared_module__WEBPACK_IMPORTED_MODULE_12__["SharedModule"],
         _material_material_module__WEBPACK_IMPORTED_MODULE_15__["MaterialModule"],

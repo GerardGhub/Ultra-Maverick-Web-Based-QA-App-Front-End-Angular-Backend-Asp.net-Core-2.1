@@ -12,6 +12,7 @@ import { TblNearlyExpiryMgmtComponent } from '../components/tbl-nearly-expiry-mg
 import { WhRejectionApprovalComponent } from '../components/wh-rejection-approval/wh-rejection-approval.component';
 import { StoreOrderComponent } from '../components/store-order/store-order.component';
 import { PreparedStoreOrderComponent } from '../components/prepared-store-order/prepared-store-order.component';
+import { StoreOrderActiveCancelledTransactionComponent } from '../components/store-order-active-cancelled-transaction/store-order-active-cancelled-transaction.component';
 // import { WhCheckerDashboardComponent } from '../components/wh-checker-dashboard/wh-checker-dashboard.component';
 
 
@@ -32,6 +33,7 @@ const routes: Routes = [
     { path: "whrejectionapproval", component: WhRejectionApprovalComponent, data: { linkIndex: 12 } },
     { path: "whstoreorder", component: StoreOrderComponent, data: { linkIndex: 13 } },
     { path: "wh-prepared-store-order", component: PreparedStoreOrderComponent , data: { linkIndex: 14 } },
+    { path: "wh-cancelledprepared-store-order", component: StoreOrderActiveCancelledTransactionComponent , data: { linkIndex: 15 } },
   ]},
 
   

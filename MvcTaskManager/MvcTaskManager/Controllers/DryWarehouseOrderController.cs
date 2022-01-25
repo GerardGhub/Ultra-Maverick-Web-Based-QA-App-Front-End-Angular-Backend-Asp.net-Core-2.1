@@ -76,7 +76,7 @@ namespace MvcTaskManager.Controllers
     public List<DryWhOrder> GetStoreOrderMaterialPerItems()
     {
       string Activated = "1";
-      string DeActivated = "0";
+   
       List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.Where(temp => temp.is_active.Contains(Activated) && temp.is_wh_checker_cancel.Contains(Activated)).ToList();
       return StoreOrderCheckList;
 
