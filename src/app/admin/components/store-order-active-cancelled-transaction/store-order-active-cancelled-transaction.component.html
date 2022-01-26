@@ -43,6 +43,8 @@
                                         (selectionChange)="HideSearchBtn($event)">
 
                                         <mat-option value="is_approved_prepa_date">Preparation Date</mat-option>
+                                        <mat-option value="item_code">Item Code</mat-option>
+                                        <mat-option value="description">Description</mat-option>
                                         <mat-option value="category">Category</mat-option>
                                         <mat-option value="store_name">Store</mat-option>
                                         <mat-option value="route">Route</mat-option>
@@ -83,6 +85,12 @@
                                 <th>Preparation Date
 
                                 </th>
+                                <th>Item
+
+                                </th>
+                                <th>Description
+
+                                </th>
                                 <!-- <th>PO&nbsp;Date
           
                 </th> -->
@@ -100,10 +108,7 @@
                                 </th>
                                 <th>Store
 
-                                </th>
-                         
 
-                                </th>
                                 <th>Quantity
 
                                 </th>
@@ -119,7 +124,7 @@
                                 <th>Cancel Date
 
                                 </th>
-                                <th class="text-center">Actions</th>
+                                <!-- <th class="text-center hideObject">Actions</th> -->
 
                             </tr>
                         </thead>
@@ -127,17 +132,24 @@
                             <tr
                                 *ngFor="let project of projects | filter: searchBy : searchText | paging : currentPageIndex : pageSize; let i = index">
                                 <td>{{project.is_approved_prepa_date}}</td>
-                                <!-- <td>{{project.po_date  | date:'dd-MMM-yyyy'}}</td> -->
+                                <td>
+                                    {{project.item_code}}
+                                </td>
+
+                                <td>
+                                    {{project.description}}
+                                </td>
+
                                 <td>{{project.category}}</td>
                                 <td>{{project.fox}}</td>
                                 <td>{{project.store_name}}</td>
-                             
+
                                 <td>{{project.qty | number:'1.0':'en-US'}}</td>
                                 <td>{{project.prepared_allocated_qty | number:'1.0':'en-US'}}</td>
                                 <td>{{project.is_wh_checker_cancel_by}}</td>
                                 <td>{{project.is_wh_checker_cancel_reason}}</td>
                                 <td>{{project.is_wh_checker_cancel_date | date:'dd-MMM-yyyy'}}</td>
-                                <td class="text-center">
+                                <!-- <td class="text-center hideObject">
 
                                     <button mat-icon-button color="black" (click)="onEditClick($event, i)"
                                         data-toggle="modal" data-target="#editModal" data-backdrop="false" title="Edit"
@@ -145,18 +157,7 @@
                                         <mat-icon>edit</mat-icon>
                                     </button>&nbsp;
 
-                                    <!--             s
-                  <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession =='QCSupervisor'"></ng-container> -->
-                                    <!-- <ng-container
-                                        *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession == 'WarehouseChecker'">
-
-                                        <button mat-icon-button color="warn" (click)="onEditClick($event, i)"
-                                            data-toggle="modal" data-target="#DeactivateModal"
-                                            data-backdrop="false" data-keyboard="false">
-                                            <mat-icon>toggle_off</mat-icon>
-                                        </button>&nbsp;
-                                    </ng-container> -->
-                                </td>
+                                </td> -->
                             </tr>
                         </tbody>
                     </table>
@@ -580,7 +581,8 @@
 
                             <mat-card style="width: 455px;">
 
-                                <table class="table table-striped table-bordered nowrap table-responsive" id="GridView2">
+                                <table class="table table-striped table-bordered nowrap table-responsive"
+                                    id="GridView2">
                                     <thead>
                                         <tr>
                                             <!-- <th>III</th> -->
@@ -602,7 +604,7 @@
                                             <th>Serve
 
                                             </th>
-                               
+
                                             <th class="hideObject">Total Items
 
                                             </th>
@@ -628,7 +630,7 @@
 
                                             <td class="hideObject">{{c | number}}
                                             </td>
-                               
+
 
                                             <td class="text-center">
 
@@ -647,9 +649,9 @@
                                                 </button>&nbsp;
 
                                             </td>
-                                           
+
                                         </tr>
-                                       
+
 
                                     </tbody>
 
@@ -721,7 +723,7 @@
                                 </div> -->
                                 <!-- Paging Box Ends -->
 
-                               
+
                             </mat-card>
 
 
@@ -742,12 +744,13 @@
 
 
                 </div>
-<div>
-   
-</div>
+                <div>
+
+                </div>
                 <div class="modal-footer">
 
-                    <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2" (click)="onUpdateClick()">Approve</button>
+                    <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2"
+                        (click)="onUpdateClick()">Approve</button>
                     <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
 
                 </div>
@@ -935,7 +938,7 @@
 
                     <mat-card class="hideObject">RECEIVING INFORMATION </mat-card>
                     <!-- Total Items  Prepared -->
-                  
+
 
 
 
@@ -946,7 +949,8 @@
 
                             <mat-card style="width: 455px;">
 
-                                <table class="table table-striped table-bordered nowrap table-responsive" id="GridView3">
+                                <table class="table table-striped table-bordered nowrap table-responsive"
+                                    id="GridView3">
                                     <thead>
                                         <tr>
                                             <!-- <th>III</th> -->
@@ -968,7 +972,7 @@
                                             <th>Serve
 
                                             </th>
-                               
+
 
 
                                             <th class="text-center">*</th>
@@ -989,7 +993,7 @@
 
                                             <td>{{project.prepared_allocated_qty | number}}
                                             </td>
-                               
+
 
                                             <td class="text-center">
 
@@ -1008,17 +1012,17 @@
                                                 </button>&nbsp;
 
                                             </td>
-                                           
+
                                         </tr>
-                                    
+
 
                                     </tbody>
 
                                 </table>
 
-                              
 
-                               
+
+
                             </mat-card>
 
 
@@ -1039,12 +1043,13 @@
 
 
                 </div>
-<div>
-   
-</div>
+                <div>
+
+                </div>
                 <div class="modal-footer">
 
-                    <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2" (click)="onUpdateClick()">Dis-Approve</button>
+                    <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2"
+                        (click)="onUpdateClick()">Dis-Approve</button>
                     <!-- <button mat-stroked-button color="warn" data-dismiss="modal" id="editFormCancel">Cancel</button> -->
 
                 </div>
