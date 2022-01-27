@@ -21,6 +21,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RejectedStatusComponent } from './components/rejected-status/rejected-status.component';
 import { CancelledPOTransactionStatusComponent } from './components/cancelled-potransaction-status/cancelled-potransaction-status.component';
 import { StoreOrderComponent } from './components/store-order/store-order.component';
+import { StoreOrderDispatchingRecordComponent } from './components/store-order-dispatching-record/store-order-dispatching-record.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { StoreOrderComponent } from './components/store-order/store-order.compon
     MastersComponent,
     RejectedStatusComponent,
     CancelledPOTransactionStatusComponent,
-    StoreOrderComponent
+    StoreOrderComponent,
+    StoreOrderDispatchingRecordComponent
 
   
 

@@ -13,6 +13,7 @@ import { WhRejectionApprovalComponent } from '../components/wh-rejection-approva
 import { StoreOrderComponent } from '../components/store-order/store-order.component';
 import { PreparedStoreOrderComponent } from '../components/prepared-store-order/prepared-store-order.component';
 import { StoreOrderActiveCancelledTransactionComponent } from '../components/store-order-active-cancelled-transaction/store-order-active-cancelled-transaction.component';
+import { StoreOrderDispatchingRecordComponent } from '../components/store-order-dispatching-record/store-order-dispatching-record.component';
 // import { WhCheckerDashboardComponent } from '../components/wh-checker-dashboard/wh-checker-dashboard.component';
 
 
@@ -34,6 +35,7 @@ const routes: Routes = [
     { path: "whstoreorder", component: StoreOrderComponent, data: { linkIndex: 13 } },
     { path: "wh-prepared-store-order", component: PreparedStoreOrderComponent , data: { linkIndex: 14 } },
     { path: "wh-cancelledprepared-store-order", component: StoreOrderActiveCancelledTransactionComponent , data: { linkIndex: 15 } },
+    {path: "store-order-dispatching", component: StoreOrderDispatchingRecordComponent , data: {linkIndex: 16}}
   ]},
 
   

@@ -36,6 +36,7 @@ import { AspNetRolesComponent } from './admin/components/asp-net-roles/asp-net-r
 import { WhRejectionApprovalComponent } from './admin/components/wh-rejection-approval/wh-rejection-approval.component';
 import { PreparedStoreOrderComponent } from './admin/components/prepared-store-order/prepared-store-order.component';
 import { StoreOrderActiveCancelledTransactionComponent } from './admin/components/store-order-active-cancelled-transaction/store-order-active-cancelled-transaction.component';
+// import { StoreOrderDispatchingRecordComponent } from './store-order-dispatching-record/store-order-dispatching-record.component';
 // import { StoreOrderComponent } from './store-order/store-order.component';
 // import { WhCheckerDashboardComponent } from './wh-checker-dashboard/wh-checker-dashboard.component';
 // import { WhCheckerDashboardComponent } from './warehouse-checker/wh-checker-dashboard/wh-checker-dashboard.component';
@@ -62,6 +63,7 @@ import { StoreOrderActiveCancelledTransactionComponent } from './admin/component
     WhRejectionApprovalComponent,
     PreparedStoreOrderComponent,
     StoreOrderActiveCancelledTransactionComponent,
+    // StoreOrderDispatchingRecordComponent,
     // StoreOrderComponent,
     // WhCheckerDashboardComponent,
     // WhCheckerDashboardComponent,
