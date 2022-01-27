@@ -53,4 +53,8 @@ export class WhCheckerDashboardService {
     return this.httpClient.get<DryWhStoreOrders[]>("/api/getStoreOrderMaterialCancelled", { responseType: "json" });
   }
 
+  getAllDispatchingStoreOrders(): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_distinct_store_dispatching", { responseType: "json" });
+  }
+
 }

@@ -9874,6 +9874,14 @@ class LoginComponent {
                 this.router.navigate(["/admin", "dashboard"]);
                 // this.WelcomeMessage();
             }
+            else if (this.loginService.currentUserRoleSession == "QC Staff") {
+                this.router.navigate(["/admin", "dashboard"]);
+                // this.WelcomeMessage();
+            }
+            else if (this.loginService.currentUserRoleSession == "QCSupervisor") {
+                this.router.navigate(["/admin", "dashboard"]);
+                // this.WelcomeMessage();
+            }
             else {
                 // this.router.navigate(["/admin", "dashboard"]);
                 // this.WelcomeMessage();  this.router.navigate(["/employee", "tasks"]);
@@ -20596,6 +20604,9 @@ class WhCheckerDashboardService {
     }
     getAllPreparedCancelledStoreOrders() {
         return this.httpClient.get("/api/getStoreOrderMaterialCancelled", { responseType: "json" });
+    }
+    getAllDispatchingStoreOrders() {
+        return this.httpClient.get("/api/dry_wh_orders_distinct_store_dispatching", { responseType: "json" });
     }
 }
 WhCheckerDashboardService.ɵfac = function WhCheckerDashboardService_Factory(t) { return new (t || WhCheckerDashboardService)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵinject"](_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"])); };

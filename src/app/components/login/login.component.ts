@@ -80,6 +80,16 @@ $('#eyeball').show();
           this.router.navigate(["/admin", "dashboard"]);
           // this.WelcomeMessage();
         }
+        else if (this.loginService.currentUserRoleSession == "QC Staff")
+        {
+          this.router.navigate(["/admin", "dashboard"]);
+          // this.WelcomeMessage();
+        }
+        else if (this.loginService.currentUserRoleSession == "QCSupervisor")
+        {
+          this.router.navigate(["/admin", "dashboard"]);
+          // this.WelcomeMessage();
+        }
         
         else
         {
