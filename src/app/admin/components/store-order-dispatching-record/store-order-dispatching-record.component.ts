@@ -22,6 +22,8 @@ import { WhCheckerDashboardService } from 'src/app/services/wh-checker-dashboard
 import * as $ from "jquery";
 import Swal from 'sweetalert2';
 import { ProjectComponent } from '../project/project.component';
+import { ClientLocation } from 'src/app/models/client-location';
+import { ClientLocationsService } from 'src/app/services/client-locations.service';
 
 @Component({
   selector: 'app-store-order-dispatching-record',
@@ -30,6 +32,7 @@ import { ProjectComponent } from '../project/project.component';
 })
 export class StoreOrderDispatchingRecordComponent implements OnInit {
   projects: DryWhStoreOrders[] = [];
+  clientLocations: Observable<ClientLocation[]>;
   showLoading: boolean = true;
 
   allowableqty: number = null;
@@ -38,10 +41,10 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
   ApprovedPreparationDate: string = "";
   FoxStoreCode: number = 0;
 
-
+  newProject: Project = new Project();
   editProject: DryWhStoreOrders = new DryWhStoreOrders();
   editIndex: number = null;
-
+  deleteProject: Project = new Project();
   deleteIndex: number = null;
   searchBy: string = "po_number";
   searchByItems: string = "store_name";
@@ -119,7 +122,7 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
   ProjectsAllowableQty: Observable<Project[]>;
   WhRejectRemarks: Observable<DryWhStoreOrders[]>;
 
-  constructor(private projectsService: ProjectsService, private toastr: ToastrService, public loginService: LoginService,
+  constructor(private projectsService: ProjectsService, private clientLocationsService: ClientLocationsService, private toastr: ToastrService, public loginService: LoginService,
     private rejectedStatusService: RejectedStatusService, private allowablePercentageService: AllowablePercentageService, private cancelledPOTransactionStatusService: CancelledPOTransactionStatusService,
     private projectsPartialPoService: ProjectsPartialPoService, private tblNearlyExpiryMgmtService: TblNearlyExpiryMgmtService,
     private formBuilder: FormBuilder, private whCheckerDashboardService: WhCheckerDashboardService, private tblDryPartialReceivingRejectionService: TblDryPartialReceivingRejectionService) { }
@@ -129,7 +132,7 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
     this.ToDay = new Date();
     this.activeUser = this.loginService.currentUserName;
     // debugger;
-    this.whCheckerDashboardService.getDistinctPreparedStoreOrders()
+    this.whCheckerDashboardService.getAllDispatchingStoreOrders()
       .subscribe(
         (response: DryWhStoreOrders[]) => {
           // debugger;
@@ -162,7 +165,6 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
 
   }
 
-  
   calculateNoOfPages() {
     //Get no. of Pages
     let filterPipe = new FilterPipe();
@@ -870,12 +872,166 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
 
   }
 
+  onDeleteConfirmClick() {
+    Swal.fire({
+      title: 'Are you sure the you to delete the selected data?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.OnDeleteDetails();
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+        this.showDeletedSuccess();
+      }
+    })
+
+  }
 
   
   showDeletedSuccess() {
     this.toastr.success('Successfully Deleted!', 'Notifications');
   }
+  OnDeleteDetails() {
 
+    this.projectsService.deleteProject(this.deleteProject.projectID).subscribe(
+      (response) => {
+        this.projects.splice(this.deleteIndex, 1);
+        this.deleteProject.projectID = null;
+        this.deleteProject.projectName = null;
+        this.deleteProject.teamSize = null;
+        this.deleteProject.dateOfStart = null;
+        this.deleteProject.supplier = null;
+        this.deleteProject.item_code = null;
+        this.deleteProject.item_description = null;
+        this.deleteProject.po_number = null;
+        this.deleteProject.po_date = null;
+        this.deleteProject.pr_number = null;
+        this.deleteProject.pr_date = null;
+        this.deleteProject.qty_order = null;
+        this.deleteProject.qty_uom = null;
+        this.deleteProject.mfg_date = null;
+        this.deleteProject.expiration_date = null;
+        this.deleteProject.expected_delivery = null;
+        this.deleteProject.actual_delivery = null;
+        this.deleteProject.actual_remaining_receiving = null;
+        this.deleteProject.received_by_QA = null;
+        this.deleteProject.c_inner_walls_desc = null;
+        this.deleteProject.c_compliance = null;
+        this.deleteProject.c_remarks = null;
+        this.deleteProject.d_plastic_curtains_desc = null;
+        this.deleteProject.d_compliance = null;
+        this.deleteProject.d_remarks = null;
+        this.deleteProject.e_thereno_pest_desc = null;
+        this.deleteProject.e_compliance = null;
+        this.deleteProject.e_remarks = null;
+        //Section 2
+        //A
+        this.deleteProject.a_clean_company_dos = null;
+        this.deleteProject.a_compliance_dos = null;
+        this.deleteProject.a_remarks_dos = null;
+        //B
+        this.deleteProject.b_delivery_staff_symptoms_dos = null;
+        this.deleteProject.b_compliance_dos = null;
+        this.deleteProject.b_remarks_dos = null;
+        //C
+        this.deleteProject.c_inner_walls_clean_dos = null;
+        this.deleteProject.c_compliance_dos = null;
+        this.deleteProject.c_remarks_dos = null;
+        //D
+        this.deleteProject.d_plastic_curtains_dos = null;
+        this.deleteProject.d_compliance_dos = null;
+        this.deleteProject.d_remarks_dos = null;
+        //E
+        this.deleteProject.e_no_accessories_dos = null;
+        this.deleteProject.e_compliance_dos = null;
+        this.deleteProject.e_remarks_dos = null;
+        //F
+        this.deleteProject.f_compliance_dos = null;
+        this.deleteProject.f_no_pests_sightings_dos = null;
+        this.deleteProject.f_remarks_dos = null;
+        //Section 3
+        //A
+        this.deleteProject.a_pallet_crates_tres = null;
+        this.deleteProject.a_compliance_tres = null;
+        this.deleteProject.a_remarks_tres = null;
+        //B
+        this.deleteProject.b_product_contamination_tres = null;
+        this.deleteProject.b_compliance_tres = null;
+        this.deleteProject.b_remarks_tres = null;
+        //C
+        this.deleteProject.c_uncessary_items_tres = null;
+        this.deleteProject.c_compliance_tres = null;
+        this.deleteProject.c_remarks_tres = null;
+        //D
+        this.deleteProject.d_products_cover_tres = null;
+        this.deleteProject.d_compliance_tres = null;
+        this.deleteProject.d_remarks_tres = null;
+
+        //Section 4
+        //A
+        this.deleteProject.a_certificate_coa_kwatro_desc = null;
+        this.deleteProject.a_compliance_kwatro = null;
+        this.deleteProject.a_remarks_kwatro = null;
+        //B
+        this.deleteProject.b_po_kwatro_desc = null;
+        this.deleteProject.b_compliance_kwatro = null;
+        this.deleteProject.b_remarks_kwatro = null;
+        //C
+        this.deleteProject.c_msds_kwatro_desc = null;
+        this.deleteProject.c_compliance_kwatro = null;
+        this.deleteProject.c_remarks_kwatro = null;
+        //D
+        this.deleteProject.d_food_grade_desc = null;
+        this.deleteProject.d_compliance_kwatro = null;
+        this.deleteProject.d_remarks_kwatro = null;
+        //Section 5
+        //A
+        this.deleteProject.a_qty_received_singko_singko = null;
+        this.deleteProject.a_compliance_singko = null;
+        this.deleteProject.a_remarks_singko = null;
+        //B
+        this.deleteProject.b_mfg_date_desc_singko = null;
+        this.deleteProject.b_compliance_singko = null;
+        this.deleteProject.b_remarks_singko = null;
+        //C
+        this.deleteProject.c_expirydate_desc_singko = null;
+        this.deleteProject.c_compliance_singko = null;
+        this.deleteProject.c_remarks_singko = null;;
+        //D
+        this.deleteProject.d_packaging_desc_singko = null;
+        this.deleteProject.d_compliance_singko = null;
+        this.deleteProject.d_remarks_singko = null;
+        //E
+        this.deleteProject.e_no_contaminants_desc_singko = null;
+        this.deleteProject.e_compliance_singko = null;
+        this.deleteProject.e_remarks_singko = null;
+        //F
+        this.deleteProject.f_qtyrejected_desc_singko = null;
+        this.deleteProject.f_compliance_singko = null;
+        this.deleteProject.f_remarks_singko = null;
+        //G
+        this.deleteProject.g_rejected_reason_desc_singko = null;
+        this.deleteProject.g_compliance_singko = null;
+        this.deleteProject.g_remarks_singko = null;
+        //H
+        this.deleteProject.h_lab_sample_desc_singko = null;
+        this.deleteProject.h_compliance_singko = null;
+        this.deleteProject.h_remarks_singko = null;
+
+        this.calculateNoOfPages();
+      },
+      (error) => {
+        console.log(error);
+      });
+  }
 
 
   CancelledPoDetails() {
@@ -1210,31 +1366,31 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
 
 
 
-      //End of Variable
-      this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editProject).subscribe((response: DryWhStoreOrders) => {
-        var p: DryWhStoreOrders = new DryWhStoreOrders();
-        p.is_approved_prepa_date = response.is_approved_prepa_date;
-        p.category = response.category;
-        // p.dispossal_status = response.dispossal_status;
+      // //End of Variable
+      // this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editProject).subscribe((response: DryWhStoreOrders) => {
+      //   var p: DryWhStoreOrders = new DryWhStoreOrders();
+      //   p.is_approved_prepa_date = response.is_approved_prepa_date;
+      //   p.category = response.category;
+      //   // p.dispossal_status = response.dispossal_status;
 
 
 
 
 
 
-        // this.received_by.nativeElement.value = this.loginService.currentUserName;
-        this.projects[this.editIndex] = p;
-        // 01/14/2022  GerardSingian
-        this.editProject.is_approved_prepa_date = null;
-        this.editProject.category = null;
-        this.editProject.dispossal_status = null;
+      //   // this.received_by.nativeElement.value = this.loginService.currentUserName;
+      //   this.projects[this.editIndex] = p;
+      //   // 01/14/2022  GerardSingian
+      //   this.editProject.is_approved_prepa_date = null;
+      //   this.editProject.category = null;
+      //   this.editProject.dispossal_status = null;
    
 
 
-      },
-        (error) => {
-          console.log(error);
-        });
+      // },
+      //   (error) => {
+      //     console.log(error);
+      //   });
     }
   }
 

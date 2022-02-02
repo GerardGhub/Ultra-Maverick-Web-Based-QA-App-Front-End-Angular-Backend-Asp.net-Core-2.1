@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { DryWhStoreOrders } from '../models/dry-wh-store-orders';
+import { StorePreparationLogs } from '../models/store-preparation-logs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,10 +41,15 @@ export class WhCheckerDashboardService {
 
   }
 
-  updateStoreOrderPerItemReadLine(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
-    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelitems/readline", existingProject, { responseType: "json" });
+  updateStoreOrderPerItemReadLine(existingProject: StorePreparationLogs): Observable<StorePreparationLogs> {
+    return this.httpClient.put<StorePreparationLogs>("/api/store_orders/cancelitems/readline", existingProject, { responseType: "json" });
 
   }
+
+  // updateStoreOrderPerItemReadLine(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
+  //   return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelitems/readline", existingProject, { responseType: "json" });
+
+  // }
 
   getDistinctPreparedCancelledStoreOrders(): Observable<DryWhStoreOrders[]> {
     return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_checklist_distinct_cancelled", { responseType: "json" });

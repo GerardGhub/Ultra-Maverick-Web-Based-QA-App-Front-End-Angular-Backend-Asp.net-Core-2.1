@@ -226,26 +226,58 @@ namespace MvcTaskManager.Controllers
     }
 
 
+    //[HttpPut]
+    //[Route("api/store_orders/cancelitems/readline")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //public IActionResult PutCancelPreparedItemReadLine([FromBody] DryWhOrder project)
+    //{
+
+    //  List<DryWhOrder> existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.category == project.category).ToList();
+    //  if (existingProject != null)
+    //  {
+    //    project.dispossal_status = project.dispossal_status;
+
+
+
+    //    db.SaveChanges();
+
+    //    List<DryWhOrder> existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.category == project.category).ToList();
+    //    DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+    //    {
+    //      Dispossal_status = project.dispossal_status
+ 
+
+
+
+    //    };
+    //    return Ok(projectViewModel);
+    //  }
+    //  else
+    //  {
+    //    return null;
+    //  }
+    //}
+
     [HttpPut]
     [Route("api/store_orders/cancelitems/readline")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public IActionResult PutCancelPreparedItemReadLine([FromBody] DryWhOrder project)
+    public IActionResult PutCancelPreparedItemReadLine([FromBody] Store_Preparation_LogsModel project)
     {
 
-      List<DryWhOrder> existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.category == project.category).ToList();
+      List<Store_Preparation_LogsModel> existingProject = db.Store_Preparation_Logs.Where(temp => temp.order_source_key == project.order_source_key ).ToList();
       if (existingProject != null)
       {
-        project.dispossal_status = project.dispossal_status;
+        project.is_active = project.is_active;
 
 
 
         db.SaveChanges();
 
-        List<DryWhOrder> existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.category == project.category).ToList();
-        DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+        List<Store_Preparation_LogsModel> existingProject2 = db.Store_Preparation_Logs.Where(temp => temp.order_source_key == project.order_source_key).ToList();
+        Store_Preparation_Logs_View_Model projectViewModel = new Store_Preparation_Logs_View_Model()
         {
-          Dispossal_status = project.dispossal_status
- 
+          Is_active = project.is_active
+
 
 
 

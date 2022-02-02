@@ -24,6 +24,7 @@ import Swal from 'sweetalert2';
 import { DryWhStoreOrders } from 'src/app/models/dry-wh-store-orders';
 import { WhCheckerDashboardService } from 'src/app/services/wh-checker-dashboard.service';
 import { TblDryPartialReceivingRejectionService } from 'src/app/services/tbl-dry-partial-receiving-rejection.service';
+import { StorePreparationLogs } from 'src/app/models/store-preparation-logs';
 
 @Component({
   selector: 'app-prepared-store-order',
@@ -32,6 +33,7 @@ import { TblDryPartialReceivingRejectionService } from 'src/app/services/tbl-dry
 })
 export class PreparedStoreOrderComponent implements OnInit {
   projects: DryWhStoreOrders[] = [];
+  storepreparations: StorePreparationLogs[] = [];
   clientLocations: Observable<ClientLocation[]>;
   showLoading: boolean = true;
 
@@ -43,6 +45,8 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   newProject: Project = new Project();
   editProject: DryWhStoreOrders = new DryWhStoreOrders();
+
+  editPreparationLogs: StorePreparationLogs = new StorePreparationLogs();
   editIndex: number = null;
   deleteProject: Project = new Project();
   deleteIndex: number = null;
@@ -240,7 +244,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     }
     else {
       if (this.totalofReject.nativeElement.value == this.confirmReject.nativeElement.value) {
-       
+
         this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "";
       }
       else {
@@ -482,7 +486,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_approved = "1";
 
 
-   
+
 
 
       this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
@@ -511,7 +515,7 @@ export class PreparedStoreOrderComponent implements OnInit {
     //     }
     //   }
     // }
-    
+
 
   }
 
@@ -520,16 +524,16 @@ export class PreparedStoreOrderComponent implements OnInit {
   onCancelClick(event, index: number,
     primary_id: number,
     preparation_date: string,
-     item_code: string,
-      description: string, 
-      allocated_quantity: number, 
-      category: string) {
+    item_code: string,
+    description: string,
+    allocated_quantity: number,
+    category: string) {
 
     // alert("ALAKBAK GERARD" + primary_id);
 
     setTimeout(() => {
 
-    
+
 
       // index = this.projects[index].primary_id
       this.editProject.primary_id = primary_id;
@@ -918,7 +922,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   }
 
-  
+
   showDeletedSuccess() {
     this.toastr.success('Successfully Deleted!', 'Notifications');
   }
@@ -1067,7 +1071,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       var AllocatedQuantity = this.ServeQuantity.nativeElement.value;
 
       Swal.fire({
-        title: 'Are you sure you want to cancel the serving of ' + Item + '?',
+        title: 'Are you sure you want to cancel the ' + Item + '?',
         text: AllocatedQuantity,
         icon: 'info',
         showCancelButton: true,
@@ -1076,13 +1080,14 @@ export class PreparedStoreOrderComponent implements OnInit {
         confirmButtonText: 'Yes'
       }).then((result) => {
         if (result.isConfirmed) {
-  
-  
+
+
           // this.UpdateCancelItemClickDetailsOverAll();
           this.UpdateCancelItemClickDetails();
-  
-  
-  
+          //MAKABAKLE
+
+
+
         }
       })
 
@@ -1109,7 +1114,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
 
-  
+
 
 
   }
@@ -1205,36 +1210,35 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   onUpdateClick() {
 
-    var gridTable = (<HTMLTableElement >document.getElementById("GridView2"));
+    var gridTable = (<HTMLTableElement>document.getElementById("GridView2"));
     // document.getElementById("GridView2");
-    var result="";
-    if(gridTable) { 
-      for(var i=0; i < gridTable.rows.length; i++) {
-        if(gridTable.rows[i].cells[5]){
+    var result = "";
+    if (gridTable) {
+      for (var i = 0; i < gridTable.rows.length; i++) {
+        if (gridTable.rows[i].cells[4]) {
           // console.log(gridTable.rows[i].cells[5].innerText);
-          result = gridTable.rows[i].cells[5].innerText;
-         
+          result = gridTable.rows[i].cells[4].innerText;
+
           // result = result + "   "+ gridTable.rows[i].cells[5].innerText;
         }
       }
     }
-    
 
 
-// alert(this.totalItemsPrepared);
+
+    // alert(result);
+    //Checking the Fucking COlumn if matched Tang ina
 
 
-    if(parseFloat(result).toString() ==  parseFloat(this.totalItemsPrepared).toString())
-    {
+    if (parseFloat(result).toString() == parseFloat(this.totalItemsPrepared).toString()) {
 
-     
+
     }
-    else
-    {
- 
+    else {
+
       this.CannotApprovedDataCancelled();
       return;
-     
+
     }
 
 
@@ -1243,9 +1247,9 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
 
-   
+
     var StoreName = this.ItemDescription.nativeElement.value;
- 
+
 
 
     if (this.editForm.valid) {
@@ -1294,12 +1298,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   UpdateClickDetails() {
 
-    
-
     if (this.editForm.valid) {
-
-     
-
       //End of Variable
       this.whCheckerDashboardService.updateProject(this.editProject).subscribe((response: DryWhStoreOrders) => {
         var p: DryWhStoreOrders = new DryWhStoreOrders();
@@ -1311,10 +1310,6 @@ export class PreparedStoreOrderComponent implements OnInit {
         p.is_wh_approved = response.is_wh_approved;
         p.is_wh_approved_by = response.is_wh_approved_by;
         // p.is_wh_approved_date = response.is_wh_approved_date;
-
-
-
-
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
         this.projects[this.editIndex] = p;
 
@@ -1386,28 +1381,21 @@ export class PreparedStoreOrderComponent implements OnInit {
   UpdateCancelItemClickDetailsOverAll() {
 
     if (this.editForm.valid) {
+      
 
 
-
-      //End of Variable
-      this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editProject).subscribe((response: DryWhStoreOrders) => {
-        var p: DryWhStoreOrders = new DryWhStoreOrders();
-        p.is_approved_prepa_date = response.is_approved_prepa_date;
-        p.category = response.category;
+      //End of Variable Buje Lang
+      this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response: StorePreparationLogs) => {
+        var p: StorePreparationLogs = new StorePreparationLogs();
+        p.is_active = response.is_active;
+      
         // p.dispossal_status = response.dispossal_status;
-
-
-
-
-
-
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
-        this.projects[this.editIndex] = p;
+        this.storepreparations[this.editIndex] = p;
         // 01/14/2022  GerardSingian
-        this.editProject.is_approved_prepa_date = null;
-        this.editProject.category = null;
-        this.editProject.dispossal_status = null;
-   
+        this.editPreparationLogs.is_active = null;
+    
+
 
 
       },
@@ -1441,13 +1429,13 @@ export class PreparedStoreOrderComponent implements OnInit {
 
     if (QtyOrder == ActualRemainingReceiving) {
 
-     
+
 
       this.ActualRemaining = ActualDelivered - totalRejection;
       this.ActualRemaining = ActualRemainingReceiving - this.ActualRemaining;
     }
     else {
-     
+
 
       this.ActualRemaining = ActualDelivered - totalRejection;
       this.ActualRemaining = ActualRemainingReceiving - this.ActualRemaining;
