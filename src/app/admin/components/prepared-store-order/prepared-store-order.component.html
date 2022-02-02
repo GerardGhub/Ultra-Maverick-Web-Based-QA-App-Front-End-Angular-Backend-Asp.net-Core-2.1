@@ -135,17 +135,7 @@
                                         <mat-icon>edit</mat-icon>
                                     </button>&nbsp;
 
-                                    <!--             s
-                  <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession =='QCSupervisor'"></ng-container> -->
-                                    <!-- <ng-container
-                                        *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession == 'WarehouseChecker'">
 
-                                        <button mat-icon-button color="warn" (click)="onEditClick($event, i)"
-                                            data-toggle="modal" data-target="#DeactivateModal"
-                                            data-backdrop="false" data-keyboard="false">
-                                            <mat-icon>toggle_off</mat-icon>
-                                        </button>&nbsp;
-                                    </ng-container> -->
                                 </td>
                             </tr>
                         </tbody>
@@ -479,6 +469,18 @@
 
 
 
+                            <mat-form-field floatLabel="auto" appearance="standard" color="primary" class="hideObjects">
+                                <input type="text" matInput id="txtEditwh_checker_move_order_no"
+                                    placeholder="Move Order No." name="wh_checker_move_order_no" readonly="readonly"
+                                    [(ngModel)]="editProject.wh_checker_move_order_no"  maxlength="30"
+                                    #editwh_checker_move_order_no="ngModel">
+                                <mat-label>Move Order No</mat-label>
+
+
+                            </mat-form-field>
+
+
+
                         </div>
 
                         <!-- end of box 1-->
@@ -549,16 +551,19 @@
 
                     <div class="flex">
                         <div class="box-1">
-
+                            <mat-card>RECEIVING INFORMATION </mat-card>
                         </div>
                         <div class="box-2">
 
+                            <mat-card>MOVE ORDER NO. {{totalStoreOrderDispatching}}</mat-card>
                         </div>
 
                     </div>
 
-                    <mat-card>RECEIVING INFORMATION </mat-card>
+
                     <!-- Total Items  Prepared -->
+
+
                     <p class="w-100 hideObject">{{totalItemsPrepared}}</p>
 
 
@@ -607,7 +612,7 @@
                                         <tr *ngFor="let project of WhRejectRemarks | async let a = index; count as c ">
                                             <!-- <td>{{a}}</td> -->
                                             <td>{{project.primary_id}}</td>
-                                      
+
 
                                             <td>{{project.description}}</td>
                                             <td>{{project.uom}}</td>
@@ -736,7 +741,12 @@
                 <div>
 
                 </div>
+
+
+
                 <div class="modal-footer">
+
+
 
                     <button mat-stroked-button color="primary" id="ApproveButton" class="mr-2"
                         (click)="onUpdateClick()">Approve</button>

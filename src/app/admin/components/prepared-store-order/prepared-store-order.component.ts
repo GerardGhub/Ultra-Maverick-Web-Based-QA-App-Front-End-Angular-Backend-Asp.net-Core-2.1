@@ -74,6 +74,8 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   totalPartialReceivingCancel: number = null;
 
+  totalStoreOrderDispatching: number = 0;
+
   totalItemsPrepared: string = "";
 
   @ViewChild("newForm") newForm: NgForm;
@@ -316,6 +318,21 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
   onEditClick(event, index: number) {
+
+    this.whCheckerDashboardService.getAllDispatchingStoreOrders()
+      .subscribe(
+        (response: DryWhStoreOrders[]) => {
+          // debugger;
+
+          this.projects = response;
+
+
+          this.totalStoreOrderDispatching = response.length + 1;
+        }
+      );
+
+
+
     //Additional Binding of Searching
     // if ($('#txtSearchText').is(":visible")) {
     //Show Visibilit
@@ -484,6 +501,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_approved_date = this.ToDay;
       this.editProject.is_wh_approved_by = this.activeUser;
       this.editProject.is_wh_approved = "1";
+      this.editProject.wh_checker_move_order_no = this.totalStoreOrderDispatching.toString();
 
 
 

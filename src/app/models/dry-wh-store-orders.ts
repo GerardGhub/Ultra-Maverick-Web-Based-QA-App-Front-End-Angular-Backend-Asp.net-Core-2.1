@@ -28,6 +28,7 @@ export class DryWhStoreOrders {
     is_wh_checker_cancel_date: Date;
     is_wh_checker_cancel: string;
     dispossal_status: string;
+    wh_checker_move_order_no: string;
 
     constructor()
     {
@@ -58,6 +59,7 @@ export class DryWhStoreOrders {
         this.is_wh_checker_cancel_by = null;
         this.is_wh_checker_cancel_date = null;
         this.dispossal_status = null;
+        this.wh_checker_move_order_no = null;
     }
 
 }
