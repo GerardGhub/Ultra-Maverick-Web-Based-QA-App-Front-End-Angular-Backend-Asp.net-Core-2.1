@@ -165,6 +165,7 @@ namespace MvcTaskManager.Controllers
         existingProject.is_wh_approved = project.is_wh_approved;
         existingProject.is_wh_approved_by = project.is_wh_approved_by;
         existingProject.is_wh_approved_date = project.is_wh_approved_date;
+        existingProject.wh_checker_move_order_no = project.wh_checker_move_order_no;
        
       
 
@@ -175,7 +176,8 @@ namespace MvcTaskManager.Controllers
         {
           Is_wh_approved= existingProject2.is_wh_approved,
           Is_wh_approved_by = existingProject2.is_wh_approved_by,
-          Is_wh_approved_date = existingProject2.is_wh_approved_date
+          Is_wh_approved_date = existingProject2.is_wh_approved_date,
+          Wh_checker_move_order_no = existingProject2.wh_checker_move_order_no
          
 
 

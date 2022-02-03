@@ -43,6 +43,7 @@ namespace MvcTaskManager.Models
     public string is_wh_checker_cancel_reason { get; set; }
 
     public string dispossal_status { get; set; }
+    public string wh_checker_move_order_no { get; set; }
 
   }
 }

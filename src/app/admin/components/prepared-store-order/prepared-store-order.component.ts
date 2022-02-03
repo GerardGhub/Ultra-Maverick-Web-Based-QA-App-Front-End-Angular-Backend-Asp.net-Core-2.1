@@ -32,7 +32,8 @@ import { StorePreparationLogs } from 'src/app/models/store-preparation-logs';
   styleUrls: ['./prepared-store-order.component.scss']
 })
 export class PreparedStoreOrderComponent implements OnInit {
-  projects: DryWhStoreOrders[] = [];
+  storeOrders: DryWhStoreOrders[] = [];
+  storedispatchingrecords: DryWhStoreOrders[] = [];
   storepreparations: StorePreparationLogs[] = [];
   clientLocations: Observable<ClientLocation[]>;
   showLoading: boolean = true;
@@ -145,7 +146,7 @@ export class PreparedStoreOrderComponent implements OnInit {
         (response: DryWhStoreOrders[]) => {
           // debugger;
 
-          this.projects = response;
+          this.storeOrders = response;
 
           this.showLoading = false;
           this.calculateNoOfPages();
@@ -197,7 +198,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   calculateNoOfPages() {
     //Get no. of Pages
     let filterPipe = new FilterPipe();
-    var resultProjects = filterPipe.transform(this.projects, this.searchBy, this.searchText);
+    var resultProjects = filterPipe.transform(this.storeOrders, this.searchBy, this.searchText);
     var noOfPages = Math.ceil(resultProjects.length / this.pageSize);
 
     // var noOfPages = Math.ceil(filterPipe.transform(this.projects, this.searchBy, this.searchText).length / this.pageSize);
@@ -324,7 +325,7 @@ export class PreparedStoreOrderComponent implements OnInit {
         (response: DryWhStoreOrders[]) => {
           // debugger;
 
-          this.projects = response;
+          this.storedispatchingrecords = response;
 
 
           this.totalStoreOrderDispatching = response.length + 1;
@@ -475,42 +476,42 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
 
-      this.editProject.primary_id = this.projects[index].primary_id;
+      this.editProject.primary_id = this.storeOrders[index].primary_id;
 
 
       // this.editProject.projectID = Math.floor((Math.random() * 1000000) + 1);
       // this.editProject.projectName = this.projects[index].projectName;
       // this.editProject.dateOfStart = this.projects[index].dateOfStart.split("/").reverse().join("-"); //yyyy-MM-dd
       // this.editProject.teamSize = 40;
-      this.editProject.is_approved_prepa_date = this.projects[index].is_approved_prepa_date;
-      this.editProject.category = this.projects[index].category;
-      this.editProject.store_name = this.projects[index].store_name;
-      this.editProject.route = this.projects[index].route;
-      this.editProject.area = this.projects[index].area;
-      this.editProject.fox = this.projects[index].fox;
+      this.editProject.is_approved_prepa_date = this.storeOrders[index].is_approved_prepa_date;
+      this.editProject.category = this.storeOrders[index].category;
+      this.editProject.store_name = this.storeOrders[index].store_name;
+      this.editProject.route = this.storeOrders[index].route;
+      this.editProject.area = this.storeOrders[index].area;
+      this.editProject.fox = this.storeOrders[index].fox;
 
       //Binding of Item Information
-      this.editProject.item_code = this.projects[index].item_code;
-      this.editProject.description = this.projects[index].description;
+      this.editProject.item_code = this.storeOrders[index].item_code;
+      this.editProject.description = this.storeOrders[index].description;
 
       //Binding Quantity
-      this.editProject.prepared_allocated_qty = this.projects[index].prepared_allocated_qty;
+      this.editProject.prepared_allocated_qty = this.storeOrders[index].prepared_allocated_qty;
 
 
       //Warehouse Checker Fucking Process
       this.editProject.is_wh_approved_date = this.ToDay;
       this.editProject.is_wh_approved_by = this.activeUser;
       this.editProject.is_wh_approved = "1";
-      this.editProject.wh_checker_move_order_no = this.totalStoreOrderDispatching.toString();
+      this.editProject.wh_checker_move_order_no = this.totalStoreOrderDispatching;
 
 
 
 
 
-      this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
-      this.FoxStoreCode = this.projects[index].fox;
+      this.ApprovedPreparationDate = this.storeOrders[index].is_approved_prepa_date;
+      this.FoxStoreCode = this.storeOrders[index].fox;
 
-      this.totalItemsPrepared = this.projects[index].total_state_repack;
+      this.totalItemsPrepared = this.storeOrders[index].total_state_repack;
 
 
 
@@ -520,19 +521,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
     }, 100);
 
-    // var gridTable = (<HTMLTableElement >document.getElementById("GridView2"));
-    // // document.getElementById("GridView2");
-    // var result="";
-    // if(gridTable) { 
-    //   for(var i=0; i < gridTable.rows.length; i++) {
-    //     if(gridTable.rows[i].cells[5]){
-    //       // console.log(gridTable.rows[i].cells[5].innerText);
-    //       this.ItemCountArrayPreparedItem.nativeElement.value = gridTable.rows[i].cells[5].innerText;
-    //       // result = result + "   "+ gridTable.rows[i].cells[5].innerText;
-    //       alert(this.ItemCountArrayPreparedItem);
-    //     }
-    //   }
-    // }
+  
 
 
   }
@@ -573,7 +562,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_checker_cancel = "1";
       this.editProject.dispossal_status = "1";
       this.editProject.category = category;
-      this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason;
+      this.editProject.is_wh_checker_cancel_reason = this.storeOrders[index].is_wh_checker_cancel_reason;
 
 
 
@@ -585,14 +574,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
     }, 100);
-    // if(this.ItemCountArrayPreparedItem.nativeElement.value() == this.totalItemsPrepared)
-    // {
-    //   alert("Matched");
-    // }
-    // else
-    // {
-    //   alert("Not Matched");
-    // }
+  
   }
 
   resetValueS() {
@@ -948,7 +930,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
     this.projectsService.deleteProject(this.deleteProject.projectID).subscribe(
       (response) => {
-        this.projects.splice(this.deleteIndex, 1);
+        this.storeOrders.splice(this.deleteIndex, 1);
         this.deleteProject.projectID = null;
         this.deleteProject.projectName = null;
         this.deleteProject.teamSize = null;
@@ -1329,7 +1311,7 @@ export class PreparedStoreOrderComponent implements OnInit {
         p.is_wh_approved_by = response.is_wh_approved_by;
         // p.is_wh_approved_date = response.is_wh_approved_date;
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
-        this.projects[this.editIndex] = p;
+        this.storeOrders[this.editIndex] = p;
 
         this.editProject.is_approved_prepa_date = null;
         this.editProject.category = null;
@@ -1375,7 +1357,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
-        this.projects[this.editIndex] = p;
+        this.storeOrders[this.editIndex] = p;
         // 01/14/2022  GerardSingian
         this.editProject.is_approved_prepa_date = null;
         this.editProject.primary_id = null;
