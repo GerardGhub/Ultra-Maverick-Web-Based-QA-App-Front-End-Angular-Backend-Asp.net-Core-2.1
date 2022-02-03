@@ -79,6 +79,7 @@
                     <table class="table table-striped table-bordered nowrap table-responsive-xl" style="width:100%">
                         <thead>
                             <tr class="text-light header-bg-color-um system-name">
+                                <th>Order No.</th>
 
                                 <th>Preparation Date
 
@@ -117,6 +118,7 @@
                         <tbody>
                             <tr
                                 *ngFor="let project of projects | filter: searchBy : searchText | paging : currentPageIndex : pageSize; let i = index">
+                                <td>{{project.wh_checker_move_order_no | number:'1.0':'en-US'}}</td>
                                 <td>{{project.is_approved_prepa_date}}</td>
                                 <!-- <td>{{project.po_date  | date:'dd-MMM-yyyy'}}</td> -->
                                 <td>{{project.category}}</td>
