@@ -116,7 +116,7 @@ namespace MvcTaskManager.Controllers
 
         projects = db.dry_wh_orders.Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode) && temp.is_wh_checker_cancel == null).ToList();
 
-      //temp.is_approved.Contains(is_activated) &&
+     
       List <DryWhOrderViewModel> WarehouseStoreOrderContructor = new List<DryWhOrderViewModel>();
       foreach (var project in projects)
       {

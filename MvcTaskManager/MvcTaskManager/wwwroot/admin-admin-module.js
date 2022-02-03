@@ -7836,10 +7836,10 @@ StoreOrderDispatchingRecordComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MOD
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](61, "Area ");
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](62, "th");
-        _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](63, "Total Items ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](63, "Total Item(s) ");
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementStart"](64, "th", 23);
-        _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](65, "Actions");
+        _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵtext"](65, "Action");
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_6__["ɵɵelementEnd"]();
