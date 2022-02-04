@@ -132,7 +132,7 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
     this.ToDay = new Date();
     this.activeUser = this.loginService.currentUserName;
     // debugger;
-    this.whCheckerDashboardService.getAllPreparedCancelledStoreOrders()
+    this.whCheckerDashboardService.getDistinctPreparedStoreOrderHasPartialCancel()
       .subscribe(
         (response: DryWhStoreOrders[]) => {
           // debugger;
@@ -697,6 +697,65 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
         console.log(error);
       });
   }
+
+  onEditClick(event, index: number) {
+
+
+
+    setTimeout(() => {
+
+
+
+      this.editProject.primary_id = this.projects[index].primary_id;
+
+
+      // this.editProject.projectID = Math.floor((Math.random() * 1000000) + 1);
+      // this.editProject.projectName = this.projects[index].projectName;
+      // this.editProject.dateOfStart = this.projects[index].dateOfStart.split("/").reverse().join("-"); //yyyy-MM-dd
+      // this.editProject.teamSize = 40;
+      this.editProject.is_approved_prepa_date = this.projects[index].is_approved_prepa_date;
+      this.editProject.category = this.projects[index].category;
+      this.editProject.store_name = this.projects[index].store_name;
+      this.editProject.route = this.projects[index].route;
+      this.editProject.area = this.projects[index].area;
+      this.editProject.fox = this.projects[index].fox;
+
+      //Binding of Item Information
+      this.editProject.item_code = this.projects[index].item_code;
+      this.editProject.description = this.projects[index].description;
+
+      //Binding Quantity
+      this.editProject.prepared_allocated_qty = this.projects[index].prepared_allocated_qty;
+
+
+      //Warehouse Checker Fucking Process
+      this.editProject.is_wh_approved_date = this.ToDay;
+      this.editProject.is_wh_approved_by = this.activeUser;
+      this.editProject.is_wh_approved = "1";
+
+
+
+
+
+
+      this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
+      this.FoxStoreCode = this.projects[index].fox;
+
+      this.totalItemsPrepared = this.projects[index].total_state_repack;
+
+
+
+      this.WhRejectRemarks = this.whCheckerDashboardService.SearchPartialCancelled("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+      // this.calculateNoOfPagesItems();
+      this.editIndex = index;
+
+    }, 100);
+
+  
+
+
+  }
+
 
 
 

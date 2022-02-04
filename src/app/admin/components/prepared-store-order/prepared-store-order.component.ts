@@ -574,7 +574,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_checker_cancel = "1";
       this.editProject.dispossal_status = "1";
       this.editProject.category = category;
-      this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason;
+      // this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason; 2/4/2022
 
 
 

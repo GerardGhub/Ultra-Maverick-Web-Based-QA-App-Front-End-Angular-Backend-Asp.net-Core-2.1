@@ -170,6 +170,68 @@ namespace MvcTaskManager.Controllers
 
 
 
+
+
+
+    [HttpGet]
+    [Route("api/store_orders_partial_cancel/search/{searchby}/{searchtext}/{searchindex}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult SearchPartialCancel(string searchBy, string searchText, string searchIndex)
+    {
+
+      //string data_is_pending = "1";
+      string is_activated = "1";
+      List<DryWhOrder> projects = null;
+
+      string ApprovedPreparationDate = searchText;
+      string FoxStoreCode = searchIndex;
+      if (searchBy == "store_name")
+
+        projects = db.dry_wh_orders.Where(temp => temp.is_active.Contains(is_activated) && temp.is_approved_prepa_date.Contains(ApprovedPreparationDate) && temp.fox.Contains(FoxStoreCode) && temp.is_wh_checker_cancel != null).ToList();
+
+
+      List<DryWhOrderViewModel> WarehouseStoreOrderContructor = new List<DryWhOrderViewModel>();
+      foreach (var project in projects)
+      {
+        WarehouseStoreOrderContructor.Add(new DryWhOrderViewModel()
+        {
+
+          Primary_id = project.primary_id,
+          Is_approved_prepa_date = project.is_approved_prepa_date,
+          Store_name = project.store_name,
+          Route = project.route,
+          Area = project.area,
+          Category = project.category,
+          Is_active = project.is_active,
+          Is_for_validation = project.is_for_validation,
+          Is_approved = project.is_approved,
+          Is_prepared = project.is_prepared,
+          Force_prepared_status = project.force_prepared_status,
+          Fox = project.fox,
+          Item_code = project.item_code,
+          Description = project.description,
+          Uom = project.uom,
+          Total_state_repack = project.total_state_repack,
+          Qty = project.qty,
+          Prepared_allocated_qty = project.prepared_allocated_qty,
+          Is_wh_checker_cancel_reason = project.is_wh_checker_cancel_reason,
+          Is_wh_checker_cancel_by = project.is_wh_checker_cancel_by,
+          Is_wh_checker_cancel_date = project.is_wh_checker_cancel_date
+
+
+
+
+
+
+        });
+      }
+
+      return Ok(WarehouseStoreOrderContructor);
+    }
+
+
+
+
     [HttpPut]
     [Route("api/store_orders")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

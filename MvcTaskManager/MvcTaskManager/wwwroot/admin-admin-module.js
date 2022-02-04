@@ -5367,7 +5367,6 @@ class DashboardComponent {
         for (var i = 2019; i >= 2010; i--) {
             this.Years.push(i);
         }
-        this.TeamMembersSummary = this.dashboardService.getTeamMembersSummary();
         this.DashboardPoSummary();
         this.DashboardPoSummaryCancelled();
         this.DashboardPoSummaryPartialReceiving();

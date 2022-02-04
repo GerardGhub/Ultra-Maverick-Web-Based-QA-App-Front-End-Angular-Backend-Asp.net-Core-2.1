@@ -1,17 +1,17 @@
 export class DryWhStoreOrders {
 
-  
 
-    primary_id:number;
-    is_approved_prepa_date:string;
-    store_name:string;
-    route:string;
-    area:string;
-    category:string;
-    is_active:string;
-    is_for_validation:string;
-    is_approved:string;
-    is_prepared:string;
+
+    primary_id: number;
+    is_approved_prepa_date: string;
+    store_name: string;
+    route: string;
+    area: string;
+    category: string;
+    is_active: string;
+    is_for_validation: string;
+    is_approved: string;
+    is_prepared: string;
     force_prepared_status: string;
     fox: number;
     item_code: string;
@@ -29,9 +29,9 @@ export class DryWhStoreOrders {
     is_wh_checker_cancel: string;
     dispossal_status: string;
     wh_checker_move_order_no: number;
+    total_state_repack_cancelled_qty: number;
 
-    constructor()
-    {
+    constructor() {
         this.primary_id = null;
         this.is_approved_prepa_date = null;
         this.store_name = null;
@@ -46,7 +46,7 @@ export class DryWhStoreOrders {
         this.fox = null;
         this.item_code = null;
         this.description = null;
-        this.uom =null;
+        this.uom = null;
         this.total_state_repack = null;
         this.qty = null;
         this.prepared_allocated_qty = null;
@@ -60,6 +60,7 @@ export class DryWhStoreOrders {
         this.is_wh_checker_cancel_date = null;
         this.dispossal_status = null;
         this.wh_checker_move_order_no = null;
+        this.total_state_repack_cancelled_qty = null;
     }
 
 }

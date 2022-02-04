@@ -8,16 +8,7 @@ import { Project } from '../models/project';
 @Injectable()
 export class DashboardService {
   constructor(private httpClient: HttpClient) { }
-  getTeamMembersSummary():any[]
-  {
-    var TeamMembersSummary =[
-      {Region:"East", TeamMembersCount: 20, TemporarilyUnavailableMembers: 4},
-      {Region:"West", TeamMembersCount: 40, TemporarilyUnavailableMembers: 8},
-      {Region:"South", TeamMembersCount: 50, TemporarilyUnavailableMembers: 1},
-      {Region:"North", TeamMembersCount: 70, TemporarilyUnavailableMembers: 4},
-    ];
-    return TeamMembersSummary;
-  }
+
 
   
   getAllProjects(): Observable<Project[]>

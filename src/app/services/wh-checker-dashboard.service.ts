@@ -31,6 +31,13 @@ export class WhCheckerDashboardService {
   }
 
 
+  
+  SearchPartialCancelled(searchBy: string, searchText: string, searchIndex: number): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/store_orders_partial_cancel/search/" + searchBy + "/" + searchText + "/" + searchIndex, { responseType: "json" });
+  }
+
+
+
   updateProject(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
     return this.httpClient.put<DryWhStoreOrders>("/api/store_orders", existingProject, { responseType: "json" });
 
@@ -62,5 +69,11 @@ export class WhCheckerDashboardService {
   getAllDispatchingStoreOrders(): Observable<DryWhStoreOrders[]> {
     return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_distinct_store_dispatching", { responseType: "json" });
   }
+
+
+  getDistinctPreparedStoreOrderHasPartialCancel(): Observable<DryWhStoreOrders[]> {
+    return this.httpClient.get<DryWhStoreOrders[]>("/api/dry_wh_orders_checklist_distinct_partial_cancel", { responseType: "json" });
+  }
+
 
 }

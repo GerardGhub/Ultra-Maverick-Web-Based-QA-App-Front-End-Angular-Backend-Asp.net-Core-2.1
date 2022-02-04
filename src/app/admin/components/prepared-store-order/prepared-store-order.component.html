@@ -513,8 +513,7 @@
                                 <span class="text-danger"
                                     *ngIf="editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) && editstore_name.errors?.minlength">Store
                                     name should be at least 3 characters long</span>
-                                <!-- </div>
-</div> -->
+
                             </mat-form-field>
 
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
@@ -522,9 +521,7 @@
                                     name="area" [(ngModel)]="editProject.area" minlength="3" maxlength="30"
                                     #editarea="ngModel">
                                 <mat-label>Area</mat-label>
-                                <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
-                                <!-- <mat-icon matPrefix>qr_code_scanner<span class="material-icons-outlined">
-              </span></mat-icon> -->
+
 
 
                             </mat-form-field>
@@ -1222,7 +1219,7 @@
                     </p>
 
                 </div>
-                <!-- {{cancelForm.value | json }} -->
+                {{cancelForm.value | json }}
 
                 <div class="modal-footer">
                     <!-- <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>free_cancellation</mat-icon></button> -->

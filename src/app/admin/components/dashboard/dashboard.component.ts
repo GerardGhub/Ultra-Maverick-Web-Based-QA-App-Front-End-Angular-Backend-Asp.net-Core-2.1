@@ -131,7 +131,6 @@ export class DashboardComponent implements OnInit {
       this.Years.push(i);
     }
 
-    this.TeamMembersSummary = this.dashboardService.getTeamMembersSummary();
 
 
 
