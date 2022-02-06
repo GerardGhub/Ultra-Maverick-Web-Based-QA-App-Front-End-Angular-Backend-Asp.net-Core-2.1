@@ -16765,3 +16765,4 @@
 2/4/2022, 4:56:50 PM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
 2/4/2022, 4:58:32 PM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
 2/4/2022, 4:58:35 PM: jilo@gmail.com navigates to /admin/wh-prepared-store-order
+2/6/2022, 10:08:26 PM: anonymous navigates to /

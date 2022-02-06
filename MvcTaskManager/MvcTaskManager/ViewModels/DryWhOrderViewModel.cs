@@ -39,6 +39,7 @@ namespace MvcTaskManager.ViewModels
 
     public string Dispossal_status { get; set; }
     public int? Wh_checker_move_order_no { get; set; }
+    public int? Total_state_repack_cancelled_qty { get; set; }
 
   }
 }
