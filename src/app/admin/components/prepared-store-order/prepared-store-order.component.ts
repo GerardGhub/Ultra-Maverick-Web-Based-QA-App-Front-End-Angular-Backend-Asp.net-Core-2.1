@@ -216,7 +216,7 @@ export class PreparedStoreOrderComponent implements OnInit {
 
   calculateNoOfPagesItems() {
 
-    this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+    this.WhRejectRemarks = this.whCheckerDashboardService.SearchItems("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
 
 
 
@@ -498,6 +498,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.prepared_allocated_qty = this.projects[index].prepared_allocated_qty;
 
 
+
       //Warehouse Checker Fucking Process
       this.editProject.is_wh_approved_date = this.ToDay;
       this.editProject.is_wh_approved_by = this.activeUser;
@@ -515,28 +516,18 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
 
-      this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+      this.WhRejectRemarks = this.whCheckerDashboardService.SearchItems("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
       // this.calculateNoOfPagesItems();
       this.editIndex = index;
 
     }, 100);
 
-    // var gridTable = (<HTMLTableElement >document.getElementById("GridView2"));
-    // // document.getElementById("GridView2");
-    // var result="";
-    // if(gridTable) { 
-    //   for(var i=0; i < gridTable.rows.length; i++) {
-    //     if(gridTable.rows[i].cells[5]){
-    //       // console.log(gridTable.rows[i].cells[5].innerText);
-    //       this.ItemCountArrayPreparedItem.nativeElement.value = gridTable.rows[i].cells[5].innerText;
-    //       // result = result + "   "+ gridTable.rows[i].cells[5].innerText;
-    //       alert(this.ItemCountArrayPreparedItem);
-    //     }
-    //   }
-    // }
+
 
 
   }
+
+
 
 
 
@@ -550,6 +541,10 @@ export class PreparedStoreOrderComponent implements OnInit {
     total_state_repack_cancelled_qty: number) {
 
     // alert("ALAKBAK GERARD" + primary_id);
+
+    
+    this.WhRejectRemarks = this.whCheckerDashboardService.SearchPartialCancelled("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+
 
     setTimeout(() => {
 
@@ -575,7 +570,11 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_checker_cancel = "1";
       this.editProject.dispossal_status = "1";
       this.editProject.category = category;
-      this.editProject.total_state_repack_cancelled_qty = total_state_repack_cancelled_qty;
+      this.editProject.total_state_repack_cancelled_qty = total_state_repack_cancelled_qty + 1;
+
+      alert(this.editProject.total_state_repack_cancelled_qty);
+
+
       // this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason; 2/4/2022
 
 
@@ -1402,20 +1401,20 @@ export class PreparedStoreOrderComponent implements OnInit {
   UpdateCancelItemClickDetailsOverAll() {
 
     if (this.editForm.valid) {
-      
+
 
 
       //End of Variable Buje Lang
       this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response: StorePreparationLogs) => {
         var p: StorePreparationLogs = new StorePreparationLogs();
         p.is_active = response.is_active;
-      
+
         // p.dispossal_status = response.dispossal_status;
         // this.received_by.nativeElement.value = this.loginService.currentUserName;
         this.storepreparations[this.editIndex] = p;
         // 01/14/2022  GerardSingian
         this.editPreparationLogs.is_active = null;
-    
+
 
 
 

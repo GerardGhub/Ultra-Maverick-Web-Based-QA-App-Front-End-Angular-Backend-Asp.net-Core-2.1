@@ -67,6 +67,8 @@ namespace MvcTaskManager.Controllers
     }
 
 
+
+
     [HttpGet]
     [Route("api/store_orders")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -78,6 +80,11 @@ namespace MvcTaskManager.Controllers
         && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared == null || temp.force_prepared_status != null).ToList();
       return StoreOrderCheckList;
     }
+
+
+
+
+
 
 
     [HttpGet]
@@ -156,7 +163,8 @@ namespace MvcTaskManager.Controllers
           Uom = project.uom,
           Total_state_repack = project.total_state_repack,
           Qty = project.qty,
-          Prepared_allocated_qty = project.prepared_allocated_qty
+          Prepared_allocated_qty = project.prepared_allocated_qty,
+          Total_state_repack_cancelled_qty = project.total_state_repack_cancelled_qty
         
 
 
