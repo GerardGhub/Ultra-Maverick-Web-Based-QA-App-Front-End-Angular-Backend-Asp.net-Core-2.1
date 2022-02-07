@@ -125,7 +125,11 @@
                                 <td>{{project.route}}</td>
                                 <!-- td>{{project.qty_order | number:'1.0':'en-US'}}</td> -->
                                 <td>{{project.area}}</td>
-                                <td>{{project.total_state_repack | number:'1.0':'en-US'}}</td>
+                                <td>{{project.total_state_repack | number:'1.0':'en-US'}}
+
+                                    <mat-icon class="zerobadge{{project.total_state_repack_cancelled_qty | number:'1.0':'en-US'}}" matBadge="{{project.total_state_repack_cancelled_qty | number:'1.0':'en-US'}}" matBadgeColor="accent"></mat-icon>
+
+                                </td>
 
                                 <td class="text-center">
 
@@ -624,7 +628,7 @@
                                                      project.is_approved_prepa_date ,
                                                       project.item_code, project.description, 
                                                       project.prepared_allocated_qty, 
-                                                      project.category)" data-toggle="modal"
+                                                      project.category, project.total_state_repack_cancelled_qty)" data-toggle="modal"
                                                     data-target="#CancelledTransactionModal" data-backdrop="false"
                                                     data-keyboard="false">
                                                     <mat-icon>toggle_off</mat-icon>
@@ -1102,7 +1106,7 @@
         <div class="modal-dialog">
             <div class="modal-content" style="width:auto">
                 <div class="modal-header bg-all">
-                    <div class="modal-title white-color">PREPARED ITEM(S) RECEIVING</div>
+                    <div class="modal-title white-color">PREPARED ITEM(Se) RECEIVING</div>
                     <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <div class="modal-body">
@@ -1169,6 +1173,15 @@
                             name="is_wh_checker_cancel_date" [(ngModel)]="editProject.is_wh_checker_cancel_date"
                             readonly="readonly">
                         <mat-label>Cancel Date</mat-label>
+
+                    </mat-form-field>
+
+
+                    <mat-form-field class="w-100 hideObjectxxx" floatLabel="auto" appearance="standard" color="primary">
+                        <input type="text" matInput id="txtCanceltotal_state_repack_cancelled_qty" placeholder="Total State Reject"
+                            name="total_state_repack_cancelled_qty" [(ngModel)]="editProject.total_state_repack_cancelled_qty"
+                            >
+                        <mat-label>Total Reject Per Item</mat-label>
 
                     </mat-form-field>
 

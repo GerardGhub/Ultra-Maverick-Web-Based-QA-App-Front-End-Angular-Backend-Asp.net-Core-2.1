@@ -216,7 +216,8 @@ namespace MvcTaskManager.Controllers
           Prepared_allocated_qty = project.prepared_allocated_qty,
           Is_wh_checker_cancel_reason = project.is_wh_checker_cancel_reason,
           Is_wh_checker_cancel_by = project.is_wh_checker_cancel_by,
-          Is_wh_checker_cancel_date = project.is_wh_checker_cancel_date
+          Is_wh_checker_cancel_date = project.is_wh_checker_cancel_date,
+          Total_state_repack_cancelled_qty = project.total_state_repack_cancelled_qty
 
 
 
@@ -282,6 +283,7 @@ namespace MvcTaskManager.Controllers
         existingProject.is_wh_checker_cancel_by = project.is_wh_checker_cancel_by;
         existingProject.is_wh_checker_cancel_date = project.is_wh_checker_cancel_date;
         existingProject.is_wh_checker_cancel_reason = project.is_wh_checker_cancel_reason;
+        existingProject.total_state_repack_cancelled_qty = project.total_state_repack_cancelled_qty;
 
 
         db.SaveChanges();
@@ -292,7 +294,8 @@ namespace MvcTaskManager.Controllers
           Is_wh_checker_cancel = existingProject2.is_wh_checker_cancel,
           Is_wh_checker_cancel_by = existingProject2.is_wh_checker_cancel_by,
           Is_wh_checker_cancel_date = existingProject2.is_wh_checker_cancel_date,
-          Is_wh_checker_cancel_reason = existingProject2.is_wh_checker_cancel_reason
+          Is_wh_checker_cancel_reason = existingProject2.is_wh_checker_cancel_reason,
+          Total_state_repack_cancelled_qty = existingProject2.total_state_repack_cancelled_qty
 
 
 

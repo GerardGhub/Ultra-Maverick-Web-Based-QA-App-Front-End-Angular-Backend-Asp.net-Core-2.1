@@ -49,13 +49,9 @@
     <div class="col-6 mb-4">
     <mat-form-field floatLabel="auto" appearance="standard" color="primary"> 
     <mat-select id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy" (selectionChange)="HideSearchBtn($event)">
-    <!-- <mat-option value="ProjectID">Transaction ID</mat-option> -->
-    <!-- <mat-option value="projectName">Project Name</mat-option> -->
     <mat-option value="item_code">Item Code</mat-option>
     <mat-option value="item_description">Item Description</mat-option>
     <mat-option value="po_number">PO Number</mat-option>
-    <!-- <mat-option value="dateOfStart">Date of Start</mat-option> -->
-    <!-- <mat-option value="teamSize">Team Size</mat-option> -->
     </mat-select>
     <mat-label>Search by</mat-label>
     <mat-hint align="end">Choose a Filter</mat-hint> 

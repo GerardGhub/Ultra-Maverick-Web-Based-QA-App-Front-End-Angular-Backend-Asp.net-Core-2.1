@@ -546,7 +546,8 @@ export class PreparedStoreOrderComponent implements OnInit {
     item_code: string,
     description: string,
     allocated_quantity: number,
-    category: string) {
+    category: string,
+    total_state_repack_cancelled_qty: number) {
 
     // alert("ALAKBAK GERARD" + primary_id);
 
@@ -574,6 +575,7 @@ export class PreparedStoreOrderComponent implements OnInit {
       this.editProject.is_wh_checker_cancel = "1";
       this.editProject.dispossal_status = "1";
       this.editProject.category = category;
+      this.editProject.total_state_repack_cancelled_qty = total_state_repack_cancelled_qty;
       // this.editProject.is_wh_checker_cancel_reason = this.projects[index].is_wh_checker_cancel_reason; 2/4/2022
 
 
