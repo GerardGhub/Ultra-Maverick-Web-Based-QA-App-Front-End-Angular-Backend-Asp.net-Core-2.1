@@ -183,7 +183,7 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
 
   calculateNoOfPagesItems() {
 
-    this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+    this.WhRejectRemarks = this.whCheckerDashboardService.SearchItems("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
 
 
 
@@ -466,7 +466,7 @@ export class StoreOrderDispatchingRecordComponent implements OnInit {
 
 
 
-      this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+      this.WhRejectRemarks = this.whCheckerDashboardService.SearchItems("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
       // this.calculateNoOfPagesItems();
       this.editIndex = index;
 

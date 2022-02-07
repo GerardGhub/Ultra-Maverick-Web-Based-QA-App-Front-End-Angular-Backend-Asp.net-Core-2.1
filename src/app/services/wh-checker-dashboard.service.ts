@@ -48,6 +48,14 @@ export class WhCheckerDashboardService {
 
   }
 
+
+  updateStoreOrderPerItemCancelledCountOneToOne(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
+    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelindividualitems", existingProject, { responseType: "json" });
+
+  }
+
+
+
   updateStoreOrderPerItemReadLine(existingProject: StorePreparationLogs): Observable<StorePreparationLogs> {
     return this.httpClient.put<StorePreparationLogs>("/api/store_orders/cancelitems/readline", existingProject, { responseType: "json" });
 

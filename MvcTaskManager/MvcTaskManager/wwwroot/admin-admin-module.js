@@ -6286,7 +6286,7 @@ class StoreOrderDispatchingRecordComponent {
         this.currentPageIndex = 0;
     }
     calculateNoOfPagesItems() {
-        this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+        this.WhRejectRemarks = this.whCheckerDashboardService.SearchItems("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
         //Get no. of Pages
         let filterPipe = new src_app_pipes_filter_pipe__WEBPACK_IMPORTED_MODULE_3__["FilterPipe"]();
         var resultProjects = "4";
@@ -6513,7 +6513,7 @@ class StoreOrderDispatchingRecordComponent {
             this.ApprovedPreparationDate = this.projects[index].is_approved_prepa_date;
             this.FoxStoreCode = this.projects[index].fox;
             this.totalItemsPrepared = this.projects[index].total_state_repack;
-            this.WhRejectRemarks = this.whCheckerDashboardService.SearchRejectStatus("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
+            this.WhRejectRemarks = this.whCheckerDashboardService.SearchItems("store_name", this.ApprovedPreparationDate, this.FoxStoreCode);
             // this.calculateNoOfPagesItems();
             this.editIndex = index;
         }, 100);

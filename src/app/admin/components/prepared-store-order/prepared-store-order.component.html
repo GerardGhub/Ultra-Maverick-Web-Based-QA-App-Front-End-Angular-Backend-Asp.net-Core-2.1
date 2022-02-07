@@ -553,8 +553,13 @@
                             <mat-card>MOVE ORDER NO. {{totalStoreOrderDispatching}}</mat-card>
                         </div>
 
+
                     </div>
 
+
+
+                    <!-- <input type="text" value="Error na naman" #CancelledItemCount>
+                 -->
 
                     <!-- Total Items  Prepared -->
 
@@ -599,8 +604,8 @@
                                             </th>
 
                                             <th class="text-center">*</th>
-                                            
-                                            <th class="text-center">Pussy</th>
+
+                              
 
 
                                         </tr>
@@ -623,7 +628,7 @@
                                             <td class="hideObject">{{c | number}}
                                             </td>
 
-                                   
+
 
                                             <td class="text-center">
 
@@ -643,9 +648,6 @@
 
                                             </td>
 
-                                                     
-                                            <td>{{project.total_state_repack_cancelled_qty | number}}
-                                            </td>
 
 
 
@@ -1189,11 +1191,14 @@
 
                     </mat-form-field>
 
+            
 
-                    <mat-form-field class="w-100 hideObjectxxx" floatLabel="auto" appearance="standard" color="primary">
+              
+
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCanceltotal_state_repack_cancelled_qty"
                             placeholder="Total State Reject" name="total_state_repack_cancelled_qty"
-                            [(ngModel)]="editProject.total_state_repack_cancelled_qty">
+                            [(ngModel)]="editProject.total_state_repack_cancelled_qty" readonly="readonly">
                         <mat-label>Total Reject Per Item</mat-label>
 
                     </mat-form-field>
@@ -1245,12 +1250,12 @@
                     </p>
 
                 </div>
-                {{cancelForm.value | json }}
+                <!-- {{cancelForm.value | json }} -->
 
                 <div class="modal-footer">
                     <!-- <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>free_cancellation</mat-icon></button> -->
                     <button mat-stroked-button color="warn" class="{{PartialComment}}" data-dismiss="modal"
-                        (click)=" CancelledPoDetails()">Cancel<mat-icon>toggle_off</mat-icon></button>
+                        (click)="CancelledPoDetails()">Cancel<mat-icon>toggle_off</mat-icon></button>
                 </div>
             </div>
         </div>
