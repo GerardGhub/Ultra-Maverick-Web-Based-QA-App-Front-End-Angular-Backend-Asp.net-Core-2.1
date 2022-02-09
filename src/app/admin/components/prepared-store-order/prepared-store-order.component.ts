@@ -1109,6 +1109,9 @@ export class PreparedStoreOrderComponent implements OnInit {
 
 
           // this.UpdateCancelItemClickDetailsOverAll();
+          // this.UpdateCancelItemClickDetailsOverAll();
+          //Store Preparation Logs
+
 
           this.UpdateCancelItemClickDetails();
 
@@ -1447,32 +1450,34 @@ export class PreparedStoreOrderComponent implements OnInit {
   }
 
 
-  UpdateCancelItemClickDetailsOverAll() {
-
-    if (this.editForm.valid) {
+  // UpdateCancelItemClickDetailsOverAll() {
 
 
 
-      //End of Variable Buje Lang
-      this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response: StorePreparationLogs) => {
-        var p: StorePreparationLogs = new StorePreparationLogs();
-        p.is_active = response.is_active;
+  //     this.editPreparationLogs.is_active =   "0";
+  //     this.editPreparationLogs.order_source_key ="6430";
 
-        // p.dispossal_status = response.dispossal_status;
-        // this.received_by.nativeElement.value = this.loginService.currentUserName;
-        this.storepreparations[this.editIndex] = p;
-        // 01/14/2022  GerardSingian
-        this.editPreparationLogs.is_active = null;
+  //     //End of Variable Buje Lang
+  //     this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response: StorePreparationLogs) => {
+  //       var p: StorePreparationLogs = new StorePreparationLogs();
+  //       p.is_active = response.is_active;
+  //       p.order_source_key = response.order_source_key;
+
+  //       // p.dispossal_status = response.dispossal_status;
+  //       // this.received_by.nativeElement.value = this.loginService.currentUserName;
+  //       this.storepreparations[this.editIndex] = p;
+  //       // 01/14/2022  GerardSingian
+  //       this.editPreparationLogs.is_active = null;
 
 
 
 
-      },
-        (error) => {
-          console.log(error);
-        });
-    }
-  }
+  //     },
+  //       (error) => {
+  //         console.log(error);
+  //       });
+    
+  // }
 
   showCancelledSuccess() {
     this.toastr.success('Successfully Cancelled!', 'Notifications');

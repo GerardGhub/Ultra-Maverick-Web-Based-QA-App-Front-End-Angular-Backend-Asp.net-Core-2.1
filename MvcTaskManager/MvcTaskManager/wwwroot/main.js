@@ -2447,6 +2447,8 @@ class PreparedStoreOrderComponent {
             }).then((result) => {
                 if (result.isConfirmed) {
                     // this.UpdateCancelItemClickDetailsOverAll();
+                    // this.UpdateCancelItemClickDetailsOverAll();
+                    //Store Preparation Logs
                     this.UpdateCancelItemClickDetails();
                     //New ID
                     this.UpdateCancelOneIstoOneCount();
@@ -2678,22 +2680,24 @@ class PreparedStoreOrderComponent {
             });
         }
     }
-    UpdateCancelItemClickDetailsOverAll() {
-        if (this.editForm.valid) {
-            //End of Variable Buje Lang
-            this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response) => {
-                var p = new src_app_models_store_preparation_logs__WEBPACK_IMPORTED_MODULE_6__["StorePreparationLogs"]();
-                p.is_active = response.is_active;
-                // p.dispossal_status = response.dispossal_status;
-                // this.received_by.nativeElement.value = this.loginService.currentUserName;
-                this.storepreparations[this.editIndex] = p;
-                // 01/14/2022  GerardSingian
-                this.editPreparationLogs.is_active = null;
-            }, (error) => {
-                console.log(error);
-            });
-        }
-    }
+    // UpdateCancelItemClickDetailsOverAll() {
+    //     this.editPreparationLogs.is_active =   "0";
+    //     this.editPreparationLogs.order_source_key ="6430";
+    //     //End of Variable Buje Lang
+    //     this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response: StorePreparationLogs) => {
+    //       var p: StorePreparationLogs = new StorePreparationLogs();
+    //       p.is_active = response.is_active;
+    //       p.order_source_key = response.order_source_key;
+    //       // p.dispossal_status = response.dispossal_status;
+    //       // this.received_by.nativeElement.value = this.loginService.currentUserName;
+    //       this.storepreparations[this.editIndex] = p;
+    //       // 01/14/2022  GerardSingian
+    //       this.editPreparationLogs.is_active = null;
+    //     },
+    //       (error) => {
+    //         console.log(error);
+    //       });
+    // }
     showCancelledSuccess() {
         this.toastr.success('Successfully Cancelled!', 'Notifications');
     }
