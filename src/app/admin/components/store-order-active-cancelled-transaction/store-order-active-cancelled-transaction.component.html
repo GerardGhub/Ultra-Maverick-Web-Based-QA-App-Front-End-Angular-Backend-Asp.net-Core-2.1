@@ -1099,7 +1099,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field class="w-100 hideObjects" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelis_wh_checker_cancel" placeholder="Cancel Status"
                             name="is_wh_checker_cancel" [(ngModel)]="editProject.is_wh_checker_cancel"
                             readonly="readonly">
@@ -1132,7 +1132,7 @@
                     
                               
 
-                    <mat-form-field class="w-100 hideObject2" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCanceltotal_state_repack_cancelled_qty"
                             placeholder="Total State Reject" name="total_state_repack_cancelled_qty"
                             [(ngModel)]="editProject.total_state_repack_cancelled_qty" readonly="readonly">
@@ -1184,7 +1184,7 @@
                 {{cancelForm.value | json }}
 
                 <div class="modal-footer">
-                    <!-- <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>free_cancellation</mat-icon></button> -->
+
                     <button mat-stroked-button color="warn" class="{{PartialComment}}" data-dismiss="modal"
                         (click)="ReturnCancelledPoDetails()">Return<mat-icon>toggle_off</mat-icon></button>
                 </div>
