@@ -5536,8 +5536,8 @@ class StoreOrderActiveCancelledTransactionComponent {
         this.loginService.detectIfAlreadyLoggedIn(); //detect already Login
         this.ToDay = new Date();
         this.activeUser = this.loginService.currentUserName;
-        // debugger;
-        this.whCheckerDashboardService.getDistinctPreparedStoreOrderHasPartialCancel()
+        // debugger;     this.whCheckerDashboardService.getDistinctPreparedStoreOrderHasPartialCancel() //02/2/10
+        this.whCheckerDashboardService.getDistinctPreparedCancelledStoreOrders()
             .subscribe((response) => {
             // debugger;
             this.projects = response;
