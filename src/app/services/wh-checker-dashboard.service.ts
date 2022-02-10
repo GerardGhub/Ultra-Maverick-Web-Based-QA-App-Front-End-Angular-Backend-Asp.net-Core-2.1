@@ -48,6 +48,19 @@ export class WhCheckerDashboardService {
 
   }
 
+  
+  updateCancelledStoreOrderPerItemLogisticReturn(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
+    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelreturnitemslogistic", existingProject, { responseType: "json" });
+
+  }
+
+
+    
+  updateCancelledStoreOrderPerItemLogisticReturnCountState(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
+    return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelreturnitemslogisticstatecount", existingProject, { responseType: "json" });
+
+  }
+
 
   updateStoreOrderPerItemCancelledCountOneToOne(existingProject: DryWhStoreOrders): Observable<DryWhStoreOrders> {
     return this.httpClient.put<DryWhStoreOrders>("/api/store_orders/cancelindividualitems", existingProject, { responseType: "json" });

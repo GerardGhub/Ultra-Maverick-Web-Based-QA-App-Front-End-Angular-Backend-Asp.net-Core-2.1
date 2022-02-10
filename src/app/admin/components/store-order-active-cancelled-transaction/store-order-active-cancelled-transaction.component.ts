@@ -89,6 +89,8 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
   ActualRemaining: number = 0;
   totalPoPartialReceiving: number = 0;
   RandomNumber: number = 0;
+  TotalCancelledRawMats: number = 0;
+  TotalCancelledRawMatsIdentifier: number = 0;
 
   //date-picker
 
@@ -450,7 +452,11 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
     }
   }
 
-  CancelledPoDetails() {
+
+
+
+
+  ReturnCancelledPoDetails() {
 
 
     if (this.cancelForm.valid) {
@@ -460,7 +466,7 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
       var AllocatedQuantity = this.ServeQuantity.nativeElement.value;
 
       Swal.fire({
-        title: 'Are you sure you want to cancel the serving of ' + Item + '?',
+        title: 'Are you sure you want to return the serving of ' + Item + '?',
         text: AllocatedQuantity,
         icon: 'info',
         showCancelButton: true,
@@ -471,9 +477,8 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
         if (result.isConfirmed) {
 
 
-          // this.UpdateCancelItemClickDetailsOverAll();
           this.UpdateCancelItemClickDetails();
-
+          this.UpdateReturnItemStateQuantity();
 
 
         }
@@ -498,7 +503,7 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
 
 
       //End of Variable
-      this.whCheckerDashboardService.updateStoreOrderPerItem(this.editProject).subscribe((response: DryWhStoreOrders) => {
+      this.whCheckerDashboardService.updateCancelledStoreOrderPerItemLogisticReturn(this.editProject).subscribe((response: DryWhStoreOrders) => {
         var p: DryWhStoreOrders = new DryWhStoreOrders();
         p.is_approved_prepa_date = response.is_approved_prepa_date;
         p.primary_id = response.primary_id;
@@ -506,6 +511,46 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
         p.is_wh_checker_cancel_by = response.is_wh_checker_cancel_by;
         p.is_wh_checker_cancel_date = response.is_wh_checker_cancel_date;
         p.is_wh_checker_cancel_reason = response.is_wh_checker_cancel_reason;
+
+
+
+
+
+        // this.received_by.nativeElement.value = this.loginService.currentUserName;
+        this.projects[this.editIndex] = p;
+
+        // this.editProject.is_approved_prepa_date = null;
+        // this.editProject.primary_id = null;
+        // this.editProject.is_wh_checker_cancel = null;
+        // this.editProject.is_wh_checker_cancel_by = null;
+        // this.editProject.is_wh_checker_cancel_date = null;
+        // this.editProject.is_wh_checker_cancel_reason = null;
+
+
+        // this.showReturnedSuccess();
+        // this.closeAddExpenseModal.nativeElement.click();
+        // this.ngOnInit();
+        // $("#editFormCancel").trigger("click");
+      },
+        (error) => {
+          console.log(error);
+        });
+    }
+  }
+
+
+  UpdateReturnItemStateQuantity() {
+
+
+    if (this.editForm.valid) {
+
+      this.editProject.primary_id = this.TotalCancelledRawMatsIdentifier;
+      //End of Variable
+      this.whCheckerDashboardService.updateCancelledStoreOrderPerItemLogisticReturnCountState(this.editProject).subscribe((response: DryWhStoreOrders) => {
+        var p: DryWhStoreOrders = new DryWhStoreOrders();
+        p.is_approved_prepa_date = response.is_approved_prepa_date;
+        p.primary_id = response.primary_id;
+
 
 
 
@@ -522,7 +567,7 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
         this.editProject.is_wh_checker_cancel_reason = null;
 
 
-        this.showCancelledSuccess();
+        this.showReturnedSuccess();
         this.closeAddExpenseModal.nativeElement.click();
         this.ngOnInit();
         $("#editFormCancel").trigger("click");
@@ -532,11 +577,24 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
         });
     }
   }
-  showCancelledSuccess() {
-    this.toastr.success('Successfully Cancelled!', 'Notifications');
+
+
+
+
+
+
+
+
+
+
+
+
+
+  showReturnedSuccess() {
+    this.toastr.success('Successfully Returned!', 'Notifications');
   }
 
-  
+
   onDeleteConfirmClick() {
     Swal.fire({
       title: 'Are you sure the you to delete the selected data?',
@@ -720,6 +778,12 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
       this.editProject.area = this.projects[index].area;
       this.editProject.fox = this.projects[index].fox;
 
+      //Core Initiliazer Global Variable 
+
+      this.TotalCancelledRawMats = this.projects[index].total_state_repack_cancelled_qty;
+      this.TotalCancelledRawMatsIdentifier = this.projects[index].primary_id;
+
+
       //Binding of Item Information
       this.editProject.item_code = this.projects[index].item_code;
       this.editProject.description = this.projects[index].description;
@@ -751,8 +815,51 @@ export class StoreOrderActiveCancelledTransactionComponent implements OnInit {
 
     }, 100);
 
-  
 
+
+
+  }
+
+
+
+  onCancelClick(event, index: number,
+    primary_id: number,
+    preparation_date: string,
+    item_code: string,
+    description: string,
+    allocated_quantity: number,
+    category: string,
+    total_state_repack_cancelled_qty: number) {
+
+    setTimeout(() => {
+
+      this.editProject.primary_id = primary_id;
+
+
+      this.editProject.is_approved_prepa_date = preparation_date;
+
+
+      //Binding of Item Information
+      this.editProject.item_code = item_code;
+      this.editProject.description = description;
+      //Binding Quantity
+      this.editProject.prepared_allocated_qty = allocated_quantity.toString();
+
+
+      //Warehouse Checker Fucking Process
+      this.editProject.logic_return_date = this.ToDay;
+      this.editProject.logic_return_by = this.activeUser;
+      this.editProject.is_wh_checker_cancel = null;
+      this.editProject.dispossal_status = "0";
+      this.editProject.category = category;
+
+
+      this.editProject.total_state_repack_cancelled_qty = this.TotalCancelledRawMats - 1;
+
+      this.editIndex = index;
+
+
+    }, 100);
 
   }
 

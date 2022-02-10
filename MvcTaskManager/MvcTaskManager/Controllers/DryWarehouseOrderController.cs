@@ -94,12 +94,13 @@ namespace MvcTaskManager.Controllers
     {
       string Activated = "1";
       string DeActivated = "0";
-      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
+      List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date, p.is_wh_checker_cancel }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
         && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.is_wh_checker_cancel != null || temp.force_prepared_status != null).ToList();
       return StoreOrderCheckList;
 
+  //    List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
+  //&& temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.is_wh_checker_cancel != null || temp.force_prepared_status != null).ToList();
 
- 
     }
 
 
@@ -303,6 +304,84 @@ namespace MvcTaskManager.Controllers
           Is_wh_checker_cancel_by = existingProject2.is_wh_checker_cancel_by,
           Is_wh_checker_cancel_date = existingProject2.is_wh_checker_cancel_date,
           Is_wh_checker_cancel_reason = existingProject2.is_wh_checker_cancel_reason
+
+
+
+        };
+        return Ok(projectViewModel);
+      }
+      else
+      {
+        return null;
+      }
+    }
+
+
+
+
+    [HttpPut]
+    [Route("api/store_orders/cancelreturnitemslogistic")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult PutReturnPreparedItem([FromBody] DryWhOrder project)
+    {
+      DryWhOrder existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.primary_id == project.primary_id).FirstOrDefault();
+      if (existingProject != null)
+      {
+   
+        existingProject.logic_return_by = project.logic_return_by;
+        existingProject.logic_return_date = project.logic_return_date;
+        existingProject.logic_return_reason = project.logic_return_reason;
+        existingProject.is_wh_checker_cancel = project.is_wh_checker_cancel;
+
+
+
+        db.SaveChanges();
+
+        DryWhOrder existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.primary_id == project.primary_id).FirstOrDefault();
+        DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+        {
+ 
+          Logic_return_by = existingProject2.logic_return_by,
+          Logic_return_date = existingProject2.logic_return_date,
+          Logic_return_reason = existingProject2.logic_return_reason,
+          Is_wh_checker_cancel = existingProject2.is_wh_checker_cancel
+
+
+
+        };
+        return Ok(projectViewModel);
+      }
+      else
+      {
+        return null;
+      }
+    }
+
+
+    [HttpPut]
+    [Route("api/store_orders/cancelreturnitemslogisticstatecount")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult PutReturnPreparedItemCountState([FromBody] DryWhOrder project)
+    {
+      DryWhOrder existingProject = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.primary_id == project.primary_id).FirstOrDefault();
+      if (existingProject != null)
+      {
+
+
+        existingProject.total_state_repack_cancelled_qty = project.total_state_repack_cancelled_qty;
+
+
+
+
+        db.SaveChanges();
+
+        DryWhOrder existingProject2 = db.dry_wh_orders.Where(temp => temp.is_approved_prepa_date == project.is_approved_prepa_date && temp.primary_id == project.primary_id).FirstOrDefault();
+        DryWhOrderViewModel projectViewModel = new DryWhOrderViewModel()
+        {
+
+
+          Total_state_repack_cancelled_qty = existingProject2.total_state_repack_cancelled_qty,
+
 
 
 

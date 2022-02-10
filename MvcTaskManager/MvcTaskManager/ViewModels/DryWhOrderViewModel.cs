@@ -41,6 +41,10 @@ namespace MvcTaskManager.ViewModels
     public int? Wh_checker_move_order_no { get; set; }
     public int? Total_state_repack_cancelled_qty { get; set; }
 
+    public string Logic_return_by { get; set; }
+    public string Logic_return_date { get; set; }
+    public string Logic_return_reason { get; set; }
+
   }
 }
 

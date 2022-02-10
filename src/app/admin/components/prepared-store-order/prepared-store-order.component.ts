@@ -1450,34 +1450,7 @@ export class PreparedStoreOrderComponent implements OnInit {
   }
 
 
-  // UpdateCancelItemClickDetailsOverAll() {
 
-
-
-  //     this.editPreparationLogs.is_active =   "0";
-  //     this.editPreparationLogs.order_source_key ="6430";
-
-  //     //End of Variable Buje Lang
-  //     this.whCheckerDashboardService.updateStoreOrderPerItemReadLine(this.editPreparationLogs).subscribe((response: StorePreparationLogs) => {
-  //       var p: StorePreparationLogs = new StorePreparationLogs();
-  //       p.is_active = response.is_active;
-  //       p.order_source_key = response.order_source_key;
-
-  //       // p.dispossal_status = response.dispossal_status;
-  //       // this.received_by.nativeElement.value = this.loginService.currentUserName;
-  //       this.storepreparations[this.editIndex] = p;
-  //       // 01/14/2022  GerardSingian
-  //       this.editPreparationLogs.is_active = null;
-
-
-
-
-  //     },
-  //       (error) => {
-  //         console.log(error);
-  //       });
-    
-  // }
 
   showCancelledSuccess() {
     this.toastr.success('Successfully Cancelled!', 'Notifications');
@@ -1808,6 +1781,8 @@ export class PreparedStoreOrderComponent implements OnInit {
     this.remarksSectionA5.nativeElement.disabled = true;
     this.remarksSectionA5.nativeElement.style.backgroundColor = '#E0E0E0';
   }
+
+  
 
   NoneComplianceSectionA5() {
     // this.editProject.e_remarks = "";

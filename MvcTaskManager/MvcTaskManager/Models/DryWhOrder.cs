@@ -45,6 +45,9 @@ namespace MvcTaskManager.Models
     public string dispossal_status { get; set; }
     public int? wh_checker_move_order_no { get; set; }
     public int? total_state_repack_cancelled_qty { get; set; }
+    public string logic_return_by { get; set; }
+    public string logic_return_date { get; set; }
+    public string logic_return_reason { get; set; }
 
   }
 }

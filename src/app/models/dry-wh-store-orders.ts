@@ -30,6 +30,9 @@ export class DryWhStoreOrders {
     dispossal_status: string;
     wh_checker_move_order_no: number;
     total_state_repack_cancelled_qty: number;
+    logic_return_by: string;
+    logic_return_date: Date;
+    logic_return_reason: string;
 
     constructor() {
         this.primary_id = null;
@@ -61,6 +64,9 @@ export class DryWhStoreOrders {
         this.dispossal_status = null;
         this.wh_checker_move_order_no = null;
         this.total_state_repack_cancelled_qty = null;
+        this.logic_return_by = null;
+        this.logic_return_date = null;
+        this.logic_return_reason = null;
     }
 
 }

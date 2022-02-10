@@ -583,7 +583,7 @@
 
 
                                             </th>
-                                 
+
                                             <th>Serve
 
                                             </th>
@@ -600,7 +600,7 @@
 
                                             </th>
 
-                                            <!-- <th class="text-center">*</th> -->
+                                            <th class="text-center">Action</th>
 
                                         </tr>
                                     </thead>
@@ -614,7 +614,7 @@
                                             <td>{{project.description}}</td>
                                             <td>{{project.uom}}</td>
 
-                                  
+
 
                                             <td>{{project.prepared_allocated_qty | number}}
                                             </td>
@@ -625,11 +625,11 @@
                                             <td>{{project.is_wh_checker_cancel_reason}}
                                             </td>
 
-                                            <td>{{project.is_wh_checker_cancel_date  | date:'dd-MMM-yyyy'}}
+                                            <td>{{project.is_wh_checker_cancel_date | date:'dd-MMM-yyyy'}}
                                             </td>
 
 
-                                            <td class="text-center hideObject">
+                                            <td class="text-center">
 
 
 
@@ -654,7 +654,7 @@
 
                                 </table>
 
-                             
+
 
 
                             </mat-card>
@@ -1041,8 +1041,10 @@
 </form>
 
 
+
+
 <!-- Cancelled PO Project -->
-<!-- <form #editForm="ngForm" novalidate="novalidate" appClientLocationStatusValidator></form> -->
+
 <form #cancelForm="ngForm" novalidate="novalidate">
     <div class="modal" role="dialog" id="CancelledTransactionModal" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
@@ -1061,16 +1063,16 @@
 
                     </mat-form-field>
 
+
+
                     <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelPreparationDate" placeholder="Preparation Date"
                             name="is_approved_prepa_date" [(ngModel)]="editProject.is_approved_prepa_date"
                             readonly="readonly" #PONumber>
                         <mat-label>Preparation Date</mat-label>
-                        <!-- <mat-hint align="end">Purchased Order</mat-hint> -->
-                        <!-- <mat-icon matPrefix>inventory<span class="material-icons-outlined">
-            </span>
-            </mat-icon> -->
                     </mat-form-field>
+
+
 
                     <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelItemCode" placeholder="Item Code" name="item_code"
@@ -1097,7 +1099,7 @@
 
                     </mat-form-field>
 
-                    <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
+                    <mat-form-field class="w-100 hideObjects" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelis_wh_checker_cancel" placeholder="Cancel Status"
                             name="is_wh_checker_cancel" [(ngModel)]="editProject.is_wh_checker_cancel"
                             readonly="readonly">
@@ -1106,18 +1108,18 @@
                     </mat-form-field>
 
                     <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
-                        <input type="text" matInput id="txtCancelis_wh_checker_cancel_by" placeholder="Cancel By"
-                            name="is_wh_checker_cancel_by" [(ngModel)]="editProject.is_wh_checker_cancel_by"
+                        <input type="text" matInput id="txtCancellogic_return_by" placeholder="Return By"
+                            name="logic_return_by" [(ngModel)]="editProject.logic_return_by"
                             readonly="readonly">
-                        <mat-label>Cancel By</mat-label>
+                        <mat-label>Return By</mat-label>
 
                     </mat-form-field>
 
                     <mat-form-field class="w-100 hideObject" floatLabel="auto" appearance="standard" color="primary">
-                        <input type="text" matInput id="txtCancelis_wh_checker_cancel_date" placeholder="Cancel Date"
-                            name="is_wh_checker_cancel_date" [(ngModel)]="editProject.is_wh_checker_cancel_date"
+                        <input type="text" matInput id="txtCancellogic_return_date" placeholder="Return Date"
+                            name="logic_return_date" [(ngModel)]="editProject.logic_return_date"
                             readonly="readonly">
-                        <mat-label>Cancel Date</mat-label>
+                        <mat-label>Return Date</mat-label>
 
                     </mat-form-field>
 
@@ -1127,6 +1129,17 @@
                         <mat-label>Dispossal Status</mat-label>
 
                     </mat-form-field>
+                    
+                              
+
+                    <mat-form-field class="w-100 hideObject2" floatLabel="auto" appearance="standard" color="primary">
+                        <input type="text" matInput id="txtCanceltotal_state_repack_cancelled_qty"
+                            placeholder="Total State Reject" name="total_state_repack_cancelled_qty"
+                            [(ngModel)]="editProject.total_state_repack_cancelled_qty" readonly="readonly">
+                        <mat-label>Total Reject Per Item</mat-label>
+
+                    </mat-form-field>
+
 
                     <mat-form-field class="w-100" floatLabel="auto" appearance="standard" color="primary">
                         <input type="text" matInput id="txtCancelCategory" placeholder="Category" name="category"
@@ -1140,8 +1153,8 @@
                     <br>
                     <mat-form-field appearance="fill" class="w-100">
                         <mat-label>Reason</mat-label>
-                        <mat-select [(ngModel)]="editProject.is_wh_checker_cancel_reason"
-                            name="is_wh_checker_cancel_reason" required>
+                        <mat-select [(ngModel)]="editProject.logic_return_reason"
+                            name="logic_return_reason" required>
                             <mat-option *ngFor="let status of CancelPoSummary | async" [value]="status.status_name">
                                 {{status.status_name}}
 
@@ -1168,12 +1181,12 @@
                     </p>
 
                 </div>
-                <!-- {{cancelForm.value | json }} -->
+                {{cancelForm.value | json }}
 
                 <div class="modal-footer">
                     <!-- <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>free_cancellation</mat-icon></button> -->
                     <button mat-stroked-button color="warn" class="{{PartialComment}}" data-dismiss="modal"
-                        (click)=" CancelledPoDetails()">Cancel<mat-icon>toggle_off</mat-icon></button>
+                        (click)="ReturnCancelledPoDetails()">Return<mat-icon>toggle_off</mat-icon></button>
                 </div>
             </div>
         </div>
