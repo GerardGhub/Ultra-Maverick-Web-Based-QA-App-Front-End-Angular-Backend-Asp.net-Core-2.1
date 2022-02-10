@@ -499,7 +499,7 @@
                             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
                                 <input type="text" matInput id="txtitem_description" placeholder="Store Name"
                                     name="store_name" [(ngModel)]="editProject.store_name" required="required"
-                                    minlength="3" maxlength="30" pattern="^[A-Za-z0-9 /-]*$" #editstore_name="ngModel"
+                                     #editstore_name="ngModel"
                                     [ngClass]="{ 'is-invalid': editstore_name.invalid && (editstore_name.dirty || editstore_name.touched || editForm.submitted), 'is-valid': editstore_name.valid && (editstore_name.dirty || editstore_name.touched || editForm.submitted) }"
                                     readonly="readonly">
                                 <mat-label>Store Name</mat-label>

@@ -95,8 +95,11 @@ namespace MvcTaskManager.Controllers
       string Activated = "1";
       string DeActivated = "0";
       List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date, p.total_state_repack_cancelled_qty }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
-        && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.total_state_repack_cancelled_qty != null  || temp.force_prepared_status != null ).ToList();
+        && temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.total_state_repack_cancelled_qty != null && temp.is_wh_checker_cancel != null || temp.force_prepared_status != null).ToList();
       return StoreOrderCheckList;
+
+
+
       //&& temp.is_wh_checker_cancel != null
   //    List<DryWhOrder> StoreOrderCheckList = db.dry_wh_orders.GroupBy(p => new { p.is_approved_prepa_date }).Select(g => g.First()).Where(temp => temp.is_active.Contains(Activated)
   //&& temp.is_for_validation.Contains(DeActivated) && temp.is_approved != null && temp.is_prepared != null && temp.is_wh_approved == null && temp.is_wh_checker_cancel != null || temp.force_prepared_status != null).ToList();
