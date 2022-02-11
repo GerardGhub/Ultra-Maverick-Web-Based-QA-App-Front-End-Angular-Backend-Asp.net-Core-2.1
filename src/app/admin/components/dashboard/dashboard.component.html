@@ -36,8 +36,8 @@
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
       
-        <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-          <div [routerLink]=" [ '/admin', 'whstoreorder' ] " class="dashboard-tile-heading">Store Orders</div>
+        <div [routerLink]=" [ '/admin', 'whstoreorder' ] " fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+          <div  class="dashboard-tile-heading">Store Orders</div>
           <div class="dashboard-tile-sub-heading">{{ totalStoreOrderRowCount | number}}</div>
         </div>
       
@@ -86,8 +86,8 @@
     <!-- Warehouse Checker -->
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
-      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-        <div [routerLink]=" [ '/admin', 'wh-prepared-store-order' ] " class="dashboard-tile-heading">Prepared Orders</div>
+      <div [routerLink]=" [ '/admin', 'wh-prepared-store-order' ] "  fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div class="dashboard-tile-heading">Prepared Orders</div>
         <div class="dashboard-tile-sub-heading">{{totalStoreOrderPreparedDistinctRowCount | number}}</div>
       </div>
     </ng-container>
@@ -133,8 +133,8 @@
     <!-- Warehouse Checker -->
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
-      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-        <div [routerLink]=" [ '/admin', 'store-order-dispatching' ] " class="dashboard-tile-heading">Dispatching Records</div>
+      <div [routerLink]=" [ '/admin', 'store-order-dispatching' ] " fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div class="dashboard-tile-heading">Dispatching Records</div>
         <div class="dashboard-tile-sub-heading">{{totalStoreDispatching | number}}</div>
       </div>
     </ng-container>
@@ -178,8 +178,8 @@
     <!-- WarehouseChecker -->
     <ng-container
       *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'WarehouseChecker'">
-      <div fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
-        <div [routerLink]=" [ '/admin', 'wh-cancelledprepared-store-order' ] " class="dashboard-tile-heading">Cancelled Transactions</div>
+      <div [routerLink]=" [ '/admin', 'wh-cancelledprepared-store-order' ] " fxFlex="1 1 75%" class="h-100 text-right" fxLayout="column" fxLayoutAlign="center start">
+        <div  class="dashboard-tile-heading">Cancelled Transactions</div>
         <div class="dashboard-tile-sub-heading">{{ totalCancelledTransactions | number}}</div>
       </div>
     </ng-container>
