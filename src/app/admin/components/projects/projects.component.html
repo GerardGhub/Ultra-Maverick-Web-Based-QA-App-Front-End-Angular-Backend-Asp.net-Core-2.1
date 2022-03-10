@@ -138,7 +138,7 @@
                   <!--             
                 <ng-container *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' || loginService.currentUserRoleSession =='QCSupervisor'"></ng-container> -->
                   <ng-container
-                    *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin'  || loginService.currentUserRoleSession =='QCSupervisor' ">
+                    *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' ">
 
                     <button mat-icon-button color="warn" (click)="onCancelClick($event, i)" data-toggle="modal"
                       data-target="#CancelledTransactionModal" data-backdrop="false" data-keyboard="false">

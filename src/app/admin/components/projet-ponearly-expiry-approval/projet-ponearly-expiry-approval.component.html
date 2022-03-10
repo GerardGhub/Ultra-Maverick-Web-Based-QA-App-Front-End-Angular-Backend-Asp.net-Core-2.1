@@ -84,11 +84,11 @@
               <tr class="text-light header-bg-color-um system-name">
   
                 <th>PO&nbsp;No.
-                  <!-- <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'countryName'" (click)="sortBy = 'countryName'; sortOrder = 'ASC' "></i>
+                  <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'countryName'" (click)="sortBy = 'countryName'; sortOrder = 'ASC' "></i>
     
                   <i class="fa fa-sort-up hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'ASC'" (click)="sortOrder = 'DESC' "></i>
     
-                  <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i> -->
+                  <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i>
                 </th>
                 <th>PO&nbsp;Date
                   <!-- <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'countryName'" (click)="sortBy = 'countryName'; sortOrder = 'ASC' "></i>
@@ -98,25 +98,13 @@
                   <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i> -->
                 </th>
                 <th>Item&nbsp;Code
-                  <!-- <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'countryName'" (click)="sortBy = 'countryName'; sortOrder = 'ASC' "></i>
-    
-                  <i class="fa fa-sort-up hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'ASC'" (click)="sortOrder = 'DESC' "></i>
-    
-                  <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i> -->
+
                 </th>
                  <th> Description
-                  <!-- <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'countryName'" (click)="sortBy = 'countryName'; sortOrder = 'ASC' "></i>
-    
-                  <i class="fa fa-sort-up hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'ASC'" (click)="sortOrder = 'DESC' "></i>
-    
-                  <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i> -->
+       
                 </th>
                 <th>Qty.&nbsp;Ordered
-                  <!-- <i class="fa fa-sort hand-icon" *ngIf="sortBy != 'countryName'" (click)="sortBy = 'countryName'; sortOrder = 'ASC' "></i>
-    
-                  <i class="fa fa-sort-up hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'ASC'" (click)="sortOrder = 'DESC' "></i>
-    
-                  <i class="fa fa-sort-down hand-icon text-primary" *ngIf="sortBy == 'countryName' && sortOrder == 'DESC'" (click)="sortOrder = 'ASC' "></i> -->
+              
                 </th>
                 <th>Qty. Good
                 
@@ -139,7 +127,7 @@
               </thead>
               <tr *ngFor="let project of projects | filter: searchBy : searchText | sort: sortBy : sortOrder | paging : currentPageIndex : pageSize; let i = index">
                 <td>{{project.po_number}}</td>
-                <td>{{project.po_date}}</td>
+                <td>{{project.po_date | date}}</td>
                 <td>{{project.item_code}}</td>
                 <td>{{project.item_description}}</td>
                 <td>{{project.qty_order | number:'1.0':'en-US'}}</td>
@@ -222,6 +210,8 @@
     <!-- END -->
   </div>
   
+
+
   <form #newForm="ngForm" novalidate="novalidate" appClientLocationStatusValidator>
     <div class="modal" role="dialog" id="newModal">
       <div class="modal-dialog">
@@ -2099,7 +2089,7 @@
 
           </div>
           <div class="modal-footer">
-            <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>keyboard_return</mat-icon></button>
+            <!-- <button mat-stroked-button color="accent" data-dismiss="modal" class="mr-2">Cancel<mat-icon>keyboard_return</mat-icon></button> -->
             <button mat-stroked-button color="primary" data-dismiss="modal" (click)="ApprovedPoDetailsSweetAlert()">Approve<mat-icon>check</mat-icon></button>
           </div>
         </div>

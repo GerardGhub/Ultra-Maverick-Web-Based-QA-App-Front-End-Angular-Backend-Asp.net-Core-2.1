@@ -763,9 +763,6 @@ ComputeRemainingQty()
         p.expected_delivery = response.expected_delivery;
         p.actual_delivery = response.actual_delivery;
         p.expected_delivery = response.expected_delivery;
-        // this.ActualRemaining = response.actual_remaining_receiving;
-        // p.received_by_QA = response.received_by_QA;
-        // // this.activeUser = response.received_by_QA;
         p.status_of_reject_one = response.status_of_reject_one;
         p.status_of_reject_two = response.status_of_reject_two;
         p.status_of_reject_three = response.status_of_reject_three;
