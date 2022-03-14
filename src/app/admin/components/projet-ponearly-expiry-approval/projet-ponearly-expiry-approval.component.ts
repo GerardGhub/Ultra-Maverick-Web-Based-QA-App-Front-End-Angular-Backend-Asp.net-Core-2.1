@@ -732,7 +732,7 @@ var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
 
   // totalRejectConfirmationField();
     Swal.fire({
-      title: 'Are you sure that you want to update the details item expiry at '+ Difference_In_Days +' Days?',
+      title: 'Are you sure you want to update the details item expiry at '+ Difference_In_Days +' Days?',
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
@@ -1793,7 +1793,7 @@ ComputeRemainingQty()
   
 var Item = this.ItemDesc.nativeElement.value;
     Swal.fire({
-      title: 'Are you sure that you want to cancel the Transaction?',
+      title: 'Are you sure you want to cancel the Transaction?',
       text: Item,
       icon: 'warning',
       showCancelButton: true,
@@ -1830,7 +1830,7 @@ ApprovedPoDetailsSweetAlert()
 
   var Item = this.ItemDesc.nativeElement.value;
     Swal.fire({
-      title: 'Are you sure that you want to approve the Transaction?',
+      title: 'Are you sure you want to approve the Transaction?',
       text: Item,
       icon: 'info',
       showCancelButton: true,
@@ -2653,7 +2653,7 @@ if (Difference_In_Days < 30 )
 {
 
 Swal.fire({
-  title: 'Are you sure that you want to update the details item expiry at '+ Difference_In_Days +' Days?',
+  title: 'Are you sure you want to update the details item expiry at '+ Difference_In_Days +' Days?',
   text: "You won't be able to revert this!",
   icon: 'warning',
   showCancelButton: true,

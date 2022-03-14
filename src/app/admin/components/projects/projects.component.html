@@ -140,9 +140,10 @@
                   <ng-container
                     *ngIf="loginService.currentUserName != null && loginService.currentUserRoleSession == 'Admin' ">
 
-                    <button mat-icon-button color="warn" (click)="onCancelClick($event, i)" data-toggle="modal"
+                    <button mat-stroked-button color="warn" (click)="onCancelClick($event, i)" data-toggle="modal"
                       data-target="#CancelledTransactionModal" data-backdrop="false" data-keyboard="false">
-                      <mat-icon>toggle_off</mat-icon>
+                      <!-- <mat-icon>toggle_off</mat-icon> -->
+                      Cancel
                     </button>&nbsp;
                   </ng-container>
                 </td>
@@ -154,6 +155,8 @@
     </div>
   </div>
   <!-- Grid Box Ends -->
+
+
 
   <!-- Paging Box Starts -->
   <div class="col-12">
@@ -959,8 +962,6 @@
 
                 <div class="col-sm-8">
 
-
-
                   <mat-form-field appearance="fill">
                     <mat-label>Rejected Status</mat-label>
                     <mat-select [(ngModel)]="editProject.status_of_reject_two" name="status_of_reject_two"
@@ -1006,7 +1007,7 @@
                   <mat-form-field floatLabel="auto" appearance="standard" color="primary">
                     <input type="text" matInput name="total_of_reject_mat" [(ngModel)]="editProject.total_of_reject_mat"
                       #totalofReject readonly="readonly">
-                    <mat-label>Total No. of Reject</mat-label>
+                    <mat-label>Total No. of Reject HHH</mat-label>
                     <mat-hint align="end">Grand Total</mat-hint>
 
                   </mat-form-field>
@@ -1030,7 +1031,7 @@
                       #editcount_of_reject_one="ngModel"
                       [ngClass]="{ 'is-invalid': editcount_of_reject_one.invalid && (editcount_of_reject_one.dirty || editcount_of_reject_one.touched || editForm.submitted), 'is-valid': editcount_of_reject_one.valid && (editcount_of_reject_one.dirty || editcount_of_reject_one.touched || editForm.submitted) }"
                       id="rejectRow1" (keypress)="validateNumber($event)">
-                    <mat-label>No.of Reject</mat-label>
+                    <mat-label>No.of Reject </mat-label>
                     <!-- <mat-hint align="end">Up to 30 characters</mat-hint> -->
                     <!-- <mat-icon matPrefix>list<span class="material-icons-outlined">
                 </span></mat-icon> -->

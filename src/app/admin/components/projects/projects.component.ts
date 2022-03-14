@@ -183,8 +183,7 @@ export class ProjectsComponent implements OnInit {
 
 
 
-  jqueryClearanceTextBox() 
-  {
+  jqueryClearanceTextBox() {
     $("rejectRow1").val("");
     $("rejectRow2").val("");
     $("rejectRow3").val("");
@@ -219,7 +218,7 @@ export class ProjectsComponent implements OnInit {
     this.toastr.success('Successfully Updated!', 'Notifications');
   }
   showReceivedSuccess() {
-    this.toastr.success('Successfully Receive!', 'Notifications');
+    this.toastr.success('Successfully Receive!!', 'Notifications');
   }
   FieldOutRequiredField() {
     this.toastr.warning('Field out the required fields!', 'Notifications');
@@ -877,7 +876,7 @@ export class ProjectsComponent implements OnInit {
       else {
 
         this.AllowablePercentageExceed();
-        // alert("Pekwangs");
+
         $('#actual_delivery_output').val("");  ///LLL
         return;
 
@@ -887,7 +886,7 @@ export class ProjectsComponent implements OnInit {
 
     }
     else {
-      // alert("MINs ");
+
       //This is for large scale validation for thousand's qty 
       if (this.allowableqty < this.actualqty) {
 
@@ -949,7 +948,7 @@ export class ProjectsComponent implements OnInit {
         //Start
         Swal.fire({
 
-          title: 'Are you sure you want to received the item ?',
+          title: 'Are you sure you want to receive the item ?',
           text: ItemDesc,
           icon: 'info',
           showCancelButton: true,
@@ -980,7 +979,7 @@ export class ProjectsComponent implements OnInit {
         if (Difference_In_Days < ExpiryDaysActivated) {
           Swal.fire({
 
-            title: 'Are you sure you want to received the item expiry ' + Difference_In_Days + ' Days?',
+            title: 'Are you sure you want to receive the item expiry ' + Difference_In_Days + ' Days?',
             text: ItemDesc,
             icon: 'warning',
             showCancelButton: true,
@@ -1007,7 +1006,7 @@ export class ProjectsComponent implements OnInit {
           if (Difference_In_Days == ExpiryDaysActivated) {
 
             Swal.fire({
-              title: 'Are you sure you want to received the item expiry  ' + Difference_In_Days + ' Days?',
+              title: 'Are you sure you want to receive the item expiry  ' + Difference_In_Days + ' Days?',
               text: ItemDesc,
               icon: 'warning',
               showCancelButton: true,
@@ -1030,7 +1029,7 @@ export class ProjectsComponent implements OnInit {
             //Start
             Swal.fire({
 
-              title: 'Are you sure you want to received the item ?',
+              title: 'Are you sure you want to receive the item ?',
               text: ItemDesc,
               icon: 'info',
               showCancelButton: true,
@@ -1423,8 +1422,9 @@ export class ProjectsComponent implements OnInit {
         //  this.InsertANewPartialReceiving();
         // this.showUpdatingSuccess();
         this.showReceivedSuccess();
-        this.ngOnInit();
+
         $("#editFormCancel").trigger("click");
+        this.ngOnInit();
       },
         (error) => {
           console.log(error);
@@ -2190,7 +2190,7 @@ export class ProjectsComponent implements OnInit {
     var Item = this.ItemDescription.nativeElement.value;
     var PoNumero = this.PONumber.nativeElement.value;
 
-   
+
 
     if ($("#ActivePartialReceiving").is(":visible")) {
       // alert("1");
@@ -2203,7 +2203,7 @@ export class ProjectsComponent implements OnInit {
     }
 
 
-    
+
 
     Swal.fire({
       title: 'Are you sure you want to cancel the PO Number ' + PoNumero + '?',
@@ -2832,7 +2832,7 @@ export class ProjectsComponent implements OnInit {
       this.currentPageIndex = pageIndex;
     }
   }
-  
+
 
   onAddAdditionalRejectRow(event: any) {
 
@@ -2948,30 +2948,37 @@ export class ProjectsComponent implements OnInit {
 
     if (this.rejectNo1.nativeElement.value == "") {
       this.rejectNo1.nativeElement.value = "0";
-      // console.warn("Empty Quantity in the textInput! ")
+
     }
 
-    console.log(event.target.value);
-    // this.totalofReject.nativeElement.value = this.rejectNo1.nativeElement.value; 
-    const a = this.rejectNo1.nativeElement.value;
-    const b = this.rejectNo2.nativeElement.value;
-    const c = this.rejectNo3.nativeElement.value;
-    const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-    const TotalReject = this.totalofReject.nativeElement.value;
-    const summary = +a + +b + +c;
-    // console.log(summary);
-    this.totalofReject.nativeElement.value = summary;
-    // alert("You change a value 1");
+    var a = this.rejectNo1.nativeElement.value;
+    var b = this.rejectNo2.nativeElement.value;
+    var c = this.rejectNo3.nativeElement.value;
+    var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+    var TotalReject = this.totalofReject.nativeElement.value;
+    var summary = +a + +b + +c;
 
-    // this.totalofReject.nativeElement.value = this.rejectNo1.nativeElement.value() + 2; 
-    if (ActualDelivered > TotalReject) {
-      // alert("A");
+
+    this.totalofReject.nativeElement.value = summary;
+
+
+
+    if (ActualDelivered >= summary) {
+
+
     }
     else {
+
       this.RejectionGreaterThanReceiving();
     }
 
+
+
   }
+
+
+
+
 
   onChangeEventReject2(event: any) {
 
@@ -2980,27 +2987,27 @@ export class ProjectsComponent implements OnInit {
       console.warn("Empty Quantity in the textInput! ")
     }
 
-    console.log(event.target.value);
-    // this.totalofReject.nativeElement.value = this.rejectNo2.nativeElement.value + this.totalofReject.nativeElement.value; 
-    const a = this.rejectNo1.nativeElement.value;
-    const b = this.rejectNo2.nativeElement.value;
-    const c = this.rejectNo3.nativeElement.value;
-    const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-    const TotalReject = this.totalofReject.nativeElement.value;
-    const summary = +a + +b + +c;
+    // console.log(event.target.value);
+
+    var a = this.rejectNo1.nativeElement.value;
+    var b = this.rejectNo2.nativeElement.value;
+    var c = this.rejectNo3.nativeElement.value;
+    var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+    var TotalReject = this.totalofReject.nativeElement.value;
+    var summary = +a + +b + +c;
     console.log(summary);
     this.totalofReject.nativeElement.value = summary;
-    // alert("You change a value 2");
 
-    // this.totalofReject.nativeElement.value = this.rejectNo1.nativeElement.value() + 2; 
-    if (ActualDelivered > TotalReject) {
-      // alert("A");
+    if (ActualDelivered >= summary) {
+     
     }
     else {
       this.RejectionGreaterThanReceiving();
     }
 
   }
+
+
 
   selectExpiryDate(event: any) {
     // JavaScript program to illustrate 
@@ -3025,8 +3032,9 @@ export class ProjectsComponent implements OnInit {
     var ExpiryDaysActivated = this.ActiveNearlyExpirySetpoint.nativeElement.value;
     var ItemDesc = this.ItemDescription.nativeElement.value;
 
+
     if (Difference_In_Days == ExpiryDaysActivated) {
-      // alert("ssasa kaba Hahha");
+     
       Swal.fire({
         title: 'Below Standard Expiration ' + Difference_In_Days + ' Days?',
         text: ItemDesc,
@@ -3057,20 +3065,7 @@ export class ProjectsComponent implements OnInit {
         showConfirmButton: false,
         timer: 3500
       })
-      // Swal.fire({
-      //   title: 'Below Standardss Expiration Days  '+ Difference_In_Days +' Days?',
-      //   text: ItemDesc,
-      //   icon: 'warning',
-      //   showCancelButton: true,
-      //   confirmButtonColor: '#3085d6',
-      //   cancelButtonColor: '#d33',
-      //   confirmButtonText: 'Yes'
-      // }).then((result) => {
-      //   if (result.isConfirmed) {
-
-
-      //   }
-      // })
+     
     }
     else {
       this.ExpiryDateChild.nativeElement.value = ' ';
@@ -3098,9 +3093,7 @@ export class ProjectsComponent implements OnInit {
     const summary = +a + +b + +c;
     console.log(summary);
     this.totalofReject.nativeElement.value = summary;
-    // alert("You change a value 3");
 
-    // this.totalofReject.nativeElement.value = this.rejectNo1.nativeElement.value() + 2; 
     if (ActualDelivered > TotalReject) {
       // alert("A");
     }
@@ -3268,7 +3261,7 @@ export class ProjectsComponent implements OnInit {
   }
 
   ConfirmNoofReject(event: any) {
-    // alert("You Press a key in the Keyboard");
+
     this.InitialComputation();
 
     if (this.confirmReject.nativeElement.value == "") {
@@ -3276,15 +3269,21 @@ export class ProjectsComponent implements OnInit {
     }
     else {
       if (this.totalofReject.nativeElement.value == this.confirmReject.nativeElement.value) {
-        // this.rejectNo3.nativeElement.value="0";
-        // console.warn("Empty Quantity in the textInput! ")
-        // this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "Pexa Marian";
+
         this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "";
       }
       else {
         this.rejectIsnotMactchSpanTag.nativeElement.innerHTML = "No. of total reject is not match";
       }
     }
+
+    //Attached a Message Box Alert{}
+
+
+
+
+
+
 
   }
 
