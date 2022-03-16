@@ -59,6 +59,7 @@ namespace MvcTaskManager.Controllers
       return rejectedStatusdata;
     }
 
+
     [HttpPut]
     [Route("api/AspNetRoles")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

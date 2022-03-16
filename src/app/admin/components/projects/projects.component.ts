@@ -2995,7 +2995,7 @@ export class ProjectsComponent implements OnInit {
     var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
     var TotalReject = this.totalofReject.nativeElement.value;
     var summary = +a + +b + +c;
-    console.log(summary);
+    // console.log(summary);
     this.totalofReject.nativeElement.value = summary;
 
     if (ActualDelivered >= summary) {
@@ -3081,20 +3081,20 @@ export class ProjectsComponent implements OnInit {
 
     if (this.rejectNo3.nativeElement.value == "") {
       this.rejectNo3.nativeElement.value = "0";
-      console.warn("Empty Quantity in the textInput! ")
+      // console.warn("Empty Quantity in the textInput! ")
     }
 
-    console.log(event.target.value);
-    const a = this.rejectNo1.nativeElement.value;
-    const b = this.rejectNo2.nativeElement.value;
-    const c = this.rejectNo3.nativeElement.value;
-    const ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
-    const TotalReject = this.totalofReject.nativeElement.value;
-    const summary = +a + +b + +c;
-    console.log(summary);
+   
+    var a = this.rejectNo1.nativeElement.value;
+    var b = this.rejectNo2.nativeElement.value;
+    var c = this.rejectNo3.nativeElement.value;
+    var ActualDelivered = this.ActualDeliveryChild.nativeElement.value;
+    var TotalReject = this.totalofReject.nativeElement.value;
+    var summary = +a + +b + +c;
+    // console.log(summary);
     this.totalofReject.nativeElement.value = summary;
 
-    if (ActualDelivered > TotalReject) {
+    if (ActualDelivered >= summary) {
       // alert("A");
     }
     else {

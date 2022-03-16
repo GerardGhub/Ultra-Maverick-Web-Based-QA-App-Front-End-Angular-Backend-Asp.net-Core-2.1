@@ -51,9 +51,9 @@
                   <mat-select id="drpSearchBy" name="SearchBy" [(ngModel)]="searchBy"
                     (selectionChange)="HideSearchBtn($event)">
 
+                    <!-- <mat-option value="item_description">Item Description</mat-option> -->
+                    <mat-option value="po_number">PO Number</mat-option>                    
                     <mat-option value="item_code">Item Code</mat-option>
-                    <mat-option value="item_description">Item Description</mat-option>
-                    <mat-option value="po_number">PO Number</mat-option>
 
                   </mat-select>
                   <mat-label>Search by</mat-label>
@@ -64,7 +64,7 @@
 
 
 
-              <div class="col-3 float-right hideObject system-name">
+              <div class="col-3 float-right hideObject system-name" id="SearchBtnDetailed">
                 <!-- id="SearchBtnDetailed"> -->
                 <mat-form-field floatLabel="auto" appearance="standard" color="primary">
                   <input type="text" matInput placeholder="Enter Some Data" id="txtSearchText" name="SearchText"

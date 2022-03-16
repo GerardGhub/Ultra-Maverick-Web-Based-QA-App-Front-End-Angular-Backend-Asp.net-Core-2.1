@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "nCtNyvWb4wOAeklmo6PCGCA2+OSQrJPhLWxIcyLyk38xqv4IrdFgo+cIBTVLaerzRoowWeE+xkaLNUuXmK3txg==",
+  "dgSpecHash": "Tn8XUtsx7rynaw8WCFUbR6Rs7rnhMfqIQge0+EsisyI8lvy86odzctvhNLr0i5e3I7MNRSe5DPDCoXNpKisyJg==",
   "success": true,
-  "projectFilePath": "D:\\MY Files\\UM System\\Web\\TaskManagerQA\\MvcTaskManager\\MvcTaskManager\\MvcTaskManager.csproj",
+  "projectFilePath": "D:\\MY Files\\UM System\\SERVER UM\\WEB BASED FULL STACK\\TaskManagerQA\\MvcTaskManager\\MvcTaskManager\\MvcTaskManager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gsingian\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\gsingian\\.nuget\\packages\\microsoft.aspnetcore\\2.1.1\\microsoft.aspnetcore.2.1.1.nupkg.sha512",
