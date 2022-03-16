@@ -25,7 +25,7 @@ export class LoginService
   public Login(loginViewModel: LoginViewModel): Observable<any>
   {
     this.httpClient = new HttpClient(this.httpBackend);
-    return this.httpClient.post<any>("/authenticate", loginViewModel, { responseType: "json", observe: "response" })
+    return this.httpClient.post<any>("authenticate", loginViewModel, { responseType: "json", observe: "response" })
     .pipe(map(response => {
       if (response)
       {
