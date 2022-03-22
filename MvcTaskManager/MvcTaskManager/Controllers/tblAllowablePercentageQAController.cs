@@ -76,23 +76,7 @@ namespace MvcTaskManager.Controllers
       }
     }
 
-    [HttpDelete]
-    [Route("api/tblrejectedstatus")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public int Delete(int ID)
-    {
-      AllowablePercentageQAModel existingAllowablePercentage = db.tblAllowablePercentageQA.Where(temp => temp.p_id == ID).FirstOrDefault();
-      if (existingAllowablePercentage != null)
-      {
-        db.tblAllowablePercentageQA.Remove(existingAllowablePercentage);
-        db.SaveChanges();
-        return ID;
-      }
-      else
-      {
-        return -1;
-      }
-    }
+
 
 
 

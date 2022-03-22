@@ -56,6 +56,9 @@ namespace MvcTaskManager.Controllers
       return rejectedStatusdata;
     }
 
+
+
+
     [HttpPut]
     [Route("api/tblrejectedstatus")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

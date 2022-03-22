@@ -47,17 +47,6 @@ namespace MvcTaskManager.Controllers
         return NoContent();
     }
 
-    [HttpPost]
-    [Route("api/tblrejectedstatus")]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public TblRejectedStats Post([FromBody] TblRejectedStats rejectedStatusdata)
-    {
-      db.TblRejectedStatus.Add(rejectedStatusdata);
-      db.SaveChanges();
-
-      TblRejectedStats existingData = db.TblRejectedStatus.Where(temp => temp.id == rejectedStatusdata.id).FirstOrDefault();
-      return rejectedStatusdata;
-    }
 
 
     [HttpPut]
