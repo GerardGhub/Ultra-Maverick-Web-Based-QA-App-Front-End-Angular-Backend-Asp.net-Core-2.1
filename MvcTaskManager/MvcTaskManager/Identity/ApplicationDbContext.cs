@@ -39,6 +39,7 @@ namespace MvcTaskManager.Identity
     public DbSet<DryWhOrder> dry_wh_orders{ get; set; }
 
     public DbSet<LaboratoryProcedure> laboratory_procedure { get; set; }
+    public DbSet<LabTestRemarks> laboratory_test_remarks { get; set; }
 
     //public DbSet<UserRolesModel> AspNetRoles { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
