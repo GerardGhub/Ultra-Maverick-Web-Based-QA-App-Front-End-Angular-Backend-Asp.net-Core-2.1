@@ -7,26 +7,26 @@ using MvcTaskManager.Models;
 
 namespace MvcTaskManager.Identity
 {
-    public partial class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+  public partial class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+  {
+    public ApplicationDbContext(DbContextOptions options) : base(options)
     {
-        public ApplicationDbContext(DbContextOptions options) : base(options)
-        {
-        }
+    }
 
-        public DbSet<ClientLocation> ClientLocations { get; set; }
+    public DbSet<ClientLocation> ClientLocations { get; set; }
     public DbSet<Store_Preparation_LogsModel> Store_Preparation_Logs { get; set; }
 
     public DbSet<Project> Projects { get; set; }
-        public DbSet<RMProjectsPartialPo> ProjectsPartialPo { get; set; }
+    public DbSet<RMProjectsPartialPo> ProjectsPartialPo { get; set; }
 
     public DbSet<ApplicationRole> ApplicationRoles { get; set; }
-        public DbSet<Country> Countries { get; set; }
-        public DbSet<Skill> Skills { get; set; }
-        public DbSet<TaskPriority> TaskPriorities { get; set; }
-        public DbSet<TaskStatus> TaskStatuses { get; set; }
-        public DbSet<Task> Tasks { get; set; }
-        public DbSet<TaskStatusDetail> TaskStatusDetails { get; set; }
-        public DbSet<TblRejectedStats> TblRejectedStatus { get; set; }
+    public DbSet<Country> Countries { get; set; }
+    public DbSet<Skill> Skills { get; set; }
+    public DbSet<TaskPriority> TaskPriorities { get; set; }
+    public DbSet<TaskStatus> TaskStatuses { get; set; }
+    public DbSet<Task> Tasks { get; set; }
+    public DbSet<TaskStatusDetail> TaskStatusDetails { get; set; }
+    public DbSet<TblRejectedStats> TblRejectedStatus { get; set; }
     public DbSet<tblDryPartialReceivingRejectionModel> tblDryPartialReceivingRejection { get; set; }
     public DbSet<AllowablePercentageQAModel> tblAllowablePercentageQA { get; set; }
 
@@ -36,10 +36,12 @@ namespace MvcTaskManager.Identity
     public DbSet<SystemCapabilityStatus> system_capability_status { get; set; }
     public DbSet<tblNearlyExpiryMgmtModel> tblNearlyExpiryMgmt { get; set; }
 
-    public DbSet<DryWhOrder> dry_wh_orders{ get; set; }
+    public DbSet<DryWhOrder> dry_wh_orders { get; set; }
 
     public DbSet<LaboratoryProcedure> laboratory_procedure { get; set; }
     public DbSet<LabTestRemarks> laboratory_test_remarks { get; set; }
+
+    public DbSet<LaboratorySubRemark> laboratory_sub_remarks {get; set; }
 
     //public DbSet<UserRolesModel> AspNetRoles { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
