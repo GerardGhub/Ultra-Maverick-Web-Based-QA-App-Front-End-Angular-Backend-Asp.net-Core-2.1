@@ -71,6 +71,7 @@ namespace MvcTaskManager.Controllers
         existingDataStatus.lab_sub_remarks_description = labTestSubRemarksProc.lab_sub_remarks_description;
         existingDataStatus.updated_at = labTestSubRemarksProc.updated_at;
         existingDataStatus.updated_by = labTestSubRemarksProc.updated_by;
+        existingDataStatus.lab_test_remarks_active_status = labTestSubRemarksProc.lab_test_remarks_active_status;
         db.SaveChanges();
         return existingDataStatus;
       }

@@ -155,7 +155,6 @@ D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManage
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.pdb
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.dll
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\bin\Debug\netcoreapp2.1\MvcTaskManager.Views.pdb
-D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.AssemblyReference.cache
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.GeneratedMSBuildEditorConfig.editorconfig
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfoInputs.cache
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.AssemblyInfo.cs
