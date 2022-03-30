@@ -114,10 +114,11 @@ namespace MvcTaskManager.Controllers
       DryWareHouseReceiving existingDataStatus = db.tblDryWHReceiving.Where(temp => temp.id == labTestQAStaffApprovalParams.id).FirstOrDefault();
       if (existingDataStatus != null)
       {
-        existingDataStatus.lab_re = labTestQAStaffApprovalParams.qa_approval_by;
-        existingDataStatus.qa_approval_status = labTestQAStaffApprovalParams.qa_approval_status;
-        existingDataStatus.qa_approval_date = labTestQAStaffApprovalParams.qa_approval_date;
+        existingDataStatus.lab_result_released_by = labTestQAStaffApprovalParams.lab_result_released_by;
+        existingDataStatus.lab_result_released_date = labTestQAStaffApprovalParams.lab_result_released_date;
         existingDataStatus.lab_status = labTestQAStaffApprovalParams.lab_status;
+        existingDataStatus.lab_result_remarks = labTestQAStaffApprovalParams.lab_result_remarks;
+        existingDataStatus.lab_sub_remarks = labTestQAStaffApprovalParams.lab_sub_remarks;
         db.SaveChanges();
         return existingDataStatus;
       }
