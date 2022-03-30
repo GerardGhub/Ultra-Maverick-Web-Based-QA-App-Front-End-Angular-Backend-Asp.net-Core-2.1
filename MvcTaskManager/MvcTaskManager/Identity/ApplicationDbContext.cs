@@ -43,6 +43,9 @@ namespace MvcTaskManager.Identity
 
     public DbSet<LaboratorySubRemark> laboratory_sub_remarks {get; set; }
 
+
+    public DbSet<DryWareHouseReceiving> tblDryWHReceiving { get; set; }
+
     //public DbSet<UserRolesModel> AspNetRoles { get; set; }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
