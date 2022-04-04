@@ -88,7 +88,11 @@ namespace MvcTaskManager.Controllers
 
           //Sample
           Expiry_days_aging = dayDiffExpiryDaysAging,
-          Lab_approval_aging_days = LaboratoryAging
+          Lab_approval_aging_days = LaboratoryAging,
+          Supplier = project.supplier,
+          Po_date = project.po_date,
+          Pr_no = project.pr_no,
+          Pr_date = project.pr_date
           //DaysBeforeExpired = dayDiff
 
         });
@@ -154,7 +158,11 @@ namespace MvcTaskManager.Controllers
 
           //Sample
           Expiry_days_aging = dayDiffExpiryDaysAging,
-          Lab_approval_aging_days = LaboratoryAging
+          Lab_approval_aging_days = LaboratoryAging,
+          Supplier = project.supplier,
+          Po_date = project.po_date,
+          Pr_no = project.pr_no,
+          Pr_date = project.pr_date
           //DaysBeforeExpired = dayDiff
 
         });

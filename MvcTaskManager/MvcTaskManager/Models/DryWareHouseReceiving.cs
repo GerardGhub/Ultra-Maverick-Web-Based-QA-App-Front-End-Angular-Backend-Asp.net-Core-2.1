@@ -42,6 +42,10 @@ namespace MvcTaskManager.Models
     public DateTime lab_exp_date_extension { get; set; }
     public int? lab_approval_aging_days { get; set; }
     public string laboratory_procedure { get; set; }
+    public string supplier { get; set; }
+    public string po_date { get; set; }
+    public int pr_no { get; set; }
+    public string pr_date { get; set; }
 
 
 

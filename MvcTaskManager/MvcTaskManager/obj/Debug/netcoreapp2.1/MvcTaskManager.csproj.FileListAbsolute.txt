@@ -172,4 +172,3 @@ D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManage
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.pdb
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.genruntimeconfig.cache
 D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.CopyComplete
-D:\MY Files\UM System\SERVER UM\WEB BASED FULL STACK\TaskManagerQA\MvcTaskManager\MvcTaskManager\obj\Debug\netcoreapp2.1\MvcTaskManager.csproj.AssemblyReference.cache

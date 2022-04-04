@@ -39,6 +39,9 @@ namespace MvcTaskManager.ViewModels
     public DateTime Lab_exp_date_extension { get; set; }
     public int? Lab_approval_aging_days { get; set; }
     public string Laboratory_procedure { get; set; }
-
+    public string Supplier { get; set; }
+    public string Po_date { get; set; }
+    public int Pr_no { get; set; }
+    public string Pr_date { get; set; }
   }
 }
