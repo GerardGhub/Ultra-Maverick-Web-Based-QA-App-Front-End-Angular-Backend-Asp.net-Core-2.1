@@ -38,6 +38,7 @@ namespace MvcTaskManager.ViewModels
     //[DisplayFormat(DataFormatString = "d/M/yyyy")]
     public DateTime Lab_exp_date_extension { get; set; }
     public int? Lab_approval_aging_days { get; set; }
+    public string Laboratory_procedure { get; set; }
 
   }
 }

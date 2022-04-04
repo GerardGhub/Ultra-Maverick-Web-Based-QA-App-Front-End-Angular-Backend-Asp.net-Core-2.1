@@ -262,6 +262,7 @@ namespace MvcTaskManager.Controllers
         existingDataStatus.lab_result_remarks = labTestQAStaffApprovalParams.lab_result_remarks;
         existingDataStatus.lab_sub_remarks = labTestQAStaffApprovalParams.lab_sub_remarks;
         existingDataStatus.lab_exp_date_extension = labTestQAStaffApprovalParams.lab_exp_date_extension;
+        existingDataStatus.laboratory_procedure = labTestQAStaffApprovalParams.laboratory_procedure;
         db.SaveChanges();
         return existingDataStatus;
       }
