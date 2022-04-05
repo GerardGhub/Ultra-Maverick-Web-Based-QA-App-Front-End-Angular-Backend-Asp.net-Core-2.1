@@ -33,25 +33,15 @@ namespace MvcTaskManager.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public IActionResult Get()
     {
-      //System.Threading.Thread.Sleep(1000);
-      //List<Project> projects = db.Projects.Include("ClientLocation").ToList();
-      //string ProjectIsActivated = "1";
 
-      //string LabStatusRequest = "LAB REQUEST";
-      //string LabStatusApproved = "LAB APPROVED";
-      //string LabStatusResult = "LAB RESULT";
-      //List<Project> projects = db.Projects.Include("ClientLocation").Where(temp => temp.Active.ToString().Contains((char)1)).ToList();
-
+      int CancelledByQAStatus = 3;
       List<DryWareHouseReceiving> projects = db.tblDryWHReceiving.Where(temp => temp.is_active.Equals(true)
 
       && temp.lab_request_by != null
-      && temp.lab_result_released_by == null).ToList();
+      && temp.lab_result_released_by == null
+      != temp.qa_approval_status.Contains(CancelledByQAStatus.ToString())
+      ).ToList();
 
-
-      //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.is_activated.Contains(ProjectIsActivated)
-      //&& DateTime.Now.AddDays(temp.Days_expiry_setup) >= temp.Expiration_date || temp.Is_expired.Contains(ExpiredRM) != temp.Is_approved_XP.Contains(ExpiredRM)).ToList();
-
-      //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Where(temp => temp.is_activated.Contains(ProjectIsActivated)).ToList();
 
       List<DryWareHouseReceivingViewModel> projectsViewModel = new List<DryWareHouseReceivingViewModel>();
       foreach (var project in projects)
@@ -106,76 +96,205 @@ namespace MvcTaskManager.Controllers
 
 
 
+    //[HttpGet]
+    //[Route("api/DryWareHouseReceivingForLabTest/LabResult")]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //public IActionResult GetLabResult()
+    //{
+
+    //  List<DryWareHouseReceiving> projects = db.tblDryWHReceiving.Where(temp => temp.is_active.Equals(true)
+
+
+    //  && temp.lab_result_released_by != null).ToList();
+
+
+    //  //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.is_activated.Contains(ProjectIsActivated)
+    //  //&& DateTime.Now.AddDays(temp.Days_expiry_setup) >= temp.Expiration_date || temp.Is_expired.Contains(ExpiredRM) != temp.Is_approved_XP.Contains(ExpiredRM)).ToList();
+
+    //  //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Where(temp => temp.is_activated.Contains(ProjectIsActivated)).ToList();
+
+    //  List<DryWareHouseReceivingViewModel> projectsViewModel = new List<DryWareHouseReceivingViewModel>();
+    //  foreach (var project in projects)
+    //  {
+    //    //int dayDiff = (project.Expiration_date_string - DateTime.Now).Days;
+    //    int dayDiffExpiryDaysAging = (project.lab_exp_date_extension - DateTime.Now).Days;
+    //    int LaboratoryAging = (project.qa_approval_date - DateTime.Now).Days;
+    //    projectsViewModel.Add(new DryWareHouseReceivingViewModel()
+    //    {
+    //      Id = project.id,
+    //      Lab_access_code = project.lab_access_code,
+    //      Index_id_partial = project.index_id_partial,
+    //      //Item_code = project.DateOfStart.ToString("dd/MM/yyyy"),
+    //      Item_code = project.item_code,
+    //      Item_description = project.item_description,
+    //      Category = project.category,
+    //      Uom = project.uom,
+    //      Qty_received = project.qty_received,
+    //      Historical_lab_transact_count = project.historical_lab_transact_count,
+    //      Lab_status = project.lab_status,
+    //      //Expiry_days_aging = project.expiry_days_aging,
+    //      Client_requestor = project.client_requestor,
+    //      Lab_request_date = project.lab_request_date,
+    //      Lab_request_by = project.lab_request_by,
+    //      Po_number = project.po_number,
+    //      Qa_approval_status = project.qa_approval_status,
+    //      Qa_approval_by = project.qa_approval_by,
+    //      Qa_approval_date = project.qa_approval_date,
+    //      Lab_result_released_by = project.lab_result_released_by,
+    //      Lab_result_released_date = project.lab_result_released_date,
+    //      Lab_result_remarks = project.lab_result_remarks,
+    //      Lab_sub_remarks = project.lab_sub_remarks,
+    //      Is_active = project.is_active,
+
+    //      //Sample
+    //      Expiry_days_aging = dayDiffExpiryDaysAging,
+    //      Lab_approval_aging_days = LaboratoryAging,
+    //      Supplier = project.supplier,
+    //      Po_date = project.po_date,
+    //      Pr_no = project.pr_no,
+    //      Pr_date = project.pr_date
+    //      //DaysBeforeExpired = dayDiff
+
+    //    });
+    //  }
+    //  return Ok(projectsViewModel);
+
+
+
+
+    //}
+
+
     [HttpGet]
     [Route("api/DryWareHouseReceivingForLabTest/LabResult")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public IActionResult GetLabResult()
     {
-   
-      List<DryWareHouseReceiving> projects = db.tblDryWHReceiving.Where(temp => temp.is_active.Equals(true)
+
+      //string data_is_pending = "1";
+      string is_activated = "1";
+      List<DryWhLabTestReqLogs> projects = null;
+
+     
+
+      projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated)).ToList();
 
 
-      && temp.lab_result_released_by != null).ToList();
-
-
-      //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.is_activated.Contains(ProjectIsActivated)
-      //&& DateTime.Now.AddDays(temp.Days_expiry_setup) >= temp.Expiration_date || temp.Is_expired.Contains(ExpiredRM) != temp.Is_approved_XP.Contains(ExpiredRM)).ToList();
-
-      //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Where(temp => temp.is_activated.Contains(ProjectIsActivated)).ToList();
-
-      List<DryWareHouseReceivingViewModel> projectsViewModel = new List<DryWareHouseReceivingViewModel>();
+      List<DryWhLabTestReqLogsViewModel> WarehouseReceivingContructor = new List<DryWhLabTestReqLogsViewModel>();
       foreach (var project in projects)
       {
-        //int dayDiff = (project.Expiration_date_string - DateTime.Now).Days;
-        int dayDiffExpiryDaysAging = (project.lab_exp_date_extension - DateTime.Now).Days;
-        int LaboratoryAging = (project.qa_approval_date - DateTime.Now).Days;
-        projectsViewModel.Add(new DryWareHouseReceivingViewModel()
+        WarehouseReceivingContructor.Add(new DryWhLabTestReqLogsViewModel()
         {
-          Id = project.id,
-          Lab_access_code = project.lab_access_code,
-          Index_id_partial = project.index_id_partial,
-          //Item_code = project.DateOfStart.ToString("dd/MM/yyyy"),
+
+          Lab_req_id = project.lab_req_id,
           Item_code = project.item_code,
-          Item_description = project.item_description,
+          Item_desc = project.item_desc,
           Category = project.category,
-          Uom = project.uom,
           Qty_received = project.qty_received,
-          Historical_lab_transact_count = project.historical_lab_transact_count,
+          Remaining_qty = project.remaining_qty,
+          Days_to_expired = project.days_to_expired,
           Lab_status = project.lab_status,
-          //Expiry_days_aging = project.expiry_days_aging,
-          Client_requestor = project.client_requestor,
-          Lab_request_date = project.lab_request_date,
-          Lab_request_by = project.lab_request_by,
-          Po_number = project.po_number,
-          Qa_approval_status = project.qa_approval_status,
+          Historical = project.historical,
+          Aging = project.aging,
+          Remarks = project.remarks,
+          Fk_receiving_id = project.fk_receiving_id,
+          //Is_active = project.is_active,
+          Added_by = project.added_by,
+          Date_added = project.date_added,
           Qa_approval_by = project.qa_approval_by,
+          Qa_approval_status = project.qa_approval_status,
           Qa_approval_date = project.qa_approval_date,
           Lab_result_released_by = project.lab_result_released_by,
           Lab_result_released_date = project.lab_result_released_date,
           Lab_result_remarks = project.lab_result_remarks,
           Lab_sub_remarks = project.lab_sub_remarks,
-          Is_active = project.is_active,
-
-          //Sample
-          Expiry_days_aging = dayDiffExpiryDaysAging,
-          Lab_approval_aging_days = LaboratoryAging,
-          Supplier = project.supplier,
+          Lab_exp_date_extension = project.lab_exp_date_extension,
+          Laboratory_procedure = project.laboratory_procedure,
+          Lab_request_date = project.lab_request_date,
+          Lab_result_received_by = project.lab_result_received_by,
+          Lab_result_received_date = project.lab_result_received_date,
+          Lab_request_by = project.lab_request_by,
+          Is_received_status = project.is_received_status,
           Po_date = project.po_date,
-          Pr_no = project.pr_no,
-          Pr_date = project.pr_date
-          //DaysBeforeExpired = dayDiff
+          Po_number = project.po_number,
+          Pr_date = project.pr_date,
+          Pr_number = project.pr_number
 
-        });
+
+
+
+
+        }); ;
       }
-      return Ok(projectsViewModel);
 
+      return Ok(WarehouseReceivingContructor);
 
 
 
     }
 
+    [HttpGet]
+    [Route("api/DryWareHouseReceivingForLabTest/searchreceivedidentity/{searchtext}")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult Search(string searchText)
+    {
+
+      //string data_is_pending = "1";
+      string is_activated = "1";
+      List<DryWhLabTestReqLogs> projects = null;
+
+      string ReceivedID = searchText;
+     
+      //if (searchBy == "store_name")
+
+        projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated) && temp.fk_receiving_id.Contains(ReceivedID)).ToList();
 
 
+      List<DryWhLabTestReqLogsViewModel> WarehouseStoreOrderContructor = new List<DryWhLabTestReqLogsViewModel>();
+      foreach (var project in projects)
+      {
+        WarehouseStoreOrderContructor.Add(new DryWhLabTestReqLogsViewModel()
+        {
+
+          Lab_req_id = project.lab_req_id,
+          Item_code = project.item_code,
+          Item_desc = project.item_desc,
+          Category = project.category,
+          Qty_received = project.qty_received,
+          Remaining_qty = project.remaining_qty,
+          Days_to_expired = project.days_to_expired,
+          Lab_status = project.lab_status,
+          Historical = project.historical,
+          Aging = project.aging,
+          Remarks = project.remarks,
+          Fk_receiving_id = project.fk_receiving_id,
+          //Is_active = project.is_active,
+          Added_by = project.added_by,
+          Date_added = project.date_added,
+          Qa_approval_by = project.qa_approval_by,
+          Qa_approval_status = project.qa_approval_status,
+          Qa_approval_date = project.qa_approval_date,
+          Lab_result_released_by = project.lab_result_released_by,
+          Lab_result_released_date = project.lab_result_released_date,
+          Lab_result_remarks = project.lab_result_remarks,
+          Lab_sub_remarks = project.lab_sub_remarks,
+          Lab_exp_date_extension = project.lab_exp_date_extension,
+          Laboratory_procedure = project.laboratory_procedure,
+          Lab_request_date = project.lab_request_date,
+          Lab_result_received_by = project.lab_result_received_by,
+          Lab_result_received_date = project.lab_result_received_date,
+          Lab_request_by = project.lab_request_by,
+          Is_received_status = project.is_received_status
+
+
+
+
+
+        }); ;
+      }
+
+      return Ok(WarehouseStoreOrderContructor);
+    }
 
 
     //[HttpGet]
@@ -271,6 +390,28 @@ namespace MvcTaskManager.Controllers
         existingDataStatus.lab_sub_remarks = labTestQAStaffApprovalParams.lab_sub_remarks;
         existingDataStatus.lab_exp_date_extension = labTestQAStaffApprovalParams.lab_exp_date_extension;
         existingDataStatus.laboratory_procedure = labTestQAStaffApprovalParams.laboratory_procedure;
+        db.SaveChanges();
+        return existingDataStatus;
+      }
+      else
+      {
+        return null;
+      }
+    }
+
+
+    [HttpPut]
+    [Route("api/DryWareHouseReceivingForLabTest/CancelledQAReleasingResult")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public DryWareHouseReceiving PutCancelQAResults([FromBody] DryWareHouseReceiving labTestCancelParams)
+    {
+      DryWareHouseReceiving existingDataStatus = db.tblDryWHReceiving.Where(temp => temp.id == labTestCancelParams.id).FirstOrDefault();
+      if (existingDataStatus != null)
+      {
+        existingDataStatus.lab_cancel_by = labTestCancelParams.lab_cancel_by;
+        existingDataStatus.lab_cancel_date = labTestCancelParams.lab_cancel_date;
+        existingDataStatus.lab_cancel_remarks = labTestCancelParams.lab_cancel_remarks;
+        existingDataStatus.qa_approval_status = labTestCancelParams.qa_approval_status;
         db.SaveChanges();
         return existingDataStatus;
       }

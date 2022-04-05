@@ -48,6 +48,10 @@ namespace MvcTaskManager.Models
     public string pr_date { get; set; }
 
 
+    public string lab_cancel_by { get; set; }
+    public string lab_cancel_date { get; set; }
+    public string lab_cancel_remarks { get; set; }
+
 
   }
 }

@@ -43,7 +43,7 @@ namespace MvcTaskManager.Identity
 
     public DbSet<LaboratorySubRemark> laboratory_sub_remarks {get; set; }
 
-
+    public DbSet<DryWhLabTestReqLogs> dry_wh_lab_test_req_logs { get; set; }
     public DbSet<DryWareHouseReceiving> tblDryWHReceiving { get; set; }
 
     //public DbSet<UserRolesModel> AspNetRoles { get; set; }

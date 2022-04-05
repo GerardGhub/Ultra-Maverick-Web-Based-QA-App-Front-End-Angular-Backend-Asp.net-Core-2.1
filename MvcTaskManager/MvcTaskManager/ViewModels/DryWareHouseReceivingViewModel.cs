@@ -43,5 +43,11 @@ namespace MvcTaskManager.ViewModels
     public string Po_date { get; set; }
     public int Pr_no { get; set; }
     public string Pr_date { get; set; }
+
+
+    public string Lab_cancel_by { get; set; }
+    public string Lab_cancel_date { get; set; }
+    public string Lab_cancel_remarks { get; set; }
+
   }
 }
