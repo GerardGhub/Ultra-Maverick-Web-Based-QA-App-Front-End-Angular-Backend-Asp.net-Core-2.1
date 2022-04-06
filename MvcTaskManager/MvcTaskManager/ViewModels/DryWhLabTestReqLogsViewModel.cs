@@ -18,7 +18,7 @@ namespace MvcTaskManager.ViewModels
     public string Historical { get; set; }
     public string Aging { get; set; }
     public string Remarks { get; set; }
-    public string Fk_receiving_id { get; set; }
+    public int Fk_receiving_id { get; set; }
     public string Is_active { get; set; }
     public string Added_by { get; set; }
     public string Date_added { get; set; }

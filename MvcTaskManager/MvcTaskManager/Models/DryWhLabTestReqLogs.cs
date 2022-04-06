@@ -22,7 +22,7 @@ namespace MvcTaskManager.Models
     public string historical { get; set; }
     public string aging { get; set; }
     public string remarks { get; set; }
-    public string fk_receiving_id { get; set; }
+    public int fk_receiving_id { get; set; }
     public string is_active { get; set; }
     public string added_by { get; set; }
     public string date_added { get; set; }
@@ -46,5 +46,7 @@ namespace MvcTaskManager.Models
     public string po_date { get; set; }
     public string pr_date { get; set; }
 
+    [ForeignKey("fk_receiving_id")]
+    public virtual DryWareHouseReceiving DryWareHouseReceiving { get; set; }
   }
 }

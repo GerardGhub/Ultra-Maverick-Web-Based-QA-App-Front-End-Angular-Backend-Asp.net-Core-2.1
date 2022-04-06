@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using MvcTaskManager.Identity;
 using MvcTaskManager.Models;
 using MvcTaskManager.ViewModels;
@@ -173,11 +174,13 @@ namespace MvcTaskManager.Controllers
 
       //string data_is_pending = "1";
       string is_activated = "1";
+      string LaboratoryResult = "LAB RESULT";
+
+      //projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated)).ToList();
+
+      //db.Projects.Include("ClientLocation").Where
       List<DryWhLabTestReqLogs> projects = null;
-
-     
-
-      projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated)).ToList();
+      projects = db.dry_wh_lab_test_req_logs.Include("DryWareHouseReceiving").Where(temp => temp.is_active.Contains(is_activated) && temp.DryWareHouseReceiving.lab_status.Contains(LaboratoryResult)).ToList();
 
 
       List<DryWhLabTestReqLogsViewModel> WarehouseReceivingContructor = new List<DryWhLabTestReqLogsViewModel>();
@@ -236,18 +239,18 @@ namespace MvcTaskManager.Controllers
     [HttpGet]
     [Route("api/DryWareHouseReceivingForLabTest/searchreceivedidentity/{searchtext}")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public IActionResult Search(string searchText)
+    public IActionResult Search(int searchText)
     {
 
       //string data_is_pending = "1";
       string is_activated = "1";
       List<DryWhLabTestReqLogs> projects = null;
 
-      string ReceivedID = searchText;
-     
-      //if (searchBy == "store_name")
+      //string ReceivedID = searchText;
+      int ReceivedID = searchText;
+      //if (searchBy == "store_name")       
 
-        projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated) && temp.fk_receiving_id.Contains(ReceivedID)).ToList();
+      projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated) && temp.fk_receiving_id == ReceivedID).ToList();
 
 
       List<DryWhLabTestReqLogsViewModel> WarehouseStoreOrderContructor = new List<DryWhLabTestReqLogsViewModel>();
