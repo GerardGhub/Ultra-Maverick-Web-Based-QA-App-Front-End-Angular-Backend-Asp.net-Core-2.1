@@ -35,7 +35,7 @@ namespace MvcTaskManager.Models
     public string lab_sub_remarks { get; set; }
     public string lab_exp_date_extension { get; set; }
     public string laboratory_procedure { get; set; }
-    public string lab_request_date { get; set; }
+    public DateTime lab_request_date { get; set; }
     public string lab_result_received_by { get; set; }
     public string lab_result_received_date { get; set; }
     public string lab_request_by { get; set; }
@@ -45,6 +45,11 @@ namespace MvcTaskManager.Models
     public int pr_number { get; set; }
     public string po_date { get; set; }
     public string pr_date { get; set; }
+
+    public string lab_access_code { get; set; }
+ 
+    public DateTime bbd { get; set; }
+    
 
     [ForeignKey("fk_receiving_id")]
     public virtual DryWareHouseReceiving DryWareHouseReceiving { get; set; }

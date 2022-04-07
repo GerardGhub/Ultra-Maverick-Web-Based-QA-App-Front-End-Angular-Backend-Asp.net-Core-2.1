@@ -42,5 +42,12 @@ namespace MvcTaskManager.ViewModels
     public string Po_date { get; set; }
     public string Pr_date { get; set; }
 
+    public string Lab_access_code { get; set; }
+    public DateTime Bbd { get; set; }
+    public string Client_requestor { get; set; }
+    public string Supplier { get; set; }
+
+    public int? Lab_approval_aging_days { get; set; }
+
   }
 }

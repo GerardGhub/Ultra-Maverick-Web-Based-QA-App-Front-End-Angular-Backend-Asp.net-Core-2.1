@@ -31,6 +31,8 @@ namespace MvcTaskManager.Models
 
     public string qa_approval_status { get; set; }
     public string qa_approval_by { get; set; }
+    //[DisplayFormat(DataFormatString = "MM/dd/yyyy")]
+
     public DateTime qa_approval_date { get; set; }
 
     public string lab_result_released_by { get; set; }
@@ -38,7 +40,8 @@ namespace MvcTaskManager.Models
     public string lab_result_remarks { get; set; }
     public string lab_sub_remarks { get; set; }
 
-    //[DisplayFormat(DataFormatString = "d/M/yyyy")]
+    //[DataType(DataType.Date)]
+    //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{MM/dd/yyyy}")]
     public DateTime lab_exp_date_extension { get; set; }
     public int? lab_approval_aging_days { get; set; }
     public string laboratory_procedure { get; set; }

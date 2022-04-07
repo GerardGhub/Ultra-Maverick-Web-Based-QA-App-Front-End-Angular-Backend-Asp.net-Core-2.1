@@ -28,15 +28,16 @@ namespace MvcTaskManager.ViewModels
 
     public string Qa_approval_status { get; set; }
     public string Qa_approval_by { get; set; }
-    public DateTime Qa_approval_date { get; set; }
+    [DisplayFormat(DataFormatString = "MM/dd/yyyy")]
+    public string Qa_approval_date { get; set; }
 
     public string Lab_result_released_by { get; set; }
     public string Lab_result_released_date { get; set; }
     public string Lab_result_remarks { get; set; }
     public string Lab_sub_remarks { get; set; }
 
-    //[DisplayFormat(DataFormatString = "d/M/yyyy")]
-    public DateTime Lab_exp_date_extension { get; set; }
+    [DisplayFormat(DataFormatString = "d/M/yyyy")]
+    public string Lab_exp_date_extension { get; set; }
     public int? Lab_approval_aging_days { get; set; }
     public string Laboratory_procedure { get; set; }
     public string Supplier { get; set; }
