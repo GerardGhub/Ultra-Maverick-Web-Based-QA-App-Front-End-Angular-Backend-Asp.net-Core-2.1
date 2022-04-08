@@ -27,7 +27,7 @@ namespace MvcTaskManager.Models
     public string lab_request_date { get; set; }
     public string lab_request_by { get; set; }
     public int po_number { get; set; }
-    public bool is_active { get; set; }
+    public int is_active { get; set; }
 
     public string qa_approval_status { get; set; }
     public string qa_approval_by { get; set; }
@@ -56,6 +56,8 @@ namespace MvcTaskManager.Models
     public string lab_cancel_remarks { get; set; }
 
 
+    [ForeignKey("is_active")]
+    public virtual tblNearlyExpiryMgmtModel tblNearlyExpiryMgmtModel { get; set; }
 
 
   }

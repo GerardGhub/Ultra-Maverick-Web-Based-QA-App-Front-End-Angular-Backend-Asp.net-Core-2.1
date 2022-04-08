@@ -54,5 +54,11 @@ namespace MvcTaskManager.ViewModels
     public string Qa_supervisor_is_approve_by { get; set; }
     public string Qa_supervisor_is_approve_date { get; set; }
 
+
+    public bool Qa_supervisor_is_cancelled_status { get; set; }
+    public string Qa_supervisor_is_cancelled_by { get; set; }
+    public string Qa_supervisor_is_cancelled_date { get; set; }
+    public string Qa_supervisor_cancelled_remarks { get; set; }
+
   }
 }

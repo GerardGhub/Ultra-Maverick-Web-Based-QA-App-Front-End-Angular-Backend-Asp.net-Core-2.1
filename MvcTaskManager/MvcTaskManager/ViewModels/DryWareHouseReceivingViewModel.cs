@@ -24,7 +24,7 @@ namespace MvcTaskManager.ViewModels
     public string Lab_request_date { get; set; }
     public string Lab_request_by { get; set; }
     public int Po_number { get; set; }
-    public bool Is_active { get; set; }
+    public string Is_active { get; set; }
 
     public string Qa_approval_status { get; set; }
     public string Qa_approval_by { get; set; }

@@ -12,8 +12,8 @@ namespace MvcTaskManager.Models
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public int p_id { get; set; }
-    public string p_nearly_expiry_desc { get; set; }
-    public string p_is_active { get; set; }
+    public int p_nearly_expiry_desc { get; set; }
+    public int p_is_active { get; set; }
     public string p_date_added { get; set; }
     public string p_added_by { get; set; }
     public string p_date_modified { get; set; }

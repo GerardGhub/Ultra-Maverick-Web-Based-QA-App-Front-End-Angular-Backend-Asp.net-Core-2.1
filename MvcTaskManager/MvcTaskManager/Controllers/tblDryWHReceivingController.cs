@@ -83,7 +83,7 @@ namespace MvcTaskManager.Controllers
           Lab_result_released_date = project.lab_result_released_date,
           Lab_result_remarks = project.lab_result_remarks,
           Lab_sub_remarks = project.lab_sub_remarks,
-          Is_active = project.is_active,
+          Is_active = project.is_active.ToString(),
           Lab_exp_date_extension = project.lab_exp_date_extension.ToString("MM/dd/yyyy"),
 
           //Sample
@@ -107,6 +107,54 @@ namespace MvcTaskManager.Controllers
 
 
 
+    [HttpGet]
+    [Route("api/DryWareHouseReceivingForLabTest/NearlyExpiry")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public IActionResult GetItemNearlyExpiry()
+    {
+
+      
+      List<DryWareHouseReceiving> projects = db.tblDryWHReceiving.Include("tblNearlyExpiryMgmtModel").Where(temp => temp.is_active == 1
+      && (temp.lab_exp_date_extension - DateTime.Now).Days < temp.tblNearlyExpiryMgmtModel.p_nearly_expiry_desc
+      //&& temp.lab_request_by != null temp.is_active.Equals(true)
+      //&& temp.lab_result_released_by == null
+      //!= temp.qa_approval_status.Contains(CancelledByQAStatus.ToString())
+      ).ToList();
+
+
+      List<DryWareHouseReceivingViewModelNearlyExpiry> projectsViewModel = new List<DryWareHouseReceivingViewModelNearlyExpiry>();
+      foreach (var project in projects)
+      {
+        //int dayDiff = (project.Expiration_date_string - DateTime.Now).Days;
+        int dayDiffExpiryDaysAging = (project.lab_exp_date_extension - DateTime.Now).Days;
+      
+        int LaboratoryAging = ((TimeSpan)(project.qa_approval_date - DateTime.Now)).Days;
+        projectsViewModel.Add(new DryWareHouseReceivingViewModelNearlyExpiry()
+        {
+          Id = project.id,
+          Item_code = project.item_code,
+          Item_description = project.item_description,
+          Qty_received = project.qty_received,
+          Lab_exp_date_extension = project.lab_exp_date_extension.ToString("MM/dd/yyyy"),
+          Expiry_days_aging = dayDiffExpiryDaysAging,
+          Standard_Expiry_Days = project.tblNearlyExpiryMgmtModel.p_nearly_expiry_desc.ToString(),
+          RemainingQty = project.qty_received,
+          
+
+
+          //DaysBeforeExpired = dayDiff
+
+        });
+      }
+      return Ok(projectsViewModel);
+
+
+
+
+    }
+
+
+
 
 
     [HttpGet]
@@ -118,7 +166,7 @@ namespace MvcTaskManager.Controllers
       //string data_is_pending = "1";
       string is_activated = "1";
       string LaboratoryResult = "LAB RESULT";
-      string LabResultRemarks ="Condemnation";
+    
 
       //projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated)).ToList();
 
@@ -169,22 +217,27 @@ namespace MvcTaskManager.Controllers
           Lab_result_received_date = project.lab_result_received_date,
           Lab_request_by = project.lab_request_by,
           Is_received_status = project.is_received_status,
+
           Po_date = project.po_date,
           Po_number = project.po_number,
           Pr_date = project.pr_date,
           Pr_number = project.pr_number,
+
           Lab_access_code = project.lab_access_code,
           Bbd = project.bbd,
           Lab_approval_aging_days = LaboratoryAging,
           Client_requestor = project.DryWareHouseReceiving.client_requestor,
           Supplier = project.DryWareHouseReceiving.supplier,
+
           Qa_supervisor_is_approve_status = project.qa_supervisor_is_approve_status,
           Qa_supervisor_is_approve_by = project.qa_supervisor_is_approve_by,
-          Qa_supervisor_is_approve_date = project.qa_supervisor_is_approve_date
+          Qa_supervisor_is_approve_date = project.qa_supervisor_is_approve_date,
 
 
-
-
+          Qa_supervisor_is_cancelled_status = project.qa_supervisor_is_cancelled_status,
+          Qa_supervisor_is_cancelled_by = project.qa_supervisor_is_cancelled_by,
+          Qa_supervisor_is_cancelled_date = project.qa_supervisor_is_cancelled_date,
+          Qa_supervisor_cancelled_remarks = project.qa_supervisor_cancelled_remarks
 
         }); 
       }
@@ -398,6 +451,29 @@ namespace MvcTaskManager.Controllers
         existingDataStatus.qa_supervisor_is_approve_status = labTestQASuperVisorApprovalParams.qa_supervisor_is_approve_status;
         existingDataStatus.qa_supervisor_is_approve_by = labTestQASuperVisorApprovalParams.qa_supervisor_is_approve_by;
         existingDataStatus.qa_supervisor_is_approve_date = labTestQASuperVisorApprovalParams.qa_supervisor_is_approve_date;
+        db.SaveChanges();
+        return existingDataStatus;
+      }
+      else
+      {
+        return null;
+      }
+    }
+
+
+
+    [HttpPut]
+    [Route("api/DryWareHouseReceivingForLabTest/QASupervisorCancelLabResult")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public DryWhLabTestReqLogs PutLabTestResultCancel([FromBody] DryWhLabTestReqLogs labTestQASuperVisorApprovalParams)
+    {
+      DryWhLabTestReqLogs existingDataStatus = db.dry_wh_lab_test_req_logs.Where(temp => temp.lab_req_id == labTestQASuperVisorApprovalParams.lab_req_id).FirstOrDefault();
+      if (existingDataStatus != null)
+      {
+        existingDataStatus.qa_supervisor_is_cancelled_status = labTestQASuperVisorApprovalParams.qa_supervisor_is_cancelled_status;
+        existingDataStatus.qa_supervisor_is_cancelled_by = labTestQASuperVisorApprovalParams.qa_supervisor_is_cancelled_by;
+        existingDataStatus.qa_supervisor_is_cancelled_date = labTestQASuperVisorApprovalParams.qa_supervisor_is_cancelled_date;
+        existingDataStatus.qa_supervisor_cancelled_remarks = labTestQASuperVisorApprovalParams.qa_supervisor_cancelled_remarks;
         db.SaveChanges();
         return existingDataStatus;
       }
