@@ -70,7 +70,7 @@ namespace MvcTaskManager.Controllers
           Uom = project.uom,
           Qty_received = project.qty_received,
           Historical_lab_transact_count = project.historical_lab_transact_count,
-          Lab_status = project.lab_status,      
+          Lab_status = project.lab_status,
           //Expiry_days_aging = project.expiry_days_aging,
           Client_requestor = project.client_requestor,
           Lab_request_date = project.lab_request_date,
@@ -118,14 +118,20 @@ namespace MvcTaskManager.Controllers
       //string data_is_pending = "1";
       string is_activated = "1";
       string LaboratoryResult = "LAB RESULT";
+      string LabResultRemarks ="Condemnation";
 
       //projects = db.dry_wh_lab_test_req_logs.Where(temp => temp.is_received_status.Contains(is_activated)).ToList();
 
       //db.Projects.Include("ClientLocation").Where
       List<DryWhLabTestReqLogs> projects = null;
-      projects = db.dry_wh_lab_test_req_logs.Include("DryWareHouseReceiving").Where(temp => temp.is_active.Contains(is_activated) && temp.DryWareHouseReceiving.lab_status.Contains(LaboratoryResult)).ToList();
+      projects = db.dry_wh_lab_test_req_logs.Include("DryWareHouseReceiving")
+        .Where(temp => temp.is_active.Contains(is_activated)
+        && temp.DryWareHouseReceiving.lab_status.Contains(LaboratoryResult)
 
 
+      ).ToList();
+
+      //&& temp.is_approved != null
       List<DryWhLabTestReqLogsViewModel> WarehouseReceivingContructor = new List<DryWhLabTestReqLogsViewModel>();
       foreach (var project in projects)
       {
@@ -141,7 +147,7 @@ namespace MvcTaskManager.Controllers
           Qty_received = project.qty_received,
           Remaining_qty = project.remaining_qty,
           Days_to_expired = dayDiffExpiryDaysAging.ToString(),
-          Lab_status = project.lab_status,
+          Lab_status = project.DryWareHouseReceiving.lab_status,
           Historical = project.historical,
           Aging = project.aging,
           Remarks = project.remarks,
@@ -171,7 +177,10 @@ namespace MvcTaskManager.Controllers
           Bbd = project.bbd,
           Lab_approval_aging_days = LaboratoryAging,
           Client_requestor = project.DryWareHouseReceiving.client_requestor,
-          Supplier = project.DryWareHouseReceiving.supplier
+          Supplier = project.DryWareHouseReceiving.supplier,
+          Qa_supervisor_is_approve_status = project.qa_supervisor_is_approve_status,
+          Qa_supervisor_is_approve_by = project.qa_supervisor_is_approve_by,
+          Qa_supervisor_is_approve_date = project.qa_supervisor_is_approve_date
 
 
 
@@ -343,6 +352,7 @@ namespace MvcTaskManager.Controllers
         existingDataStatus.lab_sub_remarks = labTestQAStaffApprovalParams.lab_sub_remarks;
         existingDataStatus.lab_exp_date_extension = labTestQAStaffApprovalParams.lab_exp_date_extension;
         existingDataStatus.laboratory_procedure = labTestQAStaffApprovalParams.laboratory_procedure;
+      
         db.SaveChanges();
         return existingDataStatus;
       }
@@ -373,6 +383,31 @@ namespace MvcTaskManager.Controllers
         return null;
       }
     }
+
+
+
+
+    [HttpPut]
+    [Route("api/DryWareHouseReceivingForLabTest/QASupervisorApproval")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    public DryWhLabTestReqLogs PutLabTestResultApproval([FromBody] DryWhLabTestReqLogs labTestQASuperVisorApprovalParams)
+    {
+      DryWhLabTestReqLogs existingDataStatus = db.dry_wh_lab_test_req_logs.Where(temp => temp.lab_req_id == labTestQASuperVisorApprovalParams.lab_req_id).FirstOrDefault();
+      if (existingDataStatus != null)
+      {
+        existingDataStatus.qa_supervisor_is_approve_status = labTestQASuperVisorApprovalParams.qa_supervisor_is_approve_status;
+        existingDataStatus.qa_supervisor_is_approve_by = labTestQASuperVisorApprovalParams.qa_supervisor_is_approve_by;
+        existingDataStatus.qa_supervisor_is_approve_date = labTestQASuperVisorApprovalParams.qa_supervisor_is_approve_date;
+        db.SaveChanges();
+        return existingDataStatus;
+      }
+      else
+      {
+        return null;
+      }
+    }
+
+
 
 
     //[HttpDelete]

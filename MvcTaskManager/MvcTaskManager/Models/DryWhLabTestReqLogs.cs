@@ -49,7 +49,12 @@ namespace MvcTaskManager.Models
     public string lab_access_code { get; set; }
  
     public DateTime bbd { get; set; }
-    
+
+
+    public bool qa_supervisor_is_approve_status { get; set; }
+    public string qa_supervisor_is_approve_by { get; set; }
+    public string qa_supervisor_is_approve_date { get; set; }
+
 
     [ForeignKey("fk_receiving_id")]
     public virtual DryWareHouseReceiving DryWareHouseReceiving { get; set; }

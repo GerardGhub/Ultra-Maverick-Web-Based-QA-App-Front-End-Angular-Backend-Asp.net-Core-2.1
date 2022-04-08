@@ -133,13 +133,13 @@ namespace MvcTaskManager
                   role.Name = "QASupervisor";
                   await roleManager.CreateAsync(role);
                 }
-        //Create QC Supervisor Role
-        if (!(await roleManager.RoleExistsAsync("QCSupervisor")))
-        {
-          var role = new ApplicationRole();
-          role.Name = "QCSupervisor";
-          await roleManager.CreateAsync(role);
-        }
+              //Create QC Supervisor Role
+              if (!(await roleManager.RoleExistsAsync("QCSupervisor")))
+              {
+                var role = new ApplicationRole();
+                role.Name = "QCSupervisor";
+                await roleManager.CreateAsync(role);
+              }
 
 
         //Create QC Staff Role
@@ -149,6 +149,15 @@ namespace MvcTaskManager
           role.Name = "QC Staff";
           await roleManager.CreateAsync(role);
         }
+
+        //Create QA Staff Role
+        if (!(await roleManager.RoleExistsAsync("QA Staff")))
+        {
+          var role = new ApplicationRole();
+          role.Name = "QA Staff";
+          await roleManager.CreateAsync(role);
+        }
+
 
         //Create Warehouse Checker Role
         if (!(await roleManager.RoleExistsAsync("WarehouseChecker")))

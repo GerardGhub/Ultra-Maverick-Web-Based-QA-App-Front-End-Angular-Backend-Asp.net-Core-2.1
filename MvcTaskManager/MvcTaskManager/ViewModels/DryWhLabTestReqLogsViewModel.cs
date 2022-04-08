@@ -47,7 +47,12 @@ namespace MvcTaskManager.ViewModels
     public string Client_requestor { get; set; }
     public string Supplier { get; set; }
 
+
     public int? Lab_approval_aging_days { get; set; }
+
+    public bool Qa_supervisor_is_approve_status { get; set; }
+    public string Qa_supervisor_is_approve_by { get; set; }
+    public string Qa_supervisor_is_approve_date { get; set; }
 
   }
 }

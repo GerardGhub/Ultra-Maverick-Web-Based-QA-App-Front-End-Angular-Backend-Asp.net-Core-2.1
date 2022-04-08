@@ -56,5 +56,7 @@ namespace MvcTaskManager.Models
     public string lab_cancel_remarks { get; set; }
 
 
+
+
   }
 }
