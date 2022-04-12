@@ -56,6 +56,9 @@ namespace MvcTaskManager.Models
     public string lab_cancel_remarks { get; set; }
 
 
+    public int FK_Sub_Category_IsExpirable { get; set; }
+
+    public string lab_exp_date_request { get; set; }
     [ForeignKey("is_active")]
     public virtual tblNearlyExpiryMgmtModel tblNearlyExpiryMgmtModel { get; set; }
 
