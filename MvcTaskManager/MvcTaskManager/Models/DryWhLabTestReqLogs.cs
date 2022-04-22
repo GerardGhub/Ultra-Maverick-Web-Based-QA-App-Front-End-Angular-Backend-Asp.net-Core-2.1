@@ -47,7 +47,8 @@ namespace MvcTaskManager.Models
     public string pr_date { get; set; }
 
     public string lab_access_code { get; set; }
- 
+
+    [DisplayFormat(DataFormatString = "MM/dd/yyyy")]
     public DateTime bbd { get; set; }
 
 

@@ -36,6 +36,9 @@ namespace MvcTaskManager.Controllers
 
       List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.is_activated.Contains(ProjectIsActivated) && temp.Is_expired.Contains(GoodRM)
       && temp.Is_wh_received != "1" || temp.Is_approved_XP.Contains(Approve)).ToList();
+
+
+
       // &&
      // temp.Is_expired.Contains(GoodRM)
       //List<RMProjectsPartialPo> projects = db.ProjectsPartialPo.Where(temp => temp.is_activated.Contains(ProjectIsActivated)).ToList();
@@ -618,8 +621,11 @@ namespace MvcTaskManager.Controllers
         projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.ProjectName.Contains(searchText)).ToList();
       else if (searchBy == "Po_number")
            
-      projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.Po_number.Contains(searchText) && temp.is_activated.Contains(ProjectIsActivated)).ToList();
-          //projects = db.Projects.Include("ClientLocation").Where(temp => temp.Po_number.Contains(searchText)).ToList();
+      projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.Po_number.Contains(searchText) && temp.is_activated.Contains(ProjectIsActivated) != temp.Is_wh_received.Contains(ProjectIsActivated)).ToList();
+
+
+
+      //projects = db.Projects.Include("ClientLocation").Where(temp => temp.Po_number.Contains(searchText)).ToList();
           else if (searchBy == "item_code")
         projects = db.ProjectsPartialPo.Include("ClientLocation").Where(temp => temp.item_code.Contains(searchText)).ToList();
       else if (searchBy == "item_description")

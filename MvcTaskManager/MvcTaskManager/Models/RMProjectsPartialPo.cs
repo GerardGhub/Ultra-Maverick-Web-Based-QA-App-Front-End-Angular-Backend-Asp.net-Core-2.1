@@ -204,6 +204,7 @@ namespace MvcTaskManager.Models
     public string Is_wh_reject_approval_is_received_date { get; set;}
     public string Is_wh_reject_approval_is_received_by { get; set; }
 
+
     [ForeignKey("ClientLocationID")]
     public virtual ClientLocation ClientLocation { get; set; }
   

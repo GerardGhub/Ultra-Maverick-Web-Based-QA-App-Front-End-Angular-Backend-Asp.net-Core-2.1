@@ -225,12 +225,13 @@ namespace MvcTaskManager.Controllers
           Date_added = project.date_added,
           Qa_approval_by = project.qa_approval_by,
           Qa_approval_status = project.qa_approval_status,
-          Qa_approval_date = project.DryWareHouseReceiving.qa_approval_date.ToString(),
+          Qa_approval_date = project.DryWareHouseReceiving.qa_approval_date.ToString("MM/dd/yyyy"),
+
           Lab_result_released_by = project.lab_result_released_by,
           Lab_result_released_date = project.lab_result_released_date,
           Lab_result_remarks = project.lab_result_remarks,
           Lab_sub_remarks = project.lab_sub_remarks,
-          Lab_exp_date_extension = project.DryWareHouseReceiving.lab_exp_date_extension.ToString(),
+          Lab_exp_date_extension = project.DryWareHouseReceiving.lab_exp_date_extension.ToString("MM/dd/yyyy"),
           Laboratory_procedure = project.laboratory_procedure,
           Lab_request_date = project.DryWareHouseReceiving.lab_request_date,
           Lab_result_received_by = project.lab_result_received_by,
@@ -244,7 +245,7 @@ namespace MvcTaskManager.Controllers
           Pr_number = project.pr_number,
 
           Lab_access_code = project.lab_access_code,
-          Bbd = project.bbd,
+          Bbd = project.bbd.ToString("MM/dd/yyyy"),
           Lab_approval_aging_days = LaboratoryAging,
           Client_requestor = project.DryWareHouseReceiving.client_requestor,
           Supplier = project.DryWareHouseReceiving.supplier,
@@ -350,7 +351,7 @@ namespace MvcTaskManager.Controllers
           Pr_number = project.pr_number,
 
           Lab_access_code = project.lab_access_code,
-          Bbd = project.bbd,
+          Bbd = project.bbd.ToString("MM/dd/yyyy"),
           Lab_approval_aging_days = LaboratoryAging,
           Client_requestor = project.DryWareHouseReceiving.client_requestor,
           Supplier = project.DryWareHouseReceiving.supplier,
@@ -476,12 +477,14 @@ namespace MvcTaskManager.Controllers
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public DryWareHouseReceiving PutQAResults([FromBody] DryWareHouseReceiving labTestQAStaffApprovalParams)
     {
+      string LaboratoryStatus = "LAB RESULT";
       DryWareHouseReceiving existingDataStatus = db.tblDryWHReceiving.Where(temp => temp.id == labTestQAStaffApprovalParams.id).FirstOrDefault();
       if (existingDataStatus != null)
       {
         existingDataStatus.lab_result_released_by = labTestQAStaffApprovalParams.lab_result_released_by;
         existingDataStatus.lab_result_released_date = labTestQAStaffApprovalParams.lab_result_released_date;
-        existingDataStatus.lab_status = labTestQAStaffApprovalParams.lab_status;
+        existingDataStatus.lab_status = LaboratoryStatus;
+        //labTestQAStaffApprovalParams.lab_status;
         existingDataStatus.lab_result_remarks = labTestQAStaffApprovalParams.lab_result_remarks;
         existingDataStatus.lab_sub_remarks = labTestQAStaffApprovalParams.lab_sub_remarks;
         existingDataStatus.lab_exp_date_extension = labTestQAStaffApprovalParams.lab_exp_date_extension;
